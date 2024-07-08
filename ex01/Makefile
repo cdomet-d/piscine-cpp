@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 13:29:02 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/07/08 13:41:02 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/07/08 14:22:46 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= megaphone
+NAME:= phonebook
 BDIR:= .bdir/
 
 CC := c++
