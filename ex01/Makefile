@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 13:29:02 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/07/09 16:52:59 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/07/10 14:02:45 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME:= phonebook
 BDIR:= .bdir/
 
 CC := c++
-CFLAGS := -Werror -Wextra -Wall -std=c++98
+CFLAGS := -Werror -Wextra -Wall -std=c++98 -g3
 CPPFLAGS := -MMD -MP
 MAKEFLAGS += --no-print-directory
 
 SRC:=	Contact.cpp \
+		Phonebook.cpp \
 		main.cpp \
 
 OBJS := $(addprefix $(BDIR), $(SRC:%.cpp=%.o))
