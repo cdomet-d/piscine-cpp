@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 14:24:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/10 17:05:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/11 13:58:11 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@
 
 class Contact {
 	private:
-		std::string firstName;
-		std::string lastName;
-		std::string nickName;
-		std::string phoneNumber;
-		std::string darkestSecret;
+		size_t		index;
+		std::string	firstName;
+		std::string	lastName;
+		std::string	nickName;
+		std::string	phoneNumber;
+		std::string	darkestSecret;
 
 	public:
 		Contact();
-		Contact(std::string	newContact[5]);
-		void display(void);
-		void displayf(void);
+		Contact(std::string newContact[5], size_t i);
+		void displayContact(void);
+		void displayPhonebook(void);
 };
 
 #endif

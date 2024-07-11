@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:56:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/10 16:24:23 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/11 14:54:13 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	main(void)
 		if (user_input.compare("ADD") == 0)
 			Phonebook.addNew();
 		else if (user_input.compare("SEARCH") == 0)
-			Phonebook.displayAll();
+			Phonebook.displaySearch();
 		else if (user_input.compare("EXIT") == 0)
 			break ;
 	}
+	Phonebook.displayAll();
 	return (0);
 }

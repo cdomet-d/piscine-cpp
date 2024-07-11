@@ -6,15 +6,33 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/10 16:59:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/11 16:53:34 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include <iostream>
+#include <iomanip>
+
+static void	displayHeader(void)
+{
+	std::cout << std::endl;
+	std::cout << std::setfill('.') << std::setw(10) << "Index" << " | "
+	<< std::setw(10) << "First name" << " | "
+	<< std::setw(10) << "Last name" << " | "
+	<< std::setw(10) << "Nickname" << " | "
+	<< std::endl;
+}
+
+static void	displayIndex()
+{
+	size_t	i;
+
+	std::cin >> i;
+	if (isdigit())
+}
 
 Phonebook::Phonebook(){
-	// std::cout << "Phonebook constructor was called" << std::endl;
 	nb_contact = 0;
 }
 
@@ -40,9 +58,9 @@ void Phonebook::addNew()
 		if (newContact[i].empty() == false)
 			i++;
 	}
-	contact[nb_contact] = newContact;
+	contact[nb_contact] = Contact(newContact, nb_contact);
 	nb_contact = (nb_contact + 1) % 7;
-	std::cout << "New contact created !" << std::endl << std::endl;
+	std::cout << std::endl << "New contact created ! <3" << std::endl << std::endl;
 }
 
 void Phonebook::displayAll()
@@ -50,5 +68,15 @@ void Phonebook::displayAll()
 	size_t i = 0;
 
 	while (i < 8)
-		contact[i++].display();
+		contact[i++].displayContact();
+}
+
+void Phonebook::displaySearch()
+{
+	size_t i = 0;
+	
+	displayAll();
+	while (i < 8)
+		contact[i++].displayPhonebook();
+	std::cout << std::endl;
 }
