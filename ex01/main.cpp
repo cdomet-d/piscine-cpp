@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:56:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/11 14:54:13 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/16 17:05:15 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@ int	main(void)
 	Phonebook 	Phonebook;
 	std::string	user_input;
 
-	std::cout << "Please enter a command" << std::endl;
-	std::cout << "ADD: add a new contact" << std::endl;
-	std::cout << "SEARCH: display existing contacts" << std::endl;
-	std::cout << "EXIT: deletes phonebook and exit the program" << std::endl;
-	std::cout << std::endl;
+	std::cout << std::endl  <<"Please enter a command" << std::endl << std::endl
+		 << "ADD: add a new contact" << std::endl
+		 << "SEARCH: display existing contacts" << std::endl
+		 << "EXIT: deletes phonebook and exit the program" << std::endl
+		 << std::endl;
 	while (1)
 	{
-		std::cout << "$ ";
 		getline(std::cin, user_input, '\n');
 		if (user_input.compare("ADD") == 0)
 			Phonebook.addNew();
@@ -35,6 +34,5 @@ int	main(void)
 		else if (user_input.compare("EXIT") == 0)
 			break ;
 	}
-	Phonebook.displayAll();
 	return (0);
 }

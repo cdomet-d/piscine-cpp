@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:57:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/11 16:10:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/16 17:00:35 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ Contact::Contact(std::string newContact[5], size_t i)
 	darkestSecret = newContact[4];
 }
 
-
-void Contact::displayContact(void) 
-{
-	if (firstName.empty() == false)
-	{
-		std::cout << std::endl;
-		std::cout << "First name: " << firstName << std::endl;
-		std::cout << "Last name:" << lastName << std::endl;
-		std::cout << "Nickname: " << nickName << std::endl;
-		std::cout << "Phone number: " << phoneNumber << std::endl;
-		std::cout << "Darkest secret: " << darkestSecret << std::endl;
-		std::cout << std::endl;
-	}
-}
-
 void Contact::displayPhonebook(void)
 {
 	if (firstName.empty() == false)
@@ -58,6 +43,20 @@ void Contact::displayPhonebook(void)
 			<< std::setw(10) << convertStr(firstName) << " | "
 			<< std::setw(10) << convertStr(lastName) <<  " | "
 			<< std::setw(10) << convertStr(nickName) << " | "
+			<< std::endl;
+	}
+}
+
+void Contact::displayContact(void)
+{
+	if (firstName.empty() == false)
+	{
+		std::cout << std::endl
+			<< "First name: " << firstName << std::endl
+			<< "Last name: " << lastName << std::endl
+			<< "Nickname: " << nickName << std::endl
+			<< "Phone number: " << phoneNumber << std::endl
+			<< "Darkest secret: " << darkestSecret << std::endl
 			<< std::endl;
 	}
 }

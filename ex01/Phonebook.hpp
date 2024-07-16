@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:50:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/11 12:45:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/16 16:58:03 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ class Phonebook {
 	public:
 		Phonebook();
 		void	addNew();
-		void	displayAll();
+		void	displaySingle(size_t i);
 		void	displaySearch();
+		void 	displayIndex();
 };
 
 #endif

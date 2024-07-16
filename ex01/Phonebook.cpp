@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/11 16:53:34 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/16 17:56:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 #include <iostream>
 #include <iomanip>
 
-static void	displayHeader(void)
-{
-	std::cout << std::endl;
-	std::cout << std::setfill('.') << std::setw(10) << "Index" << " | "
-	<< std::setw(10) << "First name" << " | "
-	<< std::setw(10) << "Last name" << " | "
-	<< std::setw(10) << "Nickname" << " | "
-	<< std::endl;
-}
-
-static void	displayIndex()
-{
-	size_t	i;
-
-	std::cin >> i;
-	if (isdigit())
-}
 
 Phonebook::Phonebook(){
 	nb_contact = 0;
@@ -59,24 +42,54 @@ void Phonebook::addNew()
 			i++;
 	}
 	contact[nb_contact] = Contact(newContact, nb_contact);
-	nb_contact = (nb_contact + 1) % 7;
+	nb_contact = (nb_contact + 1) % 8;
 	std::cout << std::endl << "New contact created ! <3" << std::endl << std::endl;
 }
 
-void Phonebook::displayAll()
+static void	displayHeader(void)
 {
-	size_t i = 0;
+	std::cout << std::endl;
+	std::cout << std::setfill('.') << std::setw(10) << "Index" << " | "
+	<< std::setw(10) << "First name" << " | "
+	<< std::setw(10) << "Last name" << " | "
+	<< std::setw(10) << "Nickname" << " | "
+	<< std::endl;
+}
 
-	while (i < 8)
-		contact[i++].displayContact();
+void Phonebook::displayIndex()
+{
+	size_t		c;
+	bool	isValid = false;
+
+	while (!isValid)
+	{
+		std::cout << "Please enter the index of the contact your wish to see [1 - 8]" << std::endl;
+		std::cin >> c;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore('\n');
+		}
+		else if ((c >= 1 && c <= 8) && c <= nb_contact)
+		{
+			displaySingle(c - 1);
+			isValid = true;
+		}
+	}
+}
+
+void Phonebook::displaySingle(size_t i)
+{
+	contact[i].displayContact();
 }
 
 void Phonebook::displaySearch()
 {
 	size_t i = 0;
 	
-	displayAll();
+	displayHeader();
 	while (i < 8)
 		contact[i++].displayPhonebook();
 	std::cout << std::endl;
+	displayIndex();
 }
