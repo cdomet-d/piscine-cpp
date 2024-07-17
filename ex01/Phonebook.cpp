@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/16 17:56:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/17 12:03:19 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,32 @@ static void	displayHeader(void)
 
 void Phonebook::displayIndex()
 {
-	size_t		c;
-	bool	isValid = false;
+	std::string		index;
+	size_t			input;
+	bool			isValid = false;
 
+	if (nb_contact == 0)
+	{
+		std::cout << "You do not have any contacts... try ADD" << std::endl;
+		return;
+	}
 	while (!isValid)
 	{
-		std::cout << "Please enter the index of the contact your wish to see [1 - 8]" << std::endl;
-		std::cin >> c;
-		if (std::cin.fail())
+		std::cout << "Enter the index of the contact your wish to see [1 - 8]" << std::endl;
+		std::cout << "$ ";
+		getline(std::cin, index, '\n');
+		if (index.length() > 1)
+			std::cout << "Invalid input" << std::endl;
+		else
 		{
-			std::cin.clear();
-			std::cin.ignore('\n');
-		}
-		else if ((c >= 1 && c <= 8) && c <= nb_contact)
-		{
-			displaySingle(c - 1);
-			isValid = true;
+			input = index[0] - '0';
+			if ((input >= 1 && input <= 8) && input <= nb_contact)
+			{
+				displaySingle(input - 1);
+				isValid = true;
+			}
+			else
+				std::cout << "Invalid input" << std::endl;
 		}
 	}
 }

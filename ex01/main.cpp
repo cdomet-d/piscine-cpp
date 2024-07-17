@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:56:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/16 17:05:15 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/17 12:02:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(void)
 		 << std::endl;
 	while (1)
 	{
+		std::cout << "$ ";
 		getline(std::cin, user_input, '\n');
 		if (user_input.compare("ADD") == 0)
 			Phonebook.addNew();
