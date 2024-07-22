@@ -6,13 +6,17 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:57:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/16 17:00:35 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/22 16:26:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
+
+# define COLOR "\x1B[1;37m"
+# define PINK "\x1B[1;31m"
+# define END "\033[0m"
 
 static std::string	convertStr(std::string str)
 {
@@ -59,4 +63,6 @@ void Contact::displayContact(void)
 			<< "Darkest secret: " << darkestSecret << std::endl
 			<< std::endl;
 	}
+	else
+		std::cout << PINK << "You do not have a contact at this index yet !" << END << std::endl;
 }

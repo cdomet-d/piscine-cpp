@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/17 12:03:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/18 13:44:54 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 
 Phonebook::Phonebook(){
-	nb_contact = 0;
+	nb_contact = -1;
 }
 
 void Phonebook::addNew()
@@ -24,36 +24,42 @@ void Phonebook::addNew()
 	std::string newContact[5];
 	size_t	i = 0;
 	
-	std::cout << "Creating new contact" << std::endl;
+	std::cout << COLOR << "Creating new contact..." << END
+		<< std::endl;
 	while (i < 5)
 	{
 		if (i == 0)
-			std::cout << "First Name: ";
+			std::cout << "	First Name: ";
 		else if (i == 1)
-			std::cout << "Last Name: ";
+			std::cout << "	Last Name: ";
 		else if (i == 2)
-			std::cout << "Nickname: ";
+			std::cout << "	Nickname: ";
 		else if (i == 3)
-			std::cout << "Phone Number: ";
+			std::cout << "	Phone Number: ";
 		else if (i == 4)
-			std::cout << "Darkest Secret: ";
+			std::cout << "	Darkest Secret: ";
 		getline(std::cin, newContact[i], '\n');
+		if (std::cin.eof() == true)
+			return ;
 		if (newContact[i].empty() == false)
 			i++;
 	}
+	if (nb_contact == -1)
+		nb_contact = 0;
 	contact[nb_contact] = Contact(newContact, nb_contact);
 	nb_contact = (nb_contact + 1) % 8;
-	std::cout << std::endl << "New contact created ! <3" << std::endl << std::endl;
+	std::cout << std::endl << COLOR << "New contact added !" << END
+		<< std::endl << std::endl;
 }
 
 static void	displayHeader(void)
 {
-	std::cout << std::endl;
-	std::cout << std::setfill('.') << std::setw(10) << "Index" << " | "
-	<< std::setw(10) << "First name" << " | "
-	<< std::setw(10) << "Last name" << " | "
-	<< std::setw(10) << "Nickname" << " | "
-	<< std::endl;
+	std::cout << std::endl
+		<< std::setfill('.') << std::setw(10) << "Index" << " | "
+		<< std::setw(10) << "First name" << " | "
+		<< std::setw(10) << "Last name" << " | "
+		<< std::setw(10) << "Nickname" << " | "
+		<< std::endl;
 }
 
 void Phonebook::displayIndex()
@@ -62,28 +68,32 @@ void Phonebook::displayIndex()
 	size_t			input;
 	bool			isValid = false;
 
-	if (nb_contact == 0)
+	if (nb_contact == -1)
 	{
-		std::cout << "You do not have any contacts... try ADD" << std::endl;
+		std::cout << COLOR << "You do not have any contacts... try " << END 
+			<< PINK << "ADD" << END << std::endl;
 		return;
 	}
 	while (!isValid)
 	{
-		std::cout << "Enter the index of the contact your wish to see [1 - 8]" << std::endl;
-		std::cout << "$ ";
+		std::cout << COLOR << "Enter the index of the contact your wish to see [1 - 8]" 
+			<< END << std::endl
+			<< "$ ";
 		getline(std::cin, index, '\n');
+		if (std::cin.eof() == true)
+			return ;
 		if (index.length() > 1)
 			std::cout << "Invalid input" << std::endl;
 		else
 		{
 			input = index[0] - '0';
-			if ((input >= 1 && input <= 8) && input <= nb_contact)
+			if ((input >= 1 && input <= 8))
 			{
 				displaySingle(input - 1);
 				isValid = true;
 			}
 			else
-				std::cout << "Invalid input" << std::endl;
+				std::cout << PINK << "Invalid input" << END << std::endl;
 		}
 	}
 }
