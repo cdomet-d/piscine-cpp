@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:40:43 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/24 15:19:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/24 16:59:24 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ class Zombie
 {
 private:
 	std::string	name;
+	std::size_t	i;
 public:
-	Zombie(std::string name);
+	Zombie(void);
 	~Zombie(void);
+	void	nameZombie(std::size_t i, std::string name);
 	void	announce(void);
 };
 
-Zombie*	newZombie( std::string name );
-void	randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:40:46 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/24 14:24:55 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/24 15:21:36 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int	main(void)
 {
-	Zombie	Antoine("Antoine");
-	Zombie	*Elsa;
-	
-	Elsa = newZombie("Elsa");
-	randomChump("Constance");
-	Antoine.announce();
-	Elsa->announce();
-	delete Elsa;
+	Zombie	Glen("Glen");
+	Zombie	*Abraham;
+
+	Abraham = newZombie("Abraham");
+	randomChump("The Governor");
+	Glen.announce();
+	Abraham->announce();
+	delete Abraham;
 	
 }
