@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 11:40:43 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/25 12:52:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/07/25 12:46:12 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/07/25 17:12:19 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <string>
+// HumanA and HumanB are almost the same except for these two tiny details:
+// • While HumanA takes the Weapon in its constructor, HumanB doesn’t.
+// • HumanB may not always have a Weapon, whereas HumanA will always be armed
 
-class Zombie
-{
+#include "Weapon.hpp"
+
+class HumanA{
 	private:
 		std::string	name;
-		std::size_t	i;
+		Weapon&		weapon;
 	public:
-		Zombie(void);
-		~Zombie(void);
-		void	nameZombie(std::size_t i, std::string name);
-		void	announce(void);
+		HumanA(std::string _name, Weapon& _weapon);
+		void	attack(void);
+		~HumanA(void);
 };
-
-Zombie* zombieHorde( int N, std::string name );
-
-#endif

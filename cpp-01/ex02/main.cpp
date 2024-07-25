@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:24:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/24 18:10:53 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/25 11:53:08 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ int	main(void)
 				<< std::setw(35) << "Value of the string" << ": " << brain << std::endl
 				<< std::setw(35) << "Value of the pointer" << ": " << *stringPTR << std::endl
 				<< std::setw(35) << "Value of the reference" << ": " << stringREF << std::endl;
-	
 }

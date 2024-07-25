@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 11:40:43 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/25 12:52:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/07/25 12:46:27 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/07/25 17:22:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <string>
+#include "Weapon.hpp"
+#include <iostream>
 
-class Zombie
-{
-	private:
-		std::string	name;
-		std::size_t	i;
-	public:
-		Zombie(void);
-		~Zombie(void);
-		void	nameZombie(std::size_t i, std::string name);
-		void	announce(void);
-};
+Weapon::Weapon(void){
 
-Zombie* zombieHorde( int N, std::string name );
+}
 
-#endif
+Weapon::Weapon(std::string type) {
+	this->type = type;
+}
+
+const std::string& Weapon::getType(void) {
+	return (this->type);
+}
+
+void Weapon::setType(const std::string& type_ref) {
+	this->type = type_ref;
+}
+
+void Weapon::display(void) {
+	std::cout << "Weapon type: " << this->type << std::endl;
+}
+
+Weapon::~Weapon(void) {
+	
+}
