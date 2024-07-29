@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:46:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/25 14:18:00 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/29 11:49:37 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Weapon{
 		~Weapon(void);
 		const std::string&	getType(void);
 		void				display(void);
-		void 				setType(const std::string& type);
+		void 				setType(const std::string type);
 };
 
 #endif

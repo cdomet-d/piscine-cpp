@@ -40,9 +40,9 @@ void HumanB::attack(void)
 	}
 }
 
-void HumanB::setWeapon(Weapon* _weapon) 
+void HumanB::setWeapon(Weapon& _weapon) 
 {
-		this->weapon = _weapon;
+		this->weapon = &_weapon;
 		std::cout	<< this->name
 				<< " has found a "
 				<< weapon->getType()
