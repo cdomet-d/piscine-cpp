@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:58:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/29 11:47:13 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/29 15:28:41 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,27 @@ int main(int ac, char *av[])
 	if (ac != 4)
 		return (std::cerr << "Invalid argument: please enter a <filename>, <to_find> and <replace>." << std::endl, 1);
 	
-	std::string	filename = av[1];
-	std::string	to_find = av[2];
-	std::string	to_replace = av[3];
+	std::string		filename = av[1];
+	std::string		to_find = av[2];
+	std::string		to_replace = av[3];
+	std::string		buffer;
+	std::ifstream	ifile(filename.c_str());
+	std::ofstream	ofile((filename + ".replace").c_str());
 	
-	std::cout	<< filename << " | "
-				<< to_find << " | "
-				<< to_replace
-				<< std::endl;
-	// std::ifstream	ifile;
-	// ifile.open(filename);
-	std::string newfile = filename.append(".replace");
-	std::ofstream	ofile;
-	ofile.open(newfile);
-	ofile << "hello this is a test" << std::endl;
+	if (!ofile.is_open())
+		return (std::cerr << "Error opening file" << std::endl, 1);
+	if (!ifile.is_open())
+		return (std::cerr << "Error opening file" << std::endl, 1);
+	while (getline(ifile, buffer))
+	{
+		std::cout << buffer << std::endl;
+		int	i = buffer.find(to_find, to_find.length());
+		if (i > 0)
+			std::cout	<< buffer[i] << std::endl;
+		ofile << buffer << std::endl;
+	}
 	ofile.close();
-	
-
+	ifile.close();
+	return (0);
 }
+		
