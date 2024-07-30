@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/07/29 14:17:34 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/07/30 15:39:32 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:=sed_looser
+NAME:=sed
 BDIR:=.bdir/
 
 CC:=c++
@@ -18,7 +18,8 @@ CFLAGS:=-Werror -Wextra -Wall -std=c++98 -g3
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	main.cpp
+SRC:=	main.cpp \
+		Replace.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)
@@ -26,6 +27,8 @@ DEPS:=$(OBJ:%.o=%.d)
 RM:= rm -rf
 
 all: $(NAME)
+new: $(NAME) 
+	$(RM) elden_ring.replace
 
 $(NAME): $(OBJ)
 	@echo

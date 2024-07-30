@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:58:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/29 15:28:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/30 16:54:45 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,27 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "Replace.hpp"
 
 int main(int ac, char *av[])
 {
 	if (ac != 4)
 		return (std::cerr << "Invalid argument: please enter a <filename>, <to_find> and <replace>." << std::endl, 1);
-	
+	Replace	replace;
 	std::string		filename = av[1];
-	std::string		to_find = av[2];
-	std::string		to_replace = av[3];
-	std::string		buffer;
-	std::ifstream	ifile(filename.c_str());
+	std::ifstream	infile(filename.c_str());
 	std::ofstream	ofile((filename + ".replace").c_str());
-	
+
+	replace.setNeedle(av[2]);
+	replace.setRep(av[3]);
 	if (!ofile.is_open())
 		return (std::cerr << "Error opening file" << std::endl, 1);
-	if (!ifile.is_open())
+	if (!infile.is_open())
 		return (std::cerr << "Error opening file" << std::endl, 1);
-	while (getline(ifile, buffer))
-	{
-		std::cout << buffer << std::endl;
-		int	i = buffer.find(to_find, to_find.length());
-		if (i > 0)
-			std::cout	<< buffer[i] << std::endl;
-		ofile << buffer << std::endl;
-	}
+	replace.setBuffer(infile);
+	ofile << replace.retNewStr() << std::endl;
+	replace.displayBuffer();
 	ofile.close();
-	ifile.close();
+	infile.close();
 	return (0);
 }
-		
