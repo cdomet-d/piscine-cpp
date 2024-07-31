@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/18 13:44:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/31 11:57:15 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void Phonebook::displayIndex()
 		if (std::cin.eof() == true)
 			return ;
 		if (index.length() > 1)
-			std::cout << "Invalid input" << std::endl;
+				std::cout << PINK << "Invalid input" << END << std::endl;
 		else
 		{
 			input = index[0] - '0';
