@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:30:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/30 17:18:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/31 12:26:58 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void Replace::setRep(std::string _rep)
 
 void Replace::setBeg()
 {
-	this->needle_beg = this->buffer.find(this->needle, this->needle_prev);
-	this->needle_prev = needle_beg + 1;
-	std::cout << this->needle_beg << " | " << this->needle_prev << std::endl;
+	this->needle_beg = this->buffer.find(this->needle, (this->needle_prev + this->rep.length()));
+	this->needle_prev = needle_beg;
 
 }
 
@@ -62,6 +61,7 @@ std::string Replace::retNewStr()
 			this->setBeg();
 			if (this->needle_beg <= this->buffer.size())
 			{
+				std::cout << this->needle_beg << " | " << (this->needle_prev + this->rep.length()) << std::endl;
 				// std::cout << this->buffer << std::endl;
 				this->buffer.erase(this->needle_beg, this->needle.size());
 				// std::cout << this->buffer << std::endl;
