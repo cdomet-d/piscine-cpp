@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 11:23:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/30 17:03:56 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/07/31 15:34:04 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 # include <fstream>
 # include <sstream>
 
+# define COLOR "\x1B[1;32m"
+# define PINK "\x1B[1;31m"
+# define END "\033[0m"
+
 class Replace {
+
 	private:
 		std::string	needle;
 		std::string	rep;
@@ -25,15 +30,16 @@ class Replace {
 		std::stringstream file;
 		std::size_t	needle_beg;
 		std::size_t	needle_prev;
+
 	public:
-		Replace();
 		~Replace();
-		void setNeedle(std::string _needle);
-		void setBuffer(std::ifstream& _file);
-		void displayBuffer();
-		void setRep(std::string _rep);
-		void setBeg();
+		Replace();
 		std::string retNewStr();
+		void setBeg();
+		void setBuffer(std::ifstream& _file);
+		void setNeedle(std::string _needle);
+		bool checkNeedle();
+		void setRep(std::string _rep);
 };
 
 #endif
