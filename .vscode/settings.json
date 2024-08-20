@@ -52,5 +52,6 @@
 		"sstream": "cpp",
 		"fstream": "cpp"
 	},
-	"explorer.excludeGitIgnore": true
+	"explorer.excludeGitIgnore": true,
+	"C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
