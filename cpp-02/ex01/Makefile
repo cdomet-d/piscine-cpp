@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/08/22 15:12:33 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/08/22 15:02:53 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:=harlFilter
+NAME:=fixed
 BDIR:=.bdir/
 
 CC:=c++
@@ -19,7 +19,6 @@ CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
 SRC:=	main.cpp \
-		Harl.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)
@@ -52,9 +51,25 @@ clean:
 	
 fclean: clean
 	$(RM) $(NAME) 
+	@$(RM) *.replace test.log
 	@echo
 	
 re: fclean all
+
+LOG:= test.log
+test: all
+	./$(NAME) elden_ring "Elden" "Baguette"
+	@echo "PARAM : elden_ring "Elden" "Baguette"" > $(LOG)
+	@echo "-----------------------------------" >> $(LOG)
+	@cat elden_ring.replace >> $(LOG)
+	./$(NAME) elden_ring "a" "aaa"
+	@echo "PARAM : elden_ring "a" "aaa"" >> $(LOG)
+	@echo "-----------------------------------" >> $(LOG)
+	@cat elden_ring.replace >> $(LOG)
+	./$(NAME) elden_ring " " ""
+	@echo 'elden_ring " " ""' >> $(LOG)
+	@echo "-----------------------------------" >> $(LOG)
+	@cat elden_ring.replace >> $(LOG)
 
 # Formatting combinations
 # Text
