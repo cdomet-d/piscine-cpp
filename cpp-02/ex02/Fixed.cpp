@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/22 16:39:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/23 12:59:03 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,19 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& print) {
 	return (os);
 }
 
+/* ************************************************************************** */
+/*                                ASSIGNEMENT                                 */
+/* ************************************************************************** */
+
 Fixed& Fixed::operator=(const Fixed &original) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &original)
 		this->raw = original.raw;
 	return *this;
 }
+
+/* ************************************************************************** */
+/*                                COMPARISON                                  */
+/* ************************************************************************** */
 
 bool	Fixed::operator<(const Fixed& comp) const {
 	if (this->raw < comp.getRawBits())
@@ -110,4 +117,70 @@ bool	Fixed::operator!=(const Fixed& comp) const {
 	if (this->raw != comp.getRawBits())
 		return (true);
 	return (false);
+}
+
+/* ************************************************************************** */
+/*                                INCREMENTATION                              */
+/*                                DECREMENTATION                              */
+/* ************************************************************************** */
+
+Fixed& Fixed::operator++(void) {
+	this->raw++;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int n) {
+	(void)n;
+	Fixed old = *this;
+	this->raw++;
+	return (old);
+}
+
+Fixed& Fixed::operator--(void) {
+	this->raw--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int n) {
+	(void)n;
+	Fixed old = *this;
+	this->raw--;
+	return (old);
+}
+
+/* ************************************************************************** */
+/*                                ARITHMETIC                                  */
+/* ************************************************************************** */
+
+Fixed Fixed::operator-(const Fixed& n) const {
+	Fixed result;
+
+	result.setRawBits(this->raw - n.getRawBits());
+	return result;
+}
+
+Fixed Fixed::operator+(const Fixed& n) const {
+	Fixed result;
+
+	result.setRawBits(this->raw + n.getRawBits());
+	return result;
+}
+
+Fixed Fixed::operator*(const Fixed& n) const {
+	Fixed result;
+
+	result.setRawBits(this->raw * n.getRawBits());
+	result.raw = result.raw >> this->exp;
+	return result;
+}
+
+Fixed Fixed::operator/(const Fixed& n) const {
+	Fixed result;
+	if (n == 0)
+	{	
+		throw std::invalid_argument("Error: cannot divide by 0");
+		return result;
+	}
+	result.setRawBits((this->raw * (1 << this->exp)) / n.getRawBits());
+	return result;
 }

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/22 16:54:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/23 11:44:16 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ class Fixed {
 		bool	operator<=(const Fixed& comp) const;
 		bool	operator==(const Fixed& comp) const;
 		bool	operator!=(const Fixed& comp) const;
-		// +, -, *, et /.
+		// +, -, *, et /
+		Fixed operator-(const Fixed& n) const;
+		Fixed operator+(const Fixed& n) const;
+		Fixed operator*(const Fixed& n) const;
+		Fixed operator/(const Fixed& n) const;
 
 		// ++, -- 
 		Fixed& operator++(void);
-		Fixed& operator-(void);
-		Fixed& operator*(void);
-		Fixed& operator-(void);
+		Fixed operator++(int n);
+		Fixed& operator--(void);
+		Fixed operator--(int n);
 		
 		/* Destructor */
 		~Fixed();
