@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jauseff <jauseff@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/23 12:59:03 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/23 18:26:43 by jauseff          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int const raw) {
 	this->raw = raw;
 }
+
 
 
 /* ************************************************************************** */

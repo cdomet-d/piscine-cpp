@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jauseff <jauseff@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:39 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/23 14:21:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/23 18:31:37 by jauseff          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void testArithmetic(void) {
 	Fixed a(2.5f);
-	Fixed b(5.12341111111111111111111111111f);
+	Fixed b(5.45f);
 	Fixed c;
 	c = a + b;
 	std::cout	<< "| Additions |" << std::endl
@@ -45,6 +45,7 @@ int main( void ) {
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
 	testArithmetic();
+	//TODO: write comparison tests
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;

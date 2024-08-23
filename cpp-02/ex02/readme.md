@@ -1,44 +1,3 @@
-# General ressources & definitions\
-
-- General concept : [Floating point numbers](https://youtu.be/PZRI1IfStY0?si=y4NEsHVebhyHYUgJ) (video)
-- CPP02/ex02 : [Arithmetic on fixed point numbers](https://spin.atomicobject.com/simple-fixed-point-math/)
-
-# The concepts of floats
-
-A float is a representation of a decimal number. While `intergers` holds an exact value, while a `floating point` number is the representation of a decimal number. That representation, plus the fact that the floating point value is *interpreted*, can cause issues in precision.
-
-## Accuracy vs Precision
-
-In programming, `accuracy` and `precision` are distinct concepts that must be differentiated.
-
-- **Accuracy** refers to how close you are from the true value of an element ;
-- **Precision** is how much information you have about an element.
-
-`integers` are by essence extremely accurate, but they lack precision ; `2 == 2` and `(2 + 1) == 3` . As long as we don’t overflow, integer manipulation will always end up matching the expected result bit by bit. They are, however. unable to maintain decimal value, such that both `4 / 2` and `5 / 2` are equal to `2` . We have lost **precision**. 
-
-`floating point numbers` are not as accurate, but they are much more precise. Think of it as `1/3` . It's technically equal to 0.3, with an infinity of 3 after the `.`, so we represent it as 0.333333, but it is imprecise ; some numbers cannot be precisely represented, and so in some cases, the result of a floating point operation will never meet the true result. 
-
-A good analogy is presented [here](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html), in the following quote :
-
-> Integers are too "chunky" to represent these finer gradations; using them is like building with bricks. If you want to make a cube, you know the bricks can represent it perfectly, but a sphere wouldn't come out quite as well. Floating point numbers are the exact opposite of integers with respect to accuracy and precision. They have good precision, since they never deliberately discard information representing your numbers. (...) But floating point numbers have poor accuracy. If ints are like bricks, then floats might be thought of as silly putty. You have enough control to mold them into complex curved shapes, but they leave something to be desired when it comes to forming a specified target shape. Imagine trying to make a perfect cube out of silly putty—you'll never get those corners as sharp as they should be.
-## Floating point representation
-
-Floating point representation varies from machine to machine, but a standard is used these days in order to simplify the matter : the IEEE-754 standard. That standard allows for portability and compatibility, and is composed  of three “blocks” as follows : 
-
-- **a sign block** which tells if the number stored is positive or negative,
-- **an exponent** that defines the size of the number,
-- **a mantissa**, which contains the digits of the number stored.
-
-# What is a fixed point number and why do we care ?
-
-According to StackOverflow user [Gabe](https://stackoverflow.com/users/310574/gabe) in [this post](https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number): 
-
-> A fixed point number has a specific number of bits (or digits) reserved for the integer part (the part to the left of the > decimal point) and a specific number of bits reserved for the fractional part (the part to the right of the decimal point). No matter how large or small your number is, it will always use the same number of bits for each portion. For example, if your fixed point format was in decimal IIIII.FFFFF then the largest number you could represent would be 99999.99999 and the smallest non-zero number would be 00000.00001. Every bit of code that processes such numbers has to have built-in knowledge of where the decimal point is.
-
-> A floating point number does not reserve a specific number of bits for the integer part or the fractional part. Instead it reserves a certain number of bits for the number (called the mantissa or significand) and a certain number of bits to say where within that number the decimal place sits (called the exponent). So a floating point number that took up 10 digits with 2 digits reserved for the exponent might represent a largest value of 9.9999999e+50 and a smallest non-zero value of 0.0000001e-49.
-
-Fixed points numbers are used when one needs to use decimal numbers, but also need performance over precision.
-
 # Operator overload
 - [Github with examples](https://github.com/vladuhalys/OperatorsOverloadingCPP/blob/master)
 - [Obsure man page](https://en.cppreference.com/w/cpp/language/operators)
@@ -83,7 +42,6 @@ int main( void ) {
 ```
 
 Most operators can be overloaded, with the exception of :
-
 - scope resolution `::` ,
 - member access `.` and `→` ,
 - ternary conditional `?:`
@@ -112,11 +70,50 @@ The syntax to overload common operators is as follows :
     // Increment and Decrement Operators
     MyClass& operator++(); // Prefix increment
     MyClass& operator++(int); // Postfix increment
-    /* the parameter is here to differenciate the two operator++ function ; 
-    it is useless in the function and should be (void) */
+    // the parameter is here to differenciate the two operator++ function ; 
+    // it is useless in the function and should be (void) 
     MyClass& operator--(); // Prefix decrement
     MyClass& operator--(int); // Postfix decrement
 ```
 
-# Overloaded functions
+# Fixed Point Arithmetic
+- [Arithmetic on fixed point numbers](https://spin.atomicobject.com/simple-fixed-point-math/)
 
+# Templates & Overloaded functions
+- [Overloaded functions](https://cplusplus.com/doc/tutorial/functions2/)
+
+C++ allows functions to be **overloaded**, mean that several functions can share a name as long as they have a different number of parameters, or the parameters are of different types. This is what allows classes to possess multiple constructors.
+
+**Important**
+Overloaded functions, sharing the same name, should be used for similar purposes in order to maintain clarity and readability. For instance, having an overloaded `sum` function which in one case adds two parameters and in the second case substract them would be quite silly. 
+
+Overloaded functions often share the same body, and for that reason C++ allows the declaration of **templates**. A template is declared as such : 
+
+```cpp
+template <typename SomeType>
+SomeType sum (SomeType a, SomeType b)
+{
+  return a+b;
+}
+```
+> `SomeType` can indiferrently be a class or a `typename`, which, in this case, are synonimous. [This guy](https://www.youtube.com/watch?v=86Pa973BW4Y) (video) argues that `typename` is more explicit to the user, because it signals that anything can be used in the templates, contrary to `class` that feels more limiting, even though the two are identical ; I quite agree and so recommend to use `typename`.
+
+`SomeType`, once templated, becomes a placeholder for any data type you wish to use in your function. It be determined when the template is instantiated (used) in code.
+
+> **Explicit vs implicit instanciation of a template** Templates can be instantiated implicitly or explicitely. Explicit instantiation is more optimized, providing a precompilation which saves time at compile time, while implicit instantiation occurs automatically. The compiler autogenerates code based on the value provided at time of use.
+
+# Static Data Members
+- [Static member variables](https://www.learncpp.com/cpp-tutorial/static-member-variables/)
+- [Static member functions](https://www.learncpp.com/cpp-tutorial/static-member-functions/)
+- [Static data member in CPP](https://www.learncpp.com/cpp-tutorial/static-member-functions/)
+
+A static data member in CPP is declared using the `static` keyword. It can be a function or a variable, but all `static` members share those characteristics : 
+- Only one member will be created and shared by all objects of that class, no matter how many are created ; 
+- Static members are initialized before the main starts executing so that the static member can be used and accessed at any point ; 
+- Their lifetime encapsulate the entire duration of the program, meaning it starts with the program and the memory is destroyed when it ends ;
+- They follow the same access rules as non-static data members (`private, protected or public`).
+
+> **When to use static data members:** 
+>- Multiple objects need to share a ressource,
+> - We need global-like variable (static data is both safer and better structured),
+> - For expensive initialization data : it allows the variable to be initialized once, avoid the cost of repetition. 

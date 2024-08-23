@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jauseff <jauseff@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/23 11:44:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/23 18:31:04 by jauseff          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ class Fixed {
 		int		getRawBits(void) const;
 		int		toInt( void ) const;
 		void	setRawBits(int const raw);
+		// TODO: study static member functions 
+		// TODO: define those
+		static Fixed	min(Fixed& a, Fixed& b);
+		static Fixed	min(const Fixed& a, const Fixed& b);
+		static Fixed	max(Fixed& a, Fixed& b);
+		static Fixed	max(const Fixed& a, const Fixed& b);
 
 		/* Operator overload */
 		// =
