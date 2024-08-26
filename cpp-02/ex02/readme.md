@@ -37,7 +37,7 @@ int main( void ) {
 		std::cout << "Yay !" << std::endl;
 	else
 		std::cout << "Aww :(" << std::endl;
-	return 0;
+	return (0);
 }
 ```
 
@@ -81,6 +81,8 @@ The syntax to overload common operators is as follows :
 
 # Templates & Overloaded functions
 - [Overloaded functions](https://cplusplus.com/doc/tutorial/functions2/)
+
+> templates are a secret tool that we will use later, so don't spend too much time thinking about that !
 
 C++ allows functions to be **overloaded**, mean that several functions can share a name as long as they have a different number of parameters, or the parameters are of different types. This is what allows classes to possess multiple constructors.
 
