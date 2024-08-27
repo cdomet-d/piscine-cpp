@@ -6,7 +6,15 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:24:14 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/26 16:24:15 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/27 14:08:21 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Point.hpp"
+
+int main(void) {
+	Point a(5, 6);
+	Point b;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+}

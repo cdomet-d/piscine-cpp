@@ -1,7 +1,3 @@
-# General ressources & definitions
-
-- [Determine if a point is inside a triangle](https://www.youtube.com/watch?v=kkucCUlyIUE) (french | video)
-
 # The Coplien canonical class
 - [The Coplien canonical class](https://eric.univ-lyon2.fr/ricco/cours/cours/au_coeur_de_la_prg_objet_cpp.pdf) (french)
 
