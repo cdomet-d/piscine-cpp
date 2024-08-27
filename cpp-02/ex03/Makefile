@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/08/26 16:26:02 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/08/26 17:32:43 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME:=bsp
 BDIR:=.bdir/
 
 CC:=c++
-CFLAGS:=-Werror -Wextra -Wall -std=c++98 -g3
+CFLAGS:= -std=c++98 -g3
+# -Werror -Wextra -Wall 
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	main.cpp \
+SRC:=	test.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)
