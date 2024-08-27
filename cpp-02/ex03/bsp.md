@@ -1,38 +1,38 @@
 ## General ressources & definitions
 
-- [Determine if a point is inside a triangle](https://www.youtube.com/watch?v=kkucCUlyIUE) (french | video)
+## Time for some geometry
+We are going to solve this problem using geometry and pain. 
+For this, we are going to need a few concepts, which you skip if you're already familiar with. The goal is to use **vectors** to determine the **barycentric coordinates** of a point P as related to three **vertices** A, B and C.
 
-# The global idea
-**The goal**
-Given four points, three of which form the summits of a triangle, we must determine if the fourth one is inside or outside the triangle. 
+## Definitions
 
-The theory for this is to determine the following :
+### 1. Euclidean Vector
+- [Eclidean vectors](https://en.wikipedia.org/wiki/Euclidean_vector)
 
-**Given the following triangle :**
-![alt text](image.png)
-In order to be within the triangle, a point `D` must be
-- right of the vector [AB]
-- left of the vector [AC]
-- on top of the vector [BC]
+Vectors, in geometry, are objects that have a given *lenght* and a *direction*. They can be added and scaled. It's basically the distance going from a point A to a point B in space. Vectors can be many things, but in the current situation, this definition is enough. 
 
-> A vector is an object that represents a direction and a quantity. It is finite, meaning that the vector AB starts a A and ends at B. For the purpose of this exercice, you can think of them as segments.
+### 2. Vertices
+- [Vertices of a triangle](https://mathmonks.com/triangle/vertices-of-a-triangle)
+> singular is *vertex*, so a vertex, several vertices
 
-## Determining on which side of a vector a point is
-To determine if a point is on the right or left side of our vector [AB], we are going to determine the area of the polygon formed by [DA] and [DB].
-![alt text](image-1.png)
+In geometry, a vertex is a point where two straight lines intersect. A triangle being composed of three lines, it possesses three vertices. 
 
-The area of a vector is calculated with the same formula as with segments, which is 
+### 3. Barycentric Coordinates
 
-```math
-	area = lenght * width
-```
+A barycentric coordinate represent a point as the weighted sum of the vertices of a simplex.
 
-So we must obtain the lenght of both vectors DA and DB. We'll use the distance formula to obtain this information :
+> a simplex is a triangle or tetrahedron in any dimension you want (2D, 3D).
+
+Given a triangle ABC, you can get the barycentric coordinate of any point in the triangle with the following equation (which is called a *convex combination*).
 
 ```math
-	distance = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+	barycentric = A1 * A + B1 * B + C1 * C
 ```
-Basically, the distance between two points is obtained thusly : 
-- `(x2 - x1)^2` is the square of the horizontal distance between the two x points
-- `(y2 - y1)^2` is the square of the vertical distance between the two y points
-- we then get the sum of that operation and square root it to obtain the distance. 
+1. For a point to be inside the triangle, A1, B1 and C1 must be >= 0. If one of them is <= 0, it means the point is outside the triangle.
+2. A1 + B1 + C1 must be == 1.
+
+> Why the fuck are we talking about weight and mass ? 
+
+In the context of barycentric coordinates, weight or mass has nothing to do with physical mass. They just serve to describe a point's position relative to the vertices of a shape. It's called that because barycentric comes the the greek barus, meaning weight. There's nothing more to it. 
+
+So, if we can decide to place a point P in the triangle using the barycentric coordinates, if we can deduce the barycentric coordinates of an existing point, then we should be able to determine wether P is inside the triangle, or out, which is the entire point of this fuckery. 
