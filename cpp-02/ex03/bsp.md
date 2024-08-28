@@ -19,9 +19,11 @@ In geometry, a vertex is a point where two straight lines intersect. A triangle 
 
 ### 3. Barycentric Coordinates
 
+- [Barycentric coordinates for a triangle](https://blogs.sas.com/content/iml/2023/06/21/barycentric-coordinates.html)
+
 A barycentric coordinate represent a point as the weighted sum of the vertices of a simplex.
 
-> a simplex is a triangle or tetrahedron in any dimension you want (2D, 3D).
+> a simplex is a triangle or tetrahedron(= a 3D triangle) in any dimension you want (2D, 3D).
 
 Given a triangle ABC, you can get the barycentric coordinate of any point in the triangle with the following equation (which is called a *convex combination*).
 
@@ -35,4 +37,11 @@ Given a triangle ABC, you can get the barycentric coordinate of any point in the
 
 In the context of barycentric coordinates, weight or mass has nothing to do with physical mass. They just serve to describe a point's position relative to the vertices of a shape. It's called that because barycentric comes the the greek barus, meaning weight. There's nothing more to it. 
 
-So, if we can decide to place a point P in the triangle using the barycentric coordinates, if we can deduce the barycentric coordinates of an existing point, then we should be able to determine wether P is inside the triangle, or out, which is the entire point of this fuckery. 
+So, if we can decide to place a point P in the triangle using the barycentric coordinates, if we can deduce the barycentric coordinates of an existing point, then we should be able to determine wether P is inside the triangle, or out, which is the entire point of this fuckery.
+
+- [Detect if a given point is inside a triangle](https://www.youtube.com/watch?v=HYAgJN3x4GA) (video)
+
+In order to get the barycentric coordinates of P, we need to apply a formula that I did not invent but that I will explain. It comes from the previous video. 
+
+The barycentric coordinates are defined by two `weight` variables, named `w1` and `w2`, that we can deduce by using four vectors of the triangle that are given to us. 
+
