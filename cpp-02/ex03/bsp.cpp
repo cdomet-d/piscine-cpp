@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:25:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:51:42 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/29 17:24:13 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 		return false;
 	Fixed vACY = c.getY() - a.getY();
 	Fixed vACX = c.getX() - a.getX();
+
 	Fixed vABY = b.getY() - a.getY();
 	Fixed vABX = b.getX() - a.getX();
 
@@ -46,3 +47,4 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 	else
 		return false;
 }
+ 
