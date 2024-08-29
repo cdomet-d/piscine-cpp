@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/22 10:43:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/29 14:53:23 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed(const Fixed &original)
 	*this = original;
 }
 
-Fixed& Fixed::operator=(const Fixed &original)
+Fixed &Fixed::operator=(const Fixed &original)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &original)
@@ -45,7 +45,7 @@ void Fixed::setRawBits(int const raw)
 	this->raw = raw;
 }
 
-Fixed::~Fixed() 
+Fixed::~Fixed()
 {
 	std::cout << "Destructor called uwu" << std::endl;
 }

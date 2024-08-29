@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/26 13:09:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/29 14:53:05 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,16 @@ Fixed::Fixed(const float n)
 	this->raw = roundf(n * (1 << this->exp));
 }
 
-float Fixed::toFloat(void) const 
+float Fixed::toFloat(void) const
 {
 	return ((float)this->raw / (1 << this->exp));
 }
 
-int Fixed::toInt( void ) const 
+int Fixed::toInt(void) const
 {
 	int r = this->getRawBits() >> this->exp;
 	return (r);
 }
-
 
 int Fixed::getRawBits(void) const
 {
@@ -59,20 +58,20 @@ void Fixed::setRawBits(int const raw)
 	this->raw = raw;
 }
 
-Fixed::~Fixed() 
+Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
 // operator overload
 
-std::ostream&	operator<<(std::ostream& os, const Fixed& print)
+std::ostream &operator<<(std::ostream &os, const Fixed &print)
 {
 	os << print.toFloat();
 	return (os);
 }
 
-Fixed& Fixed::operator=(const Fixed &original)
+Fixed &Fixed::operator=(const Fixed &original)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &original)
