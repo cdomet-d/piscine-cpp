@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jauseff <jauseff@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:24:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/27 13:55:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/08/29 10:02:11 by jauseff          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ const Fixed Point::getY(void) const {
 Point& Point::operator=(const Point& original) {
 	(void)original;
 	return *this;
+}
+
+bool Point::operator==(const Point& comp) const {
+	if (this->x == comp.getX() && this->y == comp.getY())
+		return true;
+	return false;
 }
 
 std::ostream& operator<<(std::ostream& os, const Point& print) {
