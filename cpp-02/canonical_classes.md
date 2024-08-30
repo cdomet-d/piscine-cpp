@@ -11,7 +11,7 @@ class Class
 		Class(int i = 3); // default constructor
 		Class(const Class&); // copy constuctor
 		~Class(void); // destructor
-		Class &operator=(const T&); // assignement operator
+		Class &operator=(const Class&); // assignement operator
 ```
 
 ## The default constructor
