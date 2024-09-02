@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jauseff <jauseff@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/08/30 16:47:20 by jauseff          ###   ########lyon.fr    #
+#    Updated: 2024/09/02 14:50:53 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:=bsp
+NAME:= clapTrap
 BDIR:=.bdir/
 
 CC:=c++
@@ -18,7 +18,7 @@ CFLAGS:= -Werror -Wextra -Wall -std=c++98 -g3
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	clapTrap.cpp \
+SRC:=	ClapTrap.cpp \
 		main.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
