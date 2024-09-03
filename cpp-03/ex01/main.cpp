@@ -6,16 +6,16 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:37:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 11:08:21 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 11:40:40 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
 # include <iostream>
 
 int	main(void)
 {
-	clapTrap laura("Laura");
+	scavTrap laura("Laura");
 	clapTrap agathe("Agathe");
 
 	laura.displayStats();
