@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 15:12:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 15:14:03 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class scavTrap : public clapTrap
+class fragTrap : public clapTrap
 {
 private:
 
 public:
-	scavTrap(std::string name);
-	~scavTrap();
-	void guardGate(void);
+	fragTrap(std::string name);
+	~fragTrap(void);
+	void highFivesGuys(void);
 };
 
 #endif

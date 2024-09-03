@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/03 15:09:13 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/03 15:09:24 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
 SRC:=	ClapTrap.cpp \
-		ScavTrap.cpp \
+		FragTrap.cpp \
 		main.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
