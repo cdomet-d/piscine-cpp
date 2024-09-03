@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:53:05 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 15:52:04 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int Fixed::getRawBits(void) const
 	return this->raw;
 }
 
-void Fixed::setRawBits(int const raw)
+void Fixed::setRawBits(int const _raw)
 {
-	this->raw = raw;
+	this->raw = _raw;
 }
 
 Fixed::~Fixed()

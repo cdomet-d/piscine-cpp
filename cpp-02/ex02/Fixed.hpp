@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:52:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 15:52:57 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	float toFloat(void) const;
 	int getRawBits(void) const;
 	int toInt(void) const;
-	void setRawBits(int const raw);
+	void setRawBits(int const _raw);
 	static Fixed min(Fixed &a, Fixed &b);
 	static Fixed min(const Fixed &a, const Fixed &b);
 	static Fixed max(Fixed &a, Fixed &b);

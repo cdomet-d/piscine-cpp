@@ -6,19 +6,20 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:37:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 15:19:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 16:06:46 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main(void)
 {
-	scavTrap laura("Laura");
-	clapTrap agathe("Agathe");
+	fragTrap	laura("Laura");
+	clapTrap	agathe("Agathe");
+	diamondTrap	eric;
 
-	laura.guardGate();
+	laura.highFivesGuys();
 	agathe.setDamage(5);
 	while (agathe.getEnergy() > 1)
 	{

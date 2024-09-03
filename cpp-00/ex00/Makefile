@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 13:29:02 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/07/08 13:41:02 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME:= megaphone
 BDIR:= .bdir/
 
 CC := c++
-CFLAGS := -Werror -Wextra -Wall -std=c++98
+CFLAGS := -Werror -Wextra -Wall -Wshadow -std=c++98
 CPPFLAGS := -MMD -MP
 MAKEFLAGS += --no-print-directory
 

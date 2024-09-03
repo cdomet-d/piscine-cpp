@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 15:48:48 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/09/03 15:59:08 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/03 16:05:50 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-class Fixed
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+class diamondTrap : public fragTrap, public scavTrap
 {
 private:
-	int raw;
-	static const int exp = 8;
-
+	std::string name;
 public:
-	Fixed();
-	Fixed(const Fixed &original);
-	Fixed &operator=(const Fixed &original);
-	int getRawBits(void) const;
-	void setRawBits(int const _raw);
-	~Fixed();
 };
 
 #endif

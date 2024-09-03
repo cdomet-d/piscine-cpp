@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/24 11:40:49 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/07/24 17:25:22 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME:=hi-this-is-brain
 BDIR:=.bdir/
 
 CC:=c++
-CFLAGS:=-Werror -Wextra -Wall -std=c++98 -g3
+CFLAGS:=-Werror -Wextra -Wall -Wshadow -std=c++98 -g3
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 

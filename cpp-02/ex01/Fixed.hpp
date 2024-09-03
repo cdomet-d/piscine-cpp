@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:53:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/03 15:48:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	float toFloat(void) const;
 	int getRawBits(void) const;
 	int toInt(void) const;
-	void setRawBits(int const raw);
+	void setRawBits(int const _raw);
 	~Fixed();
 };
 

@@ -6,19 +6,20 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/03 15:57:52 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:=harl
+NAME:= DiamondTrap
 BDIR:=.bdir/
 
 CC:=c++
-CFLAGS:=-Werror -Wextra -Wall -Wshadow -std=c++98 -g3
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -Wshadow -std=c++98 -g3
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	Harl.cpp \
+SRC:=	ClapTrap.cpp \
+		FragTrap.cpp \
 		main.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
@@ -28,7 +29,6 @@ RM:= rm -rf
 
 all: $(NAME)
 new: $(NAME) 
-	$(RM) elden_ring.replace
 
 $(NAME): $(OBJ)
 	@echo
@@ -48,30 +48,13 @@ clean:
 	@echo
 	@printf '$(B)%.40s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
 	$(RM) $(BDIR)
-	$(RM) *.log
 
 	
 fclean: clean
 	$(RM) $(NAME) 
-	@$(RM) *.replace test.log
 	@echo
 	
 re: fclean all
-
-LOG:= test.log
-test: all
-	./$(NAME) elden_ring "Elden" "Baguette"
-	@echo "PARAM : elden_ring "Elden" "Baguette"" > $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
-	./$(NAME) elden_ring "a" "aaa"
-	@echo "PARAM : elden_ring "a" "aaa"" >> $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
-	./$(NAME) elden_ring " " ""
-	@echo 'elden_ring " " ""' >> $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
 
 # Formatting combinations
 # Text
