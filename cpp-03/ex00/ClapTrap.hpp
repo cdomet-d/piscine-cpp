@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:11:51 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/02 16:55:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/04 13:48:23 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 #include <string>
 
-class clapTrap
+# define G "\x1B[0;32m"
+# define B "\x1B[0;34m"
+# define R "\033[0m"
+
+class ClapTrap
 {
 private:
 	std::string name;
@@ -25,11 +29,11 @@ private:
 
 public:
 	/*                               ORTHODOX CLASS                           */
-	clapTrap(void);
-	clapTrap(std::string name);
-	clapTrap(const clapTrap &copy);
-	~clapTrap(void);
-	clapTrap &operator=(const clapTrap &comp);
+	ClapTrap(void);
+	ClapTrap(std::string name);
+	ClapTrap(const ClapTrap &copy);
+	~ClapTrap(void);
+	ClapTrap &operator=(const ClapTrap &comp);
 
 	/*                               METHODS                                  */
 	unsigned int getDamage(void);

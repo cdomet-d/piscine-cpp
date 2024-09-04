@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:47:26 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/03 14:28:09 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/04 14:34:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-clapTrap::clapTrap(void)
+ClapTrap::ClapTrap(void)
 {
 	this->maxHitPoint = 10;
 	this->hitPoints = 10;
@@ -26,30 +26,30 @@ clapTrap::clapTrap(void)
 	this->attackDamage = 0;
 }
 
-clapTrap::clapTrap(std::string _name)
+ClapTrap::ClapTrap(std::string _name)
 {
 	this->maxHitPoint = 10;
 	this->name = _name;
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
-	std::cout << "clapTrap " << this->name << " has been created!"
+	std::cout << G << "ClapTrap " << R << this->name << " has been created!"
 			  << std::endl;
 }
 
-clapTrap::clapTrap(const clapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "clapTrap " << copy.name << " has been copied!"
+	std::cout << G << "ClapTrap " << R << copy.name << " has been copied!"
 			  << std::endl;
-	clapTrap(copy.name);
+	ClapTrap(copy.name);
 }
 
-clapTrap::~clapTrap(void)
+ClapTrap::~ClapTrap(void)
 {
-	std::cout << "clapTrap " << this->name << " has been destroyed!" << std::endl;
+	std::cout << G << "ClapTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-clapTrap &clapTrap::operator=(const clapTrap &comp)
+ClapTrap &ClapTrap::operator=(const ClapTrap &comp)
 {
 	this->name = comp.name;
 	this->hitPoints = comp.hitPoints;
@@ -62,27 +62,27 @@ clapTrap &clapTrap::operator=(const clapTrap &comp)
 /*                               GETTERS                                      */
 /* ************************************************************************** */
 
-long int clapTrap::getHealth(void)
+long int ClapTrap::getHealth(void) const
 {
 	return this->hitPoints;
 }
 
-std::string clapTrap::getName(void)
+std::string ClapTrap::getName(void) const
 {
 	return this->name;
 }
 
-unsigned int clapTrap::getDamage(void)
+unsigned int ClapTrap::getDamage(void) const
 {
 	return this->attackDamage;
 }
 
-unsigned int clapTrap::getEnergy(void)
+unsigned int ClapTrap::getEnergy(void) const
 {
 	return this->energyPoints;
 }
 
-unsigned int clapTrap::getMaxHitPoint(void)
+unsigned int ClapTrap::getMaxHitPoint(void) const
 {
 	return this->maxHitPoint;
 }
@@ -91,26 +91,26 @@ unsigned int clapTrap::getMaxHitPoint(void)
 /*                               SETTERS                                      */
 /* ************************************************************************** */
 
-void clapTrap::setDamage(unsigned int _damage)
+void ClapTrap::setDamage(unsigned int _damage)
 {
 	this->attackDamage = _damage;
 }
 
-void clapTrap::setEnergy(unsigned int _energy)
+void ClapTrap::setEnergy(unsigned int _energy)
 {
 	this->energyPoints = _energy;
 }
 
-void clapTrap::setHealth(unsigned int _health)
+void ClapTrap::setHealth(unsigned int _health)
 {
 	this->hitPoints = _health;
 }
-void clapTrap::setName(std::string _name)
+void ClapTrap::setName(std::string _name)
 {
 	this->name = _name;
 }
 
-void clapTrap::setMaxHitPoint(unsigned int _maxHitPoint)
+void ClapTrap::setMaxHitPoint(unsigned int _maxHitPoint)
 {
 	this->maxHitPoint = _maxHitPoint;
 }
@@ -119,25 +119,24 @@ void clapTrap::setMaxHitPoint(unsigned int _maxHitPoint)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void clapTrap::attack(const std::string &target)
+void ClapTrap::attack(const std::string &target)
 {
 	if (this->getEnergy() > 0 && this->getHealth() > 0)
 	{
 		this->energyPoints -= 1;
-		std::cout << this->name
-				  << " attacks " << target << ", dealing "
-				  << this->attackDamage << " damage!" << std::endl;
+		std::cout << G << "ClapTrap " << R << this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
 	}
 	else
 	{
 		if (this->getHealth() <= 0)
-			std::cout << this->name << " is dead and cannot attack" << std::endl;
+			std::cout << G << "ClapTrap " << R << this->name << " is dead and can't attack" << std::endl;
 		if (this->getEnergy() <= 0)
-			std::cout << this->name << " is exhausted and cannot attack" << std::endl;
+			std::cout << G << "ClapTrap " << R << this->name << " is exhausted and cannot attack anymore..." << std::endl;
 	}
 }
 
-void clapTrap::takeDamage(unsigned int amount)
+
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->getHealth() > 0)
 	{
@@ -152,7 +151,7 @@ void clapTrap::takeDamage(unsigned int amount)
 		std::cout << this->name << " is already dead..." << std::endl;
 }
 
-void clapTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->getHealth() > 0 && this->getEnergy() > 0 && this->getHealth() < this->maxHitPoint)
 	{
@@ -180,7 +179,7 @@ void clapTrap::beRepaired(unsigned int amount)
 	}
 }
 
-void clapTrap::displayStats(void)
+void ClapTrap::displayStats(void)
 {
 	std::cout << std::setw(4) << std::left << "Name: " << std::setw(8) << this->name
 			  << std::setw(4) << std::left << " HP: " << std::setw(8) << this->getHealth()

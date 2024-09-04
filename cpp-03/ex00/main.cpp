@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:37:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 11:08:21 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/04 14:20:33 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(void)
 {
-	clapTrap laura("Laura");
-	clapTrap agathe("Agathe");
+	ClapTrap laura("Laura");
+	ClapTrap agathe("Agathe");
 
 	laura.displayStats();
 	agathe.displayStats();
@@ -24,16 +24,16 @@ int	main(void)
 	laura.setDamage(5);
 	laura.attack("Agathe");
 	agathe.takeDamage(laura.getDamage());
-	agathe.displayStats();
 	agathe.beRepaired(10);
 	laura.beRepaired(15);
 
-	laura.setDamage(2);
+	laura.setDamage(1);
 	while (laura.getEnergy() > 0)
 	{
 		laura.attack("Agathe");
 		agathe.takeDamage(laura.getDamage());
 	}
+
 	laura.attack("Agathe");
 	laura.displayStats();
 	agathe.displayStats();

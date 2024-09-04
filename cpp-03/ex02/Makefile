@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/04 12:52:47 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= fragTrap
+NAME:= FragTrap
 BDIR:=.bdir/
 
 CC:=c++
