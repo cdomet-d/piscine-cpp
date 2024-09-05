@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 12:40:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:49:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
-class FragTrap : virtual public ClapTrap
+class FragTrap : public ClapTrap
 {
 private:
 	static const long int fragTrapMaxHitPts = 100;

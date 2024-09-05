@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 15:51:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:49:37 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
-class ScavTrap : virtual public ClapTrap
+class ScavTrap : public ClapTrap
 {
 public:
 	/*                               ORTHODOX CLASS                           */
