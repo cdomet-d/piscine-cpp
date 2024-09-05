@@ -6,19 +6,22 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/04 14:46:15 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 15:49:58 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 #ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 class FragTrap : virtual public ClapTrap
 {
 private:
-	
+	static const long int fragTrapHitPts = 100;
+	static const unsigned int fragTrapEnergyPts = 100;
+	static const unsigned int fragTrapAttackDmg = 30;
+
 public:
 	/*                               ORTHODOX CLASS                           */
 	FragTrap(void);
@@ -29,6 +32,11 @@ public:
 
 	/*                               METHODS                                  */
 	void highFivesGuys(void);
+
+	/*                               GETTERS                                  */
+	long int getFragDmg(void) const;
+	long int getFragEnergyPts(void) const;
+	long int getFragHitPts(void) const;
 };
 
 #endif

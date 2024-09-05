@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:59:08 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/04 15:11:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 13:45:40 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ public:
 	DiamondTrap &operator=(const DiamondTrap &copy);
 
 	/*                               METHODS                                  */
-
-	/*                               GETTERS                                  */
-
-	/*                               SETTERS                                  */
+	void whoAmI();
 };
 
 #endif

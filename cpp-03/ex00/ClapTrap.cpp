@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:47:26 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/04 14:19:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 15:39:33 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap(void) {}
+ClapTrap::ClapTrap(void)
+{
+	this->hitPoints = 10;
+	this->energyPoints = 10;
+	this->attackDamage = 0;
+	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << "default constructor called." << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string _name)
 {
@@ -26,19 +32,20 @@ ClapTrap::ClapTrap(std::string _name)
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
-	std::cout << G << "ClapTrap  " << R << this->name << " has been created!"
+	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " has been created!"
 			  << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << G << "ClapTrap  " << R << copy.name << " has been copied!" << std::endl;
-	*this = copy;
+	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << copy.name << " has been copied!"
+			  << std::endl;
+	ClapTrap(copy.name);
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << G << "ClapTrap  " << R << this->name << " has been destroyed!" << std::endl;
+	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &comp)
@@ -51,29 +58,50 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &comp)
 }
 
 /* ************************************************************************** */
-/*                               ACCESSORS                                    */
+/*                               GETTERS                                      */
 /* ************************************************************************** */
 
-unsigned int ClapTrap::getDamage(void)
-{
-	return this->attackDamage;
-}
-
-unsigned int ClapTrap::getEnergy(void)
-{
-	return this->energyPoints;
-}
-
-long int ClapTrap::getHealth(void)
+long int ClapTrap::getHealth(void) const
 {
 	return this->hitPoints;
 }
 
-void ClapTrap::setDamage(unsigned int newDamage)
+std::string ClapTrap::getName(void) const
 {
-	this->attackDamage = newDamage;
-	std::cout << G << "ClapTrap " << R << this->name << " now deals " << newDamage << " damage !"
-			  << std::endl;
+	return this->name;
+}
+
+unsigned int ClapTrap::getDamage(void) const
+{
+	return this->attackDamage;
+}
+
+unsigned int ClapTrap::getEnergy(void) const
+{
+	return this->energyPoints;
+}
+
+/* ************************************************************************** */
+/*                               SETTERS                                      */
+/* ************************************************************************** */
+
+void ClapTrap::setDamage(unsigned int _damage)
+{
+	this->attackDamage = _damage;
+}
+
+void ClapTrap::setEnergy(unsigned int _energy)
+{
+	this->energyPoints = _energy;
+}
+
+void ClapTrap::setHealth(unsigned int _health)
+{
+	this->hitPoints = _health;
+}
+void ClapTrap::setName(std::string _name)
+{
+	this->name = _name;
 }
 
 /* ************************************************************************** */
@@ -85,14 +113,14 @@ void ClapTrap::attack(const std::string &target)
 	if (this->getEnergy() > 0 && this->getHealth() > 0)
 	{
 		this->energyPoints -= 1;
-		std::cout << G << "ClapTrap " << R << this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
 	}
 	else
 	{
 		if (this->getHealth() <= 0)
-			std::cout << G << "ClapTrap " << R << this->name << " is dead and can't attack" << std::endl;
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " is dead and can't attack" << std::endl;
 		if (this->getEnergy() <= 0)
-			std::cout << G << "ClapTrap " << R << this->name << " is exhausted and cannot attack anymore..." << std::endl;
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " is exhausted and cannot attack anymore..." << std::endl;
 	}
 }
 
@@ -101,44 +129,27 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->getHealth() > 0)
 	{
 		this->hitPoints -= amount;
-		std::cout << G << "ClapTrap " << R << this->name << " takes " << amount << " damage!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << this->name << R << "takes " << amount << " damage! " << "It now has " << this->getHealth() << " HP!" << std::endl;
 		if (this->getHealth() <= 0)
-			std::cout << G << "ClapTrap " << R << this->name << " died!" << std::endl;
+			std::cout << G << std::setw(15) << std::left << this->name << R << "died!" << std::endl;
 	}
 	else
-		std::cout << G << "ClapTrap " << R << this->name << " is already dead..." << std::endl;
+		std::cout << G << std::setw(15) << std::left << this->name << R << "is already dead..." << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->getEnergy() > 0 && this->getHealth() < 10)
+	if (this->getHealth() > 0 && this->getEnergy() > 0)
 	{
-		if ((this->getHealth() + amount) <= 10)
-		{
-			std::cout << G << "ClapTrap " << R << this->name << " heals itself by " << amount << " HP!" << std::endl;
-			this->hitPoints += amount;
-		}
-		else
-		{
-			this->hitPoints = 10;
-			std::cout << G << "ClapTrap " << R << this->name << " heals itself by " << amount - this->getHealth() << " HP!" << std::endl;
-		}
 		this->energyPoints -= 1;
+		this->hitPoints += amount;
+		std::cout << G << std::setw(15) << std::left << this->name << R << "repairs itself by " << amount << " HP ! It now has " << this->getHealth() << " HP!" << std::endl;
 	}
 	else
 	{
 		if (this->getEnergy() <= 0)
-			std::cout << G << "ClapTrap " << R << this->name << " is exhausted and cannot use Repair..." << std::endl;
-		else if (this->getHealth() >= 10)
-			std::cout << G << "ClapTrap " << R << this->name << " doesn't use repair, it's already at full health." << std::endl;
+			std::cout << G << std::setw(15) << std::left << this->name << R << "is exhausted and cannot use Repair..." << std::endl;
+		else if (this->getHealth() < 0)
+			std::cout << G << std::setw(15) << std::left << this->name << R << "is dead and cannot use repair." << std::endl;
 	}
-}
-
-void ClapTrap::displayStats(void)
-{
-	std::cout << std::setw(4) << std::left << "Name: " << std::setw(8) << this->name
-			  << std::setw(4) << std::left << " HP: " << std::setw(8) << this->getHealth()
-			  << std::setw(4) << std::left << " AP: " << std::setw(8) << this->getEnergy()
-			  << std::setw(4) << std::left << " Damage: " << std::setw(8) << this->getDamage()
-			  << std::endl;
 }

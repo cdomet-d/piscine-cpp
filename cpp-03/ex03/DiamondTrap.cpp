@@ -6,12 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:59:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/04 15:40:36 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:42:36 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 #include <iostream>
+#include <iomanip>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
@@ -19,14 +20,16 @@
 
 DiamondTrap::DiamondTrap(void) : ClapTrap()
 {
-	std::cout << "DiamondTrap default constructor called." << std::endl;
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << "default constructor called." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name)
+DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap_name")
 {
-	std::cout << "DiamondTrap " << this->getName() << " has been created!" << std::endl;
-	this->name = _name;
-	ClapTrap::name = _name + "_clap_name";
+	DiamondTrap::name = _name;
+	this->setDamage(FragTrap::getFragDmg());
+	this->setHealth(FragTrap::getFragHitPts());
+	this->setEnergy(ScavTrap::getEnergy());
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << DiamondTrap::name << " has been created!" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy)
@@ -37,7 +40,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &copy)
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "DiamondTrap " << this->getName() << " has been destroyed!" << std::endl;
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << this->getName() << " has been destroyed!" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &comp)
@@ -46,18 +49,15 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &comp)
 	this->setEnergy(comp.getEnergy());
 	this->setDamage(comp.getHealth());
 	this->setName(comp.getName());
-	this->setMaxHitPoint(comp.getMaxHitPoint());
+	this->DiamondTrap::name = comp.DiamondTrap::name;
 	return *this;
 }
 
 /* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
+
+void DiamondTrap::whoAmI()
+{
+	std::cout << std::setw(15) << std::left << "My DiamondTrap name is " << DiamondTrap::name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+}

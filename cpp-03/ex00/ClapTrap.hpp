@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:11:51 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/04 13:48:23 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 15:48:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 
 #include <string>
 
-# define G "\x1B[0;32m"
-# define B "\x1B[0;34m"
-# define R "\033[0m"
+#define R "\033[0m" // reset
+
+#define G "\x1b[32m" // clapTrap
+#define B "\x1b[34m" // scavTrap
+#define P "\x1b[35m" // fragTrap
+#define C "\x1b[33m" // DiamondTrap
 
 class ClapTrap
 {
-private:
+protected:
 	std::string name;
 	long int hitPoints;
 	unsigned int energyPoints;
@@ -36,14 +39,21 @@ public:
 	ClapTrap &operator=(const ClapTrap &comp);
 
 	/*                               METHODS                                  */
-	unsigned int getDamage(void);
-	unsigned int getEnergy(void);
-	long int getHealth(void);
 	void attack(const std::string &target);
 	void beRepaired(unsigned int amount);
-	void setDamage(unsigned int newDamage);
 	void takeDamage(unsigned int amount);
-	void displayStats(void);
+
+	/*                               GETTERS                                  */
+	long int getHealth(void) const;
+	std::string getName(void) const;
+	unsigned int getDamage(void) const;
+	unsigned int getEnergy(void) const;
+
+	/*                               SETTERS                                  */
+	void setDamage(unsigned int _damage);
+	void setEnergy(unsigned int _energy);
+	void setHealth(unsigned int _health);
+	void setName(std::string _name);
 };
 
 #endif

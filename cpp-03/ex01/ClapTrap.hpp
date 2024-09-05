@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:11:51 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/04 13:54:17 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:40:03 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 #include <string>
 
-# define G "\x1B[0;32m"
-# define B "\x1B[0;34m"
-# define R "\033[0m"
+#define R "\033[0m" // reset
+
+#define G "\x1b[32m" // clapTrap
+#define B "\x1b[34m" // scavTrap
+#define P "\x1b[35m" // fragTrap
+#define C "\x1b[33m" // DiamondTrap
 
 class ClapTrap
 {
-private:
+protected:
 	std::string name;
 	long int hitPoints;
-	long int maxHitPoint;
 	unsigned int energyPoints;
 	unsigned int attackDamage;
 
@@ -39,23 +41,19 @@ public:
 	/*                               METHODS                                  */
 	void attack(const std::string &target);
 	void beRepaired(unsigned int amount);
-	void displayStats(void);
 	void takeDamage(unsigned int amount);
 
 	/*                               GETTERS                                  */
-	long int 		getHealth(void) const;
-	std::string		getName(void) const;
-	unsigned int	getDamage(void) const;
-	unsigned int	getEnergy(void) const;
-	unsigned int	getMaxHitPoint(void) const;
-
+	long int getHealth(void) const;
+	std::string getName(void) const;
+	unsigned int getDamage(void) const;
+	unsigned int getEnergy(void) const;
 
 	/*                               SETTERS                                  */
-	void			setMaxHitPoint(unsigned int _maxHitPoint);
-	void			setDamage(unsigned int _damage);
-	void			setEnergy(unsigned int _energy);
-	void			setHealth(unsigned int _health);
-	void			setName(std::string _name);
+	void setDamage(unsigned int _damage);
+	void setEnergy(unsigned int _energy);
+	void setHealth(unsigned int _health);
+	void setName(std::string _name);
 };
 
 #endif

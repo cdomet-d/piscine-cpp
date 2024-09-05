@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:37:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/04 15:10:59 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:43:52 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 int main(void)
 {
-	DiamondTrap	eric("Eric");
+	DiamondTrap v("V");
 
-	eric.attack("Chris");
+	v.whoAmI();
+	v.attack("Arasaka Corporation");
+	v.takeDamage(99);
 }
