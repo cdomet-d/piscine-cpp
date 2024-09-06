@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:47:26 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/05 15:39:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/06 18:21:57 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ ClapTrap::ClapTrap(std::string _name)
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
+	*this = copy;
 	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << copy.name << " has been copied!"
 			  << std::endl;
-	ClapTrap(copy.name);
 }
 
 ClapTrap::~ClapTrap(void)

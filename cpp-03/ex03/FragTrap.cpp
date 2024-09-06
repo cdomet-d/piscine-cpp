@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1024/09/03 11:34:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 15:50:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/06 18:30:08 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ FragTrap::~FragTrap(void)
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << P << std::setw(15) << std::left << "FragTrap " << R << copy.name << " has been copied!" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &comp)

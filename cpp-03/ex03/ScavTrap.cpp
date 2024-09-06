@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 14:24:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/06 18:31:17 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ ScavTrap::~ScavTrap(void)
 	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
-{ }
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) 
+{
+	std::cout << B << std::setw(15) << std::left << "Scavtrap " << R << copy.name << " has been copied!" << std::endl;
+}
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &comp)
 {

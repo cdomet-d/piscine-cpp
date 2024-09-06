@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:59:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 17:42:36 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/06 18:31:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap_name")
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
 {
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << copy.name << " has been copied!" << std::endl;
+	DiamondTrap::name = copy.DiamondTrap::name;
 }
 
 DiamondTrap::~DiamondTrap(void)
