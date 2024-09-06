@@ -17,8 +17,8 @@ int main(void)
 {
 	ScavTrap johnny("Johnny");
 
+	johnny.guardGate();
 	johnny.beRepaired(10);
 	johnny.attack("Adam Smasher");
 	johnny.takeDamage(500);
-	johnny.guardGate();
 }
