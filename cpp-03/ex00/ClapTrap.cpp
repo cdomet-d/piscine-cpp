@@ -58,79 +58,36 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &comp)
 }
 
 /* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-
-long int ClapTrap::getHealth(void) const
-{
-	return this->hitPoints;
-}
-
-std::string ClapTrap::getName(void) const
-{
-	return this->name;
-}
-
-unsigned int ClapTrap::getDamage(void) const
-{
-	return this->attackDamage;
-}
-
-unsigned int ClapTrap::getEnergy(void) const
-{
-	return this->energyPoints;
-}
-
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
-
-void ClapTrap::setDamage(unsigned int _damage)
-{
-	this->attackDamage = _damage;
-}
-
-void ClapTrap::setEnergy(unsigned int _energy)
-{
-	this->energyPoints = _energy;
-}
-
-void ClapTrap::setHealth(unsigned int _health)
-{
-	this->hitPoints = _health;
-}
-void ClapTrap::setName(std::string _name)
-{
-	this->name = _name;
-}
-
-/* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
 void ClapTrap::attack(const std::string &target)
 {
-	if (this->getEnergy() > 0 && this->getHealth() > 0)
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->energyPoints -= 1;
-		std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
+		<< this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
 	}
 	else
 	{
-		if (this->getHealth() <= 0)
-			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " is dead and can't attack" << std::endl;
-		if (this->getEnergy() <= 0)
-			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " is exhausted and cannot attack anymore..." << std::endl;
+		if (this->hitPoints <= 0)
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
+			<< this->name << " is dead and can't attack" << std::endl;
+		if (this->energyPoints <= 0)
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
+			<< this->name << " is exhausted and cannot attack anymore..." << std::endl;
 	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->getHealth() > 0)
+	if (this->hitPoints > 0)
 	{
 		this->hitPoints -= amount;
-		std::cout << G << std::setw(15) << std::left << this->name << R << "takes " << amount << " damage! " << "It now has " << this->getHealth() << " HP!" << std::endl;
-		if (this->getHealth() <= 0)
+		std::cout << G << std::setw(15) << std::left << this->name << R 
+		<< "takes " << amount << " damage! " << "It now has " << this->hitPoints << " HP!" << std::endl;
+		if (this->hitPoints <= 0)
 			std::cout << G << std::setw(15) << std::left << this->name << R << "died!" << std::endl;
 	}
 	else
@@ -139,17 +96,18 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->getHealth() > 0 && this->getEnergy() > 0)
+	if (this->hitPoints > 0 && this->energyPoints > 0)
 	{
 		this->energyPoints -= 1;
 		this->hitPoints += amount;
-		std::cout << G << std::setw(15) << std::left << this->name << R << "repairs itself by " << amount << " HP ! It now has " << this->getHealth() << " HP!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << this->name << R 
+		<< "repairs itself by " << amount << " HP ! It now has " << this->hitPoints << " HP!" << std::endl;
 	}
 	else
 	{
-		if (this->getEnergy() <= 0)
+		if (this->energyPoints <= 0)
 			std::cout << G << std::setw(15) << std::left << this->name << R << "is exhausted and cannot use Repair..." << std::endl;
-		else if (this->getHealth() < 0)
+		else if (this->hitPoints < 0)
 			std::cout << G << std::setw(15) << std::left << this->name << R << "is dead and cannot use repair." << std::endl;
 	}
 }

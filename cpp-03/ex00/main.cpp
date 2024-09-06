@@ -18,6 +18,8 @@ int	main(void)
 	ClapTrap johnny("Johnny");
 
 	johnny.attack("Arasaka Corporation");
+	johnny.takeDamage(2);
+	johnny.beRepaired(2);
+	johnny.attack("Adam Smasher");
 	johnny.takeDamage(10);
-	johnny.attack("Agathe");
 }
