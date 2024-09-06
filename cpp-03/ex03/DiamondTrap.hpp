@@ -31,6 +31,8 @@ public:
 
 	/*                               METHODS                                  */
 	void whoAmI();
+	void displayStat();
+
 };
 
 #endif

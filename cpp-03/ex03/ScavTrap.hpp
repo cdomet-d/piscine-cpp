@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 15:49:36 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 17:49:37 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class ScavTrap : virtual public ClapTrap
 public:
 	/*                               ORTHODOX CLASS                           */
 	ScavTrap(void);
-	ScavTrap(std::string name);
+	ScavTrap(std::string _name);
 	ScavTrap(const ScavTrap &copy);
 	~ScavTrap(void);
 	ScavTrap &operator=(const ScavTrap &copy);

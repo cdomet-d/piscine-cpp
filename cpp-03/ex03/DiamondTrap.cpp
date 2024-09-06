@@ -23,32 +23,36 @@ DiamondTrap::DiamondTrap(void) : ClapTrap()
 	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << "default constructor called." << std::endl;
 }
 
+// 	Hit points (FragTrap) -> 100
+// Energy points (ScavTrap) -> 50
+// Attack damage (FragTrap) - 30
+// attack() (Scavtrap)
+
 DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap_name")
 {
 	DiamondTrap::name = _name;
-	this->setDamage(FragTrap::getFragDmg());
-	this->setHealth(FragTrap::getFragHitPts());
-	this->setEnergy(ScavTrap::getEnergy());
+	this->attackDamage = FragTrap::dftFragDmg;
+	this->hitPoints = FragTrap::dftFragHitPts;
 	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << DiamondTrap::name << " has been created!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy)
+DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
 {
 	std::cout << "copy constructor called " << std::endl;
-	*this = copy;
 }
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << this->getName() << " has been destroyed!" << std::endl;
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &comp)
 {
-	this->setDamage(comp.getDamage());
-	this->setEnergy(comp.getEnergy());
-	this->setDamage(comp.getHealth());
-	this->setName(comp.getName());
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R " operator=() has been called." << std::endl;
+	this->attackDamage = comp.attackDamage;
+	this->energyPoints = comp.energyPoints;
+	this->hitPoints = comp.hitPoints;
+	this->ClapTrap::name = comp.ClapTrap::name;
 	this->DiamondTrap::name = comp.DiamondTrap::name;
 	return *this;
 }
@@ -59,5 +63,13 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &comp)
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << std::setw(15) << std::left << "My DiamondTrap name is " << DiamondTrap::name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+	std::cout << std::setw(15) << std::left << " " << "My DiamondTrap name is " << DiamondTrap::name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+}
+
+void DiamondTrap::displayStat()
+{
+	std::cout << std::setw(15) << std::left << " " 
+	<< "My stats are: Attack: " 
+	<< this->attackDamage << " | " << "Health: " << this->hitPoints << " | " 
+	<< "Energy: " << this->energyPoints << std::endl;
 }

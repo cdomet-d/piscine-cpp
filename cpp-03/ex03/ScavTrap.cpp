@@ -20,37 +20,34 @@
 
 ScavTrap::ScavTrap(void)
 {
-	this->setDamage(20);
-	this->setEnergy(50);
-	this->setHealth(100);
+	this->attackDamage = 20;
+	this->energyPoints = 50;
+	this->hitPoints = 100;
 	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << "default constructor called " << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
 {
-	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " has been created!" << std::endl;
-	this->setDamage(20);
-	this->setEnergy(50);
-	this->setHealth(100);
+	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->name << " has been created!" << std::endl;
+	this->attackDamage = 20;
+	this->energyPoints = 50;
+	this->hitPoints = 100;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " has been destroyed!" << std::endl;
+	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy)
-{
-	std::cout << "copy constructor called " << std::endl;
-	*this = copy;
-}
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+{ }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &comp)
 {
-	this->setDamage(comp.getDamage());
-	this->setEnergy(comp.getEnergy());
-	this->setDamage(comp.getHealth());
-	this->setName(comp.getName());
+	this->attackDamage = comp.attackDamage;
+	this->energyPoints = comp.energyPoints;
+	this->hitPoints = comp.hitPoints;
+	this->name = comp.name;
 	return *this;
 }
 
@@ -59,21 +56,25 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &comp)
 /* ************************************************************************** */
 void ScavTrap::guardGate(void)
 {
-	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " is now in Gate Keeper mode." << std::endl;
+	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R 
+	<< this->name << " is now in Gate Keeper mode." << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target)
 {
-	if (this->getEnergy() > 0 && this->getHealth() > 0)
+	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
-		this->setEnergy(getEnergy() - 1);
-		std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " attacks " << target << ", dealing " << this->getDamage() << " damage!" << std::endl;
+		this->energyPoints -= 1;
+		std::cout << B << std::setw(15) << std::left << "ScavTrap " << R 
+		<< this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
 	}
 	else
 	{
-		if (this->getHealth() <= 0)
-			std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " is dead and cannot attack" << std::endl;
-		if (this->getEnergy() <= 0)
-			std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->getName() << " is exhausted and cannot attack" << std::endl;
+		if (this->hitPoints <= 0)
+			std::cout << B << std::setw(15) << std::left << "ScavTrap " << R 
+			<< this->name << " is dead and cannot attack" << std::endl;
+		if (this->energyPoints <= 0)
+			std::cout << B << std::setw(15) << std::left << "ScavTrap " << R 
+			<< this->name << " is exhausted and cannot attack" << std::endl;
 	}
 }

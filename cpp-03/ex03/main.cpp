@@ -18,6 +18,8 @@ int main(void)
 	DiamondTrap v("V");
 
 	v.whoAmI();
+	v.displayStat();
 	v.attack("Arasaka Corporation");
 	v.takeDamage(99);
+	v.whoAmI();
 }
