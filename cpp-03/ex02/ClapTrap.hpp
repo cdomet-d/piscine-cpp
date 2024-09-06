@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:11:51 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/05 17:40:13 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/05 15:48:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ protected:
 public:
 	/*                               ORTHODOX CLASS                           */
 	ClapTrap(void);
-	ClapTrap(std::string name);
+	ClapTrap(std::string _name);
 	ClapTrap(const ClapTrap &copy);
 	~ClapTrap(void);
 	ClapTrap &operator=(const ClapTrap &comp);
@@ -42,18 +42,6 @@ public:
 	void attack(const std::string &target);
 	void beRepaired(unsigned int amount);
 	void takeDamage(unsigned int amount);
-
-	/*                               GETTERS                                  */
-	long int getHealth(void) const;
-	std::string getName(void) const;
-	unsigned int getDamage(void) const;
-	unsigned int getEnergy(void) const;
-
-	/*                               SETTERS                                  */
-	void setDamage(unsigned int _damage);
-	void setEnergy(unsigned int _energy);
-	void setHealth(unsigned int _health);
-	void setName(std::string _name);
 };
 
 #endif

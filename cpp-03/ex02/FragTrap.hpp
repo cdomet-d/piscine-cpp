@@ -17,28 +17,16 @@
 
 class FragTrap : public ClapTrap
 {
-private:
-	static const long int fragTrapMaxHitPts = 100;
-	static const long int fragTrapHitPts = 100;
-	static const unsigned int fragTrapEnergyPts = 100;
-	static const unsigned int fragTrapAttackDmg = 30;
-
 public:
 	/*                               ORTHODOX CLASS                           */
 	FragTrap(void);
-	FragTrap(std::string name);
+	FragTrap(std::string _name);
 	FragTrap(const FragTrap &copy);
 	~FragTrap(void);
 	FragTrap &operator=(const FragTrap &copy);
 
 	/*                               METHODS                                  */
 	void highFivesGuys(void);
-
-	/*                               GETTERS                                  */
-	long int getFragDmg(void) const;
-	long int getFragEnergyPts(void) const;
-	long int getFragHitPts(void) const;
-	long int getFragMaxHitPts(void) const;
 };
 
 #endif
