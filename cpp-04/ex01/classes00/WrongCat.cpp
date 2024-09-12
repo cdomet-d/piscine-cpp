@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:54:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 15:54:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/10 18:05:41 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Cat::Cat(void)
+WrongCat::WrongCat(void)
 {
-	this->type = "Cat";
-	std::cout << "Cat constructor called " << std::endl;
+	this->type = "WrongCat";
+	std::cout << "WrongCat constructor called " << std::endl;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy)
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
-	std::cout << "Cat copy constructor called " << std::endl;
+	std::cout << "WrongCat copy constructor called " << std::endl;
 	 *this = copy;
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat(void)
 {
-	std::cout << "Cat deconstructor called " << std::endl;
+	std::cout << "WrongCat deconstructor called " << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &comp)
+WrongCat &WrongCat::operator=(const WrongCat &comp)
 {
 	this->type = comp.type;
 	return *this;
@@ -43,7 +43,8 @@ Cat &Cat::operator=(const Cat &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-void Cat::makeSound(void) const 
+void WrongCat::makeSound(void) const 
 {
 	std::cout << "Mew" << std::endl;
 }
+

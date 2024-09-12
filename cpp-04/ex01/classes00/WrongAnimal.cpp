@@ -1,49 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:54:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 15:54:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/10 18:01:38 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongAnimal.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Cat::Cat(void)
+WrongAnimal::WrongAnimal(void)
 {
-	this->type = "Cat";
-	std::cout << "Cat constructor called " << std::endl;
+	std::cout << "WrongAnimal constructor called " << std::endl;
+	this->type = "WrongAnimal";
+	
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
-	std::cout << "Cat copy constructor called " << std::endl;
+	std::cout << "WrongAnimal copy constructor called " << std::endl;
 	 *this = copy;
 }
 
-Cat::~Cat(void)
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "Cat deconstructor called " << std::endl;
+	std::cout << "WrongAnimal deconstructor called " << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &comp)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &comp)
 {
 	this->type = comp.type;
 	return *this;
 }
-	
+
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-void Cat::makeSound(void) const 
+
+void WrongAnimal::makeSound() const
 {
-	std::cout << "Mew" << std::endl;
+	std::cout << "*generic WrongAnimal noise*" << std::endl;
+}
+
+std::string WrongAnimal::getType(void) const
+{
+	return (this->type);
 }
