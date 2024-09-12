@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:28:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 17:04:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/12 17:11:54 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Brain::Brain(void)
 
 Brain::Brain(const Brain &copy)
 {
+
 	*this = copy;
 	std::cout << "Brain copy constructor called " << std::endl;
 }

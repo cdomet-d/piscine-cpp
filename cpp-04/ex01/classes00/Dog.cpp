@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:23:19 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 17:03:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/12 17:22:30 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::Dog(void)
 
 Dog::Dog(const Dog &copy) : Animal(copy)
 {
+	this->brain = new Brain();
 	*this = copy;
 	std::cout << "Dog copy constructor called " << std::endl;
 }
