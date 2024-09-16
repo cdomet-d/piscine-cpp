@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/12 14:52:40 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/16 17:55:42 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= brain
+NAME:= aanimal
 BDIR:=.bdir/
 SUB_DIR:= classes00/
 
@@ -20,7 +20,7 @@ CXXFLAGS:=-MMD -MP -I . -I $(SUB_DIR)
 MAKEFLAGS:=--no-print-directory
 
 SRC+= $(addprefix $(SUB_DIR), $(SUB_SRC))
-SUB_SRC:=	Animal.cpp \
+SUB_SRC:=	Aanimal.cpp \
 			Cat.cpp \
 			Dog.cpp \
 			WrongAnimal.cpp \

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:23:19 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 17:37:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/16 17:44:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::Cat(void)
 
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
-	this->brain = new Brain();
+	this->brain = new Brain;
 	*this = copy;
 	std::cout << "Cat copy constructor called " << std::endl;
 }

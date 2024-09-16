@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 17:37:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/16 17:48:40 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,13 @@ int main(void)
 	{
 		Cat *gregor = new Cat();
 		gregor->fillPetArr("I am a sociopath");
-		Cat *sandor(gregor);
+		Cat *sandor = new Cat(*gregor);
 		sandor->displayThoughts();
 		gregor->displayThoughts();
+		sandor->fillPetArr("I will kill my mad brother");
+		gregor->displayThoughts();
+		sandor->displayThoughts();
 		delete gregor;
-		// delete sandor;
+		delete sandor;
 	}
 }

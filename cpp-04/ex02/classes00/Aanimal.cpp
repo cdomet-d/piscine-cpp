@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Aanimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Aanimal.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Animal::Animal(void)
+Aanimal::Aanimal(void)
 {
-	std::cout << "Animal constructor called " << std::endl;
-	this->type = "Animal";
+	std::cout << "Aanimal constructor called " << std::endl;
+	this->type = "Aanimal";
 	
 }
 
-Animal::Animal(const Animal &copy)
+Aanimal::Aanimal(const Aanimal &copy)
 {
-	std::cout << "Animal copy constructor called " << std::endl;
+	std::cout << "Aanimal copy constructor called " << std::endl;
 	 *this = copy;
 }
 
-Animal::~Animal(void)
+Aanimal::~Aanimal(void)
 {
-	std::cout << "Animal deconstructor called " << std::endl;
+	std::cout << "Aanimal deconstructor called " << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &comp)
+Aanimal &Aanimal::operator=(const Aanimal &comp)
 {
 	this->type = comp.type;
 	return *this;
@@ -45,12 +45,12 @@ Animal &Animal::operator=(const Animal &comp)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void Animal::makeSound() const
+void Aanimal::makeSound() const
 {
 	std::cout << "*generic animal noise*" << std::endl;
 }
 
-std::string Animal::getType(void) const
+std::string Aanimal::getType(void) const
 {
 	return (this->type);
 }

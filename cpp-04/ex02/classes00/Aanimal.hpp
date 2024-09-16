@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Aanimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 #include <string>
 
-class Animal
+class Aanimal
 {
 protected:
 	std::string	type;
 public:
 	/*                               ORTHODOX CLASS                           */
-	Animal(void);
-	Animal(const Animal &copy);
-	virtual ~Animal(void);
-	Animal &operator=(const Animal &copy);
+	Aanimal(void);
+	Aanimal(const Aanimal &copy);
+	virtual ~Aanimal(void);
+	Aanimal &operator=(const Aanimal &copy);
 
 	/*                               METHODS                                  */
 	virtual void makeSound(void) const = 0;
