@@ -6,13 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/16 17:48:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/17 10:27:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 #include "Brain.hpp"
 
 #include <iostream>

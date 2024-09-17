@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:23:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/16 17:51:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/17 10:23:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CAT_HPP
 
 #include "Aanimal.hpp"
-#include "Brain.hpp"
+#include "../Brain.hpp"
 
 class Cat : public Aanimal
 {

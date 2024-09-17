@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/16 17:55:42 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/17 10:25:07 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ SRC+= $(addprefix $(SUB_DIR), $(SUB_SRC))
 SUB_SRC:=	Aanimal.cpp \
 			Cat.cpp \
 			Dog.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp \
 
 SRC+=		Brain.cpp \
 			main.cpp \

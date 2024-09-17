@@ -6,13 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/16 18:03:32 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/17 10:27:46 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 #include "Brain.hpp"
 
 #include <iostream>
@@ -76,7 +75,7 @@ int main(void)
 
 	{
 		// This is to prove that the class cannot be instiantiated, since it's abstract | Uncomment to test
-		// Aanimal *aclass = new Aanimal;
-		// Aanimal aclass_test;
+		// Animal *aclass = new Animal;
+		// Animal aclass_test;
 	}
 }
