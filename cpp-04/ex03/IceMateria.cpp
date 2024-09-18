@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:40:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 13:52:33 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:27:06 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
 
 IceMateria::IceMateria(void)
 {
-	std::cout << "constructor called " << std::endl;
+	std::cout << "IceMateria constructor called " << std::endl;
 	this->type = "ice";
 }
 
 IceMateria::IceMateria(const IceMateria &copy) : AMateria(copy)
 {
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << "IceMateria copy constructor called " << std::endl;
 	*this = copy;
 }
 
 IceMateria::~IceMateria(void)
 {
-	std::cout << "deconstructor called " << std::endl;
+	std::cout << "IceMateria deconstructor called " << std::endl;
 }
 
 IceMateria &IceMateria::operator=(const IceMateria &comp)
@@ -43,12 +43,12 @@ IceMateria &IceMateria::operator=(const IceMateria &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-IceMateria* IceMateria::clone() const
+IceMateria *IceMateria::clone() const
 {
 	return new IceMateria();
 }
 
-void IceMateria::use(ICharacter& target)
+void IceMateria::use(ICharacter &target)
 {
-	std::cout <<  "* shoots an ice bolt at " << target->getName() << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

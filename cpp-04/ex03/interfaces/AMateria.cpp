@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 13:31:29 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:27:47 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,24 @@
 
 AMateria::AMateria(void)
 {
-	std::cout << "constructor called " << std::endl;
+	std::cout << "CureMateria constructor called " << std::endl;
 }
 
 AMateria::AMateria(std::string const &type)
 {
+	std::cout << "CureMateria string constructor called " << std::endl;
 	this->type = type;
 }
 
 AMateria::AMateria(const AMateria &copy)
 {
 	*this = copy;
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << "CureMateria copy constructor called " << std::endl;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << "deconstructor called " << std::endl;
+	std::cout << "CureMateria deconstructor called " << std::endl;
 }
 
 AMateria &AMateria::operator=(const AMateria &comp)
@@ -44,10 +45,16 @@ AMateria &AMateria::operator=(const AMateria &comp)
 	return *this;
 }
 
+void AMateria::use(ICharacter &target)
+{
+	(void)target;
+	return;
+}
+
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-std::string const &AMateria::getType() const 
+std::string const &AMateria::getType() const
 {
 	return this->type;
 }

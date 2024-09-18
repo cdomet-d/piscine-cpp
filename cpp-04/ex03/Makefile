@@ -3,26 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/04 15:16:26 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/18 16:15:29 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= DiamondTrap
+NAME:= materias
 BDIR:=.bdir/
+SUB_DIR:= interfaces/
 
 CC:=c++
 CFLAGS:= -Werror -Wextra -Wall -Wshadow -Wshadow -std=c++98 -g3
-CPPFLAGS:=-MMD -MP
+CXXFLAGS:=-MMD -MP -I . -I $(SUB_DIR)
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	ClapTrap.cpp \
-		FragTrap.cpp \
-		ScavTrap.cpp \
-		DiamondTrap.cpp \
-		main.cpp \
+SRC+= $(addprefix $(SUB_DIR), $(SUB_SRC))
+SUB_SRC:=	AMateria.cpp \
+			IMateriaSource.cpp \
+
+SRC+=		Character.cpp \
+			CureMateria.cpp \
+			IceMateria.cpp \
+			main.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)
@@ -42,7 +46,7 @@ $(NAME): $(OBJ)
 $(BDIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@echo "$@"
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(CXXFLAGS) -o $@ -c $<
 
 -include $(DEPS)
 
@@ -57,6 +61,11 @@ fclean: clean
 	@echo
 	
 re: fclean all
+
+info:
+	@echo $(CXXFLAGS)
+
+.PHONY: all clean info fclean re
 
 # Formatting combinations
 # Text

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:31:49 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 13:51:52 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:26:42 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@
 
 CureMateria::CureMateria(void)
 {
-	std::cout << "constructor called " << std::endl;
+	std::cout << "CureMateria constructor called " << std::endl;
 	this->type = "cure";
 }
 
 CureMateria::CureMateria(const CureMateria &copy) : AMateria(copy)
 {
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << "CureMateria copy constructor called " << std::endl;
 	*this = copy;
 }
 
 CureMateria::~CureMateria(void)
 {
-	std::cout << "deconstructor called " << std::endl;
+	std::cout << "CureMateria deconstructor called " << std::endl;
 }
 
-CureMateria &CureMateria::operator=(const CureMateria &comp) 
+CureMateria &CureMateria::operator=(const CureMateria &comp)
 {
 	this->type = comp.type;
 	return *this;
@@ -43,12 +43,12 @@ CureMateria &CureMateria::operator=(const CureMateria &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-CureMateria* CureMateria::clone() const
+CureMateria *CureMateria::clone() const
 {
 	return new CureMateria();
 }
 
-void CureMateria::use(ICharacter& target)
+void CureMateria::use(ICharacter &target)
 {
-	std::cout <<  "* heals " << target->getName() << " wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << " wounds *" << std::endl;
 }
