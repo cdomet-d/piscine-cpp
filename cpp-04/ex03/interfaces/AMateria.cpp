@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 12:13:06 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:30:13 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ AMateria::AMateria(void)
 	std::cout << "constructor called " << std::endl;
 }
 
+AMateria::AMateria(std::string const &type)
+{
+	this->type = type;
+}
+
 AMateria::AMateria(const AMateria &copy)
 {
-	std::cout << "copy constructor called " << std::endl;
 	*this = copy;
+	std::cout << "copy constructor called " << std::endl;
 }
 
 AMateria::~AMateria(void)
@@ -35,18 +40,13 @@ AMateria::~AMateria(void)
 
 AMateria &AMateria::operator=(const AMateria &comp)
 {
-	// copy instructions
+	this->type = comp.type;
 	return *this;
 }
 
 /* ************************************************************************** */
-/*                               METHODS                                      */
-/* ************************************************************************** */
-	
-/* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-	
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
+std::string const &AMateria::getType() const {
+	return this->type;
+}
