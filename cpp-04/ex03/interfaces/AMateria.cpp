@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 13:30:13 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:31:29 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ AMateria &AMateria::operator=(const AMateria &comp)
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-std::string const &AMateria::getType() const {
+std::string const &AMateria::getType() const 
+{
 	return this->type;
 }
