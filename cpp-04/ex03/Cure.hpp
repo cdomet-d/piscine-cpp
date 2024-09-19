@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IceMateria.hpp                                     :+:      :+:    :+:   */
+/*   Cure.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:39:46 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:04:34 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/18 13:32:13 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/18 16:04:57 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICEMATERIA_HPP
-#define ICEMATERIA_HPP
+#ifndef CUREMATERIA_HPP
+#define CUREMATERIA_HPP
 
 #include "AMateria.hpp"
 
-class IceMateria : public AMateria
+class Cure : public AMateria
 {
 private:
 public:
 	/*                               ORTHODOX CLASS                           */
-	IceMateria(void);
-	IceMateria(const IceMateria &copy);
-	~IceMateria(void);
-	IceMateria &operator=(const IceMateria &copy);
+	Cure(void);
+	Cure(const Cure &copy);
+	~Cure(void);
+	Cure &operator=(const Cure &copy);
 
 	/*                               METHODS                                  */
-	virtual IceMateria *clone() const;
+	virtual Cure *clone() const;
 	virtual void use(ICharacter &target);
+
+	/*                               GETTERS                                  */
+
+	/*                               SETTERS                                  */
 };
 
 #endif

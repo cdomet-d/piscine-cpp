@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:53:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:24:04 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:09:35 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ protected:
 
 public:
 	/*                               ORTHODOX CLASS                           */
-	// ICharacter(void);
-	// ICharacter(const ICharacter &copy);
-	// ~ICharacter(void);
-	// ICharacter &operator=(const ICharacter &copy);
-
+	ICharacter(void);
+	ICharacter(const ICharacter &copy);
+	virtual 	~ICharacter(void);
+	ICharacter &operator=(const ICharacter &copy);
+	
 	/*                               METHODS                                  */
 	virtual void equip(AMateria *m) = 0;
 	virtual void unequip(int idx) = 0;

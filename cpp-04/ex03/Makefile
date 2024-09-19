@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/18 16:15:29 by cdomet-d         ###   ########.fr        #
+#    Updated: 2024/09/19 12:51:07 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ SUB_SRC:=	AMateria.cpp \
 			IMateriaSource.cpp \
 
 SRC+=		Character.cpp \
-			CureMateria.cpp \
-			IceMateria.cpp \
+			Cure.cpp \
+			Ice.cpp \
 			main.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))

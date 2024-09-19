@@ -1,60 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 12:50:15 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/19 13:08:36 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/19 13:09:09 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-AMateria::AMateria(void)
+ICharacter::ICharacter(void)
 {
-	std::cout << "Cure constructor called " << std::endl;
+	std::cout << "constructor called " << std::endl;
 }
 
-AMateria::AMateria(std::string const &type)
+ICharacter::ICharacter(const ICharacter &copy)
 {
-	std::cout << "Cure string constructor called " << std::endl;
-	this->type = type;
-}
-
-AMateria::AMateria(const AMateria &copy)
-{
+	std::cout << "copy constructor called " << std::endl;
 	*this = copy;
-	std::cout << "Cure copy constructor called " << std::endl;
 }
 
-AMateria::~AMateria(void)
+ICharacter::~ICharacter(void)
 {
-	std::cout << "Cure deconstructor called " << std::endl;
+	std::cout << "deconstructor called " << std::endl;
 }
 
-AMateria &AMateria::operator=(const AMateria &comp)
+ICharacter &ICharacter::operator=(const ICharacter &comp)
 {
-	this->type = comp.type;
+	// copy instructions
 	return *this;
 }
 
-void AMateria::use(ICharacter &target)
-{
-	(void)target;
-	return;
-}
-
+/* ************************************************************************** */
+/*                               METHODS                                      */
+/* ************************************************************************** */
+	
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-std::string const &AMateria::getType() const
-{
-	return this->type;
-}
+	
+/* ************************************************************************** */
+/*                               SETTERS                                      */
+/* ************************************************************************** */

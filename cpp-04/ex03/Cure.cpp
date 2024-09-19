@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IceMateria.cpp                                     :+:      :+:    :+:   */
+/*   Cure.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:40:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:27:06 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/18 13:31:49 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/18 16:26:42 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IceMateria.hpp"
+#include "Cure.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-IceMateria::IceMateria(void)
+Cure::Cure(void)
 {
-	std::cout << "IceMateria constructor called " << std::endl;
-	this->type = "ice";
+	std::cout << "Cure constructor called " << std::endl;
+	this->type = "cure";
 }
 
-IceMateria::IceMateria(const IceMateria &copy) : AMateria(copy)
+Cure::Cure(const Cure &copy) : AMateria(copy)
 {
-	std::cout << "IceMateria copy constructor called " << std::endl;
+	std::cout << "Cure copy constructor called " << std::endl;
 	*this = copy;
 }
 
-IceMateria::~IceMateria(void)
+Cure::~Cure(void)
 {
-	std::cout << "IceMateria deconstructor called " << std::endl;
+	std::cout << "Cure deconstructor called " << std::endl;
 }
 
-IceMateria &IceMateria::operator=(const IceMateria &comp)
+Cure &Cure::operator=(const Cure &comp)
 {
 	this->type = comp.type;
 	return *this;
@@ -43,12 +43,12 @@ IceMateria &IceMateria::operator=(const IceMateria &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-IceMateria *IceMateria::clone() const
+Cure *Cure::clone() const
 {
-	return new IceMateria();
+	return new Cure();
 }
 
-void IceMateria::use(ICharacter &target)
+void Cure::use(ICharacter &target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "* heals " << target.getName() << " wounds *" << std::endl;
 }

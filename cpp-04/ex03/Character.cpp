@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:41:17 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 11:38:33 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ Character::~Character(void)
 Character &Character::operator=(const Character &comp)
 {
 	this->name = comp.name;
-	delete this->inventory[0];
-	delete this->inventory[1];
-	delete this->inventory[2];
-	delete this->inventory[3];
-	this->inventory[0] = comp.inventory[0]->clone();
-	this->inventory[1] = comp.inventory[1]->clone();
-	this->inventory[2] = comp.inventory[2]->clone();
-	this->inventory[3] = comp.inventory[3]->clone();
+	for (int i = 0; i < 4; i++)
+		delete this->inventory[i];
+	for (int i = 0; i < 4; i++)
+	{
+		if (comp.inventory[i])
+			this->inventory[i] = comp.inventory[i]->clone();
+	}
 	return *this;
 }
 
@@ -89,19 +88,25 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
+	std::cout << "------------------------------------" << std::endl;
+	std::cout << "Charater.use(): " << this->getName() << std::endl;
 	if ((idx >= 0 && idx < 4) && this->inventory[idx])
 		this->inventory[idx]->use(target);
 	else
-		std::cerr << "No Materia equiped at this slot in " << this->getName () << std::endl;
+		std::cerr << "No Materia equiped at this slot for Character: " << this->getName () << std::endl;
+	std::cout << "------------------------------------" << std::endl;
 }
 
 void Character::displayInventory(void)
 {
+	std::cout << "------------------------------------" << std::endl;
+	std::cout << "Charater.displayInventory(): " << this->getName() << std::endl;
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (this->inventory[i])
 			std::cout << "[ " << i << " ] " << this->inventory[i]->getType() << std::endl;
 	}
+	std::cout << "------------------------------------" << std::endl;
 }
 
 /* ************************************************************************** */
