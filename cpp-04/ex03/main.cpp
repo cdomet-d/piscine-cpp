@@ -6,13 +6,14 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:08:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 13:12:59 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:18:45 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "MateriaSource.hpp"
 
 int main(void)
 {
