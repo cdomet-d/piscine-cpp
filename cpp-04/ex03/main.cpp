@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:08:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 12:51:06 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:12:59 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ int main(void)
 		applicant.use(1, csweetin);
 	}
 	{
-		MateriaSource* src = new MateriaSource();
+		MateriaSource *src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
-		ICharacter* me = new Character("me");
-		AMateria* tmp;
+		ICharacter *me = new Character("me");
+		AMateria *tmp;
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
-		ICharacter* bob = new Character("bob");
+		ICharacter *bob = new Character("bob");
 		me->use(0, *bob);
 		me->use(1, *bob);
 		delete bob;

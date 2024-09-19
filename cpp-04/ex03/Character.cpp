@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 11:38:33 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:13:18 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ Character::Character(const Character &copy)
 
 Character::~Character(void)
 {
-	delete this->inventory[0];
-	delete this->inventory[1];
-	delete this->inventory[2];
-	delete this->inventory[3];
+	for (int i = 0; i < 4; i++)
+		delete this->inventory[i];
 	std::cout << "Character deconstructor called" << std::endl;
 }
 
@@ -93,7 +91,7 @@ void Character::use(int idx, ICharacter &target)
 	if ((idx >= 0 && idx < 4) && this->inventory[idx])
 		this->inventory[idx]->use(target);
 	else
-		std::cerr << "No Materia equiped at this slot for Character: " << this->getName () << std::endl;
+		std::cerr << "No Materia equiped at this slot for Character: " << this->getName() << std::endl;
 	std::cout << "------------------------------------" << std::endl;
 }
 

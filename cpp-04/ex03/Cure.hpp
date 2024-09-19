@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUREMATERIA_HPP
-#define CUREMATERIA_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
 #include "AMateria.hpp"
 
