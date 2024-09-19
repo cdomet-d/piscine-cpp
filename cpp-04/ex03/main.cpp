@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:08:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 16:18:45 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:09:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@
 
 int main(void)
 {
+	// {
+	// 	Character csweetin("csweetin");
+	// 	Character applicant("applicant");
+	// 	AMateria *im1 = new Ice;
+	// 	AMateria *cm1 = new Cure;
+
+	// 	csweetin.equip(im1);
+	// 	csweetin.equip(cm1);
+
+	// 	csweetin.displayInventory();
+	// 	csweetin.use(0, applicant);
+	// 	csweetin.use(1, csweetin);
+
+	// 	applicant = csweetin;
+	// 	applicant.displayInventory();
+	// 	applicant.use(0, csweetin);
+	// 	applicant.use(1, csweetin);
+	// }
 	{
-		Character csweetin("csweetin");
-		Character applicant("applicant");
-		AMateria *im1 = new Ice;
-		AMateria *cm1 = new Cure;
-
-		csweetin.equip(im1);
-		csweetin.equip(cm1);
-
-		csweetin.displayInventory();
-		csweetin.use(0, applicant);
-		csweetin.use(1, csweetin);
-
-		applicant = csweetin;
-		applicant.displayInventory();
-		applicant.use(0, csweetin);
-		applicant.use(1, csweetin);
-	}
-	{
-		MateriaSource *src = new MateriaSource();
+		IMateriaSource *src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
 		ICharacter *me = new Character("me");

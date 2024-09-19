@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 13:13:18 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:07:25 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 Character::Character(void)
 {
-	std::cout << "Character constructor called" << std::endl;
+	// std::cout << "Character constructor called" << std::endl;
 	this->inventory[0] = NULL;
 	this->inventory[1] = NULL;
 	this->inventory[2] = NULL;
@@ -37,15 +37,15 @@ Character::Character(std::string _name)
 
 Character::Character(const Character &copy)
 {
-	std::cout << "Character copy constructor called" << std::endl;
 	*this = copy;
+	// std::cout << "Character copy constructor called" << std::endl;
 }
 
 Character::~Character(void)
 {
 	for (int i = 0; i < 4; i++)
 		delete this->inventory[i];
-	std::cout << "Character deconstructor called" << std::endl;
+	// std::cout << "Character deconstructor called" << std::endl;
 }
 
 Character &Character::operator=(const Character &comp)
@@ -64,6 +64,7 @@ Character &Character::operator=(const Character &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
+
 void Character::equip(AMateria *m)
 {
 	for (size_t i = 0; i < 4; i++)

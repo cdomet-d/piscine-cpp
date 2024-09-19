@@ -19,19 +19,19 @@
 
 Ice::Ice(void)
 {
-	std::cout << "Ice constructor called " << std::endl;
+	// std::cout << "Ice constructor called " << std::endl;
 	this->type = "ice";
 }
 
 Ice::Ice(const Ice &copy) : AMateria(copy)
 {
-	std::cout << "Ice copy constructor called " << std::endl;
+	// std::cout << "Ice copy constructor called " << std::endl;
 	*this = copy;
 }
 
 Ice::~Ice(void)
 {
-	std::cout << "Ice deconstructor called " << std::endl;
+	// std::cout << "Ice deconstructor called " << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &comp)

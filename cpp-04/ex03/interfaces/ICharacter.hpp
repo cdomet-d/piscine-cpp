@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:53:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 13:09:35 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:37:51 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ICHARACTER_HPP
 
 #include "AMateria.hpp"
+
 class AMateria;
 
 class ICharacter
@@ -26,13 +27,14 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	ICharacter(void);
 	ICharacter(const ICharacter &copy);
-	virtual 	~ICharacter(void);
+	virtual ~ICharacter(void);
 	ICharacter &operator=(const ICharacter &copy);
-	
+
 	/*                               METHODS                                  */
 	virtual void equip(AMateria *m) = 0;
 	virtual void unequip(int idx) = 0;
 	virtual void use(int idx, ICharacter &target) = 0;
+	virtual void displayInventory(void) = 0;
 
 	/*                               GETTERS                                  */
 	virtual std::string const &getName() const = 0;

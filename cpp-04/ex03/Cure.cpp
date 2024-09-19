@@ -19,19 +19,19 @@
 
 Cure::Cure(void)
 {
-	std::cout << "Cure constructor called " << std::endl;
+	// std::cout << "Cure constructor called " << std::endl;
 	this->type = "cure";
 }
 
 Cure::Cure(const Cure &copy) : AMateria(copy)
 {
-	std::cout << "Cure copy constructor called " << std::endl;
+	// std::cout << "Cure copy constructor called " << std::endl;
 	*this = copy;
 }
 
 Cure::~Cure(void)
 {
-	std::cout << "Cure deconstructor called " << std::endl;
+	// std::cout << "Cure deconstructor called " << std::endl;
 }
 
 Cure &Cure::operator=(const Cure &comp)

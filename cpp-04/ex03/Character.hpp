@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 16:24:01 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:30:30 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	virtual void use(int idx, ICharacter &target);
 	void	displayInventory(void);
 	/*                               GETTERS                                  */
-	std::string const &getName() const;
+	std::string const &getName(void) const;
 };
 
 #endif

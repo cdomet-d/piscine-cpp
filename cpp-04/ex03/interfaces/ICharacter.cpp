@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:08:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 13:09:09 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:07:15 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,22 @@
 
 ICharacter::ICharacter(void)
 {
-	std::cout << "constructor called " << std::endl;
+	// std::cout << "ICharacter constructor called " << std::endl;
 }
 
 ICharacter::ICharacter(const ICharacter &copy)
 {
-	std::cout << "copy constructor called " << std::endl;
+	// std::cout << "ICharacter copy constructor called " << std::endl;
 	*this = copy;
 }
 
 ICharacter::~ICharacter(void)
 {
-	std::cout << "deconstructor called " << std::endl;
+	// std::cout << "ICharacter deconstructor called " << std::endl;
 }
 
 ICharacter &ICharacter::operator=(const ICharacter &comp)
 {
-	// copy instructions
+	(void)comp;
 	return *this;
 }
-
-/* ************************************************************************** */
-/*                               METHODS                                      */
-/* ************************************************************************** */
-	
-/* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-	
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */

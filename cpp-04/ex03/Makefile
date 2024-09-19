@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/19 12:51:07 by cdomet-d         ###   ########.fr        #
+#    Updated: 2024/09/19 16:32:58 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,10 @@ MAKEFLAGS:=--no-print-directory
 SRC+= $(addprefix $(SUB_DIR), $(SUB_SRC))
 SUB_SRC:=	AMateria.cpp \
 			IMateriaSource.cpp \
+			ICharacter.cpp \
 
-SRC+=		Character.cpp \
+SRC+=		MateriaSource.cpp \
+			Character.cpp \
 			Cure.cpp \
 			Ice.cpp \
 			main.cpp \
