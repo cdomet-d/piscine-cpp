@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 18:07:25 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:36:23 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,13 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
-	if (idx > 0 && idx < 4 && this->inventory[idx])
+	std::cout << "Charater.unequip(): " << this->getName() << std::endl;
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
+	{
 		this->inventory[idx] = NULL;
-	std::cerr << "No Materia equiped at this slot" << std::endl;
+		return;
+	}
+	std::cerr << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
 }
 
 void Character::use(int idx, ICharacter &target)
@@ -92,8 +96,7 @@ void Character::use(int idx, ICharacter &target)
 	if ((idx >= 0 && idx < 4) && this->inventory[idx])
 		this->inventory[idx]->use(target);
 	else
-		std::cerr << "No Materia equiped at this slot for Character: " << this->getName() << std::endl;
-	std::cout << "------------------------------------" << std::endl;
+		std::cerr << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
 }
 
 void Character::displayInventory(void)
@@ -105,7 +108,6 @@ void Character::displayInventory(void)
 		if (this->inventory[i])
 			std::cout << "[ " << i << " ] " << this->inventory[i]->getType() << std::endl;
 	}
-	std::cout << "------------------------------------" << std::endl;
 }
 
 /* ************************************************************************** */
