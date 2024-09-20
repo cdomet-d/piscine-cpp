@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/19 18:07:10 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:19:56 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ AMateria::AMateria(void)
 	// std::cout << "Cure constructor called " << std::endl;
 }
 
-AMateria::AMateria(std::string const &type)
+AMateria::AMateria(std::string const &_type)
 {
 	// std::cout << "Cure string constructor called " << std::endl;
-	this->type = type;
+	this->type = _type;
 }
 
 AMateria::AMateria(const AMateria &copy)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/20 14:36:23 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:21:13 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Character::Character(std::string _name)
 	this->inventory[3] = NULL;
 }
 
-Character::Character(const Character &copy)
+Character::Character(const Character &copy) : ICharacter(copy)
 {
 	*this = copy;
 	// std::cout << "Character copy constructor called" << std::endl;
