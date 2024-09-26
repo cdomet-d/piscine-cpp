@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aanimal.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/16 10:20:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/09/10 16:54:47 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 12:38:10 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AANIMAL_HPP
-# define AANIMAL_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include <string>
+#include "WrongAnimal.hpp"
 
-class Aanimal
+class WrongCat : public WrongAnimal
 {
-protected:
-	std::string	type;
 public:
 	/*                               ORTHODOX CLASS                           */
-	Aanimal(void);
-	Aanimal(const Aanimal &copy);
-	virtual ~Aanimal(void);
-	Aanimal &operator=(const Aanimal &copy);
+	WrongCat(void);
+	WrongCat(const WrongCat &copy);
+	~WrongCat(void);
+	WrongCat &operator=(const WrongCat &copy);
 
 	/*                               METHODS                                  */
-	virtual void makeSound(void) const = 0;
-	std::string getType(void) const;
+	void makeSound(void) const;
 };
 
 #endif

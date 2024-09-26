@@ -1,56 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:55 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/10 17:23:19 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 16:51:30 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Dog.hpp"
 #include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Animal::Animal(void)
+Dog::Dog(void) : Aanimal("Dog"), brain(new Brain)
 {
-	std::cout << "Animal constructor called " << std::endl;
-	this->type = "Animal";
-	
+	std::cout << "Dog constructor called " << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+Dog::Dog(const Dog &copy) : Aanimal(copy)
 {
-	std::cout << "Animal copy constructor called " << std::endl;
-	 *this = copy;
+	this->brain = new Brain();
+	*this = copy;
+	std::cout << "Dog copy constructor called " << std::endl;
 }
 
-Animal::~Animal(void)
+Dog::~Dog(void)
 {
-	std::cout << "Animal deconstructor called " << std::endl;
+	delete this->brain;
+	std::cout << "Dog deconstructor called " << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &comp)
+Dog &Dog::operator=(const Dog &comp)
 {
 	this->type = comp.type;
+	*this->brain = *comp.brain;
 	return *this;
 }
 
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-
-void Animal::makeSound() const
+void Dog::makeSound(void) const
 {
-	std::cout << "*generic animal noise*" << std::endl;
+	std::cout << "Waf" << std::endl;
 }
 
-std::string Animal::getType(void) const
+void Dog::fillPetArr(std::string s) const
 {
-	return (this->type);
+	this->brain->fillArr(s);
+}
+
+void Dog::displayThoughts(void) const 
+{
+	std::cout << "Brain pointer adress | " << this->brain << std::endl;
+	this->brain->displayArr();
 }

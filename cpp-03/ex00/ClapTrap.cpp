@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:47:26 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/06 18:21:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/24 17:24:27 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ void ClapTrap::attack(const std::string &target)
 	if (this->energyPoints > 0 && this->hitPoints > 0)
 	{
 		this->energyPoints -= 1;
-		std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
-		<< this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << "ClapTrap " << R
+				  << this->name << " attacks " << target << ", dealing " << this->attackDamage << " damage!" << std::endl;
 	}
 	else
 	{
 		if (this->hitPoints <= 0)
-			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
-			<< this->name << " is dead and can't attack" << std::endl;
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R
+					  << this->name << " is dead and can't attack" << std::endl;
 		if (this->energyPoints <= 0)
-			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R 
-			<< this->name << " is exhausted and cannot attack anymore..." << std::endl;
+			std::cout << G << std::setw(15) << std::left << "ClapTrap " << R
+					  << this->name << " is exhausted and cannot attack anymore..." << std::endl;
 	}
 }
 
@@ -85,8 +85,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->hitPoints > 0)
 	{
 		this->hitPoints -= amount;
-		std::cout << G << std::setw(15) << std::left << this->name << R 
-		<< "takes " << amount << " damage! " << "It now has " << this->hitPoints << " HP!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << this->name << R
+				  << "takes " << amount << " damage! " << "It now has " << this->hitPoints << " HP!" << std::endl;
 		if (this->hitPoints <= 0)
 			std::cout << G << std::setw(15) << std::left << this->name << R << "died!" << std::endl;
 	}
@@ -100,8 +100,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		this->energyPoints -= 1;
 		this->hitPoints += amount;
-		std::cout << G << std::setw(15) << std::left << this->name << R 
-		<< "repairs itself by " << amount << " HP ! It now has " << this->hitPoints << " HP!" << std::endl;
+		std::cout << G << std::setw(15) << std::left << this->name << R
+				  << "repairs itself by " << amount << " HP ! It now has " << this->hitPoints << " HP!" << std::endl;
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/20 16:21:13 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:49:54 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 Character::Character(void)
 {
-	// std::cout << "Character constructor called" << std::endl;
+	std::cout << "Character constructor called" << std::endl;
 	this->inventory[0] = NULL;
 	this->inventory[1] = NULL;
 	this->inventory[2] = NULL;
@@ -38,14 +38,14 @@ Character::Character(std::string _name)
 Character::Character(const Character &copy) : ICharacter(copy)
 {
 	*this = copy;
-	// std::cout << "Character copy constructor called" << std::endl;
+	std::cout << "Character copy constructor called" << std::endl;
 }
 
 Character::~Character(void)
 {
 	for (int i = 0; i < 4; i++)
 		delete this->inventory[i];
-	// std::cout << "Character deconstructor called" << std::endl;
+	std::cout << "Character deconstructor called" << std::endl;
 }
 
 Character &Character::operator=(const Character &comp)
@@ -57,6 +57,9 @@ Character &Character::operator=(const Character &comp)
 	{
 		if (comp.inventory[i])
 			this->inventory[i] = comp.inventory[i]->clone();
+		else 
+			this->inventory[i] = NULL;
+			
 	}
 	return *this;
 }

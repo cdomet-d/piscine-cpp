@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 17:23:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/17 10:23:25 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 12:38:07 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "Aanimal.hpp"
-#include "../Brain.hpp"
+#include <string>
 
-class Cat : public Aanimal
+class WrongAnimal
 {
-private:
-	Brain *brain;
+protected:
+	std::string type;
 
 public:
 	/*                               ORTHODOX CLASS                           */
-	Cat(void);
-	Cat(const Cat &copy);
-	~Cat(void);
-	Cat &operator=(const Cat &copy);
+	WrongAnimal(void);
+	WrongAnimal(std::string _type);
+	WrongAnimal(const WrongAnimal &copy);
+	virtual ~WrongAnimal(void);
+	WrongAnimal &operator=(const WrongAnimal &copy);
 
 	/*                               METHODS                                  */
 	void makeSound(void) const;
-	void fillPetArr(std::string s) const;
-	void displayThoughts(void) const;
+	std::string getType(void) const;
 };
 
 #endif

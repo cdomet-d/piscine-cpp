@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:54:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 18:05:41 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:18:27 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-WrongCat::WrongCat(void)
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
-	this->type = "WrongCat";
 	std::cout << "WrongCat constructor called " << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
 	std::cout << "WrongCat copy constructor called " << std::endl;
-	 *this = copy;
 }
 
 WrongCat::~WrongCat(void)
@@ -36,15 +34,14 @@ WrongCat::~WrongCat(void)
 
 WrongCat &WrongCat::operator=(const WrongCat &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
-	
+
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-void WrongCat::makeSound(void) const 
+void WrongCat::makeSound(void) const
 {
-	std::cout << "Mew" << std::endl;
+	std::cout << "WrongMew" << std::endl;
 }
-

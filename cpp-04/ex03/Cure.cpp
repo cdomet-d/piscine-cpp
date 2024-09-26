@@ -17,26 +17,24 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Cure::Cure(void)
+Cure::Cure(void) : AMateria("cure")
 {
-	// std::cout << "Cure constructor called " << std::endl;
-	this->type = "cure";
+	std::cout << "Cure constructor called " << std::endl;
 }
 
 Cure::Cure(const Cure &copy) : AMateria(copy)
 {
-	// std::cout << "Cure copy constructor called " << std::endl;
-	*this = copy;
+	std::cout << "Cure copy constructor called " << std::endl;
 }
 
 Cure::~Cure(void)
 {
-	// std::cout << "Cure deconstructor called " << std::endl;
+	std::cout << "Cure deconstructor called " << std::endl;
 }
 
 Cure &Cure::operator=(const Cure &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
 

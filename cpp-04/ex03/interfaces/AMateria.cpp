@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/20 16:19:56 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:31:39 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,30 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-AMateria::AMateria(void)
+AMateria::AMateria(void) : type("UNDEFINED")
 {
-	// std::cout << "Cure constructor called " << std::endl;
+	std::cout << "AMateria constructor called " << std::endl;
 }
 
-AMateria::AMateria(std::string const &_type)
+AMateria::AMateria(std::string const &_type) : type(_type)
 {
-	// std::cout << "Cure string constructor called " << std::endl;
-	this->type = _type;
+	std::cout << "AMateria string constructor called " << std::endl;
 }
 
 AMateria::AMateria(const AMateria &copy)
 {
 	*this = copy;
-	// std::cout << "Cure copy constructor called " << std::endl;
+	std::cout << "AMateria copy constructor called " << std::endl;
 }
 
 AMateria::~AMateria(void)
 {
-	// std::cout << "Cure deconstructor called " << std::endl;
+	std::cout << "AMateria deconstructor called " << std::endl;
 }
 
 AMateria &AMateria::operator=(const AMateria &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
 

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Aanimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 18:01:14 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/16 10:20:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <string>
 
-class WrongAnimal
+class Aanimal
 {
 protected:
-	std::string	type;
+	std::string type;
+
 public:
 	/*                               ORTHODOX CLASS                           */
-	WrongAnimal(void);
-	WrongAnimal(const WrongAnimal &copy);
-	virtual ~WrongAnimal(void);
-	WrongAnimal &operator=(const WrongAnimal &copy);
+	Aanimal(void);
+	Aanimal(std::string _type);
+	Aanimal(const Aanimal &copy);
+	virtual ~Aanimal(void);
+	Aanimal &operator=(const Aanimal &copy);
 
 	/*                               METHODS                                  */
-	void makeSound(void) const;
+	virtual void makeSound(void) const = 0;
 	std::string getType(void) const;
 };
 

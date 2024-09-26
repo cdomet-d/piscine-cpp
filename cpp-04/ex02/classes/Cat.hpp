@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:32:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/18 16:04:57 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/10 17:23:23 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 16:51:42 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-#define CURE_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "AMateria.hpp"
+#include "Aanimal.hpp"
+#include "Brain.hpp"
 
-class Cure : public AMateria
+class Cat : public Aanimal
 {
+private:
+	Brain *brain;
+
 public:
 	/*                               ORTHODOX CLASS                           */
-	Cure(void);
-	Cure(const Cure &copy);
-	~Cure(void);
-	Cure &operator=(const Cure &copy);
+	Cat(void);
+	Cat(const Cat &copy);
+	~Cat(void);
+	Cat &operator=(const Cat &copy);
 
 	/*                               METHODS                                  */
-	virtual Cure *clone() const;
-	virtual void use(ICharacter &target);
+	void makeSound(void) const;
+	void fillPetArr(std::string s) const;
+	void displayThoughts(void) const;
 };
 
 #endif

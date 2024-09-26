@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/17 10:27:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/26 17:27:27 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,9 @@ int main(void)
 		for (size_t i = 0; i < size; i++)
 			delete zoo[i];
 	}
-
-	{
-		std::cout << "\n === OPERATOR=() TESTING ===" << std::endl;
-		Dog *sandor = new Dog();
-		Dog *gregor = new Dog();
-
-		sandor->fillPetArr("i need to kill my sociopathic brother");
-		gregor->fillPetArr("i am a sociopath");
-
-		sandor->displayThoughts();
-		gregor->displayThoughts();
-
-		*gregor = *sandor;
-		sandor->displayThoughts();
-		gregor->displayThoughts();
-		delete sandor;
-		delete gregor;
-	}
-
-	{
-		Cat *gregor = new Cat();
-		gregor->fillPetArr("I am a sociopath");
-		Cat *sandor = new Cat(*gregor);
-		sandor->displayThoughts();
-		gregor->displayThoughts();
-		sandor->fillPetArr("I will kill my mad brother");
-		gregor->displayThoughts();
-		sandor->displayThoughts();
-		delete gregor;
-		delete sandor;
-	}
-
 	{
 		// This is to prove that the class cannot be instiantiated, since it's abstract | Uncomment to test
-		// Animal *aclass = new Animal;
-		// Animal aclass_test;
+		// Aanimal *aclass = new Aanimal;
+		// Aanimal aclass_test;
 	}
 }

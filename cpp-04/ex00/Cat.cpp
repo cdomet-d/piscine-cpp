@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:54:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 15:54:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/09/26 17:14:47 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Cat::Cat(void)
+Cat::Cat(void) : Animal("Cat")
 {
-	this->type = "Cat";
 	std::cout << "Cat constructor called " << std::endl;
 }
 
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout << "Cat copy constructor called " << std::endl;
-	 *this = copy;
 }
 
 Cat::~Cat(void)
@@ -36,14 +34,14 @@ Cat::~Cat(void)
 
 Cat &Cat::operator=(const Cat &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
-	
+
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-void Cat::makeSound(void) const 
+void Cat::makeSound(void) const
 {
 	std::cout << "Mew" << std::endl;
 }

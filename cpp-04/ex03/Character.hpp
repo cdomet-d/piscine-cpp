@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/20 16:12:26 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:00:24 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 class Character : public ICharacter
 {
-private:
+protected:
+	std::string name;
+	AMateria *inventory[4];
 public:
 	/*                               ORTHODOX CLASS                           */
 	Character(void);

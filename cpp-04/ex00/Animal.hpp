@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:28 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 11:40:26 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ protected:
 public:
 	/*                               ORTHODOX CLASS                           */
 	Animal(void);
+	Animal(std::string _type);
 	Animal(const Animal &copy);
 	virtual ~Animal(void);
 	Animal &operator=(const Animal &copy);

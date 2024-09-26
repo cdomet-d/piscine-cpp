@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/10 18:07:01 by cdomet-d         ###   ########.fr        #
+#    Updated: 2024/09/26 12:42:58 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME:= Animal
 BDIR:=.bdir/
 
 CC:=c++
-CFLAGS:= -Werror -Wextra -Wall -Wshadow -Wshadow -std=c++98 -g3
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -std=c++98 -g3
 CPPFLAGS:=-MMD -MP
 MAKEFLAGS:=--no-print-directory
 

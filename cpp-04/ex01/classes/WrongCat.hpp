@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:28 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/10 16:54:47 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 12:38:10 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include <string>
+#include "WrongAnimal.hpp"
 
-class Animal
+class WrongCat : public WrongAnimal
 {
-protected:
-	std::string	type;
 public:
 	/*                               ORTHODOX CLASS                           */
-	Animal(void);
-	Animal(const Animal &copy);
-	virtual ~Animal(void);
-	Animal &operator=(const Animal &copy);
+	WrongCat(void);
+	WrongCat(const WrongCat &copy);
+	~WrongCat(void);
+	WrongCat &operator=(const WrongCat &copy);
 
 	/*                               METHODS                                  */
-	virtual void makeSound(void) const;
-	std::string getType(void) const;
+	void makeSound(void) const;
 };
 
 #endif

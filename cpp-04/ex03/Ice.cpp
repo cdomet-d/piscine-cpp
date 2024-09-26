@@ -17,26 +17,25 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Ice::Ice(void)
+Ice::Ice(void) : AMateria("Ice")
 {
-	// std::cout << "Ice constructor called " << std::endl;
+	std::cout << "Ice constructor called " << std::endl;
 	this->type = "ice";
 }
 
 Ice::Ice(const Ice &copy) : AMateria(copy)
 {
-	// std::cout << "Ice copy constructor called " << std::endl;
-	*this = copy;
+	std::cout << "Ice copy constructor called " << std::endl;
 }
 
 Ice::~Ice(void)
 {
-	// std::cout << "Ice deconstructor called " << std::endl;
+	std::cout << "Ice deconstructor called " << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
 

@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/17 10:25:07 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/09/26 16:56:52 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:= aanimal
 BDIR:=.bdir/
-SUB_DIR:= classes00/
+SUB_DIR:= classes/
 
 CC:=c++
-CFLAGS:= -Werror -Wextra -Wall -Wshadow -Wshadow -std=c++98 -g3
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -std=c++98 -g3
 CXXFLAGS:=-MMD -MP -I . -I $(SUB_DIR)
 MAKEFLAGS:=--no-print-directory
 

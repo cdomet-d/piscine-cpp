@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:54:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 18:06:21 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/09/10 17:23:23 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 16:50:55 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include "WrongAnimal.hpp"
+#include "Aanimal.hpp"
+#include "Brain.hpp"
 
-class WrongCat : public WrongAnimal
+class Dog : public Aanimal
 {
 private:
-	
+	Brain *brain;
+
 public:
 	/*                               ORTHODOX CLASS                           */
-	WrongCat(void);
-	WrongCat(const WrongCat &copy);
-	~WrongCat(void);
-	WrongCat &operator=(const WrongCat &copy);
+	Dog(void);
+	Dog(const Dog &copy);
+	~Dog(void);
+	Dog &operator=(const Dog &copy);
 
 	/*                               METHODS                                  */
 	void makeSound(void) const;
+	void fillPetArr(std::string s) const;
+	void displayThoughts(void) const;
 };
 
 #endif

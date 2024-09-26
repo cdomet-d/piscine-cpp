@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 17:23:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/16 17:51:42 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/09/10 15:52:58 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/09/26 16:14:36 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-#include "Aanimal.hpp"
-#include "Brain.hpp"
+#include <string>
 
-class Dog : public Aanimal
+#define R "\033[0m" // reset
+#define COLOR "\x1b[35m"
+
+class Animal
 {
-private:
-	Brain *brain;
-
+protected:
+	std::string	type;
 public:
 	/*                               ORTHODOX CLASS                           */
-	Dog(void);
-	Dog(const Dog &copy);
-	~Dog(void);
-	Dog &operator=(const Dog &copy);
+	Animal(void);
+	Animal(std::string _type);
+	Animal(const Animal &copy);
+	virtual ~Animal(void);
+	Animal &operator=(const Animal &copy);
 
 	/*                               METHODS                                  */
-	void makeSound(void) const;
-	void fillPetArr(std::string s) const;
-	void displayThoughts(void) const;
+	virtual void makeSound(void) const;
+	std::string getType(void) const;
 };
 
 #endif

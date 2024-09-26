@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/19 16:32:58 by cdomet-d         ###   ########.fr        #
+#    Updated: 2024/09/26 17:03:45 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,12 @@ BDIR:=.bdir/
 SUB_DIR:= interfaces/
 
 CC:=c++
-CFLAGS:= -Werror -Wextra -Wall -Wshadow -Wshadow -std=c++98 -g3
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -std=c++98 -g3
 CXXFLAGS:=-MMD -MP -I . -I $(SUB_DIR)
 MAKEFLAGS:=--no-print-directory
 
 SRC+= $(addprefix $(SUB_DIR), $(SUB_SRC))
 SUB_SRC:=	AMateria.cpp \
-			IMateriaSource.cpp \
-			ICharacter.cpp \
 
 SRC+=		MateriaSource.cpp \
 			Character.cpp \

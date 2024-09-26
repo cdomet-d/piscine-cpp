@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/10 17:36:55 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:51 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Animal::Animal(void)
+Animal::Animal(void) : type("Animal")
 {
-	std::cout << "Animal constructor called " << std::endl;
-	this->type = "Animal";
-	
+	std::cout << "Animal default constructor called " << std::endl;
+}
+
+Animal::Animal(std::string _type) : type(_type)
+{
+	std::cout << "Animal string constructor called " << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
 {
+	*this = copy;
 	std::cout << "Animal copy constructor called " << std::endl;
-	 *this = copy;
 }
 
 Animal::~Animal(void)
@@ -37,7 +40,7 @@ Animal::~Animal(void)
 
 Animal &Animal::operator=(const Animal &comp)
 {
-	this->type = comp.type;
+	(void)comp;
 	return *this;
 }
 
@@ -47,10 +50,10 @@ Animal &Animal::operator=(const Animal &comp)
 
 void Animal::makeSound() const
 {
-	std::cout << "*generic animal noise*" << std::endl;
+	std::cout << " * generic animal noise * " << std::endl;
 }
 
 std::string Animal::getType(void) const
 {
-	return (this->type);
+	return type;
 }
