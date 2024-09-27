@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 16:25:39 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:29:19 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ int main(void)
 		Cat *gregor = new Cat();
 
 		gregor->fillPetArr("I am a sociopath");
-		std::cout << COLOR << "created a Cat named Gregor and gave it thoughts\n"
+		std::cout << COLOR << "created a " << gregor->getType() << " named Gregor with copy constructor\n"
 				  << R << std::endl;
 		Cat *sandor = new Cat(*gregor);
 
-		std::cout << COLOR << "created a Cat named Sandor with copy constructor\n"
+		std::cout << COLOR << "created a " << sandor->getType() << " named Sandor with copy constructor\n"
 				  << R << std::endl;
-
+		
 		std::cout << COLOR << "Demonstrating Gregor && Sandor thoughts are the same\n"
 				  << R << std::endl;
 		sandor->displayThoughts();

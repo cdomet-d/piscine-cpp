@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 12:40:29 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:28:51 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Animal::~Animal(void)
 
 Animal &Animal::operator=(const Animal &comp)
 {
-	(void)comp;
+	type = comp.type;
 	return *this;
 }
 

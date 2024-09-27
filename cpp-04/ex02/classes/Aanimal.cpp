@@ -37,7 +37,7 @@ Aanimal::~Aanimal(void)
 
 Aanimal &Aanimal::operator=(const Aanimal &comp)
 {
-	(void)comp;
+	type = comp.type;
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:08:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 17:44:46 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:26:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 
 #include <iostream>
 
+#define R "\033[0m" // reset
+#define COLOR "\x1b[35m"
+
 int main(void)
 {
 	{
+		std::cout << COLOR << "\ntesting basic functionnalities" << R << std::endl;
 		Character csweetin("csweetin");
 		Character applicant("applicant");
 		AMateria *im1 = new Ice;
@@ -42,28 +46,37 @@ int main(void)
 		applicant = csweetin;
 		applicant.use(0, applicant);
 		applicant.use(1, csweetin);
+
+		std::cout << COLOR << "\nerror testing" << R << std::endl;
 		applicant.use(-9, csweetin);
 		applicant.use(10, csweetin);
 		delete im2;
 		delete cm2;
 	}
 
+	// {
+	// 	std::cout << std::endl;
+	// 	IMateriaSource *src = new MateriaSource();
+	// 	src->learnMateria(new Ice());
+	// 	src->learnMateria(new Cure());
+	// 	ICharacter *me = new Character("me");
+	// 	AMateria *tmp;
+	// 	tmp = src->createMateria("ice");
+	// 	me->equip(tmp);
+	// 	tmp = src->createMateria("cure");
+	// 	me->equip(tmp);
+	// 	ICharacter *bob = new Character("bob");
+	// 	me->use(0, *bob);
+	// 	me->use(1, *bob);
+	// 	delete bob;
+	// 	delete me;
+	// 	delete src;
+	// }
 	{
-		std::cout << std::endl;
-		IMateriaSource *src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		ICharacter *me = new Character("me");
-		AMateria *tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		ICharacter *bob = new Character("bob");
-		me->use(0, *bob);
-		me->use(1, *bob);
-		delete bob;
-		delete me;
-		delete src;
+		std::cout << COLOR << "\ntesting copy constructor" << R << std::endl;
+		Ice	ice;
+		std::cout << "ice: " << ice.getType() << std::endl;
+		Ice ice2(ice);
+		std::cout << "ice2: " << ice2.getType() << std::endl;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 17:31:39 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:20:51 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ AMateria::~AMateria(void)
 
 AMateria &AMateria::operator=(const AMateria &comp)
 {
-	(void)comp;
+	type = comp.type;
 	return *this;
 }
 
