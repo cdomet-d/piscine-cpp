@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/16 19:37:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/16 19:38:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 Bureaucrat::Bureaucrat(void) : name("Unset"), grade(150)
 {
-	std::cout << "default 	constructor called " << std::endl;
+	std::cout << "default constructor called " << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name), grade(_grade)
