@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:14:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/16 16:50:12 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/16 20:36:16 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ public:
 	~Bureaucrat(void);
 	Bureaucrat &operator=(const Bureaucrat &copy);
 
-	
 	/*                               METHODS                                  */
 
 	/*                           OPERATOR OVERLOAD                            */
