@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/16 19:38:29 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/18 13:56:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,36 @@
 #include <iostream>
 
 /* ************************************************************************** */
+/*                                  EXCEPTIONS                                */
+/* ************************************************************************** */
+
+const char *Bureaucrat::GradeTooHigh::what() const throw()
+{
+	return "\033[0;31m	/!\\ Invalid grade: too high (< 1)\033[0m";
+}
+
+const char *Bureaucrat::GradeTooLow::what() const throw()
+{
+	return "\033[0;31m	/!\\ Invalid grade: too low (> 150)\033[0m";
+}
+
+/* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Bureaucrat::Bureaucrat(void) : name("Unset"), grade(150)
-{
-	std::cout << "default constructor called " << std::endl;
-}
+Bureaucrat::Bureaucrat(void) : name("Unset"), grade(150) {}
 
 Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name), grade(_grade)
 {
-	std::cout << "custom constructor called " << std::endl;
+	if (_grade > 150)
+		throw Bureaucrat::GradeTooLow();
+	else if (_grade < 1)
+		throw Bureaucrat::GradeTooHigh();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()), grade(copy.getGrade())
-{
-	std::cout << "copy constructor called " << std::endl;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()), grade(copy.getGrade()) {}
 
-Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << "default deconstructor called " << std::endl;
-}
+Bureaucrat::~Bureaucrat(void) {}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &comp)
 {
@@ -47,42 +55,18 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &comp)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                             OPERATOR OVERLOAD                              */
-/* ************************************************************************** */
-
-Bureaucrat &Bureaucrat::operator++(void)
+void Bureaucrat::downgrade(void)
 {
-	this->grade--;
-	return *this;
+	if (grade >= 150)
+		throw Bureaucrat::GradeTooLow();
+	grade++;
 }
 
-Bureaucrat Bureaucrat::operator++(int n)
+void Bureaucrat::upgrade(void)
 {
-	(void)n;
-	Bureaucrat old = *this;
-	this->grade--;
-	return old;
-}
-
-Bureaucrat &Bureaucrat::operator--(void)
-{
-	this->grade++;
-	return *this;
-}
-
-Bureaucrat Bureaucrat::operator--(int n)
-{
-	(void)n;
-	Bureaucrat old = *this;
-	this->grade++;
-	return old;
-}
-
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &print)
-{
-	os << print.getName() << ", bureaucrat grade: " << print.getGrade();
-	return os;
+	if (grade <= 1)
+		throw Bureaucrat::GradeTooHigh();
+	grade--;
 }
 
 /* ************************************************************************** */
@@ -98,6 +82,8 @@ short int Bureaucrat::getGrade(void) const
 	return grade;
 }
 
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &print)
+{
+	os << print.getName() << ", bureaucrat grade: " << print.getGrade();
+	return os;
+}

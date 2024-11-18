@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:14:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/16 20:36:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/18 13:56:24 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
+#include <exception>
 
 class Bureaucrat
 {
@@ -22,6 +23,18 @@ private:
 	short int grade;
 
 public:
+	/*                               EXCEPTIONS                               */
+	class GradeTooHigh: public std::exception
+	{
+		public:
+			const char* what() const throw(); 
+	};
+
+	class GradeTooLow: public std::exception
+	{
+		public:
+			const char* what() const throw(); 
+	};
 	/*                               ORTHODOX CLASS                           */
 	Bureaucrat(void);
 	Bureaucrat(const std::string _name, short int _grade);
@@ -30,18 +43,13 @@ public:
 	Bureaucrat &operator=(const Bureaucrat &copy);
 
 	/*                               METHODS                                  */
-
-	/*                           OPERATOR OVERLOAD                            */
-	Bureaucrat &operator++(void);
-	Bureaucrat operator++(int n);
-	Bureaucrat &operator--(void);
-	Bureaucrat operator--(int n);
+	void upgrade(void);
+	void downgrade(void);
 
 	/*                               GETTERS                                  */
 	const std::string getName(void) const;
 	short int getGrade(void) const;
 
-	/*                               SETTERS                                  */
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &print);
