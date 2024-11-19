@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 13:02:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 14:48:49 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 #include <exception>
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -47,6 +49,7 @@ public:
 
 	/*                               METHODS                                  */
 	void	beSigned(const Bureaucrat signer);
+
 	/*                               GETTERS                                  */
 	const std::string getName(void) const;
 	short int getSignGrade(void) const;

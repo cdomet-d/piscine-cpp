@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 11:45:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 15:15:46 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void testBureaucrats(void)
 	try
 	{
 		std::cout << "=> Creating Valid Bureaucrats" << std::endl;
-		Bureaucrat One = Bureaucrat("One", 5);
-		Bureaucrat Two = Bureaucrat("Two", 130);
+		Bureaucrat One("One", 5);
+		Bureaucrat Two("Two", 130);
 		std::cout << "	" << One << std::endl;
 		std::cout << "	" << Two << std::endl;
 		std::cout << "=> Promoting Two" << std::endl;
@@ -40,7 +40,7 @@ void testBureaucrats(void)
 	try
 	{
 		std::cout << "=> Creating Invalid Bureaucrat (too low)" << std::endl;
-		Bureaucrat InvalidGrade = Bureaucrat("InvalidGrade", 151);
+		Bureaucrat InvalidGrade("InvalidGrade", 151);
 		std::cout << "	" << InvalidGrade << std::endl;
 	}
 	catch (std::exception &e)
@@ -52,7 +52,8 @@ void testBureaucrats(void)
 	try
 	{
 		std::cout << "=> Creating Invalid Bureaucrat (too high)" << std::endl;
-		Bureaucrat InvalidGrade = Bureaucrat("InvalidGrade", -5);
+		Bureaucrat InvalidGrade("InvalidGrade", -5);
+		// should
 		std::cout << "	" << InvalidGrade << std::endl;
 	}
 	catch (std::exception &e)
@@ -145,7 +146,7 @@ void testForms(void)
 	try
 	{
 		std::cout << "=> Creating Invalid Form (signGrade too high)" << std::endl;
-		Form InvalidGrade = Form("InvalidGrade", -5, 1);
+		Form InvalidGrade = Form("InvalidGrade", -5, -150);
 		std::cout << InvalidGrade << std::endl;
 	}
 	catch (std::exception &e)

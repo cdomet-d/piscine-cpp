@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:22 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 13:02:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 15:20:53 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Form: Invalid grade: too high (< 1)\033[0m";
+	return "	/!\\ Form: Invalid grade: too high (< 1)";
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Form: Invalid grade: too low (> 150)\033[0m";
+	return "	/!\\ Form: Invalid grade: too low (> 150)";
 }
 
 /* ************************************************************************** */
@@ -37,12 +37,21 @@ Form::Form(const std::string _name, const short int _signGrade, const short _exe
 	: name(_name), signGrade(_signGrade), execGrade(_execGrade), isSigned(false)
 {
 	if (_signGrade < 1 || _execGrade < 1)
+	{
+		std::cout << "	expected [1 - 150]; got "
+				  << (_signGrade < 1 ? _signGrade : _execGrade) << std::endl;
 		throw Form::GradeTooHighException();
+	}
 	else if (_signGrade > 150 || _execGrade > 150)
+	{
+		std::cout << "	expected [1 - 150]; got "
+				  << (_signGrade > 150 ? _signGrade : _execGrade) << std::endl;
 		throw Form::GradeTooLowException();
+	}
 }
 
-Form::Form(const Form &copy) : name(copy.name), signGrade(copy.signGrade), execGrade(copy.execGrade)
+Form::Form(const Form &copy) : name(copy.name), signGrade(copy.signGrade),
+							   execGrade(copy.execGrade)
 {
 	*this = copy;
 }
@@ -94,6 +103,6 @@ std::ostream &operator<<(std::ostream &os, const Form &print)
 	os << "	Form name:		" << print.getName() << std::endl
 	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
 	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl
-	   << "	Required signed status:	" << print.getSignedStatus() << std::endl;
+	   << "	Signed status:	" << print.getSignedStatus() << std::endl;
 	return os;
 }
