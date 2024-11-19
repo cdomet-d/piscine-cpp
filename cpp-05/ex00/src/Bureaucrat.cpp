@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/18 13:56:21 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:02:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 /*                                  EXCEPTIONS                                */
 /* ************************************************************************** */
 
-const char *Bureaucrat::GradeTooHigh::what() const throw()
+const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "\033[0;31m	/!\\ Invalid grade: too high (< 1)\033[0m";
 }
 
-const char *Bureaucrat::GradeTooLow::what() const throw()
+const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "\033[0;31m	/!\\ Invalid grade: too low (> 150)\033[0m";
 }
@@ -36,9 +36,9 @@ Bureaucrat::Bureaucrat(void) : name("Unset"), grade(150) {}
 Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name), grade(_grade)
 {
 	if (_grade > 150)
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	else if (_grade < 1)
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()), grade(copy.getGrade()) {}
@@ -58,14 +58,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &comp)
 void Bureaucrat::downgrade(void)
 {
 	if (grade >= 150)
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	grade++;
 }
 
 void Bureaucrat::upgrade(void)
 {
 	if (grade <= 1)
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 	grade--;
 }
 

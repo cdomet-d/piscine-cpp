@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:14:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/18 13:56:24 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:02:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ private:
 
 public:
 	/*                               EXCEPTIONS                               */
-	class GradeTooHigh: public std::exception
+	class GradeTooHighException: public std::exception
 	{
 		public:
 			const char* what() const throw(); 
 	};
 
-	class GradeTooLow: public std::exception
+	class GradeTooLowException: public std::exception
 	{
 		public:
 			const char* what() const throw(); 
