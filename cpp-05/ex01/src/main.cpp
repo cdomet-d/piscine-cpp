@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 13:44:22 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 16:01:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(void)
 		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << std::endl << "Trying to Bureaucrat.signForm()..." << std::endl;
+	std::cout << std::endl << "Trying Bureaucrat.signForm()..." << std::endl;
 	try
 	{
 		Form one("A form", 10, 15);
