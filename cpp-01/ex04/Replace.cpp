@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 14:30:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/31 15:34:26 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 15:10:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ std::string Replace::retNewStr()
 		}
 		catch (const std::out_of_range &err)
 		{
-			std::cerr << PINK << "Exception: " << err.what() << END << std::endl;
+			std::cout << PINK << "Exception: " << err.what() << END << std::endl;
 		}
 	}
 	return (this->buffer);

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:40:50 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/24 17:02:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 15:10:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Zombie* zombieHorde( int N, std::string name )
 	}
 	catch(const std::exception& ba)
 	{
-		std::cerr << ba.what() << std::endl;
+		std::cout << ba.what() << std::endl;
 	}
 	for (int i = 0; i < N; i++)
 		zArray[i].nameZombie(i, name);

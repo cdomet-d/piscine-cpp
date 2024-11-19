@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:35:02 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 17:49:54 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:10:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void Character::equip(AMateria *m)
 			return;
 		}
 	}
-	std::cerr << "Inventory is full" << std::endl;
+	std::cout << "Inventory is full" << std::endl;
 }
 
 void Character::unequip(int idx)
@@ -89,7 +89,7 @@ void Character::unequip(int idx)
 		this->inventory[idx] = NULL;
 		return;
 	}
-	std::cerr << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
+	std::cout << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
 }
 
 void Character::use(int idx, ICharacter &target)
@@ -99,7 +99,7 @@ void Character::use(int idx, ICharacter &target)
 	if ((idx >= 0 && idx < 4) && this->inventory[idx])
 		this->inventory[idx]->use(target);
 	else
-		std::cerr << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
+		std::cout << "No Materia equiped at slot "<< idx << " for Character: " << this->getName() << std::endl;
 }
 
 void Character::displayInventory(void)
