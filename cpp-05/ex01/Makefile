@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/19 11:39:36 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/11/19 13:03:25 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= formSigningFun
+NAME:= form
 BDIR:=.bdir/
 SRC_DIR:= src/
 H:= headers/

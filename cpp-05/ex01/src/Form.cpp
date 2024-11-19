@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:22 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 11:44:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/19 13:02:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 /*                                  EXCEPTIONS                                */
 /* ************************************************************************** */
 
-const char *Form::GradeTooHigh::what() const throw()
+const char *Form::GradeTooHighException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Invalid grade: too high (< 1)\033[0m";
+	return "\033[0;31m	/!\\ Form: Invalid grade: too high (< 1)\033[0m";
 }
 
-const char *Form::GradeTooLow::what() const throw()
+const char *Form::GradeTooLowException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Invalid grade: too low (> 150)\033[0m";
+	return "\033[0;31m	/!\\ Form: Invalid grade: too low (> 150)\033[0m";
 }
 
 /* ************************************************************************** */
@@ -37,9 +37,9 @@ Form::Form(const std::string _name, const short int _signGrade, const short _exe
 	: name(_name), signGrade(_signGrade), execGrade(_execGrade), isSigned(false)
 {
 	if (_signGrade < 1 || _execGrade < 1)
-		throw Form::GradeTooHigh();
+		throw Form::GradeTooHighException();
 	else if (_signGrade > 150 || _execGrade > 150)
-		throw Form::GradeTooLow();
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form &copy) : name(copy.name), signGrade(copy.signGrade), execGrade(copy.execGrade)
@@ -58,6 +58,13 @@ Form &Form::operator=(const Form &comp)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
+
+void Form::beSigned(const Bureaucrat signer)
+{
+	if (signer.getGrade() > signGrade)
+		return throw Form::GradeTooLowException();
+	isSigned = true;
+}
 
 /* ************************************************************************** */
 /*                               GETTERS                                      */
