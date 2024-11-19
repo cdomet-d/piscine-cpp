@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:22 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/18 15:40:03 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:44:54 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ const char *Form::GradeTooLow::what() const throw()
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Form::Form(void) : name("Unset"), isSigned(false), signGrade(1), execGrade(1) {}
+Form::Form(void) : name("Unset"), signGrade(1), execGrade(1), isSigned(false) {}
 
-Form::Form(const std::string _name, const short int _signGrade, const short _execGrade) \
-: name(_name), isSigned(false), signGrade(_signGrade), execGrade(_execGrade)
+Form::Form(const std::string _name, const short int _signGrade, const short _execGrade)
+	: name(_name), signGrade(_signGrade), execGrade(_execGrade), isSigned(false)
 {
 	if (_signGrade < 1 || _execGrade < 1)
 		throw Form::GradeTooHigh();
-	else if (_execGrade > 150 || _execGrade > 150)
+	else if (_signGrade > 150 || _execGrade > 150)
 		throw Form::GradeTooLow();
 }
 
@@ -66,15 +66,15 @@ const std::string Form::getName(void) const
 {
 	return name;
 }
-const short int Form::getSignGrade(void) const
+short int Form::getSignGrade(void) const
 {
 	return signGrade;
 }
-const short int Form::getExecGrade(void) const
+short int Form::getExecGrade(void) const
 {
 	return execGrade;
 }
-const bool Form::getSignedStatus(void) const
+bool Form::getSignedStatus(void) const
 {
 	return isSigned;
 }
@@ -82,10 +82,11 @@ const bool Form::getSignedStatus(void) const
 /*                               SETTERS                                      */
 /* ************************************************************************** */
 
-std::ostream &operator<<(std::ofstream &os, const Form &print) 
+std::ostream &operator<<(std::ostream &os, const Form &print)
 {
-	std::cout << "Form name:	" << print.getName() << std::endl
-		<< "Required Grade to sign:	" << print.getSignGrade() << std::endl
-		<< "Required Grade to exec:	" << print.getExecGrade() << std::endl
-		<< "Required signed status:	" << print.getSignedStatus() << std::endl;
+	os << "	Form name:		" << print.getName() << std::endl
+	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
+	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl
+	   << "	Required signed status:	" << print.getSignedStatus() << std::endl;
+	return os;
 }

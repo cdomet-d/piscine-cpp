@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/18 15:40:11 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:40:45 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ public:
 
 	/*                               GETTERS                                  */
 	const std::string getName(void) const;
-	const short int getSignGrade(void) const;
-	const short int getExecGrade(void) const;
-	const bool getSignedStatus(void) const;
+	short int getSignGrade(void) const;
+	short int getExecGrade(void) const;
+	bool getSignedStatus(void) const;
 
 	/*                               SETTERS                                  */
 };
 
-std::ostream &operator<<(std::ofstream &os, const Form &print);
+std::ostream &operator<<(std::ostream &os, const Form &print);
+
 #endif
