@@ -19,12 +19,12 @@
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return "	/!\\ AForm: Invalid grade: too high (< 1)";
+	return "	/!\\ AForm: Invalid grade: too high";
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return "	/!\\ AForm: Invalid grade: too low (> 150)";
+	return "	/!\\ AForm: Invalid grade: too low";
 }
 
 const char *AForm::FormNotSignedException::what() const throw()
@@ -115,7 +115,7 @@ bool AForm::getSignedStatus(void) const
 std::ostream &operator<<(std::ostream &os, const AForm &print)
 {
 	os << "	AForm name:		" << print.getName() << std::endl
-	   << "	Target:		" << print.getTarget() << std::endl
+	   << "	Target:			" << print.getTarget() << std::endl
 	   << "	Is signed:		" << (print.getSignedStatus() ? "Yes" : "No") << std::endl
 	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
 	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl;

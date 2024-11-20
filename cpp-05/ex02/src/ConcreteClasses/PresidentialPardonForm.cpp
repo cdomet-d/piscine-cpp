@@ -6,12 +6,15 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/20 16:33:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/20 17:28:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
+
+// PresidentialPardonForm: Required grades: sign 25, exec 5
+// Informs that <target> has been pardoned by Zaphod Beeblebrox
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
@@ -19,16 +22,12 @@
 
 PresidentialPardonForm::PresidentialPardonForm(void) : AForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string _name, const std::string _target,
-											 const short int _signGrade, const short _execGrade)
-	: AForm(_name, _target, _signGrade, _execGrade) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string _name, const std::string _target)
+	: AForm(_name, _target, 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy) { }
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy) {}
 
-PresidentialPardonForm::~PresidentialPardonForm(void)
-{
-	std::cout << "default deconstructor called " << std::endl;
-}
+PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &comp)
 {
@@ -36,15 +35,31 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
-
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-	
-/* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-	
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
+
+void PresidentialPardonForm::checkAuth(const short int expect, const short int got)
+{
+	if (!this->getSignedStatus())
+		return throw PresidentialPardonForm::FormNotSignedException();
+	if (got > expect)
+	{
+		std::cout << "Couldn't execute: Expected " << expect << " or higher, got: " << got << std::endl;
+		return throw PresidentialPardonForm::GradeTooLowException();
+	}
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const &executor)
+{
+	try
+	{
+		this->checkAuth(REQ_GRADE, executor.getGrade());
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		return;
+	}
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}

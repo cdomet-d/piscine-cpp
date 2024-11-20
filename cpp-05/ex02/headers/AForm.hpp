@@ -17,6 +17,8 @@
 #include <exception>
 #include "Bureaucrat.hpp"
 
+#define REQ_GRADE 5
+
 class Bureaucrat;
 
 class AForm
