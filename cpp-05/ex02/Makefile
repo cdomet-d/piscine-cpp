@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/19 17:04:25 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/11/20 15:33:27 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,22 @@ CFLAGS:= -Werror -Wextra -Wall -Wshadow -std=c++98 -g3
 CXXFLAGS:=-MMD -MP -I $(H)
 MAKEFLAGS:=--no-print-directory
 
+
 SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
-SRC=	Bureaucrat.cpp \
-		unitTests.cpp \
+SRC+=	main.cpp \
+		Bureaucrat.cpp \
 		AForm.cpp \
-		main.cpp \
+
+SRC+= $(addprefix $(CCLASS), $(CCLASS_SRC))
+CCLASS:=ConcreteClasses/
+CCLASS_SRC:=PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp \
+
+
 
 OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))
+
 DEPS:=$(OBJ:%.o=%.d)
 
 RM:= rm -rf
@@ -61,7 +70,9 @@ re: fclean all
 
 info:
 	@echo $(CXXFLAGS)
+	@echo
 	@echo $(SRC_PATH)
+	@echo
 	@echo $(SRC)
 
 .PHONY: all clean info fclean re

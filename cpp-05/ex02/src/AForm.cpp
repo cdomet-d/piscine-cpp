@@ -27,14 +27,19 @@ const char *AForm::GradeTooLowException::what() const throw()
 	return "	/!\\ AForm: Invalid grade: too low (> 150)";
 }
 
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "	/!\\ AForm: Form has not been signed by competent authorities";
+}
+
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-AForm::AForm(void) : name("Unset"), signGrade(1), execGrade(1), isSigned(false) {}
+AForm::AForm(void) : name("Unset"), target("Unset"), signGrade(1), execGrade(1), isSigned(false) {}
 
-AForm::AForm(const std::string _name, const short int _signGrade, const short _execGrade)
-	: name(_name), signGrade(_signGrade), execGrade(_execGrade), isSigned(false)
+AForm::AForm(const std::string _name, const std::string _target, const short int _signGrade, const short _execGrade)
+	: name(_name), target(_target), signGrade(_signGrade), execGrade(_execGrade), isSigned(false)
 {
 	if (_signGrade < 1 || _execGrade < 1)
 	{
@@ -51,7 +56,7 @@ AForm::AForm(const std::string _name, const short int _signGrade, const short _e
 }
 
 AForm::AForm(const AForm &copy) : name(copy.name), signGrade(copy.signGrade),
-							   execGrade(copy.execGrade)
+								  execGrade(copy.execGrade)
 {
 	*this = copy;
 }
@@ -82,18 +87,27 @@ const std::string AForm::getName(void) const
 {
 	return name;
 }
+
+const std::string AForm::getTarget(void) const
+{
+	return target;
+}
+
 short int AForm::getSignGrade(void) const
 {
 	return signGrade;
 }
+
 short int AForm::getExecGrade(void) const
 {
 	return execGrade;
 }
+
 bool AForm::getSignedStatus(void) const
 {
 	return isSigned;
 }
+
 /* ************************************************************************** */
 /*                               SETTERS                                      */
 /* ************************************************************************** */
@@ -101,6 +115,7 @@ bool AForm::getSignedStatus(void) const
 std::ostream &operator<<(std::ostream &os, const AForm &print)
 {
 	os << "	AForm name:		" << print.getName() << std::endl
+	   << "	Target:		" << print.getTarget() << std::endl
 	   << "	Is signed:		" << (print.getSignedStatus() ? "Yes" : "No") << std::endl
 	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
 	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl;
