@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 11:45:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/21 14:48:49 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ public:
 	/*                               METHODS                                  */
 	void checkAuth(const short int expect, const short int got);
 	void execute(Bureaucrat const &executor);
-	/*                               GETTERS                                  */
-	
-	/*                               SETTERS                                  */
 };
 
 #endif

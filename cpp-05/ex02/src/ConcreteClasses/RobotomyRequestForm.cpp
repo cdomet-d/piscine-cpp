@@ -6,16 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 12:10:42 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/21 14:51:33 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
-
-// RobotomyRequestForm: Required grades: sign 72, exec 45
-// Makes some drilling noises. Then, informs that <target> has been robotomized
-// successfully 50% of the time. Otherwise, informs that the robotomy failed
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
@@ -23,6 +19,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm() {}
 
+// RobotomyRequestForm: Required grades: sign 72, exec 45
 RobotomyRequestForm::RobotomyRequestForm(const std::string _name, const std::string _target)
 	: AForm(_name, _target, 72, 45) {}
 
@@ -56,6 +53,8 @@ void RobotomyRequestForm::checkAuth(const short int expect, const short int got)
 	}
 }
 
+// Makes some drilling noises. Then, informs that <target> has been robotomized
+// successfully 50% of the time. Otherwise, informs that the robotomy failed
 void RobotomyRequestForm::execute(Bureaucrat const &executor)
 {
 	this->checkAuth(ROBOTOMY_EXEC_GRADE, executor.getGrade());

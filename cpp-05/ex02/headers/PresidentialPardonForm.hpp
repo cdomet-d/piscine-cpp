@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 11:46:07 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/21 14:49:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ public:
 
 	/*                               METHODS                                  */
 	void execute(Bureaucrat const &executor);
-
-	/*                               GETTERS                                  */
-
-	/*                               SETTERS                                  */
 };
 
 #endif
