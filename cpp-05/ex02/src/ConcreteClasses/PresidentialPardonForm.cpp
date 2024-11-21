@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/20 17:28:25 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/21 11:25:12 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,6 @@ void PresidentialPardonForm::checkAuth(const short int expect, const short int g
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor)
 {
-	try
-	{
-		this->checkAuth(REQ_GRADE, executor.getGrade());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		return;
-	}
+	this->checkAuth(REQ_GRADE, executor.getGrade());
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
