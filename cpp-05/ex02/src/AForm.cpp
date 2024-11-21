@@ -19,17 +19,17 @@
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return "	/!\\ AForm: Invalid grade: too high";
+	return "/!\\ AForm: Invalid grade: too high";
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return "	/!\\ AForm: Invalid grade: too low";
+	return "/!\\ AForm: Invalid grade: too low";
 }
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-	return "	/!\\ AForm: Form has not been signed by competent authorities";
+	return "/!\\ AForm: Form has not been signed by competent authorities";
 }
 
 /* ************************************************************************** */
