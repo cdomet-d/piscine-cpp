@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 15:23:29 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/21 16:58:44 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor)
 			 << "       |.|        | |         | |" << std::endl
 			 << "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
 	destFile.close();
+	std::cout << "File [ " << this->getTarget() << " ] created and populated." << std::endl;
 }
