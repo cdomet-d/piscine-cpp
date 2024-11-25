@@ -54,7 +54,7 @@ public:
 	AForm(void);
 	AForm(const std::string _name, const std::string _target, const short int _signGrade, const short _execGrade);
 	AForm(const AForm &copy);
-	~AForm(void);
+	virtual ~AForm(void);
 	AForm &operator=(const AForm &copy);
 
 	/*                               METHODS                                  */

@@ -6,11 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 15:01:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 17:02:38 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unitTests.hpp"
+
 void testPresidentialForms(void)
 {
 	{

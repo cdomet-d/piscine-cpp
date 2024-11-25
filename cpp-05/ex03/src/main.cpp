@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 11:17:26 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 12:53:30 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
-
 #include <iostream>
-#include <signal.h>
 
-void testPresidentialForms(void);
-void testRobotomyRequestForm(void);
-void testShrubberyCreation(void);
-
-int main(void)
+int main(int ac, char *av[])
 {
-	Intern patrick;
-	Bureaucrat leader("emily", 1);
-	AForm *form;
+	if (ac != 3)
+	{
+		std::cout << "Expected two arguments:\n argument 1 should be requested form: <robotomy request>, \
+<presidential request> or <shrubbery request>\n argument 2 should be the target of that form" << std::endl;
+		return 1;
+	}
+	try
+	{
+		Intern intern;
+		Bureaucrat drone("Corpodrone", 1);
+		AForm *form;
 
-	form = patrick.makeForm("robotomy", "adam smasher");
-	leader.signForm(*form);
-	form->execute(leader);
+		form = intern.makeForm(av[1], av[2]);
+		drone.signForm(*form);
+		form->execute(drone);
+		delete form;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+		return 1;
+	}
+	return 0;
 }

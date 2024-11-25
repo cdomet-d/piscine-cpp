@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 11:27:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 12:40:54 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 
+/* ************************************************************************** */
+/*                                  EXCEPTIONS                                */
+/* ************************************************************************** */
+
+const char *Intern::FormNotFoundException::what() const throw()
+{
+	return "/!\\ Form type not found. Expected <robotomy request>, \
+		<presidential request> or <shrubbery request>";
+}
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
@@ -68,5 +77,6 @@ AForm *Intern::makeForm(std::string formName, std::string target)
 		if (formName.compare(lookupTable[i].fName) == 0)
 			return lookupTable[i].F(formName, target);
 	}
+	throw FormNotFoundException();
 	return NULL;
 }

@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/25 11:10:11 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/11/25 12:44:19 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ MAKEFLAGS:=--no-print-directory
 
 SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
 SRC+=	main.cpp \
-		unitTests.cpp \
 		Bureaucrat.cpp \
 		Intern.cpp \
 		AForm.cpp \
@@ -33,8 +32,6 @@ CCLASS:=ConcreteClasses/
 CCLASS_SRC:=PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp \
 			ShrubberyCreationForm.cpp \
-
-
 
 OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))
 
