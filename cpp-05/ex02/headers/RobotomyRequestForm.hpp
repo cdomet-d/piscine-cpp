@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 14:48:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 10:04:34 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class RobotomyRequestForm : public AForm
 {
 private:
 	bool halfChance(void);
+	void checkAuth(const short int expect, const short int got);
 
 public:
 	/*                               ORTHODOX CLASS                           */
@@ -30,7 +31,6 @@ public:
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
 
 	/*                               METHODS                                  */
-	void checkAuth(const short int expect, const short int got);
 	void execute(Bureaucrat const &executor);
 };
 

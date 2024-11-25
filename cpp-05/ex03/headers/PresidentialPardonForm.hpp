@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 14:49:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 09:58:19 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ public:
 
 	/*                               METHODS                                  */
 	void execute(Bureaucrat const &executor);
+	PresidentialPardonForm* formAlloc(std::string formName, std::string target);
 };
 
 #endif

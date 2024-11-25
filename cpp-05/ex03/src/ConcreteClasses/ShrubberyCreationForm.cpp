@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 16:58:44 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 10:04:21 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
+
+ShrubberyCreationForm* ShrubberyCreationForm::formAlloc(std::string formName, std::string target)
+{
+	return new ShrubberyCreationForm(formName, target);
+}
+
 void ShrubberyCreationForm::checkAuth(const short int expect, const short int got)
 {
 	if (!this->getSignedStatus())
