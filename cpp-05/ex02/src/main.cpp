@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 16:56:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 15:00:17 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void testPresidentialForms(void);
 void testRobotomyRequestForm(void);
-void testShrubberyCreation(void);
+void testShrubberyForm(void);
 
 int main(int ac, char *av[])
 {
@@ -38,7 +38,7 @@ int main(int ac, char *av[])
 	else if (input.compare("2") == 0)
 		testRobotomyRequestForm();
 	else if (input.compare("3") == 0)
-		testShrubberyCreation();
+		testShrubberyForm();
 	else
 		std::cout << "/!\\ Unknown command: " << input << std::endl;
 	return (0);

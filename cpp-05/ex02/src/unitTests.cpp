@@ -6,201 +6,131 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/22 14:47:18 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 15:01:41 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include <iostream>
-
+#include "unitTests.hpp"
 void testPresidentialForms(void)
 {
-	try
 	{
+		Bureaucrat drone("Roselyn Myers", 1);
+		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+
 		std::cout << std::endl
-				  << "-----\n"
-				  << "Valid" << std::endl;
-		Bureaucrat drone("President Myers", 4);
-		PresidentialPardonForm pardon("NUSA Pardon Form For R. J. Linden", "Robert John Linden");
+				  << BG
+				  << "Valid" << R << std::endl;
 		drone.signForm(pardon);
-		std::cout << pardon << std::endl;
 		pardon.execute(drone);
 	}
-	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat drone("Roselyn Myers", 150);
+		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+
+		std::cout << BG << std::endl
+				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+		TEST_THROW(pardon.beSigned(drone), AForm::GradeTooLowException);
 	}
-	try
+
 	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Sign grade too low" << std::endl;
-		Bureaucrat drone("V", 150);
-		PresidentialPardonForm pardon("NUSA Pardon Form For R. J. Linden", "Robert John Linden");
+		Bureaucrat drone("Roselyn Myers", 10);
+		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+
+		std::cout << BG << std::endl
+				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
 		drone.signForm(pardon);
-		std::cout << pardon << std::endl;
-		pardon.execute(drone);
+		TEST_THROW(pardon.execute(drone), AForm::GradeTooLowException);
 	}
-	catch (std::exception &e)
+
 	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Exec grade too low" << std::endl;
-		Bureaucrat drone("Solomon Reed", 10);
-		PresidentialPardonForm pardon("NUSA Pardon Form For R. J. Linden", "Robert John Linden");
-		drone.signForm(pardon);
-		std::cout << pardon << std::endl;
-		pardon.execute(drone);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Unsigned form" << std::endl;
-		Bureaucrat drone("President Myers", 5);
-		PresidentialPardonForm pardon("NUSA Pardon Form For R. J. Linden", "Robert John Linden");
-		std::cout << pardon << std::endl;
-		pardon.execute(drone);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat drone("Roselyn Myers", 5);
+		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+
+		std::cout << BG << std::endl
+				  << "Expecting FormNotSignedException " << R << std::endl;
+		TEST_THROW(pardon.execute(drone), AForm::FormNotSignedException);
 	}
 }
 
 void testRobotomyRequestForm(void)
 {
-	try
 	{
+		Bureaucrat drone("Saka Drone", 1);
+		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+
 		std::cout << std::endl
-				  << "-----\n"
-				  << "Valid" << std::endl;
-		Bureaucrat drone("Y. Arasaka", 1);
-		RobotomyRequestForm request("Request for disposal of Adam Smasher", "A. Smasher");
-		drone.signForm(request);
-		std::cout << request << std::endl;
-		request.execute(drone);
+				  << BG
+				  << "Valid" << R << std::endl;
+		drone.signForm(robotomy);
+		robotomy.execute(drone);
 	}
-	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat drone("Saka Drone", 150);
+		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+
+		std::cout << BG << std::endl
+				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+		TEST_THROW(robotomy.beSigned(drone), AForm::GradeTooLowException);
 	}
-	try
+
 	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Sign grade too low" << std::endl;
-		Bureaucrat drone("J. R. Linden", 150);
-		RobotomyRequestForm request("Request for disposal of Adam Smasher ", "A. Smasher");
-		drone.signForm(request);
-		std::cout << request << std::endl;
-		request.execute(drone);
+		Bureaucrat drone("Saka Drone", 70);
+		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+
+		std::cout << BG << std::endl
+				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
+		drone.signForm(robotomy);
+		TEST_THROW(robotomy.execute(drone), AForm::GradeTooLowException);
 	}
-	catch (std::exception &e)
+
 	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Exec grade too low" << std::endl;
-		Bureaucrat drone("R. Amendiares", 70);
-		RobotomyRequestForm request("Request for disposal of Adam Smasher ", "A. Smasher");
-		drone.signForm(request);
-		std::cout << request << std::endl;
-		request.execute(drone);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Unsigned form" << std::endl;
-		Bureaucrat drone("Y. Arasaka", 1);
-		RobotomyRequestForm request("Request for disposal of Adam Smasher ", "A. Smasher");
-		std::cout << request << std::endl;
-		request.execute(drone);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat drone("Saka Drone", 5);
+		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+
+		std::cout << BG << std::endl
+				  << "Expecting FormNotSignedException " << R << std::endl;
+		TEST_THROW(robotomy.execute(drone), AForm::FormNotSignedException);
 	}
 }
 
-void testShrubberyCreation(void)
+void testShrubberyForm(void)
 {
-	try
+
 	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Valid" << std::endl;
 		Bureaucrat drone("Bisoutruffe", 1);
 		ShrubberyCreationForm trees("Garden tree plantation", "home");
+
+		std::cout << std::endl
+				  << BG
+				  << "Valid" << R << std::endl;
 		drone.signForm(trees);
-		std::cout << trees << std::endl;
 		trees.execute(drone);
 	}
-	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Sign grade too low" << std::endl;
 		Bureaucrat drone("Bisoutruffe", 150);
-		ShrubberyCreationForm trees("Garden tree plantation ", "home");
-		drone.signForm(trees);
-		std::cout << trees << std::endl;
-		trees.execute(drone);
+		ShrubberyCreationForm trees("Garden tree plantation", "home");
+
+		std::cout << BG << std::endl
+				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+		TEST_THROW(trees.beSigned(drone), AForm::GradeTooLowException);
 	}
-	catch (std::exception &e)
+
 	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Exec grade too low" << std::endl;
 		Bureaucrat drone("Bisoutruffe", 140);
-		ShrubberyCreationForm trees("Garden tree plantation ", "home");
+		ShrubberyCreationForm trees("Garden tree plantation", "home");
+
+		std::cout << BG << std::endl
+				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
 		drone.signForm(trees);
-		std::cout << trees << std::endl;
-		trees.execute(drone);
+		TEST_THROW(trees.execute(drone), AForm::GradeTooLowException);
 	}
-	catch (std::exception &e)
+
 	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << std::endl
-				  << "-----\n"
-				  << "Unsigned form" << std::endl;
-		Bureaucrat drone("Bisoutruffe", 1);
-		ShrubberyCreationForm trees("Garden tree plantation ", "home");
-		std::cout << trees << std::endl;
-		trees.execute(drone);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		Bureaucrat drone("Bisoutruffe", 5);
+		ShrubberyCreationForm trees("Garden tree plantation", "home");
+
+		std::cout << BG << std::endl
+				  << "Expecting FormNotSignedException " << R << std::endl;
+		TEST_THROW(trees.execute(drone), AForm::FormNotSignedException);
 	}
 }
