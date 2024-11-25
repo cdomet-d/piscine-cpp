@@ -6,12 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 14:48:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 15:58:20 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
-#define FORM_HPP
+# define FORM_HPP
 
 #include <string>
 #include <exception>
@@ -48,7 +48,7 @@ public:
 	Form &operator=(const Form &copy);
 
 	/*                               METHODS                                  */
-	void	beSigned(const Bureaucrat signer);
+	void beSigned(const Bureaucrat signer);
 
 	/*                               GETTERS                                  */
 	const std::string getName(void) const;

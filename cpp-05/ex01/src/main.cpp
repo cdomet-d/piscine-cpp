@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 16:01:25 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 17:00:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,27 @@
 
 void testBureaucrats(void);
 void testForms(void);
+void testFormSignature(void);
 
-int main(void)
+int main(int ac, char *av[])
 {
-	testBureaucrats();
-	testForms();
+	std::string input;
 
-	std::cout << std::endl << "Trying Form::beSigned()..." << std::endl;
-
-	try
+	if (ac != 2)
 	{
-		Form one("A form", 10, 15);
-		Form two("Another form", 10, 15);
-		Bureaucrat John = Bureaucrat("John", 5);
-		Bureaucrat Jack = Bureaucrat("John", 50);
-
-		one.beSigned(John);
-		std::cout << one << std::endl;
-		two.beSigned(Jack);
-		std::cout << two << std::endl;
+		std::cout << "To test Bureaucrat Creation, type 1" << std::endl
+				  << "To test Forms Creation: type 2" << std::endl
+				  << "To test Form signature: type 3" << std::endl;
+		return (1);
 	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << std::endl << "Trying Bureaucrat.signForm()..." << std::endl;
-	try
-	{
-		Form one("A form", 10, 15);
-		Form two("Another form", 10, 15);
-		Bureaucrat John = Bureaucrat("John", 5);
-		Bureaucrat Jack = Bureaucrat("John", 50);
-
-		John.signForm(one);
-		std::cout << one << std::endl;
-		Jack.signForm(two);
-		std::cout << two << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	input = av[1];
+	if (input.compare("1") == 0)
+		testBureaucrats();
+	else if (input.compare("2") == 0)
+		testForms();
+	else if (input.compare("3") == 0)
+		testFormSignature();
+	else
+		std::cout << "/!\\ Unknown command: " << input << std::endl;
+	return (0);
 }
