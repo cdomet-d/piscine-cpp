@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 09:58:34 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 10:32:49 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-
-PresidentialPardonForm *PresidentialPardonForm::formAlloc(std::string formName, std::string target)
-{ 
-	return new PresidentialPardonForm(formName, target);
-}
 
 void PresidentialPardonForm::checkAuth(const short int expect, const short int got)
 {

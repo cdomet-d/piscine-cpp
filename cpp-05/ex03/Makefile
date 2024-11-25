@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/21 12:17:31 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/11/25 11:10:11 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
 SRC+=	main.cpp \
 		unitTests.cpp \
 		Bureaucrat.cpp \
+		Intern.cpp \
 		AForm.cpp \
 
 SRC+= $(addprefix $(CCLASS), $(CCLASS_SRC))

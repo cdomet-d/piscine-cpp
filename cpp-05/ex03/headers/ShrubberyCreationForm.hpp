@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:03:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 10:32:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ public:
 
 	/*                               METHODS                                  */
 	void execute(Bureaucrat const &executor);
-	ShrubberyCreationForm* formAlloc(std::string formName, std::string target);
 };
 
 #endif

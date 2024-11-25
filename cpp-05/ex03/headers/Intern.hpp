@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:28 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/22 16:54:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 11:27:03 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 class Intern
 {
 private:
+	struct Entry {
+		const char* fName;
+		AForm* (*F)(std::string, std::string);
+	};
+
 public:
 	/*                               ORTHODOX CLASS                           */
 	Intern(void);
@@ -26,7 +31,7 @@ public:
 	Intern &operator=(const Intern &copy);
 
 	/*                               METHODS                                  */
-	AForm &makeForm(std::string formName, std::string target);
+	AForm *makeForm(std::string formName, std::string target);
 };
 
 #endif

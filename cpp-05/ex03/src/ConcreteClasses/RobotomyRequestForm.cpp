@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:01:13 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/25 10:33:02 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-RobotomyRequestForm* RobotomyRequestForm::formAlloc(std::string formName, std::string target)
-{
-	return new RobotomyRequestForm(formName, target);
-}
 bool RobotomyRequestForm::halfChance(void)
 {
 	time_t seed = time(NULL);

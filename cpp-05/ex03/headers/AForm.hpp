@@ -59,7 +59,6 @@ public:
 
 	/*                               METHODS                                  */
 	void beSigned(const Bureaucrat signer);
-		virtual AForm *formAlloc(std::string formName, std::string target) = 0;
 	virtual void checkAuth(const short int expect, const short int got) = 0;
 	virtual void execute(Bureaucrat const &executor) = 0;
 
