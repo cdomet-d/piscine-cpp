@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 17:03:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:21:15 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ short int Bureaucrat::getGrade(void) const
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &print)
 {
-	os << print.getName() << ", bureaucrat grade: " << print.getGrade();
+	os << print.getName() << ", bureaucrat grade [" << print.getGrade() << "]";
 	return os;
 }

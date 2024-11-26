@@ -6,14 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 17:05:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 09:58:58 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-// #ifndef TEST_THROW
 #define BR "\033[1m\033[31m"
 #define R "\033[0m"
 #define BG "\033[1m\033[33m"
@@ -32,9 +31,6 @@
 	{                                                                                         \
 		std::cout << BR "expected " #expected "" << ", got : " << e.what() << R << std::endl; \
 	}
-
-
-// #endif
 
 int main(void)
 {
@@ -58,20 +54,20 @@ int main(void)
 		std::cout << std::endl
 				  << BG
 				  << "Creating Invalid Bureaucrat (too low)" << R << std::endl;
-		TEST_THROW(Bureaucrat drone("Invalid grade", 151), Bureaucrat::GradeTooLowException);
+		TEST_THROW(Bureaucrat("Invalid grade", 151), Bureaucrat::GradeTooLowException);
 	}
 
 	{
 		std::cout << std::endl
 				  << BG
 				  << "Creating Invalid Bureaucrat (too high)" << R << std::endl;
-		TEST_THROW(Bureaucrat drone("Invalid grade", -5), Bureaucrat::GradeTooHighException);
+		TEST_THROW(Bureaucrat("Invalid grade", -5), Bureaucrat::GradeTooHighException);
 	}
 
 	{
 		std::cout << std::endl
 				  << BG
-				  << "Creating HighestGrade Bureaucrat" << R << std::endl;
+				  << "Creating HighestGrade Bureaucrat and attempting to promote it" << R << std::endl;
 		Bureaucrat drone("Higuest", 1);
 		TEST_THROW(drone.upgrade(), Bureaucrat::GradeTooHighException);
 	}
@@ -79,7 +75,7 @@ int main(void)
 	{
 		std::cout << std::endl
 				  << BG
-				  << "Creating LowestGrade Bureaucrat" << R << std::endl;
+				  << "Creating LowestGrade Bureaucrat and attempting to demote it" << R << std::endl;
 		Bureaucrat drone("Lowest", 150);
 		TEST_THROW(drone.downgrade(), Bureaucrat::GradeTooLowException);
 	}

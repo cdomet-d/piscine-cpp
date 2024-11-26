@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 15:51:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:00:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Invalid grade: too high (< 1)\033[0m";
+	return "	/!\\ Invalid grade: too high (< 1)";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "\033[0;31m	/!\\ Invalid grade: too low (> 150)\033[0m";
+	return "	/!\\ Invalid grade: too low (> 150)";
 }
 
 /* ************************************************************************** */
