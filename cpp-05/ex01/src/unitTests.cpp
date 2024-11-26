@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 16:58:56 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:20:04 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void testForms(void)
 		std::cout << std::endl
 				  << BG
 				  << "Creating Invalid Form (signGrade too high)" << R << std::endl;
-		TEST_THROW(Form("InvalidGrade", -5, 130), Form::GradeTooHighException);
+		TEST_THROW(Form("InvalidGrade", 0, 130), Form::GradeTooHighException);
 	}
 
 	{
@@ -50,7 +50,7 @@ void testForms(void)
 		std::cout << std::endl
 				  << BG
 				  << "Creating Invalid Form (execGrade too high)" << R << std::endl;
-		TEST_THROW(Form("InvalidGrade", 1, -5), Form::GradeTooHighException);
+		TEST_THROW(Form("InvalidGrade", 1, 0), Form::GradeTooHighException);
 	}
 }
 void testFormSignature(void)
@@ -59,9 +59,9 @@ void testFormSignature(void)
 		std::cout << std::endl
 				  << BG
 				  << "Valid Forms: Form::beSigned" << R << std::endl;
-		Bureaucrat John("John", 5);
-		Form form("A form", 10, 15);
-		std::cout << form << std::endl;
+		Bureaucrat John("John", 10);
+		Form form("Form A35b - 45", 10, 15);
+		std::cout << "attempting to sign " << form  << std::endl << "with " << John <<  std::endl;		
 		form.beSigned(John);
 		std::cout << form << std::endl;
 	}
@@ -70,9 +70,9 @@ void testFormSignature(void)
 		std::cout << std::endl
 				  << BG
 				  << "Valid Forms: Bureaucrat::signForm" << R << std::endl;
-		Bureaucrat John("John", 5);
-		Form form("A form", 10, 15);
-		std::cout << form << std::endl;
+		Bureaucrat John("John", 10);
+		Form form("Form A35b - 45", 10, 15);
+		std::cout << "attempting to sign " << form  << std::endl << "with " << John <<  std::endl;		
 		John.signForm(form);
 		std::cout << form << std::endl;
 	}
@@ -83,7 +83,8 @@ void testFormSignature(void)
 				  << "Invalid Forms: Bureaucrat::signForm" << R << std::endl;
 
 		Bureaucrat John("John", 25);
-		Form form("A form", 10, 15);
+		Form form("Form A35b - 45", 10, 15);
+		std::cout << "attempting to sign " << form  << std::endl << "with " << John <<  std::endl;
 		John.signForm(form);
 		std::cout << std::endl
 				  << BG
@@ -98,7 +99,8 @@ void testFormSignature(void)
 				  << "Invalid Forms: Bureaucrat::signForm" << R << std::endl;
 
 		Bureaucrat John("John", 25);
-		Form form("A form", 10, 15);
+		Form form("Form A35b - 45", 10, 15);
+		std::cout << "attempting to sign " << form  << std::endl << "with " << John <<  std::endl;		
 		TEST_THROW(form.beSigned(John), Form::GradeTooLowException);
 	}
 }

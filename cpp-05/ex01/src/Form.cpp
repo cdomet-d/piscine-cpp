@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:22 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 16:04:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:16:49 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,8 @@ bool Form::getSignedStatus(void) const
 
 std::ostream &operator<<(std::ostream &os, const Form &print)
 {
-	os << "	Form name:		" << print.getName() << std::endl
-	   << "	Is signed:		" << (print.getSignedStatus() ? "Yes" : "No") << std::endl
-	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
-	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl;
+	os << "[" << print.getName() << "] "
+	   << (print.getSignedStatus() ? "[Signed] " : "[Not signed] ") << "[Signing req "
+	   << print.getSignGrade() << "] [Exec req " << print.getExecGrade() << "] ";
 	return os;
 }
