@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 12:40:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 13:04:50 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 const char *Intern::FormNotFoundException::what() const throw()
 {
 	return "/!\\ Form type not found. Expected <robotomy request>, \
-		<presidential request> or <shrubbery request>";
+<presidential request> or <shrubbery request>";
 }
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
