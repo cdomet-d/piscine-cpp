@@ -114,10 +114,8 @@ bool AForm::getSignedStatus(void) const
 
 std::ostream &operator<<(std::ostream &os, const AForm &print)
 {
-	os << "	AForm name:		" << print.getName() << std::endl
-	   << "	Target:			" << print.getTarget() << std::endl
-	   << "	Is signed:		" << (print.getSignedStatus() ? "Yes" : "No") << std::endl
-	   << "	Required Grade to sign:	" << print.getSignGrade() << std::endl
-	   << "	Required Grade to exec:	" << print.getExecGrade() << std::endl;
+	os << "[" << print.getName() << "] "
+	   << (print.getSignedStatus() ? "[Signed] " : "[Not signed] ") << "[Signing req "
+	   << print.getSignGrade() << "] [Exec req " << print.getExecGrade() << "] ";
 	return os;
 }

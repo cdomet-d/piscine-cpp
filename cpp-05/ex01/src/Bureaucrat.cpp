@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 10:17:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:24:21 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name),
 	}
 	else if (_grade < 1)
 	{
-		std::cout << "	expected max [1 - 150], got " << _grade << std::endl;
+		std::cout << "	expected [1 - 150], got " << _grade << std::endl;
 		throw Bureaucrat::GradeTooHighException();
 	}
 }

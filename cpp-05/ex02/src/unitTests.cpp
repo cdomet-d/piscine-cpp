@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 17:02:38 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/26 10:34:44 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void testPresidentialForms(void)
 
 		std::cout << std::endl
 				  << BG
-				  << "Valid" << R << std::endl;
+				  << "Valid" << R << std::endl
+				  << "Using: " << pardon << "and\n"
+				  << drone << std::endl;
 		drone.signForm(pardon);
 		pardon.execute(drone);
 	}
@@ -29,7 +31,9 @@ void testPresidentialForms(void)
 		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
 
 		std::cout << BG << std::endl
-				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl
+				  << "Using: " << pardon << "and\n"
+				  << drone << std::endl;
 		TEST_THROW(pardon.beSigned(drone), AForm::GradeTooLowException);
 	}
 
@@ -38,7 +42,9 @@ void testPresidentialForms(void)
 		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
 
 		std::cout << BG << std::endl
-				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl
+				  << "Using: " << pardon << "and\n"
+				  << drone << std::endl;
 		drone.signForm(pardon);
 		TEST_THROW(pardon.execute(drone), AForm::GradeTooLowException);
 	}
@@ -48,7 +54,9 @@ void testPresidentialForms(void)
 		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
 
 		std::cout << BG << std::endl
-				  << "Expecting FormNotSignedException " << R << std::endl;
+				  << "Expecting FormNotSignedException " << R << std::endl
+				  << "Using: " << pardon << "and\n"
+				  << drone << std::endl;
 		TEST_THROW(pardon.execute(drone), AForm::FormNotSignedException);
 	}
 }
@@ -61,7 +69,9 @@ void testRobotomyRequestForm(void)
 
 		std::cout << std::endl
 				  << BG
-				  << "Valid" << R << std::endl;
+				  << "Valid" << R << std::endl
+				  << "Using: " << robotomy << "and\n"
+				  << drone << std::endl;
 		drone.signForm(robotomy);
 		robotomy.execute(drone);
 	}
@@ -70,7 +80,10 @@ void testRobotomyRequestForm(void)
 		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
 
 		std::cout << BG << std::endl
-				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting sign GradeTooLowException" << R << std::endl
+				  << "Using: " << robotomy << "and\n"
+				  << drone << std::endl;
+
 		TEST_THROW(robotomy.beSigned(drone), AForm::GradeTooLowException);
 	}
 
@@ -79,7 +92,9 @@ void testRobotomyRequestForm(void)
 		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
 
 		std::cout << BG << std::endl
-				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl
+				  << "Using: " << robotomy << "and\n"
+				  << drone << std::endl;
 		drone.signForm(robotomy);
 		TEST_THROW(robotomy.execute(drone), AForm::GradeTooLowException);
 	}
@@ -89,7 +104,9 @@ void testRobotomyRequestForm(void)
 		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
 
 		std::cout << BG << std::endl
-				  << "Expecting FormNotSignedException " << R << std::endl;
+				  << "Expecting FormNotSignedException " << R << std::endl
+				  << "Using: " << robotomy << "and\n"
+				  << drone << std::endl;
 		TEST_THROW(robotomy.execute(drone), AForm::FormNotSignedException);
 	}
 }
@@ -103,7 +120,9 @@ void testShrubberyForm(void)
 
 		std::cout << std::endl
 				  << BG
-				  << "Valid" << R << std::endl;
+				  << "Valid" << R << std::endl
+				  << "Using: " << trees << "and\n"
+				  << drone << std::endl;
 		drone.signForm(trees);
 		trees.execute(drone);
 	}
@@ -112,7 +131,9 @@ void testShrubberyForm(void)
 		ShrubberyCreationForm trees("Garden tree plantation", "home");
 
 		std::cout << BG << std::endl
-				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting sign GradeTooLowException" R << std::endl
+				  << "Using: " << trees << "and\n"
+				  << drone << std::endl;
 		TEST_THROW(trees.beSigned(drone), AForm::GradeTooLowException);
 	}
 
@@ -121,7 +142,9 @@ void testShrubberyForm(void)
 		ShrubberyCreationForm trees("Garden tree plantation", "home");
 
 		std::cout << BG << std::endl
-				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl;
+				  << "Expecting exec GradeTooLowException" << R << std::endl
+				  << "Using: " << trees << "and\n"
+				  << drone << std::endl;
 		drone.signForm(trees);
 		TEST_THROW(trees.execute(drone), AForm::GradeTooLowException);
 	}
@@ -131,7 +154,9 @@ void testShrubberyForm(void)
 		ShrubberyCreationForm trees("Garden tree plantation", "home");
 
 		std::cout << BG << std::endl
-				  << "Expecting FormNotSignedException " << R << std::endl;
+				  << "Expecting FormNotSignedException " << R << std::endl
+				  << "Using: " << trees << "and\n"
+				  << drone << std::endl;
 		TEST_THROW(trees.execute(drone), AForm::FormNotSignedException);
 	}
 }
