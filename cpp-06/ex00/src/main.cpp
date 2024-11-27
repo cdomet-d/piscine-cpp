@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 17:49:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/27 13:33:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@
 #define R "\033[0m"
 #define BG "\033[1m\033[33m"
 
-int main(void)
+int main(int ac, char *av[])
 {
-	std::string str = "97";
-	ScalarConverter::convert(str);
+	if (ac != 2)
+	{
+		std::cout << "Expected one argument" << std::endl;
+		return 1;
+	}
+	std::string s = av[1];
+	ScalarConverter::convert(s);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 17:30:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/27 12:43:36 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 class ScalarConverter
 {
 private:
+	/*                               ORTHODOX CLASS                           */
 	ScalarConverter(void);
 	ScalarConverter(const ScalarConverter &copy);
 	~ScalarConverter(void);
 	ScalarConverter &operator=(const ScalarConverter &copy);
+/*                               METHODS                                  */
+	static bool isChar(std::string str);
+	static bool isValid(std::string str);
+	static void printChar(int c);
 
 public:
-	/*                               ORTHODOX CLASS                           */
 
 	/*                               METHODS                                  */
 	static void convert(std::string &toConvert);
