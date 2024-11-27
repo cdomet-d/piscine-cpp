@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/26 17:33:16 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/11/27 14:37:03 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ SRC_DIR:= src/
 H:= headers/
 
 CC:=c++
-CFLAGS:= -Werror -Wextra -Wall -Wshadow -g3
-#  -std=c++98
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -g3 -std=c++98
 CXXFLAGS:=-MMD -MP -I $(H)
 MAKEFLAGS:=--no-print-directory
 

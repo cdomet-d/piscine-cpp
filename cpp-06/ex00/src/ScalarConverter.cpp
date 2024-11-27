@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/27 13:59:22 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/27 17:46:21 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cerrno>
 #include <limits>
+#include <cstdlib>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
@@ -44,28 +46,39 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &comp)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void ScalarConverter::printChar(int c)
+void ScalarConverter::printChar(double c)
 {
 	if (c >= 32 && c <= 127)
-		std::cout << "Char: |" << static_cast<char>(c) << "|" << std::endl;
+		std::cout << std::fixed << std::showpoint << std::setprecision(1)
+				  << "Char: " << static_cast<char>(c) << std::endl;
 	else
-		std::cout << "Char: Out of printable range" << std::endl;
+		std::cout << "Char: impossible conversion" << std::endl;
 }
 
-bool ScalarConverter::isValid(std::string str)
+void ScalarConverter::printInt(double c)
 {
-	if (ScalarConverter::isChar(str))
-		return true;
-	for (std::string::iterator it = str.begin(); it != str.end(); it++)
-	{
-		if (!isdigit(*it))
-		{
-			if (it == str.begin() && *it == '-')
-				continue;
-			return false;
-		}
-	}
-	return true;
+	if (c >= std::numeric_limits<int>::min() && c <= std::numeric_limits<int>::max())
+		std::cout << std::fixed << std::showpoint << std::setprecision(1)
+				  << "Int: " << static_cast<int>(c) << std::endl;
+	else
+		std::cout << "Int: impossible conversion" << std::endl;
+}
+void ScalarConverter::printFloat(double c)
+{
+	if (c >= -(std::numeric_limits<float>::max()) && c <= std::numeric_limits<float>::max())
+		std::cout << std::fixed << std::showpoint << std::setprecision(1)
+				  << "Float: " << static_cast<float>(c) << "f" << std::endl;
+	else
+		std::cout << "Float: impossible conversion" << std::endl;
+}
+
+void ScalarConverter::printDouble(double c)
+{
+	if ((c >= -(std::numeric_limits<double>::max()) && c <= std::numeric_limits<double>::max()))
+		std::cout << std::fixed << std::showpoint << std::setprecision(1)
+				  << "Double: " << static_cast<double>(c) << std::endl;
+	else
+		std::cout << "Double: impossible conversion" << std::endl;
 }
 
 bool ScalarConverter::isChar(std::string str)
@@ -78,32 +91,40 @@ bool ScalarConverter::isChar(std::string str)
 		return (true);
 }
 
+void ScalarConverter::printCharInput(std::string str)
+{
+	char c = str[0];
+	std::cout << std::fixed << std::showpoint << std::setprecision(1)
+			  << "Int: " << static_cast<int>(c) << std::endl
+			  << "Float: " << static_cast<float>(c) << "f" << std::endl
+			  << "Double: " << static_cast<double>(c) << std::endl
+			  << "Char: " << static_cast<char>(c) << std::endl;
+}
+
+bool ScalarConverter::isValid(std::string str)
+{
+	return str == "f" || str.empty();
+}
+
 void ScalarConverter::convert(std::string &toConvert)
 {
-	if (!ScalarConverter::isValid(toConvert))
+	char *endptr;
+
+	if (ScalarConverter::isChar(toConvert))
+		return ScalarConverter::printCharInput(toConvert);
+	double c = std::strtod(toConvert.c_str(), &endptr);
+	if (errno == ERANGE)
+	{
+		std::cout << "Out of range" << std::endl;
+		return;
+	}
+	if (!ScalarConverter::isValid(endptr))
 	{
 		std::cout << "Is invalid charset " << std::endl;
 		return;
 	}
-	if (ScalarConverter::isChar(toConvert))
-	{
-		char c = toConvert[0];
-		std::cout << std::fixed << std::showpoint << std::setprecision(1)
-				  << "Int: " << static_cast<int>(c) << std::endl
-				  << "Float: " << static_cast<float>(c) << "f" << std::endl
-				  << "Double: " << static_cast<double>(c) << std::endl
-				  << "Char: " << static_cast<char>(c) << std::endl;
-		return;
-	}
-	long c = std::atoll(toConvert.c_str());
-	
-	std::cout << std::numeric_limits<long long>::max() << std::endl;
-	std::cout << c << std::endl;
-
-	std::cout << std::fixed << std::showpoint << std::setprecision(1)
-			  << "Int: " << ((c >= std::numeric_limits<int>::min() && c <= std::numeric_limits<int>::max()) ? std::to_string(static_cast<int>(c)) : "Impossible") << std::endl
-			  << "Double: " << ((c >= std::numeric_limits<double>::min() && c <= std::numeric_limits<double>::max()) ? std::to_string(static_cast<double>(c)) : "Impossible") << std::endl 
-			  << "Float: " << ((c >= std::numeric_limits<int>::min() && c <= std::numeric_limits<int>::max()) ? std::to_string(static_cast<float>(c)) : "Impossible") << std::endl 
-			  << "Char: " << ((c >= std::numeric_limits<char>::min() && c <= std::numeric_limits<char>::max()) ? std::to_string(static_cast<char>(c)) : "Impossible") << std::endl 
-			  << std::endl;
+	ScalarConverter::printChar(c);
+	ScalarConverter::printDouble(c);
+	ScalarConverter::printFloat(c);
+	ScalarConverter::printInt(c);
 }
