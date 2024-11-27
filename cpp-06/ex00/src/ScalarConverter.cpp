@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/27 17:46:21 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/27 17:51:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void ScalarConverter::printDouble(double c)
 		std::cout << "Double: impossible conversion" << std::endl;
 }
 
-bool ScalarConverter::isChar(std::string str)
+bool ScalarConverter::isChar(const std::string &str)
 {
 	if (str.length() > 1)
 		return (false);
@@ -91,7 +91,7 @@ bool ScalarConverter::isChar(std::string str)
 		return (true);
 }
 
-void ScalarConverter::printCharInput(std::string str)
+void ScalarConverter::printCharInput(const std::string &str)
 {
 	char c = str[0];
 	std::cout << std::fixed << std::showpoint << std::setprecision(1)
@@ -101,7 +101,7 @@ void ScalarConverter::printCharInput(std::string str)
 			  << "Char: " << static_cast<char>(c) << std::endl;
 }
 
-bool ScalarConverter::isValid(std::string str)
+bool ScalarConverter::isValid(const std::string &str)
 {
 	return str == "f" || str.empty();
 }

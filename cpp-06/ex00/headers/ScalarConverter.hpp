@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/27 17:35:34 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/11/27 17:50:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ private:
 	ScalarConverter &operator=(const ScalarConverter &copy);
 	
 /*                               METHODS                                  */
-	static bool isChar(std::string str);
-	static bool isValid(std::string str);
-	static void printCharInput(std::string str);
+	static bool isChar(const std::string &str);
+	static bool isValid(const std::string &str);
+	static void printCharInput(const std::string &str);
 	static void printChar(double c);
 	static void printInt(double c);
 	static void printFloat(double c);
