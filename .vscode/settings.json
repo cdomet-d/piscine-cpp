@@ -50,7 +50,22 @@
 		"ctime": "cpp",
 		"iomanip": "cpp",
 		"sstream": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"cinttypes": "cpp",
+		"cstring": "cpp",
+		"chrono": "cpp",
+		"complex": "cpp",
+		"condition_variable": "cpp",
+		"forward_list": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"unordered_set": "cpp",
+		"ratio": "cpp",
+		"mutex": "cpp",
+		"stop_token": "cpp",
+		"thread": "cpp",
+		"typeindex": "cpp",
+		"semaphore": "cpp"
 	},
 	"explorer.excludeGitIgnore": true,
 	"C_Cpp.default.compilerPath": "/usr/bin/gcc"

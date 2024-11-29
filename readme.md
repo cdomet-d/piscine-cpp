@@ -32,6 +32,24 @@
 - Read all modules before starting.
 - Think critically and use your brain!
 
+## Glossary
+### Overhead (and runtime overhead)
+- Overhead is the ressources needed to set up an operation. In computing, it refers to additional cost of resource usage incurred by certain implementation designs.
+- Runtime overhead is overhead occuring as the program is running.
+
+### Object-Oriented Programming
+
+- **Class** : User-defined type encapsulating data and methods
+- **Object** : Instance of a class
+- **Constructor** : Special method called when object is created
+- **Destructor** : Special method called when object is destroyed
+- **Inheritance** : Mechanism for deriving new classes from existing classes
+- **Polymorphism** : Ability of objects to take multiple forms
+- **Encapsulation** : Hiding internal object details
+- **Virtual Method** : Method that can be overridden in derived classes
+
+
 # Ressources
 - [Learncpp.com](https://www.learncpp.com/)
 - [CPP // Oriented programming course](https://www.youtube.com/watch?v=iVLQeWbgbXs&list=PL43pGnjiVwgTJg7uz8KUGdXRdGKE0W_jN) (video)
+- [CPP Standard](https://isocpp.org/)
