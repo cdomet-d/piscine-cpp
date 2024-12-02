@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/11/29 15:46:57 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/02 15:19:40 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= Serializer
+NAME:= realType
 BDIR:=.bdir/
 SRC_DIR:= src/
 H:= headers/
@@ -22,6 +22,7 @@ MAKEFLAGS:=--no-print-directory
 
 SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
 SRC=	main.cpp \
+		Base.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)

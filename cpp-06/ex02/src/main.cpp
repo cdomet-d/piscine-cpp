@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:10:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/02 15:38:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/12/02 15:14:00 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/12/02 16:52:35 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-#define BASE_HPP
+#include "Base.hpp"
+#include <iostream>
 
-class A;
-class B;
-class C;
-
-class Base
+int main (void)
 {
-public:
-	virtual ~Base();
-	Base* generate();
-	void identify(Base* p);
-	void identify(Base& p);
-	
-};
+	Base base;
+	Base *ptr = base.generate();
 
-class A : public Base {};
-class B : public Base {};
-class C : public Base {};
-
-#endif
+	if (!ptr)
+		return 1;
+	Base &ref = *ptr;
+	base.identify(ptr);
+	base.identify(ref);
+	delete ptr;
+	return 0;
+}
