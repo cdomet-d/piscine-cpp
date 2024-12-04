@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:58:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/03 16:12:21 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/04 13:31:08 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,28 @@
 #include <iostream>
 
 template <typename T>
-void swap(T *a, T *b)
+void swap(T& a, T& b)
 {
-	T *tmp;
+	T tmp;
 
 	tmp = a;
-	std::cout << a << " | " << b << std::endl;
 	a = b;
-	std::cout << a << " | " << b << std::endl;
 	b = tmp; 
-	std::cout << a << " | " << b << std::endl;
+}
+
+template <typename T>
+T min(T a, T b)
+{
+	if (a == b)
+		return b;
+	return (a < b) ? a : b;
+}
+
+template <typename T>
+T max(T a, T b)
+{
+	if (a == b)
+		return b;
+	return (a > b) ? a : b;
 }
 #endif
