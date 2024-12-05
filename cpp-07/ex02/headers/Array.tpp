@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:16:55 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/05 16:48:02 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/05 17:22:34 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,18 @@
 /* ************************************************************************** */
 
 template <typename T>
-Array<T>::Array(void) : len(0)
-{
-	try {
-		arr = new T[0];
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-		return;
-	}
-}
+Array<T>::Array(void) : len(0), arr(new T[0]) { }
 
 template <typename T>
-Array<T>::Array(unsigned int n) : len(n)
+Array<T>::Array(unsigned int n) : len(n), arr(new T[n])
 {
-	arr = new T[n];
 	for (size_t i = 0; i < n; i++)
-		arr[i] = 0;
+		arr[i] = T();
 	return;
 }
 
 template <typename T>
-Array<T>::Array(const Array &copy)
+Array<T>::Array(const Array &copy) : arr(NULL)
 {
 	*this = copy;
 }
@@ -46,13 +37,13 @@ Array<T>::Array(const Array &copy)
 template <typename T>
 Array<T>::~Array(void)
 {
-	delete []this->arr;
+	delete[] this->arr;
 }
 
 template <typename T>
 Array<T> &Array<T>::operator=(const Array<T> &comp)
 {
-	delete []this->arr;
+	delete[] this->arr;
 	this->arr = new T[comp.len];
 	this->len = comp.len;
 	for (size_t i = 0; i < this->len; i++)
@@ -63,11 +54,20 @@ Array<T> &Array<T>::operator=(const Array<T> &comp)
 template <typename T>
 T &Array<T>::operator[](size_t index) const
 {
+	if (index < 0 || index > len) {
+		std::cout << "index is out of bounds | ";
+		throw std::exception();
+	}
 	return arr[index];
 }
 template <typename T>
 T &Array<T>::operator[](size_t index)
 {
+	if (index < 0 || index > len) {
+		std::cout << "index is out of bounds: expected [0 - " << len
+				  << "] got: " << index << " | ";
+		throw std::exception();
+	}
 	return arr[index];
 }
 

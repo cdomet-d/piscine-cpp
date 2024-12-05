@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:15:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/05 16:33:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/05 17:19:09 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class Array {
 
 	/*                               SETTERS                                  */
   private:
-	T *arr;
 	size_t len;
+	T *arr;
 };
 
 #include "Array.tpp"
