@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:56:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/06 14:23:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/06 14:31:53 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 #include <iostream>
 
 template <typename T>
-void printArr(T &arr, int seek)
+void printArr(const T &arr, int seek)
 {
 	std::cout <<"seeking " << seek << " in: ";
-	typename T::iterator it = arr.begin();
+	typename T::const_iterator it = arr.begin();
 	for (; it != arr.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
 template <typename T>
-typename T::iterator easyFind(T &container, int n)
+typename T::const_iterator easyFind(const T &container, int n)
 {
-	typename T::iterator it = container.begin();
+	typename T::const_iterator it = container.begin();
 	for (; it != container.end(); ++it) {
 		if (*it == n)
 			return it;
