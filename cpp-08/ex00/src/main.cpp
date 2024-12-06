@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:39:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/06 14:36:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/06 15:05:16 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,22 @@ int main()
 						  << std::distance(arr.begin(), found) << std::endl;
 			std::cout << std::endl;
 		}
+	}
+
+	{
+		int seek = -8;
+
+		std::cout << "Test for empty containers :" << std::endl;
+		const std::vector<int> arr;
+
+		std::vector<int>::const_iterator found = easyFind(arr, seek);
+
+		printArr(arr, seek);
+		if (found == arr.end())
+			std::cout << seek << " not found in arr" << std::endl;
+		else
+			std::cout << seek << " found at pos "
+					  << std::distance(arr.begin(), found) << std::endl;
+		std::cout << std::endl;
 	}
 }
