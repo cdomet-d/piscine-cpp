@@ -65,7 +65,8 @@
 		"stop_token": "cpp",
 		"thread": "cpp",
 		"typeindex": "cpp",
-		"semaphore": "cpp"
+		"semaphore": "cpp",
+		"list": "cpp"
 	},
 	"explorer.excludeGitIgnore": true,
 	"C_Cpp.default.compilerPath": "/usr/bin/gcc"
