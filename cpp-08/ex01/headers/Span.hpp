@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/06 16:42:37 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/09 13:52:42 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #include <iostream>
 #include <vector>
 
-
 class Span {
   public:
-
 	/*                               ORTHODOX CLASS                           */
 	Span(void);
 	Span(unsigned int n);
@@ -29,7 +27,8 @@ class Span {
 
 	/*                               METHODS                                  */
 	void addNumber(unsigned int n);
-	void fillSpan(unsigned int *values, std::vector<unsigned int>::iterator begin,
+	void fillSpan(const std::vector<unsigned int>::iterator pos,
+				  std::vector<unsigned int>::iterator begin,
 				  std::vector<unsigned int>::iterator end);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
@@ -39,6 +38,7 @@ class Span {
 	unsigned int getSpanSize() const;
 	std::vector<unsigned int>::iterator getSpanBegin();
 	std::vector<unsigned int>::iterator getSpanEnd();
+	void print();
 
   private:
 	std::vector<unsigned int> span;
