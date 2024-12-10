@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/06 15:07:36 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/10 12:55:09 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ MAKEFLAGS:=--no-print-directory
 
 SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
 SRC=	main.cpp \
+		unitTest.cpp \
 		Span.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))

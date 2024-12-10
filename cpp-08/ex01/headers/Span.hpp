@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/09 13:52:42 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/10 13:36:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ class Span {
 				  std::vector<unsigned int>::iterator end);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
+
+	class MaxElemExceeded : public std::exception {
+	  public:
+		const char *what() const throw();
+	};
 
 	/*                               GETTERS                                  */
 	unsigned int getTrackElem() const;
