@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:40 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/10 17:08:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/11 16:12:10 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::ostream &operator<<(std::ostream &os, const Span &print)
 	return os;
 }
 
-const char *Span::MaxElemExceeded::what() const throw()
+const char *Span::ElemCountTooHigh::what() const throw()
 {
 	return "	Too many elements in span";
 }
@@ -60,7 +60,7 @@ Span &Span::operator=(const Span &comp)
 void Span::addNumber(unsigned int n)
 {
 	if (trackElem >= spanSize)
-		throw Span::MaxElemExceeded();
+		throw Span::ElemCountTooHigh();
 	span.push_back(n);
 	trackElem += 1;
 }
@@ -75,7 +75,7 @@ void Span::fillSpan(const std::vector<unsigned int>::iterator pos,
 	if (begin >= end)
 		throw std::out_of_range("	range is invalid (begin > end)");
 	if (trackElem + std::distance(begin, end) > spanSize)
-		throw Span::MaxElemExceeded();
+		throw Span::ElemCountTooHigh();
 	span.insert(pos, begin, end);
 	trackElem += std::distance(begin, end);
 }

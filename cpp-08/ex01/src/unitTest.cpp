@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/10 17:29:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/11 16:12:10 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void invalidIterators(Span span, std::vector<unsigned int> src)
 			   std::out_of_range);
 	std::cout << "filling Span: src greater than span.size()" << std::endl;
 	TEST_THROW(span.fillSpan(span.getSpanBegin(), src.begin(), src.end() + 10),
-			   Span::MaxElemExceeded);
+			   Span::ElemCountTooHigh);
 }
 static void invalidIntervals(Span span)
 {
@@ -67,10 +67,10 @@ static void elemLimits(Span span, std::vector<unsigned int> src)
 		return;
 	}
 	std::cout << "filling Span, then adding another number" << std::endl;
-	TEST_THROW(span.addNumber(999), Span::MaxElemExceeded);
+	TEST_THROW(span.addNumber(999), Span::ElemCountTooHigh);
 	std::cout << "filling Span, then inserting another range" << std::endl;
 	TEST_THROW(span.fillSpan(span.getSpanBegin(), src.begin(), src.end()),
-			   Span::MaxElemExceeded);
+			   Span::ElemCountTooHigh);
 }
 
 void largeArr(const char *str)
