@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/12 17:48:08 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ new: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo
-	@printf '$(B)%.40s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo
-	@printf '$(B)%.40s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
 
 $(BDIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -46,7 +46,7 @@ $(BDIR)%.o: %.cpp
 
 clean:
 	@echo
-	@printf '$(B)%.40s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
 	$(RM) $(BDIR)
 	$(RM) *.log
 
@@ -58,22 +58,14 @@ fclean: clean
 	
 re: fclean all
 
-LOG:= test.log
-test: all
-	./$(NAME) elden_ring "Elden" "Baguette"
-	@echo "PARAM : elden_ring "Elden" "Baguette"" > $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
-	./$(NAME) elden_ring "a" "aaa"
-	@echo "PARAM : elden_ring "a" "aaa"" >> $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
-	./$(NAME) elden_ring " " ""
-	@echo 'elden_ring " " ""' >> $(LOG)
-	@echo "-----------------------------------" >> $(LOG)
-	@cat elden_ring.replace >> $(LOG)
+.PHONY : clean fclean all re
 
 # Formatting combinations
+PIBOLD= $(BO)$(M)
+BLBOLD= $(BO)$(B)
+CYBOLD= $(BO)$(C)
+PIBOLD= $(BO)$(P)
+
 # Text
 # reset
 R=\033[0m

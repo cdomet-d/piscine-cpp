@@ -6,32 +6,30 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/12 17:48:08 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/12 17:48:07 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= Animal
+NAME:= exe
 BDIR:=.bdir/
+SRC_DIR:= src/
+H:= headers/
 
 CC:=c++
-CFLAGS:= -Werror -Wextra -Wall -Wshadow -std=c++98 -g3
-CPPFLAGS:=-MMD -MP
+CFLAGS:= -Werror -Wextra -Wall -Wshadow -g3 -std=c++98
+CXXFLAGS:=-MMD -MP -I $(H)
 MAKEFLAGS:=--no-print-directory
 
-SRC:=	Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		main.cpp \
+SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
+SRC=	main.cpp \
+		unitTest.cpp \
 
-OBJ:=$(addprefix $(BDIR), $(SRC:%.cpp=%.o))
+OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)
 
 RM:= rm -rf
 
 all: $(NAME)
-new: $(NAME) 
 
 $(NAME): $(OBJ)
 	@echo
@@ -43,7 +41,7 @@ $(NAME): $(OBJ)
 $(BDIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@echo "$@"
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(CXXFLAGS) -o $@ -c $<
 
 -include $(DEPS)
 

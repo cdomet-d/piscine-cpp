@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/04 18:11:25 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/12 17:48:08 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo
-	@printf '$(MABOLD)%.40s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo
-	@printf '$(MABOLD)%.40s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
 
 $(BDIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -46,7 +46,7 @@ $(BDIR)%.o: %.cpp
 
 clean:
 	@echo
-	@printf '$(MABOLD)%.40s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
+	@printf '$(CYBOLD)%.30s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
 	$(RM) $(BDIR)
 
 	
@@ -64,7 +64,7 @@ info:
 .PHONY: all clean info fclean re
 
 # Formatting combinations
-MABOLD= $(BO)$(M)
+PIBOLD= $(BO)$(M)
 
 # Text
 # reset

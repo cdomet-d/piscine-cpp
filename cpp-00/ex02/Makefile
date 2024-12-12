@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 13:29:02 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/09/03 15:50:50 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/12 17:37:01 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo
-	@printf '$(PB)%.40s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
+	@printf '$(PB)%.30s\n\n$(R)' "-- Making $(NAME)... ---------------------------------------------------------------------"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo
-	@printf '$(PB)%.40s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
+	@printf '$(PB)%.30s\n\n$(R)' "-- $(NAME) done ! ---------------------------------------------------------------------"
 	
 $(BDIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -44,7 +44,7 @@ $(BDIR)%.o: %.cpp
 
 clean:
 	@echo
-	@printf '$(PB)%.40s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
+	@printf '$(PB)%.30s\n$(R)' "-- Cleaning... ---------------------------------------------------------------------"
 	$(RM) $(BDIR)
 
 	
@@ -54,48 +54,43 @@ fclean: clean
 	
 re: fclean all
 
-help:
-	@echo "make \t\t $(FAINT)creates $(NAME)$(R)"
-	@echo "make clean \t $(FAINT)deletes $(BDIR)$(R)"
-	@echo "make fclean \t $(FAINT)deletes $(NAME) and $(BDIR)$(R)"
-	@echo "make kitty \t $(FAINT)prints a lil kitty on the terminal$(R)"
-	@echo "make leaks \t $(FAINT)runs $(NAME) with $(LVPARAM) and a preset of arguments (current : $(PARAM))$(R)"
-	@echo "make race \t $(FAINT)runs $(NAME) with $(RVPARAM) and a preset of arguments (current : $(PARAM))$(R)"
-	@echo "make re \t $(FAINT)deletes all objects & dependencies and recompiles $(NAME)$(R)"
+.PHONY : clean fclean all re
 
-kitty:
-	@echo "   |\__/,|   ( \  "
-	@echo " _.|o o  |_   ) ) "
-	@echo "-(((---(((--------"
-
-
-.PHONY : clean fclean all re help run kitty leaks race
+# Formatting combinations
+PIBOLD= $(BO)$(M)
+BLBOLD= $(BO)$(B)
+CYBOLD= $(BO)$(C)
+PIBOLD= $(BO)$(P)
 
 # Text
+# reset
 R=\033[0m
+# faint
 F=\033[2m
+# underlined
 U=\033[4m
-B=\033[1m
+# bold
+BO=\033[1m
 
-# Codes d'échappement ANSI pour les couleurs
-PB=$(PINK)$(BOLD)
-MB=$(MAGENTA)$(B)
-CB=$(CYAN)$(B)
+# Font color
+# red
+RE=\033[0;31m 
+# green
+G=\033[0;32m
+# yellow
+Y=\033[0;33m
+# blue
+B=\033[0;34m
+# magenta
+M=\033[0;35m
+# cyan
+C=\033[0;36m
+# white
+W=\033[0;37m
+# pink
+P=\033[38;5;206m.
 
-BGA=$(WHITE)$(BG_B)
-RED=\033[0;31m
-GREEN=\033[0;32m
-YELLOW=\033[0;33m
-BLUE=\033[0;34m
-MAGENTA=\033[0;35m
-CYAN=\033[0;36m
-WHITE=\033[0;37m
-PINK=\033[38;5;206m.
-
-# Codes d'échappement ANSI pour le texte en gras
-BOLD=\033[1m
-
-# Codes d'échappement ANSI pour les fonds colorés
+# Background
 BG_RED=\033[41m
 BG_GREEN=\033[42m
 BG_YELLOW=\033[43m
