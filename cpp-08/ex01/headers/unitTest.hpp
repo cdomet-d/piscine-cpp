@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/10 17:29:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/12 16:40:15 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 		testObject;                                                            \
 		std::cout << BR "expected " #expected ", but program didn't throw" R   \
 				  << std::endl;                                                \
-	} catch (expected  e) {                                                   \
+	} catch (expected e) {                                                     \
 		std::cout << BG << e.what() << R << std::endl;                         \
 	} catch (std::exception & e) {                                             \
 		std::cout << BR "expected " #expected "" << ", got : " << e.what()     \
@@ -34,6 +34,5 @@
 
 void errorHandling(Span span, std::vector<unsigned int> src);
 void largeArr(const char *str);
-
 
 #endif
