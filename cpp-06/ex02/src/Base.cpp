@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:10:08 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/02 17:08:18 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/13 14:48:43 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ Base *Base::generate()
 	seed = time(0) % 3;
 
 	std::cout << "Seed is: " << seed << std::endl;
-	switch (seed)
-	{
+	switch (seed) {
 	case 0:
 		std::cout << "Creating A" << std::endl;
 		return new A();
