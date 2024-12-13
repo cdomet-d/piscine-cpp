@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/28 14:38:26 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/13 14:27:49 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 #include <string>
 
-class ScalarConverter
-{
-private:
+class ScalarConverter {
+  private:
 	/*                               ORTHODOX CLASS                           */
 	ScalarConverter(void);
 	ScalarConverter(const ScalarConverter &copy);
@@ -33,7 +32,7 @@ private:
 	static void printFloat(double c);
 	static void printDouble(double c);
 
-public:
+  public:
 	/*                               METHODS                                  */
 	static void convert(std::string &toConvert);
 };
