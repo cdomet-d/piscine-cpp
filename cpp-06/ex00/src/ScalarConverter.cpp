@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/28 14:41:24 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/13 14:25:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void ScalarConverter::printChar(double c)
 {
 	if (c >= 32 && c <= 127)
 		std::cout << std::fixed << std::showpoint << std::setprecision(1)
-				  << "Char: " << static_cast<char>(c) << std::endl;
+				  << "Char: '" << static_cast<char>(c) << "'" << std::endl;
 	else
 		std::cout << "Char: not displayable" << std::endl;
 }
