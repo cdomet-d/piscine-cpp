@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   Input.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/14 16:47:05 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/12/14 16:42:47 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/12/14 16:45:07 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+#ifndef INPUT_HPP
+#define INPUT_HPP
 
-#include "Database.hpp"
-#include "Input.hpp"
+#include <map>
+#include <string>
 
-class BitcoinExchange {
+class Input {
   public:
 	/*                               ORTHODOX CLASS                           */
-	BitcoinExchange(void);
-	BitcoinExchange(const BitcoinExchange &copy);
-	~BitcoinExchange(void);
-	BitcoinExchange &operator=(const BitcoinExchange &copy);
+	Input(void);
+	Input(const Input &copy);
+	~Input(void);
+	Input &operator=(const Input &copy);
 
 	/*                               METHODS                                  */
+
 	/*                               GETTERS                                  */
+	getInput();
+	isInputValid();
 
 	/*                               SETTERS                                  */
   private:
-	Database dbase;
-	Input input;
+	std::map< std::string, int > input;
 };
 
 #endif

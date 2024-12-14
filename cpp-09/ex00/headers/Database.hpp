@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   Database.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/14 16:47:05 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/12/14 16:42:36 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/12/14 17:33:45 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+#ifndef DATABASE_HPP
+#define DATABASE_HPP
 
-#include "Database.hpp"
-#include "Input.hpp"
+#include <iostream>
+#include <map>
+#include <string>
 
-class BitcoinExchange {
+class Database {
   public:
 	/*                               ORTHODOX CLASS                           */
-	BitcoinExchange(void);
-	BitcoinExchange(const BitcoinExchange &copy);
-	~BitcoinExchange(void);
-	BitcoinExchange &operator=(const BitcoinExchange &copy);
+	Database(void);
+	Database(std::string filename);
+	Database(const Database &copy);
+	~Database(void);
+	Database &operator=(const Database &copy);
 
 	/*                               METHODS                                  */
+	bool isDatabaseValid();
+
 	/*                               GETTERS                                  */
+	std::map< std::string, int >::iterator getDBBegin();
+	std::map< std::string, int >::iterator getDBEnd();
+	void print();
 
 	/*                               SETTERS                                  */
   private:
-	Database dbase;
-	Input input;
+	std::map< std::string, int > database;
 };
 
 #endif
