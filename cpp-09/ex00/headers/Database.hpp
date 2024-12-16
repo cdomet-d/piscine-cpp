@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:42:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/14 17:33:45 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/16 13:03:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ class Database {
   public:
 	/*                               ORTHODOX CLASS                           */
 	Database(void);
-	Database(std::string filename);
+	Database(const std::string &filename);
 	Database(const Database &copy);
 	~Database(void);
 	Database &operator=(const Database &copy);
 
 	/*                               METHODS                                  */
-	bool isDatabaseValid();
 
 	/*                               GETTERS                                  */
-	std::map< std::string, int >::iterator getDBBegin();
-	std::map< std::string, int >::iterator getDBEnd();
 	void print();
 
 	/*                               SETTERS                                  */
   private:
-	std::map< std::string, int > database;
+	std::map< std::string, double > database;
+
+	/*                               METHODS                                  */
+	bool dateIsValid(const std::string& date);
 };
 
 #endif

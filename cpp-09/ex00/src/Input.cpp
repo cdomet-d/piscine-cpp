@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:44:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/14 16:44:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/16 10:19:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Input::~Input(void) {}
 Input &Input::operator=(const Input &comp)
 {
 	// copy instructions
+	(void)comp;
 	return *this;
 }
 

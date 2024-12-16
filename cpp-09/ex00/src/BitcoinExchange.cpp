@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/13 17:38:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/16 10:18:43 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-BitcoinExchange::BitcoinExchange(void) : database() {}
+BitcoinExchange::BitcoinExchange(void) {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
 {
@@ -28,6 +28,7 @@ BitcoinExchange::~BitcoinExchange(void) {}
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &comp)
 {
 	// copy instructions
+	(void)comp;
 	return *this;
 }
 

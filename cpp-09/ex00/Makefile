@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/13 16:58:44 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/12/16 10:19:18 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ MAKEFLAGS:=--no-print-directory
 SRC_PATH+= $(addprefix $(SRC_DIR), $(SRC))
 SRC=	main.cpp \
 		BitcoinExchange.cpp \
+		Input.cpp \
+		Database.cpp \
 
 OBJ:=$(addprefix $(BDIR), $(SRC_PATH:%.cpp=%.o))
 DEPS:=$(OBJ:%.o=%.d)

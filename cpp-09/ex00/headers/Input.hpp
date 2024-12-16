@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:42:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/14 16:45:07 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/16 10:18:05 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Input {
 	/*                               METHODS                                  */
 
 	/*                               GETTERS                                  */
-	getInput();
-	isInputValid();
+	// getInput();
+	// isInputValid();
 
 	/*                               SETTERS                                  */
   private:
