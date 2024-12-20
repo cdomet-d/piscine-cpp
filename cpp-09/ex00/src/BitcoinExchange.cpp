@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/19 16:49:34 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:05:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 #include <sstream>
 
 #define DECIMAL 10
+#define FEB 2
+#define FEB_29 29
+#define APRIL 4
+#define JUNE 6
+#define SEPT 9
+#define NOV 11
+#define MIN_VALUE 1
+#define MAX_MONTH 12
+#define MAX_DAYS 31
+#define MAX_DAYS_SHORT_MONTH 30
+#define MAX_BITCOIN 1000
 #define BR "\033[1m\033[31m"
 #define R "\033[0m"
 #define BG "\033[1m\033[33m"
@@ -34,8 +45,8 @@ BitcoinExchange::BitcoinExchange(const std::string &database_file,
 {
 
 	std::cout << database_file + "		" + input_file << std::endl;
-	this->buildMap(',', database_file);
-	this->buildMap('|', input_file);
+	buildMap(',', database_file);
+	buildMap('|', input_file);
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
@@ -47,13 +58,43 @@ BitcoinExchange::~BitcoinExchange(void) {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &comp)
 {
-	this->database = comp.database;
-	this->input = comp.input;
+	database = comp.database;
+	input = comp.input;
 	return *this;
 }
 
 /* ************************************************************************** */
 /*                               METHODS                                      */
+/* ************************************************************************** */
+void BitcoinExchange::getChangeRate()
+{
+	std::map< std::string, double >::iterator inputIt = input.begin();
+	std::map< std::string, double >::iterator dBaseIt = database.begin();
+
+	if (dBaseIt == database.end())
+		throw std::runtime_error("Database is empty");
+	for (; inputIt != input.end(); ++inputIt) {
+		dBaseIt = database.lower_bound(inputIt->first);
+		if (dBaseIt == database.end()) {
+			--dBaseIt;
+			std::cout << BR << "NO MATCH FOR	|    " << inputIt->first << R
+					  << ". Computing with closest lower value of " << BG
+					  << dBaseIt->first << R << std::endl
+					  << BG << "		| On " + dBaseIt->first << R << ", "
+					  << inputIt->second << " bitcoin(s) was worth "
+					  << inputIt->second * dBaseIt->second << " dollars"
+					  << std::endl;
+		} else {
+			std::cout << BG << "MATCH FOUND	| On " + inputIt->first << R << ", "
+					  << inputIt->second << " bitcoin(s) was worth "
+					  << inputIt->second * dBaseIt->second << " dollars"
+					  << std::endl;
+		}
+	}
+}
+
+/* ************************************************************************** */
+/*                               INIT                                         */
 /* ************************************************************************** */
 
 void BitcoinExchange::buildMap(const char sep, const std::string &filename)
@@ -65,8 +106,8 @@ void BitcoinExchange::buildMap(const char sep, const std::string &filename)
 
 	std::string line;
 	std::stringstream current;
-	std::string key, val;
-	long line_count = 0;
+	std::string date, val;
+	long lineNo = 0;
 
 	while (std::getline(file, line)) {
 		if (file.fail())
@@ -74,128 +115,182 @@ void BitcoinExchange::buildMap(const char sep, const std::string &filename)
 									 filename);
 		current.clear();
 		current.str(line);
-		line_count++;
+		lineNo++;
 		try {
-			if (std::getline(current, key, sep) && std::getline(current, val)) {
-				if (this->dateIsValid(key, line_count))
-					this->getValidBitValue(sep, val, key, line_count);
-			}
+			if (std::getline(current, date, sep) &&
+				std::getline(current, val)) {
+				if (dateIsValid(lineNo, date)) {
+					trimDate(date);
+					getValidBitValue(sep, val, date, lineNo);
+				}
+			} else
+				pError("Incorrect formatting: expected <YYYY-MM-DD>, "
+					   "<separator>, <value>",
+					   line, lineNo);
 		} catch (const std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
 }
+
+/* ************************************************************************** */
+/*                               PARSING                                      */
+/* ************************************************************************** */
+
 void BitcoinExchange::getValidBitValue(char sep, const std::string &val,
-									   const std::string &key, long line_count)
+									   const std::string &date, long lineNo)
 {
 	double convertedVal;
-	char *endptr;
+	char *rest;
 
-	convertedVal = std::strtod(val.c_str(), &endptr);
-	if (*endptr) {
-		this->printError("Unexpected characters in bitcoin value", val,
-						 line_count);
+	convertedVal = std::strtod(val.c_str(), &rest);
+	if (!restIsValid(rest, '\0', false, lineNo, val))
 		return;
-	}
-	if (errno == ERANGE || convertedVal > 1000) {
-		this->printError("Too large a number", val, line_count);
+	if (!conversionIsValid(lineNo, val) || convertedVal > MAX_BITCOIN)
 		return;
-	}
-	if (convertedVal < 0) {
-		this->printError("Bitcoin value can't be negative", val, line_count);
-		return;
-	}
+	if (convertedVal < 0)
+		return static_cast< void >(
+			pError("Bitcoin value can't be negative", val, lineNo));
 	if (sep == ',')
-		database[key] = convertedVal;
+		database[date] = convertedVal;
 	else if (sep == '|')
-		input[key] = convertedVal;
+		input[date] = convertedVal;
 }
 
-bool BitcoinExchange::dateIsValid(const std::string &date, long line_count)
+bool BitcoinExchange::dateIsValid(long lineNo, const std::string &date)
 {
 	if (std::count(date.begin(), date.end(), '-') != 2)
-		return this->printError("Invalid format", date, line_count);
+		return pError("Invalid format", date, lineNo);
 
-	char *remainder;
-	int year = std::strtol(date.c_str(), &remainder, DECIMAL);
-	if (!this->yearIsValid(remainder, date, year, line_count))
+	char *rest;
+	int year = std::strtol(date.c_str(), &rest, DECIMAL);
+	if (!yearIsValid(year, lineNo, rest, date))
 		return false;
 
-	int month = std::strtol(remainder + 1, &remainder, DECIMAL);
-	if (!this->monthIsValid(remainder, date, month, line_count))
+	int month = std::strtol(rest + 1, &rest, DECIMAL);
+	if (!monthIsValid(month, lineNo, rest, date))
 		return false;
 
-	int day = std::strtol(remainder + 1, &remainder, DECIMAL);
-	if (!this->dayIsValid(remainder, date, year, month, day, line_count))
+	int day = std::strtol(rest + 1, &rest, DECIMAL);
+	if (!dayIsValid(year, month, day, lineNo, rest, date))
 		return false;
 	return true;
 }
 
-bool BitcoinExchange::yearIsValid(char *remainder, const std::string &date,
-								  int year, long line_count)
+bool BitcoinExchange::yearIsValid(int year, long lineNo, const char *rest,
+								  const std::string &date)
 {
-	if (*remainder != '-')
-		return this->printError("Unexpected characters in date", date,
-								line_count);
-	if (errno == ERANGE)
-		return this->printError("Too large a numnber", date, line_count);
+	if (!restIsValid(rest, '-', false, lineNo, date))
+		return false;
+	if (!conversionIsValid(lineNo, date))
+		return false;
 	if (year < 0)
-		return this->printError("Number cannot be negative", date, line_count);
+		return pError("Year cannot be negative", date, lineNo);
 	return true;
 }
 
-bool BitcoinExchange::monthIsValid(char *remainder, const std::string &date,
-								   int month, long line_count)
+bool BitcoinExchange::monthIsValid(int month, long lineNo, const char *rest,
+								   const std::string &date)
 {
-	if (*remainder != '-')
-		return this->printError("Unexpected characters in date", date,
-								line_count);
-	if (errno == ERANGE)
-		return this->printError("Too large a numnber", date, line_count);
-	if (month < 1 || month > 12)
-		return this->printError("Month is out of range (01 - 12)", date,
-								line_count);
+	if (!restIsValid(rest, '-', false, lineNo, date))
+		return false;
+	if (!conversionIsValid(lineNo, date))
+		return false;
+	if (month < MIN_VALUE || month > MAX_MONTH)
+		return pError("Month is out of range (01 - 12)", date, lineNo);
 	return true;
 }
-bool BitcoinExchange::dayIsValid(char *remainder, const std::string &date,
-								 int year, int month, int day, long line_count)
+
+bool BitcoinExchange::dayIsValid(int year, int month, int day, long lineNo,
+								 const char *rest, const std::string &date)
 {
-	if (*remainder && *remainder != ' ')
-		return this->printError("Unexpected characters in date", date,
-								line_count);
-	if (errno == ERANGE)
-		return this->printError("Too large a number", date, line_count);
-	if (day < 1 || day > 31)
-		return this->printError("Day is out of range (01 - 31)", date,
-								line_count);
-	if (month == 2 && day == 29)
-		if (!((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
-			return this->printError("Not a leap year", date, line_count);
-	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
-		return this->printError("No such day in that month", date, line_count);
+	if (!restIsValid(rest, '\0', true, lineNo, date))
+		return false;
+	if (!conversionIsValid(lineNo, date))
+		return false;
+	if (day < MIN_VALUE || day > MAX_DAYS)
+		return pError("Day is out of range (01 - 31)", date, lineNo);
+	if (month == FEB && day == FEB_29)
+		if (!isLeapYear(year, lineNo, date))
+			return false;
+	if ((month == APRIL || month == JUNE || month == SEPT || month == NOV) &&
+		day > MAX_DAYS_SHORT_MONTH)
+		return pError("No such day in that month", date, lineNo);
 	return true;
 }
+
+/* ************************************************************************** */
+/*                               HELPERS                                      */
+/* ************************************************************************** */
+
+void BitcoinExchange::trimDate(std::string &date)
+{
+	size_t i = date.find_first_of(" \f\n\r\t\v");
+
+	while (i != std::string::npos && iswspace(date[i])) {
+		date.erase(date.begin() + i);
+		i++;
+		i--;
+	}
+}
+
+bool BitcoinExchange::restIsValid(const char *rest, char expectedChar,
+								  bool acceptWSpace, long lineNo,
+								  const std::string &line)
+{
+	if (*rest != expectedChar) {
+		if (acceptWSpace && iswspace(*rest))
+			return true;
+		return pError("Unexpected characters in date", line, lineNo);
+	}
+	return true;
+}
+
+bool BitcoinExchange::conversionIsValid(long lineNo, const std::string &date)
+{
+	if (errno == ERANGE) {
+		errno = 0;
+		return pError("Too large a number", date, lineNo);
+	}
+	errno = 0;
+	return true;
+}
+
+bool BitcoinExchange::isLeapYear(int year, long lineNo, const std::string &date)
+{
+	/* leap years are divisible by 4 unless they are also divisible by 100, 
+	with the exception that if the year is also divisible by 400, it is also a leap year.*/
+	if (!((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
+		return pError("Not a leap year", date, lineNo);
+	return true;
+}
+
+/* ************************************************************************** */
+/*                               DISPLAY                                      */
+/* ************************************************************************** */
 
 void BitcoinExchange::print()
 {
 	std::cout << std::endl << "Database :" << std::endl;
 	for (std::map< std::string, double >::iterator it = database.begin();
 		 it != database.end(); ++it)
-		std::cout << it->first << " :	" << it->second << std::endl;
+		std::cout << it->first << ":	" << it->second << std::endl;
 
 	std::cout << std::endl << "Input :" << std::endl;
 	for (std::map< std::string, double >::iterator it = input.begin();
 		 it != input.end(); ++it)
-		std::cout << it->first << " :	" << it->second << std::endl;
+		std::cout << it->first << ":	" << it->second << std::endl;
+	std::cout << std::endl;
 }
 
-bool BitcoinExchange::printError(const std::string &err, std::string error_line,
-								 long line_count)
+bool BitcoinExchange::pError(const std::string &err, const std::string &errLine,
+							 long lineNo)
 {
-	std::cout << "On line: " << line_count << ": " + error_line + ": " + err
+	std::cout << BR << "On line: " << R << lineNo << ": " + errLine + ": " + err
 			  << std::endl;
 	return false;
 }
+
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */

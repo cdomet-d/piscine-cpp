@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/19 16:46:56 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:03:52 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,39 @@ class BitcoinExchange {
 	std::map< std::string, double > database;
 	std::map< std::string, double > input;
 
-	/*                               METHODS                                  */
+	/*                               INIT                                     */
 	void buildMap(const char sep, const std::string &filename);
-	bool dateIsValid(const std::string &date, long line_count);
-	bool yearIsValid(char *remainder, const std::string &date, int year,
-					 long line_count);
-	bool monthIsValid(char *remainder, const std::string &date, int month,
-					  long line_count);
-	bool dayIsValid(char *remainder, const std::string &date, int year,
-					int month, int day, long line_count);
+
+	/*                               PARSING                                  */
+	bool dateIsValid(long lineNo, const std::string &date);
+	bool yearIsValid(int year, long lineNo, const char *rest,
+					 const std::string &date);
+	bool monthIsValid(int month, long lineNo, const char *rest,
+					  const std::string &date);
+	bool dayIsValid(int year, int month, int day, long lineNo, const char *rest,
+					const std::string &date);
 	void getValidBitValue(char sep, const std::string &val,
-						  const std::string &key, long line_count);
-	bool printError(const std::string &err, std::string error_line,
-					long line_count);
+						  const std::string &key, long lineNo);
+
+	/*                               HELPERS                                  */
+	bool conversionIsValid(long lineNo, const std::string &date);
+	bool isLeapYear(int year, long lineNo, const std::string &date);
+	bool restIsValid(const char *rest, char expectedChar, bool acceptWSpace,
+					 long lineNo, const std::string &line);
+	void trimDate(std::string &date);
+
+	/*                               DISPLAY                                  */
+
+	/**
+ * @brief Notifies the user that the map builder has encountered an error by printing the line number,
+  the guilty line and what went wrong with it, then returns false.
+ *
+	Formatting: std::cout << "On line: " << lineNo << ": " + errLine + ": " + err << std::endl;
+
+	Output: On line: 30: 2013-06-31: No such day in that month
+ */
+	bool pError(const std::string &err, const std::string &errLine,
+				long lineNo);
 };
 
 #endif
