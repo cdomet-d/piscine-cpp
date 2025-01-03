@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/20 19:05:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 17:43:30 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 
@@ -30,6 +31,7 @@
 #define MAX_DAYS 31
 #define MAX_DAYS_SHORT_MONTH 30
 #define MAX_BITCOIN 1000
+#define DISPLAY_MARGIN 15
 #define BR "\033[1m\033[31m"
 #define R "\033[0m"
 #define BG "\033[1m\033[33m"
@@ -75,20 +77,19 @@ void BitcoinExchange::getChangeRate()
 		throw std::runtime_error("Database is empty");
 	for (; inputIt != input.end(); ++inputIt) {
 		dBaseIt = database.lower_bound(inputIt->first);
-		if (dBaseIt == database.end()) {
+		if (inputIt->first != dBaseIt->first || dBaseIt == database.end()) {
 			--dBaseIt;
-			std::cout << BR << "NO MATCH FOR	|    " << inputIt->first << R
-					  << ". Computing with closest lower value of " << BG
-					  << dBaseIt->first << R << std::endl
-					  << BG << "		| On " + dBaseIt->first << R << ", "
-					  << inputIt->second << " bitcoin(s) was worth "
-					  << inputIt->second * dBaseIt->second << " dollars"
-					  << std::endl;
+			std::cout << BR << std::left << std::setw(DISPLAY_MARGIN)
+					  << "No match " << R;
+			std::cout << "for " << inputIt->first
+					  << ", computing with previous known date: "
+					  << dBaseIt->first << R << std::endl;
+			std::cout << std::setw(DISPLAY_MARGIN) << " ";
+			outputBitcoinValue(inputIt, dBaseIt);
 		} else {
-			std::cout << BG << "MATCH FOUND	| On " + inputIt->first << R << ", "
-					  << inputIt->second << " bitcoin(s) was worth "
-					  << inputIt->second * dBaseIt->second << " dollars"
-					  << std::endl;
+			std::cout << BG << std::left << std::setw(DISPLAY_MARGIN)
+					  << "Match " << R;
+			outputBitcoinValue(inputIt, dBaseIt);
 		}
 	}
 }
@@ -99,7 +100,7 @@ void BitcoinExchange::getChangeRate()
 
 void BitcoinExchange::buildMap(const char sep, const std::string &filename)
 {
-	std::cout << "\nExtracting	" + filename << std::endl << std::endl;
+	std::cout << "\nExtracting	" + filename << std::endl;
 	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 		throw std::runtime_error("Failed to open file " + filename);
@@ -131,6 +132,7 @@ void BitcoinExchange::buildMap(const char sep, const std::string &filename)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << std::endl;
 }
 
 /* ************************************************************************** */
@@ -144,9 +146,11 @@ void BitcoinExchange::getValidBitValue(char sep, const std::string &val,
 	char *rest;
 
 	convertedVal = std::strtod(val.c_str(), &rest);
+	if ((sep == '|' && convertedVal > MAX_BITCOIN))
+		return static_cast< void >(pError("Too much Bitcoin!", val, lineNo));
 	if (!restIsValid(rest, '\0', false, lineNo, val))
 		return;
-	if (!conversionIsValid(lineNo, val) || convertedVal > MAX_BITCOIN)
+	if (!conversionIsValid(lineNo, val))
 		return;
 	if (convertedVal < 0)
 		return static_cast< void >(
@@ -281,6 +285,16 @@ void BitcoinExchange::print()
 		 it != input.end(); ++it)
 		std::cout << it->first << ":	" << it->second << std::endl;
 	std::cout << std::endl;
+}
+
+void BitcoinExchange::outputBitcoinValue(
+	std::map< std::string, double >::iterator inputIt,
+	std::map< std::string, double >::iterator dBaseIt)
+{
+	std::cout << "On " + inputIt->first + ", the value of ";
+	std::cout << inputIt->second << "	bitcoin(s) was " << std::right
+			  << std::setw(DISPLAY_MARGIN) << std::fixed << std::setprecision(2)
+			  << inputIt->second * dBaseIt->second << "$" << std::endl;
 }
 
 bool BitcoinExchange::pError(const std::string &err, const std::string &errLine,

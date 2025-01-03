@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/20 17:03:52 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 17:19:41 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ class BitcoinExchange {
  */
 	bool pError(const std::string &err, const std::string &errLine,
 				long lineNo);
+	void outputBitcoinValue(std::map< std::string, double >::iterator inputIt,
+							std::map< std::string, double >::iterator dBaseIt);
 };
 
 #endif
