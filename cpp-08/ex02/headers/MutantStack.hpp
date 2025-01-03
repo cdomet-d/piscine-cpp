@@ -23,7 +23,6 @@ class MutantStack : public std::stack<T, C> {
 	typedef typename C::iterator iterator;
 	typedef typename C::const_iterator const_iterator;
 	
-	/*                               ORTHODOX CLASS                           */
 	iterator begin() {
 		return this->c.begin();
 	}
@@ -36,11 +35,6 @@ class MutantStack : public std::stack<T, C> {
 	const_iterator end() const {
 		return this->c.end();
 	}
-	/*                               METHODS                                  */
-	
-	/*                               GETTERS                                  */
-	
-	/*                               SETTERS                                  */
   private:
 };
 
