@@ -6,13 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 16:58:44 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 14:21:45 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */
@@ -20,14 +20,20 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string _name, const std::string _target)
-	: AForm(_name, _target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string _target)
+	: AForm("Shrubbery Creation Form", _target, 145, 137)
+{
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
+	: AForm(copy)
+{
+}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &comp)
+ShrubberyCreationForm &
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm &comp)
 {
 	AForm::operator=(comp);
 	return *this;
@@ -35,12 +41,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-void ShrubberyCreationForm::checkAuth(const short int expect, const short int got)
+void ShrubberyCreationForm::checkAuth(const short int expect,
+									  const short int got)
 {
 	if (!this->getSignedStatus())
 		return throw ShrubberyCreationForm::FormNotSignedException();
-	if (got > expect)
-	{
+	if (got > expect) {
 		std::cout << "Couldn't execute ShrubberyCreationForm: expected grade "
 				  << expect << " or higher, got: " << got << std::endl;
 		return throw ShrubberyCreationForm::GradeTooLowException();
@@ -65,5 +71,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor)
 			 << "       |.|        | |         | |" << std::endl
 			 << "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
 	destFile.close();
-	std::cout << "File [ " << this->getTarget() << " ] created and populated." << std::endl;
+	std::cout << "File [ " << this->getTarget() << " ] created and populated."
+			  << std::endl;
 }

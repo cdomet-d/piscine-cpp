@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 12:23:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/14 16:06:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 PresidentialPardonForm::PresidentialPardonForm(void) : AForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string _name, const std::string _target)
-	: AForm(_name, _target, 25, 5) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string _target)
+	: AForm("Presendential Pardon", _target, 25, 5) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy) {}
 

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:04:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 14:20:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 public:
 	/*                               ORTHODOX CLASS                           */
 	ShrubberyCreationForm(void);
-	ShrubberyCreationForm(const std::string _name, const std::string _target);
+	ShrubberyCreationForm(const std::string _target);
 	ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 	~ShrubberyCreationForm(void);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);

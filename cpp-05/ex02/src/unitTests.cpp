@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:38:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 10:34:44 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 14:22:27 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void testPresidentialForms(void)
 {
 	{
 		Bureaucrat drone("Roselyn Myers", 1);
-		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+		PresidentialPardonForm pardon("Robert R. Linden");
 
 		std::cout << std::endl
 				  << BG
@@ -28,7 +28,7 @@ void testPresidentialForms(void)
 	}
 	{
 		Bureaucrat drone("Roselyn Myers", 150);
-		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+		PresidentialPardonForm pardon("Robert R. Linden");
 
 		std::cout << BG << std::endl
 				  << "Expecting sign GradeTooLowException with " << drone << R << std::endl
@@ -39,7 +39,7 @@ void testPresidentialForms(void)
 
 	{
 		Bureaucrat drone("Roselyn Myers", 10);
-		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+		PresidentialPardonForm pardon("Robert R. Linden");
 
 		std::cout << BG << std::endl
 				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl
@@ -51,7 +51,7 @@ void testPresidentialForms(void)
 
 	{
 		Bureaucrat drone("Roselyn Myers", 5);
-		PresidentialPardonForm pardon("Presidential Pardon", "Robert R. Linden");
+		PresidentialPardonForm pardon("Robert R. Linden");
 
 		std::cout << BG << std::endl
 				  << "Expecting FormNotSignedException " << R << std::endl
@@ -65,7 +65,7 @@ void testRobotomyRequestForm(void)
 {
 	{
 		Bureaucrat drone("Saka Drone", 1);
-		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+		RobotomyRequestForm robotomy("Adam Smasher");
 
 		std::cout << std::endl
 				  << BG
@@ -77,7 +77,7 @@ void testRobotomyRequestForm(void)
 	}
 	{
 		Bureaucrat drone("Saka Drone", 150);
-		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+		RobotomyRequestForm robotomy("Adam Smasher");
 
 		std::cout << BG << std::endl
 				  << "Expecting sign GradeTooLowException" << R << std::endl
@@ -89,7 +89,7 @@ void testRobotomyRequestForm(void)
 
 	{
 		Bureaucrat drone("Saka Drone", 70);
-		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+		RobotomyRequestForm robotomy("Adam Smasher");
 
 		std::cout << BG << std::endl
 				  << "Expecting exec GradeTooLowException with " << drone << R << std::endl
@@ -101,7 +101,7 @@ void testRobotomyRequestForm(void)
 
 	{
 		Bureaucrat drone("Saka Drone", 5);
-		RobotomyRequestForm robotomy("Robotomy Request Form", "Adam Smasher");
+		RobotomyRequestForm robotomy("Adam Smasher");
 
 		std::cout << BG << std::endl
 				  << "Expecting FormNotSignedException " << R << std::endl
@@ -116,7 +116,7 @@ void testShrubberyForm(void)
 
 	{
 		Bureaucrat drone("Bisoutruffe", 1);
-		ShrubberyCreationForm trees("Garden tree plantation", "home");
+		ShrubberyCreationForm trees("home");
 
 		std::cout << std::endl
 				  << BG
@@ -128,7 +128,7 @@ void testShrubberyForm(void)
 	}
 	{
 		Bureaucrat drone("Bisoutruffe", 150);
-		ShrubberyCreationForm trees("Garden tree plantation", "home");
+		ShrubberyCreationForm trees("home");
 
 		std::cout << BG << std::endl
 				  << "Expecting sign GradeTooLowException" R << std::endl
@@ -139,7 +139,7 @@ void testShrubberyForm(void)
 
 	{
 		Bureaucrat drone("Bisoutruffe", 140);
-		ShrubberyCreationForm trees("Garden tree plantation", "home");
+		ShrubberyCreationForm trees("home");
 
 		std::cout << BG << std::endl
 				  << "Expecting exec GradeTooLowException" << R << std::endl
@@ -151,7 +151,7 @@ void testShrubberyForm(void)
 
 	{
 		Bureaucrat drone("Bisoutruffe", 5);
-		ShrubberyCreationForm trees("Garden tree plantation", "home");
+		ShrubberyCreationForm trees("home");
 
 		std::cout << BG << std::endl
 				  << "Expecting FormNotSignedException " << R << std::endl

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 14:49:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/12/14 16:06:41 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 public:
 	/*                               ORTHODOX CLASS                           */
 	PresidentialPardonForm(void);
-	PresidentialPardonForm(const std::string _name, const std::string _target);
+	PresidentialPardonForm(const std::string _target);
 	PresidentialPardonForm(const PresidentialPardonForm &copy);
 	~PresidentialPardonForm(void);
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &copy);

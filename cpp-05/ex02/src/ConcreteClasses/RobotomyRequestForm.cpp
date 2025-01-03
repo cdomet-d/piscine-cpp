@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/21 14:51:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 14:21:05 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm() {}
 
 // RobotomyRequestForm: Required grades: sign 72, exec 45
-RobotomyRequestForm::RobotomyRequestForm(const std::string _name, const std::string _target)
-	: AForm(_name, _target, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string _target)
+	: AForm("Robotomy Request Form", _target, 72, 45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : AForm(copy) {}
 

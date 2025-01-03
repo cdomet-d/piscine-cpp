@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:04:34 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/03 14:20:24 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ private:
 public:
 	/*                               ORTHODOX CLASS                           */
 	RobotomyRequestForm(void);
-	RobotomyRequestForm(const std::string _name, const std::string _target);
+	RobotomyRequestForm(const std::string _target);
 	RobotomyRequestForm(const RobotomyRequestForm &copy);
 	~RobotomyRequestForm(void);
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
