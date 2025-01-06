@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/03 17:43:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/06 10:32:20 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void BitcoinExchange::getChangeRate()
 		if (inputIt->first != dBaseIt->first || dBaseIt == database.end()) {
 			--dBaseIt;
 			std::cout << BR << std::left << std::setw(DISPLAY_MARGIN)
-					  << "No match " << R;
+					  << "No match ";
 			std::cout << "for " << inputIt->first
 					  << ", computing with previous known date: "
 					  << dBaseIt->first << R << std::endl;
@@ -292,8 +292,9 @@ void BitcoinExchange::outputBitcoinValue(
 	std::map< std::string, double >::iterator dBaseIt)
 {
 	std::cout << "On " + inputIt->first + ", the value of ";
-	std::cout << inputIt->second << "	bitcoin(s) was " << std::right
-			  << std::setw(DISPLAY_MARGIN) << std::fixed << std::setprecision(2)
+	std::cout << std::setw(5) << inputIt->second
+			  << "	bitcoin(s) was " << std::right << std::setw(DISPLAY_MARGIN)
+			  << std::fixed << std::setprecision(2)
 			  << inputIt->second * dBaseIt->second << "$" << std::endl;
 }
 
