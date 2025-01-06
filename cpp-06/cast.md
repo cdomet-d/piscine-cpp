@@ -87,7 +87,7 @@ It is done by using `dynamic_cast<T>`
 **Sure, but why the fuck do we need that?**
 -
 
-A apt question ! Indeed, dynamic casting allows the programmer to ensure type safety in the context of inheritance & polymorphisme. Imagine you have multiple classes inheriting from a parent, none of which have the same methods. You are working with a pointer to the base class and you wish to call a method that one of your derived class has. 
+A apt question ! Indeed, dynamic casting allows the programmer to ensure type safety in the context of inheritance & polymorphism. Imagine you have multiple classes inheriting from a parent, none of which have the same methods. You are working with a pointer to the base class and you wish to call a method that one of your derived class has. 
 
 Now, if you do not have a way to ensure that the pointer you are working with is indeed pointing to one of the derived class that has the method you are trying to call, you will be in for a rough time.
 
