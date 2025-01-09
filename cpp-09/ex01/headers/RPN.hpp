@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/07 16:57:03 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/09 16:04:51 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class RPN {
 	/*                               METHODS                                  */
 	bool isOperator(char c);
 	bool isDigit(char c);
-	bool hasEnoughOperands();
+	bool opIsAllowed();
 	int doOp(char op);
 
 	/*                               EXCEPTIONS                               */
@@ -46,6 +46,14 @@ class RPN {
 		const char *what() const throw();
 	};
 	class UnspecifiedError : public std::exception {
+	  public:
+		const char *what() const throw();
+	};
+	class NotEnoughOperands : public std::exception {
+	  public:
+		const char *what() const throw();
+	};
+	class InputIsMalformed : public std::exception {
 	  public:
 		const char *what() const throw();
 	};

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/07 18:10:05 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/09 16:07:10 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ RPN &RPN::operator=(const RPN &comp)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
+bool RPN::opIsAllowed()
+{
+	if (rpn.size() >= 2)
+		return true;
+	return false;
+}
 bool RPN::isOperator(char c)
 {
 	char op[5] = "+-*/";
@@ -61,50 +67,50 @@ bool RPN::isDigit(char c)
 }
 int RPN::doOp(char op)
 {
-	int a;
-	int b;
-	
-	b = rpn.top();
+	if (!opIsAllowed())
+		throw NotEnoughOperands();
+
+	int b = rpn.top();
+	;
 	rpn.pop();
-	a = rpn.top();
+	int a = rpn.top();
+	rpn.pop();
+
 	switch (op) {
-		case '*':
-			return a * b;
-		case '+':
-			return a + b;
-		case '-':
-			return a - b;
-		case '/':
-			if (b == 0)
-				throw DivisionByZero();
-			return a / b;
-		default:
-			throw UnspecifiedError();
+	case '*':
+		return a * b;
+	case '+':
+		return a + b;
+	case '-':
+		return a - b;
+	case '/':
+		if (b == 0)
+			throw DivisionByZero();
+		return a / b;
+	default:
+		throw UnspecifiedError();
 	}
 }
 
 void RPN::evaluateExpression(std::string expr)
 {
+	if (expr.size() < 3)
+		throw InputIsMalformed();
 	for (std::string::iterator it = expr.begin(); it != expr.end(); ++it) {
 		if (*it == ' ')
 			continue;
 		else if (isOperator(*it)) {
-			doOp(*it);
+			rpn.push(doOp(*it));
 		} else if (isDigit(*it)) {
-			rpn.push(*it + '0');
+			rpn.push(*it - '0');
 		} else {
 			throw UnexpectedToken();
 		}
 	}
+	if (rpn.size() != 1)
+		throw InputIsMalformed();
+	std::cout << rpn.top() << std::endl;
 }
-
-/* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */
 
 /* ************************************************************************** */
 /*                               EXCEPTIONS                                   */
@@ -123,4 +129,15 @@ const char *RPN::UnspecifiedError::what() const throw()
 const char *RPN::DivisionByZero::what() const throw()
 {
 	return "Illegal division ( / 0)";
+}
+
+const char *RPN::NotEnoughOperands::what() const throw()
+{
+	return "Not enough operands";
+}
+
+const char *RPN::InputIsMalformed::what() const throw()
+{
+	return "Input is malformed: string is empty, or operators and operands are "
+		   "mismatched";
 }
