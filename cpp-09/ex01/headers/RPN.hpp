@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/09 16:04:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/10 14:09:11 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class RPN {
 	void evaluateExpression(std::string expr);
 
 	/*                               GETTERS                                  */
-
+	int getStackValue();
 	/*                               SETTERS                                  */
   private:
 	std::stack< int > rpn;

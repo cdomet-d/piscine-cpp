@@ -8,7 +8,6 @@ Output: 23
 Output: 11
 
 "9 3 * 4 + 2 / 6 -"
-Output: 9.5
 
 "1 2 + 3 * 4 + 5 *"
 Output: 65

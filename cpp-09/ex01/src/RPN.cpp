@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/09 16:07:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/10 14:41:01 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ RPN &RPN::operator=(const RPN &comp)
 	// copy instructions
 	(void)comp;
 	return *this;
+}
+
+int RPN::getStackValue()
+{
+	return rpn.top();
 }
 
 /* ************************************************************************** */
@@ -109,7 +114,6 @@ void RPN::evaluateExpression(std::string expr)
 	}
 	if (rpn.size() != 1)
 		throw InputIsMalformed();
-	std::cout << rpn.top() << std::endl;
 }
 
 /* ************************************************************************** */
