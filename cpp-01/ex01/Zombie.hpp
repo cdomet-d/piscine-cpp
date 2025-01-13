@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:40:43 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/25 12:52:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 11:15:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 class Zombie
 {
 	private:
-		std::string	name;
-		std::size_t	i;
+		std::string	_name;
+		std::size_t	it;
 	public:
 		Zombie(void);
 		~Zombie(void);

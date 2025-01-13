@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:40:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/24 17:05:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 11:16:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ Zombie::Zombie(void) {
 }
 
 void	Zombie::nameZombie(std::size_t i, std::string name) {
-		this->i = i;
-		this->name = name;
+		this->it = i;
+		this->_name = name;
 }
 
 Zombie::~Zombie(void) {
-	std::cout << this->name << " has taken a headshot" << std::endl;
+	std::cout << this->_name << " has taken a headshot" << std::endl;
 }
 
 void Zombie::announce (void) {
 	std::cout	<< std::setw(2)	
-				<< this->i << " | "
-				<< this->name
+				<< this->it << " | "
+				<< this->_name
 				<< ": BraiiiiiiinnnzzzZ.."
 				<< std::endl;
 }
