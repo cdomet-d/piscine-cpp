@@ -6,9 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:21:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:25:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 15:27:50 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef UNITTEST_HPP
+#define UNITTEST_HPP
 
 #include <iomanip>
 #include <iostream>
@@ -25,7 +28,7 @@ void testValid();
 	try {                                                                      \
 		std::cout << std::setw(35) << std::left << "Evaluating: " + expr       \
 				  << " | ";                                                    \
-		rpn.compute(expr);                                          \
+		rpn.compute(expr);                                                     \
 		if (rpn.getResult() == expected) {                                     \
 			std::cout << BG "expected " << std::setw(10) << expected           \
 					  << " got " << std::setw(10) << rpn.getResult() << R      \
@@ -53,3 +56,5 @@ void testValid();
 		std::cout << BR "expected	" #expected "" << "	got: " << e.what()     \
 				  << R << std::endl;                                           \
 	}
+
+#endif
