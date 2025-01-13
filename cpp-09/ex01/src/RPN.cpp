@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:09:13 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 15:24:31 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int RPN::doOp(char op)
 	}
 }
 
-void RPN::evaluateExpression(std::string expr)
+void RPN::compute(std::string expr)
 {
 	for (std::string::iterator it = expr.begin(); it != expr.end(); ++it) {
 		if (*it == ' ')
