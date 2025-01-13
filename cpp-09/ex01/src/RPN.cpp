@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/10 14:41:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 15:09:13 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ RPN &RPN::operator=(const RPN &comp)
 	return *this;
 }
 
-int RPN::getStackValue()
+int RPN::getResult()
 {
-	return rpn.top();
+	return result;
 }
 
 /* ************************************************************************** */
@@ -73,10 +73,9 @@ bool RPN::isDigit(char c)
 int RPN::doOp(char op)
 {
 	if (!opIsAllowed())
-		throw NotEnoughOperands();
+		throw MissingOperands();
 
 	int b = rpn.top();
-	;
 	rpn.pop();
 	int a = rpn.top();
 	rpn.pop();
@@ -93,14 +92,12 @@ int RPN::doOp(char op)
 			throw DivisionByZero();
 		return a / b;
 	default:
-		throw UnspecifiedError();
+		throw std::exception();
 	}
 }
 
 void RPN::evaluateExpression(std::string expr)
 {
-	if (expr.size() < 3)
-		throw InputIsMalformed();
 	for (std::string::iterator it = expr.begin(); it != expr.end(); ++it) {
 		if (*it == ' ')
 			continue;
@@ -113,7 +110,9 @@ void RPN::evaluateExpression(std::string expr)
 		}
 	}
 	if (rpn.size() != 1)
-		throw InputIsMalformed();
+		throw MissingOperators();
+	result = rpn.top();
+	rpn.pop();
 }
 
 /* ************************************************************************** */
@@ -125,23 +124,17 @@ const char *RPN::UnexpectedToken::what() const throw()
 	return "Illegal character in input";
 }
 
-const char *RPN::UnspecifiedError::what() const throw()
-{
-	return "Some error happened";
-}
-
 const char *RPN::DivisionByZero::what() const throw()
 {
 	return "Illegal division ( / 0)";
 }
 
-const char *RPN::NotEnoughOperands::what() const throw()
+const char *RPN::MissingOperands::what() const throw()
 {
 	return "Not enough operands";
 }
 
-const char *RPN::InputIsMalformed::what() const throw()
+const char *RPN::MissingOperators::what() const throw()
 {
-	return "Input is malformed: string is empty, or operators and operands are "
-		   "mismatched";
+	return "Not enough operators";
 }

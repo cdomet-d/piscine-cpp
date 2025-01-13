@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/10 14:09:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/13 14:51:11 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,7 @@ class RPN {
 	void evaluateExpression(std::string expr);
 
 	/*                               GETTERS                                  */
-	int getStackValue();
-	/*                               SETTERS                                  */
-  private:
-	std::stack< int > rpn;
-
-	/*                               METHODS                                  */
-	bool isOperator(char c);
-	bool isDigit(char c);
-	bool opIsAllowed();
-	int doOp(char op);
-
+	int getResult();
 	/*                               EXCEPTIONS                               */
 	class UnexpectedToken : public std::exception {
 	  public:
@@ -49,7 +39,7 @@ class RPN {
 	  public:
 		const char *what() const throw();
 	};
-	class NotEnoughOperands : public std::exception {
+	class MissingOperands : public std::exception {
 	  public:
 		const char *what() const throw();
 	};
@@ -61,6 +51,20 @@ class RPN {
 	  public:
 		const char *what() const throw();
 	};
+	class MissingOperators : public std::exception {
+	  public:
+		const char *what() const throw();
+	};
+
+	private : std::stack< int >
+				  rpn;
+
+	/*                               METHODS                                  */
+	int result;
+	bool isOperator(char c);
+	bool isDigit(char c);
+	bool opIsAllowed();
+	int doOp(char op);
 };
 
 #endif
