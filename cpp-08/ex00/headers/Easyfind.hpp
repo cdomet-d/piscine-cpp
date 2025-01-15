@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:56:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:50:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 17:42:24 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void printArr(const T &arr, int seek)
 template < typename T >
 typename T::const_iterator easyFind(const T &container, int n)
 {
+//TODO: dont do that, use find
 	typename T::const_iterator it = container.begin();
 	for (; it != container.end(); ++it) {
 		if (*it == n)
