@@ -9,12 +9,19 @@
 ## Design
 
 templated mergeInsert class containing:
-- a container;
-- timer class;
-- overloaded << operator displaying output of timer class + sorted container.
-- parsing methods;
-- sorting methods;
-- exceptions for error handling
-	- isNegative
-	- badFormat
-	- forbiddenToken
+
+### Variables
+- [X] templated container;
+- [X] timer class;
+
+### Methods
+- [ ] parsing methods;
+- [ ] sorting methods;
+
+### Exceptions
+- [X] exceptions for error handling
+	- [X] isNegative
+	- [X] badFormat
+	- [X] forbiddenToken
+
+- [ ] overloaded << operator displaying output of timer class + sorted container.
