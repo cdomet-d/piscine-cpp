@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Timer.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 12:15:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2025/01/15 09:56:53 by cdomet-d          #+#    #+#             */
+/*   Updated: 2025/01/15 10:38:53 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+#ifndef TIMER_HPP
+#define TIMER_HPP
 
-#include <iostream>
+#include <ctime>
 
-template < typename T >
-
-class Array {
+class Timer {
   public:
 	/*                               ORTHODOX CLASS                           */
-	Array(void);
-	Array(unsigned int n);
-	Array(const Array &copy);
-	~Array(void);
-	Array &operator=(const Array &copy);
-	T &operator[](size_t index);
-	T &operator[](size_t index) const;
+	Timer(void);
+	~Timer(void);
 
 	/*                               METHODS                                  */
-	void fill(T fill);
-
-	/*                               GETTERS                                  */
-	size_t size() const;
+	void displayTimeElasped();
 
 	/*                               SETTERS                                  */
   private:
-	size_t len;
-	T *arr;
+	Timer(const Timer &copy);
+	Timer &operator=(const Timer &copy);
+	std::clock_t start;
 };
 
-#include "Array.tpp"
 #endif

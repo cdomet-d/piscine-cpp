@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/11 16:12:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:54:14 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <fstream>
 #include <iterator>
 
-static void invalidIterators(Span span, std::vector<unsigned int> src);
+static void invalidIterators(Span span, std::vector< unsigned int > src);
 static void invalidIntervals(Span span);
-static void elemLimits(Span span, std::vector<unsigned int> src);
+static void elemLimits(Span span, std::vector< unsigned int > src);
 
-void errorHandling(Span span, std::vector<unsigned int> src)
+void errorHandling(Span span, std::vector< unsigned int > src)
 {
 	std::cout << std::endl << "TESTING INVALID ITERATORS" << std::endl;
 	invalidIterators(span, src);
@@ -29,7 +29,7 @@ void errorHandling(Span span, std::vector<unsigned int> src)
 	elemLimits(span, src);
 }
 
-static void invalidIterators(Span span, std::vector<unsigned int> src)
+static void invalidIterators(Span span, std::vector< unsigned int > src)
 {
 	std::cout << "filling Span: begin == end" << std::endl;
 	TEST_THROW(span.fillSpan(span.getSpanBegin(), src.begin(), src.begin()),
@@ -58,7 +58,7 @@ static void invalidIntervals(Span span)
 	TEST_THROW(span.shortestSpan(), std::length_error);
 }
 
-static void elemLimits(Span span, std::vector<unsigned int> src)
+static void elemLimits(Span span, std::vector< unsigned int > src)
 {
 	try {
 		span.fillSpan(span.getSpanBegin(), src.begin(), src.end());
@@ -76,11 +76,11 @@ static void elemLimits(Span span, std::vector<unsigned int> src)
 void largeArr(const char *str)
 {
 	std::ifstream vecInput(str);
-	std::vector<unsigned int> src;
+	std::vector< unsigned int > src;
 
 	try {
-		src.assign(std::istream_iterator<unsigned int>(vecInput),
-				   std::istream_iterator<unsigned int>());
+		src.assign(std::istream_iterator< unsigned int >(vecInput),
+				   std::istream_iterator< unsigned int >());
 		std::cout << src.size() << std::endl;
 		Span span(src.size());
 		span.fillSpan(span.getSpanBegin(), src.begin(), src.end());

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:41:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/10 17:29:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:54:07 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int main(int ac, char *av[])
 		unsigned int val[] = {5,   979, 506, 397, 52,  266, 899, 355,
 							  687, 188, 898, 376, 815, 487, 788, 477,
 							  623, 743, 950, 488, 94,  62,	384};
-		std::vector<unsigned int> src(val, val + sizeof(val) / sizeof(int));
+		std::vector< unsigned int > src(val, val + sizeof(val) / sizeof(int));
 		Span span(src.size());
-
 		errorHandling(span, src);
 		return 0;
 	}

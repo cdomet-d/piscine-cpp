@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:40 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/11 16:12:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:49:40 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ Span::Span(void) : trackElem(0), spanSize(0)
 {
 	span.reserve(0);
 }
+
 Span::Span(unsigned int n) : trackElem(0), spanSize(n)
 {
 	span.reserve(n);
 }
+
 Span::Span(const Span &copy)
 	: trackElem(copy.trackElem), spanSize(copy.spanSize)
 {
 	*this = copy;
 }
 
-Span::~Span(void)
-{
-}
+Span::~Span(void) {}
 
 Span &Span::operator=(const Span &comp)
 {
@@ -65,9 +65,9 @@ void Span::addNumber(unsigned int n)
 	trackElem += 1;
 }
 
-void Span::fillSpan(const std::vector<unsigned int>::iterator pos,
-					std::vector<unsigned int>::iterator begin,
-					std::vector<unsigned int>::iterator end)
+void Span::fillSpan(const std::vector< unsigned int >::iterator pos,
+					std::vector< unsigned int >::iterator begin,
+					std::vector< unsigned int >::iterator end)
 {
 	if (pos < span.begin() || pos > span.end())
 		throw std::out_of_range("	pos is out of bounds (pos < span.begin() "
@@ -89,7 +89,7 @@ unsigned int Span::shortestSpan()
 			"	Cannot compare empty or single digit range");
 	std::sort(span.begin(), span.end());
 	unsigned int shortest = *(span.begin() + 1) - *span.begin();
-	for (std::vector<unsigned int>::iterator it = span.begin();
+	for (std::vector< unsigned int >::iterator it = span.begin();
 		 it != span.end(); ++it) {
 		if (it + 1 != span.end())
 			current = *(it + 1) - *it;
@@ -121,18 +121,18 @@ unsigned int Span::getSpanSize() const
 	return spanSize;
 }
 
-std::vector<unsigned int>::iterator Span::getSpanBegin()
+std::vector< unsigned int >::iterator Span::getSpanBegin()
 {
 	return span.begin();
 }
-std::vector<unsigned int>::iterator Span::getSpanEnd()
+std::vector< unsigned int >::iterator Span::getSpanEnd()
 {
 	return span.end();
 }
 
 void Span::print()
 {
-	for (std::vector<unsigned int>::iterator it = span.begin();
+	for (std::vector< unsigned int >::iterator it = span.begin();
 		 it != span.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;

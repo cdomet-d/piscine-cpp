@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/12 16:40:15 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:53:33 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 				  << R << std::endl;                                           \
 	}
 
-void errorHandling(Span span, std::vector<unsigned int> src);
+void errorHandling(Span span, std::vector< unsigned int > src);
 void largeArr(const char *str);
 
 #endif

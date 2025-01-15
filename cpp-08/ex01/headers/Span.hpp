@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/11 16:12:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:53:16 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ class Span {
 
 	/*                               METHODS                                  */
 	void addNumber(unsigned int n);
-	void fillSpan(const std::vector<unsigned int>::iterator pos,
-				  std::vector<unsigned int>::iterator begin,
-				  std::vector<unsigned int>::iterator end);
+	void fillSpan(const std::vector< unsigned int >::iterator pos,
+				  std::vector< unsigned int >::iterator begin,
+				  std::vector< unsigned int >::iterator end);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
@@ -41,12 +41,12 @@ class Span {
 	/*                               GETTERS                                  */
 	unsigned int getTrackElem() const;
 	unsigned int getSpanSize() const;
-	std::vector<unsigned int>::iterator getSpanBegin();
-	std::vector<unsigned int>::iterator getSpanEnd();
+	std::vector< unsigned int >::iterator getSpanBegin();
+	std::vector< unsigned int >::iterator getSpanEnd();
 	void print();
 
   private:
-	std::vector<unsigned int> span;
+	std::vector< unsigned int > span;
 	unsigned int trackElem;
 	unsigned int spanSize;
 };

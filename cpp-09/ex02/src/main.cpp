@@ -1,30 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:36:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2025/01/15 10:05:23 by cdomet-d          #+#    #+#             */
+/*   Updated: 2025/01/15 10:38:30 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
-
-#include <iostream>
-
-template < typename T >
-void print(T c)
+int main()
 {
-	std::cout << c << " ";
 }
-template < typename T, typename Func >
-void inter(T *arr, size_t len, Func function)
-{
-	for (size_t i = 0; i < len; i++)
-		function(arr[i]);
-}
-
-#endif

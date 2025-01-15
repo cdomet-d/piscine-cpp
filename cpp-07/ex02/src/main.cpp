@@ -6,14 +6,14 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:06:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/05 17:34:03 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:52:48 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include "iomanip"
 
-template <typename T>
+template < typename T >
 static void printArr(const char *s, const T &arr)
 {
 	std::cout << s << ": ";
@@ -25,14 +25,14 @@ int main()
 {
 	{
 		std::cout << "Empty array of 10 int" << std::endl;
-		Array<int> arr(10);
+		Array< int > arr(10);
 
 		printArr("arr", arr);
 		std::cout << std::endl;
 	}
 
 	{
-		Array<std::string> arr(5);
+		Array< std::string > arr(5);
 		arr.fill("Super fun |");
 		std::cout << "Array of 10 std::string filled with a message"
 				  << std::endl;
@@ -42,7 +42,7 @@ int main()
 	}
 
 	{
-		Array<char> arr(10);
+		Array< char > arr(10);
 		arr.fill('c');
 
 		std::cout << "Array of 10 char filled with 'c'" << std::endl;
@@ -51,12 +51,12 @@ int main()
 	}
 
 	{
-		Array<char> arr(10);
+		Array< char > arr(10);
 		arr.fill('c');
 		std::cout << "Testing cpy constructor with char[10] filled with 'c'"
 				  << std::endl;
 
-		Array<char> cpy(arr);
+		Array< char > cpy(arr);
 		printArr("arr", arr);
 		printArr("cpy", cpy);
 
@@ -75,8 +75,8 @@ int main()
 	}
 
 	{
-		Array<int> arr(10);
-		Array<int> cpy(5);
+		Array< int > arr(10);
+		Array< int > cpy(5);
 
 		std::cout << "Testing operator=() constructor with arr[10] = {45} && "
 					 "cpy[5] = {18} filled with 'c'"
@@ -100,7 +100,7 @@ int main()
 	}
 
 	{
-		Array<int> arr(10);
+		Array< int > arr(10);
 		arr.fill(85);
 		std::cout << "Testing OOB indexes" << std::endl;
 		try {

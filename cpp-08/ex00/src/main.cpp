@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:39:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/09 12:52:17 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:50:42 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main()
 		int seek = 623;
 		{
 			std::cout << "Test for std::vector" << std::endl;
-			const std::vector<int> arr(values,
-									   values + sizeof(values) / sizeof(int));
-			std::vector<int>::const_iterator found = easyFind(arr, seek);
+			const std::vector< int > arr(values,
+										 values + sizeof(values) / sizeof(int));
+			std::vector< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -41,9 +41,9 @@ int main()
 
 		{
 			std::cout << "Test for std::list" << std::endl;
-			const std::list<int> arr(values,
-									 values + sizeof(values) / sizeof(int));
-			std::list<int>::const_iterator found = easyFind(arr, seek);
+			const std::list< int > arr(values,
+									   values + sizeof(values) / sizeof(int));
+			std::list< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -56,9 +56,9 @@ int main()
 
 		{
 			std::cout << "Test for std::deque" << std::endl;
-			const std::deque<int> arr(values,
-									  values + sizeof(values) / sizeof(int));
-			std::deque<int>::const_iterator found = easyFind(arr, seek);
+			const std::deque< int > arr(values,
+										values + sizeof(values) / sizeof(int));
+			std::deque< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -74,9 +74,9 @@ int main()
 		int seek = -8;
 		{
 			std::cout << "Test for std::vector" << std::endl;
-			const std::vector<int> arr(values,
-									   values + sizeof(values) / sizeof(int));
-			std::vector<int>::const_iterator found = easyFind(arr, seek);
+			const std::vector< int > arr(values,
+										 values + sizeof(values) / sizeof(int));
+			std::vector< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -89,9 +89,9 @@ int main()
 
 		{
 			std::cout << "Test for std::list" << std::endl;
-			const std::list<int> arr(values,
-									 values + sizeof(values) / sizeof(int));
-			std::list<int>::const_iterator found = easyFind(arr, seek);
+			const std::list< int > arr(values,
+									   values + sizeof(values) / sizeof(int));
+			std::list< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -104,9 +104,9 @@ int main()
 
 		{
 			std::cout << "Test for std::deque" << std::endl;
-			const std::deque<int> arr(values,
-									  values + sizeof(values) / sizeof(int));
-			std::deque<int>::const_iterator found = easyFind(arr, seek);
+			const std::deque< int > arr(values,
+										values + sizeof(values) / sizeof(int));
+			std::deque< int >::const_iterator found = easyFind(arr, seek);
 
 			printArr(arr, seek);
 			if (found == arr.end())
@@ -122,9 +122,9 @@ int main()
 		int seek = -8;
 
 		std::cout << "Test for empty containers :" << std::endl;
-		const std::vector<int> arr;
+		const std::vector< int > arr;
 
-		std::vector<int>::const_iterator found = easyFind(arr, seek);
+		std::vector< int >::const_iterator found = easyFind(arr, seek);
 
 		printArr(arr, seek);
 		if (found == arr.end())

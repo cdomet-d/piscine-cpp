@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 12:15:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
+/*   Updated: 2025/01/15 10:41:14 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+#ifndef MERGEINSERT_HPP
+# define MERGEINSERT_HPP
 
-#include <iostream>
-
-template < typename T >
-
-class Array {
-  public:
+class MergeInsert
+{
+public:
 	/*                               ORTHODOX CLASS                           */
-	Array(void);
-	Array(unsigned int n);
-	Array(const Array &copy);
-	~Array(void);
-	Array &operator=(const Array &copy);
-	T &operator[](size_t index);
-	T &operator[](size_t index) const;
+	MergeInsert(void);
+	MergeInsert(const MergeInsert &copy);
+	~MergeInsert(void);
+	MergeInsert &operator=(const MergeInsert &copy);
 
 	/*                               METHODS                                  */
-	void fill(T fill);
-
+	
 	/*                               GETTERS                                  */
-	size_t size() const;
-
+	
 	/*                               SETTERS                                  */
-  private:
-	size_t len;
-	T *arr;
+private:
+	
 };
 
-#include "Array.tpp"
 #endif

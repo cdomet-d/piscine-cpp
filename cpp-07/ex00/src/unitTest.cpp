@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:50:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/04 13:37:37 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:51:42 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void testSwap()
 		int a = 15;
 		int b = 5;
 
-		std::cout << "Testing swap(T a, T b) with int values"
-				  << std::endl
+		std::cout << "Testing swap(T a, T b) with int values" << std::endl
 				  << "Original values:	" << a << "	|	" << b << std::endl;
 		swap(a, b);
-		std::cout << BG "After swap:		" << a << "	|	" << b << R << std::endl
+		std::cout << BG "After swap:		" << a << "	|	" << b << R
+				  << std::endl
 				  << std::endl;
 	}
 
@@ -35,11 +35,11 @@ void testSwap()
 		float a = 15.5f;
 		float b = 50.9f;
 
-		std::cout << "Testing swap(T a, T b) with float values"
-				  << std::endl
+		std::cout << "Testing swap(T a, T b) with float values" << std::endl
 				  << "Original values:	" << a << "	|	" << b << std::endl;
 		swap(a, b);
-		std::cout << BG "After swap:		" << a << "	|	" << b << R << std::endl
+		std::cout << BG "After swap:		" << a << "	|	" << b << R
+				  << std::endl
 				  << std::endl;
 	}
 
@@ -51,7 +51,8 @@ void testSwap()
 				  << std::endl
 				  << "Original values:	" << a << "	|	" << b << std::endl;
 		swap(a, b);
-		std::cout << BG "After swap:		" << a << "	|	" << b << R << std::endl;
+		std::cout << BG "After swap:		" << a << "	|	" << b << R
+				  << std::endl;
 	}
 }
 
@@ -61,9 +62,9 @@ void testMin()
 		int a = 15;
 		int b = 5;
 
-		std::cout << "Testing min(T a, T b) with int values"
-				  << std::endl
-				  << "The smallest of " << a << " and " << b << " is	" << BG << min(a, b) << R << std::endl
+		std::cout << "Testing min(T a, T b) with int values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -71,9 +72,9 @@ void testMin()
 		float a = 15.5f;
 		float b = 50.9f;
 
-		std::cout << "Testing min(T a, T b) with float values"
-				  << std::endl
-				  << "The smallest of " << a << " and " << b << " is	" << BG << min(a, b) << R << std::endl
+		std::cout << "Testing min(T a, T b) with float values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -81,9 +82,9 @@ void testMin()
 		char a = 'w';
 		char b = '*';
 
-		std::cout << "Testing min(T a, T b) with char values"
-				  << std::endl
-				  << "The smallest of " << a << " and " << b << " is	" << BG << min(a, b) << R << std::endl
+		std::cout << "Testing min(T a, T b) with char values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -91,9 +92,9 @@ void testMin()
 		char a = 'w';
 		char b = 'w';
 
-		std::cout << "Testing min(T a, T b) with equal char values"
-				  << std::endl
-				  << "The smallest of " << a << " and " << b << " is	" << BG << min(a, b) << R << std::endl;
+		std::cout << "Testing min(T a, T b) with equal char values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl;
 	}
 }
 
@@ -103,9 +104,9 @@ void testMax()
 		int a = 15;
 		int b = 5;
 
-		std::cout << "Testing max(T a, T b) with int values"
-				  << std::endl
-				  << "The greater of " << a << " and " << b << " is	" << BG << max(a, b) << R << std::endl
+		std::cout << "Testing max(T a, T b) with int values" << std::endl
+				  << "The greater of " << a << " and " << b << " is	" << BG
+				  << max(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -113,9 +114,9 @@ void testMax()
 		float a = 15.5f;
 		float b = 50.9f;
 
-		std::cout << "Testing max(T a, T b) with float values"
-				  << std::endl
-				  << "The greater of " << a << " and " << b << " is	" << BG << max(a, b) << R << std::endl
+		std::cout << "Testing max(T a, T b) with float values" << std::endl
+				  << "The greater of " << a << " and " << b << " is	" << BG
+				  << max(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -123,9 +124,9 @@ void testMax()
 		char a = 'w';
 		char b = '*';
 
-		std::cout << "Testing max(T a, T b) with char values"
-				  << std::endl
-				  << "The greater of " << a << " and " << b << " is	" << BG << max(a, b) << R << std::endl
+		std::cout << "Testing max(T a, T b) with char values" << std::endl
+				  << "The greater of " << a << " and " << b << " is	" << BG
+				  << max(a, b) << R << std::endl
 				  << std::endl;
 	}
 
@@ -133,23 +134,23 @@ void testMax()
 		char a = 'w';
 		char b = 'w';
 
-		std::cout << "Testing max(T a, T b) with equal char values"
-				  << std::endl
-				  << "The smallest of " << a << " and " << b << " is	" << BG << min(a, b) << R << std::endl;
+		std::cout << "Testing max(T a, T b) with equal char values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl;
 	}
 }
 
 void mandatoryMain(void)
 {
 	{
-		std::cout << "Expected output:" << std::endl
-				  << "a = 3, b = 2\nmin( a, b ) = 2\nmax( a, b ) = 3\nc = chaine2, \
+		std::cout
+			<< "Expected output:" << std::endl
+			<< "a = 3, b = 2\nmin( a, b ) = 2\nmax( a, b ) = 3\nc = chaine2, \
 d = chaine1\nmin( c, d ) = chaine1\nmax( c, d ) = chaine2\n"
-				  << std::endl;
+			<< std::endl;
 	}
 
-	std::cout
-		<< "Program output:" << std::endl;
+	std::cout << "Program output:" << std::endl;
 
 	int a = 2;
 	int b = 3;

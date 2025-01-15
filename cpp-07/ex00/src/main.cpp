@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:02:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/04 13:26:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 10:51:05 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void mandatoryMain();
 
 int main(int ac, char *av[])
 {
-	if (ac != 2)
-	{
+	if (ac != 2) {
 		std::cout << "To test Swap	enter:	1" << std::endl
 				  << "To test Min	enter:	2" << std::endl
 				  << "To test Max	enter:	3" << std::endl
@@ -38,18 +37,15 @@ int main(int ac, char *av[])
 		testMax();
 	else if (input.compare("4") == 0)
 		mandatoryMain();
-	else if (input.compare("5") == 0)
-	{
+	else if (input.compare("5") == 0) {
 		testSwap();
-		std::cout << "---" << std::endl<< std::endl;
+		std::cout << "---" << std::endl << std::endl;
 		testMin();
-		std::cout << "---" << std::endl<< std::endl;
+		std::cout << "---" << std::endl << std::endl;
 		testMax();
-		std::cout << "---" << std::endl<< std::endl;
+		std::cout << "---" << std::endl << std::endl;
 		mandatoryMain();
-	}
-	else
-	{
+	} else {
 		std::cout << "To test Swap	enter:	1" << std::endl
 				  << "To test Min	enter:	2" << std::endl
 				  << "To test Max	enter:	3" << std::endl
