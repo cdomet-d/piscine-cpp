@@ -11,7 +11,7 @@
 templated mergeInsert class containing:
 
 ### Variables
-- [X] templated container;
+- [X] templated Container< InnerContainer < int > >;
 - [X] timer class;
 
 ### Methods
@@ -25,3 +25,13 @@ templated mergeInsert class containing:
 	- [X] forbiddenToken
 
 - [ ] overloaded << operator displaying output of timer class + sorted container.
+
+# Concepts
+## Template template parameters
+- [Template template parameters](https://fbb-git.github.io/cppannotations/cppannotations/html/cplusplus23.html): see __23.4.2. Policy Classes: template template parameters.__
+
+The syntaxe is as follows: 
+```cpp
+template < typename Container, template < typename > class InnerContainer,
+		   typename Type = int >
+```

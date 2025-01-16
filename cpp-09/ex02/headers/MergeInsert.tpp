@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MergeInsert.cpp                                    :+:      :+:    :+:   */
+/*   MergeInsert.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 13:16:04 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/16 17:38:13 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-template < typename Container >
-MergeInsert< Container >::MergeInsert(void)
+template < template < typename > class Container,
+		   template < typename > class InnerContainer, typename Type = int >
+	MergeInsert < Container< InnerContainer< Type > >::MergeInsert(void)
 {
 }
 
-template < typename Container >
-MergeInsert< Container >::MergeInsert(const std::string &seq)
+template < template < typename > class Container,
+		   template < typename > class InnerContainer, typename Type = int >
+	MergeInsert <
+	Container< InnerContainer< Type > >::MergeInsert(const std::string &seq)
 {
 }
 
-template < typename Container >
-MergeInsert< Container >::~MergeInsert(void)
+template < template < typename > class Container,
+		   template < typename > class InnerContainer, typename Type = int >
+	MergeInsert < Container< InnerContainer< Type > >::~MergeInsert(void)
 {
 }
 
@@ -39,13 +43,17 @@ MergeInsert< Container >::~MergeInsert(void)
 /*                               EXCEPTIONS                                   */
 /* ************************************************************************** */
 
-template < typename Container >
-const char *MergeInsert< Container >::forbiddenToken::what() const throw()
+template < template < typename > class Container,
+		   template < typename > class InnerContainer, typename Type = int >
+	const char *MergeInsert <
+	Container< InnerContainer< Type > >::forbiddenToken::what() const throw()
 {
 	return "Forbidden token in input"
 }
-template < typename Container >
-const char *MergeInsert< Container >::isNegative::what() const throw()
+template < template < typename > class Container,
+		   template < typename > class InnerContainer, typename Type = int >
+	const char *MergeInsert <
+	Container< InnerContainer< Type > >::isNegative::what() const throw()
 {
 	return "Forbidden negative number"
 }

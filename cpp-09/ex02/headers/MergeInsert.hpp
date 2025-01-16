@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 13:16:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/16 17:35:54 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MERGEINSERT_HPP
 #define MERGEINSERT_HPP
 
-#include <string>
 #include "Timer.hpp"
+#include <string>
 
-template < typename Container >
+template < template < typename > class Container, template < typename > class InnerContainer,
+		   typename Type = int >
 
 class MergeInsert {
   public:
@@ -39,8 +40,10 @@ class MergeInsert {
 	/*                               METHODS                                  */
 
   private:
-	Container container;
+	Container container< InnerContainer< Type > >;
 	Timer clock;
 };
+
+#include "MergeInsert.tpp"
 
 #endif
