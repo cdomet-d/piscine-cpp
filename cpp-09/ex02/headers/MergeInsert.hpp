@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/16 17:35:54 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:42:58 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #define MERGEINSERT_HPP
 
 #include "Timer.hpp"
+#include <cstdlib>
+#include <stdint.h>
 #include <string>
 
-template < template < typename > class Container, template < typename > class InnerContainer,
-		   typename Type = int >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 
 class MergeInsert {
   public:
@@ -38,9 +40,9 @@ class MergeInsert {
 		const char *what() const throw();
 	};
 	/*                               METHODS                                  */
-
+	void printContainer();
   private:
-	Container container< InnerContainer< Type > >;
+	Container< Container< int, std::allocator< int > > > container;
 	Timer clock;
 };
 
