@@ -6,11 +6,12 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/17 17:33:07 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:37:15 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MergeInsert.hpp"
+#include "cerrno"
 #include <iostream>
 
 /* ************************************************************************** */
@@ -19,7 +20,6 @@
 
 template < template < typename, typename = std::allocator< int > >
 		   class Container >
-
 MergeInsert< Container >::MergeInsert()
 {
 }
@@ -30,16 +30,15 @@ MergeInsert< Container >::MergeInsert(const std::string &seq)
 {
 	container.resize(1);
 
-	char *endptr;
-	uint32_t n = std::strtod(seq.c_str(), &endptr);
-	container[0].push_back(n);
-
-	while (*endptr && *endptr == ' ') {
+	char *endptr = NULL;
+	int64_t n = std::strtod(seq.c_str(), &endptr);
+	addValidValue(n, endptr);
+	while (*endptr) {
 		n = std::strtod(endptr + 1, &endptr);
-		container[0].push_back(n);
+		addValidValue(n, endptr);
 	}
-	std::cout << "Outer container.size(): " << container.size() << std::endl;
-	std::cout << "Inner container.size(): " << container[0].size() << std::endl;
+	if (container[0].size() <= 1)
+		throw singleValue();
 }
 
 template < template < typename, typename = std::allocator< int > >
@@ -62,6 +61,18 @@ void MergeInsert< Container >::printContainer()
 		std::cout << std::endl;
 	}
 }
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
+void MergeInsert< Container >::addValidValue(const int64_t n, const char *endptr)
+{
+	if (*endptr && *endptr != ' ')
+		throw forbiddenToken();
+	if (n < 0 || n > UINT32_MAX) {
+		std::cerr << n << ": ";
+		throw outOfRange();
+	}
+	container[0].push_back(n);
+}
 /* ************************************************************************** */
 /*                               EXCEPTIONS                                   */
 /* ************************************************************************** */
@@ -74,7 +85,14 @@ const char *MergeInsert< Container >::forbiddenToken::what() const throw()
 }
 template < template < typename, typename = std::allocator< int > >
 		   class Container >
-const char *MergeInsert< Container >::isNegative::what() const throw()
+const char *MergeInsert< Container >::outOfRange::what() const throw()
 {
-	return "Forbidden negative number";
+	return "Value is outside expected range (uint32) [0 - 4294967295]";
+}
+
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
+const char *MergeInsert< Container >::singleValue::what() const throw()
+{
+	return "Single value cannot be sorted";
 }

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:05:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/17 17:24:15 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:54:47 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,14 @@ int main(int ac, char *av[])
 	}
 	std::string arg = av[1];
 
-	MergeInsert< std::vector > vec(arg);
-	MergeInsert< std::deque > deq(arg);
-
-	vec.printContainer();
-	deq.printContainer();
+	try {
+		MergeInsert< std::vector > vec(arg);
+		MergeInsert< std::deque > deq(arg);
+		vec.printContainer();
+		deq.printContainer();
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+	return 0;
 }
