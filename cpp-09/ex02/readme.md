@@ -60,3 +60,9 @@ container[1] = {59,18}
 
 // exit since we can't make any more pairs.
 ```
+# Ford-Johnson steps as per the Art of Computer Programming
+
+For `n` elements:
+1. Make pairwise comparisons of [n/2] disjoint pair of elements (if n is odd, leave one element out)
+2. sort the [n/2] larger numbers found in 1. by merge insertion (using Ford-Johnson)
+3. Name the elements `a1, a2, a3, ..., a[n/2], b1, b2 ... b[n/2]`. `b1` and the `a`s are the "main chain", the `b`s are the "pend chain". Insert the pend into the main, using binary insertion and taking the indexes from Jacobsthal suite.

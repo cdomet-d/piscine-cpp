@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/21 11:35:50 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:34:54 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdint.h>
 #include <string>
 
-template < template < typename, typename = std::allocator< int > >
+template < template < class, class = std::allocator< int > >
 		   class Container >
 
 class MergeInsert {
@@ -45,11 +45,14 @@ class MergeInsert {
 	};
 	/*                               METHODS                                  */
 	void printContainer();
-	// void makePairs(Container < Container int, std::allocator < int >>>  );
+	void makePairs(Container< Container< int, std::allocator< int > > > &_container);
 	void addValidValue(const int64_t n, const char *endptr);
+	void sort();
   
   private:
 	Container< Container< int, std::allocator< int > > > container;
+	uint32_t iSize;
+	uint32_t curElemSize;
 	Timer clock;
 };
 
