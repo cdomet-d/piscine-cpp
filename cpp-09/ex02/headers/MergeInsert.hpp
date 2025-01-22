@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/22 18:34:54 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/22 23:20:51 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <cstdlib>
 #include <stdint.h>
 #include <string>
+
+#define PAIR 2
 
 template < template < class, class = std::allocator< int > >
 		   class Container >
@@ -45,7 +47,8 @@ class MergeInsert {
 	};
 	/*                               METHODS                                  */
 	void printContainer();
-	void makePairs(Container< Container< int, std::allocator< int > > > &_container);
+	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
+	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void addValidValue(const int64_t n, const char *endptr);
 	void sort();
   

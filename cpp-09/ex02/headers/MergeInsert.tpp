@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/22 19:13:51 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/22 23:19:25 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ MergeInsert< Container >::MergeInsert()
 
 template < template < typename, typename = std::allocator< int > >
 		   class Container >
-MergeInsert< Container >::MergeInsert(const std::string &seq) : curElemSize(1)
+MergeInsert< Container >::MergeInsert(const std::string &seq) : curElemSize(2)
 {
 	char *endptr = NULL;
 	int64_t n = std::strtod(seq.c_str(), &endptr);
@@ -75,40 +75,38 @@ void MergeInsert< Container >::printContainer()
 
 	for (; i < container.size(); ++i) {
 		j = 0;
+		std::cout << "container[" << std::setw(3) << i + 1 << "] ";
 		for (; j < container[i].size(); ++j) {
 			std::cout << std::setw(3) << container[i][j] << " ";
 		}
 		std::cout << std::endl;
 	}
-	std::cout << "array of size {" << i << ", " << j << "}" << std::endl;
+	std::cout << "---" << std::endl;
 }
 
 template < template < typename, typename = std::allocator< int > >
 		   class Container >
 void MergeInsert< Container >::makePairs(
-	Container< Container< int, std::allocator< int > > > &_container)
+	Container< Container< int, std::allocator< int > > > &cont)
 {
 	size_t i = 0;
-	size_t j;
-	curElemSize = curElemSize * 2;
-	while (std::distance(_container.begin() + i, _container.end()) >
-		   curElemSize) {
-		j = i + 1;
-		_container[i].insert(_container[i].end(), _container[j].begin(),
-							 _container[j].end());
-		_container.erase(_container.begin() + j);
+	size_t pairLevel = cont.size() / PAIR;
+
+	while (i < cont.size() && (cont.size() - i > PAIR)) {
+		cont[i].insert(cont[i].end(), cont[i + 1].begin(), cont[i + 1].end());
+		cont.erase(cont.begin() + i + 1);
 		i++;
 	}
-	size_t last = container.size();
-	if (_container[last - 1].size() < curElemSize && _container[last - 2].size() < curElemSize) {
-		std::cout << curElemSize << std::endl;
-		_container[last - 2].insert(_container[last - 2].end(), _container[last - 1].begin(),
-								 _container[last - 1].end());
-		_container.erase(_container.begin() + last - 1);
+	size_t last = cont.size() - 1;
+	if (cont.size() > pairLevel && cont[last - 1].size() < curElemSize) {
+		cont[last - 1].insert(cont[last - 1].end(), cont[last].begin(),
+							  cont[last].end());
+		cont.erase(cont.begin() + last);
 	}
 	printContainer();
-	if (std::distance(_container.begin(), _container.end()) > curElemSize)
-		makePairs(_container);
+	curElemSize = curElemSize * PAIR;
+	if (container.size() > PAIR)
+		makePairs(cont);
 }
 
 template < template < typename, typename = std::allocator< int > >
