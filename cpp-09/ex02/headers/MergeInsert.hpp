@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/22 23:20:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/23 15:05:03 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class MergeInsert {
 	/*                               METHODS                                  */
 	void printContainer();
 	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
+	void undoPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void addValidValue(const int64_t n, const char *endptr);
 	void sort();
