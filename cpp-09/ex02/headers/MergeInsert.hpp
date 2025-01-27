@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/23 15:05:03 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:55:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 #define PAIR 2
 
-template < template < class, class = std::allocator< int > >
-		   class Container >
+template < template < class, class = std::allocator< int > > class Container >
 
 class MergeInsert {
   public:
@@ -46,13 +45,14 @@ class MergeInsert {
 		const char *what() const throw();
 	};
 	/*                               METHODS                                  */
-	void printContainer();
+	void printContainer(
+		const Container< Container< int, std::allocator< int > > > &cont);
 	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
 	void undoPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void addValidValue(const int64_t n, const char *endptr);
 	void sort();
-  
+
   private:
 	Container< Container< int, std::allocator< int > > > container;
 	uint32_t iSize;
