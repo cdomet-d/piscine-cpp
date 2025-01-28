@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/27 11:55:21 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:08:24 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,23 @@ class MergeInsert {
 	  public:
 		const char *what() const throw();
 	};
+	
 	/*                               METHODS                                  */
+	
+	// debug
 	void printContainer(
 		const Container< Container< int, std::allocator< int > > > &cont);
-	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
-	void undoPairs(Container< Container< int, std::allocator< int > > > &cont);
-	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
+	
+	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
+	
+	// sorting
+	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
+	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
+	void splitPairs(Container< Container< int, std::allocator< int > > > &cont);
+	void fillMain(Container< Container< int, std::allocator< int > > > &cont);
 	void sort();
+	void merge(Container< Container< int, std::allocator< int > > > &cont);
 
   private:
 	Container< Container< int, std::allocator< int > > > container;
