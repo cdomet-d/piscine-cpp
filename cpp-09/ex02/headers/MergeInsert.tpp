@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/29 14:33:55 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 17:46:38 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,40 +59,39 @@ void MergeInsert< Container >::fillMain(
 	splitPairs(cont);
 	// std::cout << "Entering fillMain" << std::endl;
 	// printContainer(cont);
-	hasStraggler = (cont[cont.size() - 1].size() != curElemSize);
-	if (!hasStraggler && cont.size() == PAIR) {
+	// hasStraggler = (cont[cont.size() - 1].size() != curElemSize);
+	// if (!hasStraggler && cont.size() == PAIR) {
 		// std::cout << "Container is already sorted" << std::endl;
 		// std::cout << "Exiting fillMain" << std::endl << std::endl;
-		return;
-	} else if (hasStraggler && cont.size() == (PAIR + 1)) {
+		// return;
+	// } else if (hasStraggler && cont.size() == (PAIR + 1)) {
 		// std::cout << "Container is already sorted" << std::endl;
 		// std::cout << "Exiting fillMain" << std::endl << std::endl;
-		return;
-	}
+		// return;
+	// }
 	// std::cout << "Container must be sorted: printing cont" << std::endl;
 	// printContainer(cont);
 
-	Container< Container< int, std::allocator< int > > > main;
-	main.resize(cont.size());
-	for (size_t i = 0; i < 2; ++i) {
-		main[i].insert(main[i].begin(), cont[i].begin(), cont[i].end());
-	}
+	// Container< Container< int, std::allocator< int > > > main;
+	// main.resize(cont.size());
+	// for (size_t i = 0; i < 2; ++i) {
+	// 	main[i].insert(main[i].begin(), cont[i].begin(), cont[i].end());
+	// }
 	// std::cout << "Printing main after adding b0 & a0" << std::endl;
 	// printContainer(main);
 	// std::cout << "Printing cont after adding b0 & a0" << std::endl;
 	// printContainer(main);
-	for (size_t i = 2; i < cont.size(); ++i) {
-		if (!(i % 2)) {
-			main[i].insert(main[i].begin(), cont[i].begin(), cont[i].end());
-			cont[i].erase(cont[i].begin(), cont[i].end());
-		}
-	}
+	// for (size_t i = 2; i < cont.size(); ++i) {
+	// 	if (!(i % 2)) {
+	// 		main[i].insert(main[i].begin(), cont[i].begin(), cont[i].end());
+	// 	}
+	// }
 
 	// std::cout << "Printing MAIN" << std::endl;
 	// printContainer(main);
 	// std::cout << "Printing PEND" << std::endl;
 	// printContainer(cont);
-	cont = main;
+	// cont = main;
 	// std::cout << "Exiting fillMain" << std::endl << std::endl;
 }
 
@@ -103,50 +102,32 @@ void MergeInsert< Container >::splitPairs(
 {
 	hasStraggler = (cont[cont.size() - 1].size() != curElemSize);
 
-	printContainer(cont, "this->cont, entering SplitPair");
-	curElemSize /= PAIR;
 	Container< Container< int, std::allocator< int > > > splitPairs;
 
-	// size_t splitPairSize;
-	// hasStraggler ? (splitPairSize = (cont.size() - 1))
-	// 			 : (splitPairSize = cont.size());
-	// splitPairSize *= 2;
-	// std::cout << "Has straggler:	" << (hasStraggler ? "true	" : "false	")
-	// 		  << std::endl
-	// 		  << "Cont.size():	" << cont.size() << std::endl
-	// 		  << "splitPairSize:	" << splitPairSize << std::endl;
-
-	splitPairs.resize(cont.size());
-
 	size_t j = 0;
-	for (size_t i = 0; i < splitPairs.size(); ++i) {
-		if (splitPairs.size() == splitPairs.capacity()) {
-			splitPairs.resize((splitPairs.size() + 1));
-		}
+	curElemSize /= PAIR;
+	printContainer(cont, "this->cont, right before loop splitting pairs");
+	for (size_t i = 0; cont[j].size() == (curElemSize * 2); ++i) {
 		if (i % 2) {
-			std::cout << "i: " << i << " | " << "j: " << j << std::endl;
-			splitPairs[i].insert(splitPairs[i].begin(),
-								 (cont[j].begin() + curElemSize),
-								 cont[j].end());
-		} else
-			splitPairs[i].insert(splitPairs[i].begin(), cont[j].begin(),
-								 (cont[j].begin() + curElemSize));
+			Container< int > newPair((cont[j].begin() + (curElemSize)),
+									 cont[j].end());
+			splitPairs.push_back(newPair);
+		} else {
+			Container< int > newPair(cont[j].begin(),
+									 (cont[j].begin() + (curElemSize)));
+			splitPairs.push_back(newPair);
+		}
 		j += (i % 2);
 	}
 	printContainer(splitPairs, "splitPairs, after splittingPairs");
+	printContainer(container, "container, after splittingPairs");
 	if (hasStraggler) {
-		if (!makeElemFromStraggler(splitPairs)) {
-			if (splitPairs.size() == splitPairs.capacity()) {
-				splitPairs.resize((splitPairs.size() + 1));
-			}
-			size_t back = splitPairs.size() - 1;
-			splitPairs[back].insert(splitPairs[back].begin(),
-									cont[(cont.size() - 1)].begin(),
-									cont[(cont.size() - 1)].end());
-		}
+		makeElemFromStraggler(splitPairs);
+		Container< int > straggler(cont[(cont.size() - 1)].begin(),
+								   cont[(cont.size() - 1)].end());
+		splitPairs.push_back(straggler);
 	}
 	cont = splitPairs;
-	// std::cout << "Container after recovering value" << std::endl;
 	printContainer(cont, "this->cont, exiting splitPairs");
 }
 template <
@@ -165,25 +146,19 @@ bool MergeInsert< Container >::makeElemFromStraggler(
 		return false;
 	}
 	printContainer(container, "this->container in StragglerCanMakeElem");
-	printContainer(splitPairs, "splitPair in StragglerCanMakeElem");
 	std::cout << "---\n";
-	size_t tracker = 0;
 	size_t canMakeElem = container[back].size() / curElemSize;
 
-	size_t sPBack = splitPairs.size() - 1;
-	// here we have two problems :
-	// 1. resize the vector when there's no more room
-	// 2. delete the elements from straggler as insert them in splitPairs.
+	if (canMakeElem % 2)
+		canMakeElem -= 1;
 	while (canMakeElem != 0) {
-		if (splitPairs.size() == splitPairs.capacity())
-			splitPairs.resize((splitPairs.size() + 1));
-		splitPairs[sPBack].insert(
-			splitPairs[sPBack].begin(), container[back].begin() + tracker,
-			(container[back].begin() + tracker) + curElemSize);
-		tracker += curElemSize;
+		Container< int > newPair(container[back].begin(),
+								 container[back].begin() + curElemSize);
+		splitPairs.push_back(newPair);
+		container[back].erase(container[back].begin(),
+							  container[back].begin() + curElemSize);
 		canMakeElem--;
 	}
-	printContainer(container, "this->container in makeElemFromStragger");
 	printContainer(splitPairs, "splitPairs in makeElemFromStragger");
 	return true;
 }
@@ -238,7 +213,8 @@ void MergeInsert< Container >::printContainer(
 	size_t j = 0;
 
 	size_t pairIndex = 0;
-	bool a, b = false;
+	bool a = false;
+	bool b = false;
 
 	for (; i < cont.size(); ++i) {
 		j = 0;
