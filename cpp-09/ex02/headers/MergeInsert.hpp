@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/28 17:08:24 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:56:08 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MERGEINSERT_HPP
 
 #include "Timer.hpp"
+#include <vector>
 #include <cstdlib>
 #include <stdint.h>
 #include <string>
@@ -49,7 +50,7 @@ class MergeInsert {
 	
 	// debug
 	void printContainer(
-		const Container< Container< int, std::allocator< int > > > &cont);
+		const Container< Container< int, std::allocator< int > > > &cont, std::string contName);
 	
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
@@ -59,13 +60,17 @@ class MergeInsert {
 	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void splitPairs(Container< Container< int, std::allocator< int > > > &cont);
 	void fillMain(Container< Container< int, std::allocator< int > > > &cont);
-	void sort();
+	bool makeElemFromStraggler(Container< Container< int, std::allocator< int > > > &cont);
 	void merge(Container< Container< int, std::allocator< int > > > &cont);
+	void sort();
+
 
   private:
 	Container< Container< int, std::allocator< int > > > container;
+	std::vector<int> sisterIndex;
 	uint32_t iSize;
 	uint32_t curElemSize;
+	bool hasStraggler;
 	Timer clock;
 };
 
