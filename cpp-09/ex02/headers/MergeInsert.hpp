@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/29 19:00:44 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/30 11:29:28 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MERGEINSERT_HPP
 #define MERGEINSERT_HPP
 
+#include "SisterTracker.hpp"
 #include "Timer.hpp"
 #include <cstdlib>
 #include <stdint.h>
@@ -52,7 +53,6 @@ class MergeInsert {
 	void printContainer(
 		const Container< Container< int, std::allocator< int > > > &cont,
 		std::string contName);
-	void printSister();
 
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
@@ -67,13 +67,15 @@ class MergeInsert {
 	void merge(Container< Container< int, std::allocator< int > > > &cont);
 	void sort();
 
+	// index handling
+
   private:
 	Container< Container< int, std::allocator< int > > > container;
-	std::vector< int > sisterIndex;
 	uint32_t iSize;
 	uint32_t curElemSize;
 	bool hasStraggler;
 	Timer clock;
+	SisterTracker aIndex;
 };
 
 #include "MergeInsert.tpp"

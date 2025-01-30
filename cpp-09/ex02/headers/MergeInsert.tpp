@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/29 19:00:38 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/01/30 11:45:09 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 MergeInsert< Container >::MergeInsert()
 {
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 MergeInsert< Container >::MergeInsert(const std::string &seq) : curElemSize(1)
 {
 	char *endptr = NULL;
@@ -42,8 +42,8 @@ MergeInsert< Container >::MergeInsert(const std::string &seq) : curElemSize(1)
 		throw singleValue();
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 MergeInsert< Container >::~MergeInsert(void)
 {
 }
@@ -51,8 +51,10 @@ MergeInsert< Container >::~MergeInsert(void)
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+
+
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::fillMain(
 	Container< Container< int, std::allocator< int > > > &cont)
 {
@@ -70,23 +72,24 @@ void MergeInsert< Container >::fillMain(
 				  << std::endl;
 		return;
 	}
-	printContainer(cont, "Container needs to be sorted");~
+	printContainer(cont, "Container needs to be sorted");
 	Container< Container< int, std::allocator< int > > > main;
 
 	main.push_back(cont[0]);
 	// cont.erase(cont.begin());
-	for (size_t i = 1; (i < cont.size() && (cont[i].size() == curElemSize)); ++i) {
+	for (size_t i = 1; (i < cont.size() && (cont[i].size() == curElemSize));
+		 ++i) {
 		if (i % 2) {
 			main.push_back(cont[i]);
 		}
-		sisterIndex.push_back(i);
+		aIndex.addIndex(i);
 	}
 	printContainer(main, "after pushing all as");
 	printSister();
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::splitPairs(
 	Container< Container< int, std::allocator< int > > > &cont)
 {
@@ -120,8 +123,8 @@ void MergeInsert< Container >::splitPairs(
 	cont = splitPairs;
 	// printContainer(cont, "this->cont, exiting splitPairs");
 }
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 bool MergeInsert< Container >::makeElemFromStraggler(
 	Container< Container< int, std::allocator< int > > > &splitPairs)
 {
@@ -137,7 +140,7 @@ bool MergeInsert< Container >::makeElemFromStraggler(
 	}
 	// printContainer(container, "this->container in StragglerCanMakeElem");
 	size_t canMakeElem = container[back].size() / curElemSize;
-	
+
 	if (canMakeElem % 2)
 		canMakeElem -= 1;
 	while (canMakeElem != 0) {
@@ -153,8 +156,8 @@ bool MergeInsert< Container >::makeElemFromStraggler(
 	return true;
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::makePairs(
 	Container< Container< int, std::allocator< int > > > &cont)
 {
@@ -186,6 +189,7 @@ void MergeInsert< Container >::makePairs(
 		cont.size() == 1)
 		return;
 	curElemSize *= PAIR;
+	printContainer(cont, "Making the pairs");
 	makePairs(cont);
 }
 
@@ -193,17 +197,8 @@ void MergeInsert< Container >::makePairs(
 /*                               DEBUG                                        */
 /* ************************************************************************** */
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
-void MergeInsert< Container >::printSister()
-{
-	for (size_t i = 0; i < sisterIndex.size(); ++i)
-		std::cout << "SisterIndex[" << std::setw(3) << i << "]	"
-				  << sisterIndex[i] << std::endl;
-}
-
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::printContainer(
 	const Container< Container< int, std::allocator< int > > > &cont,
 	std::string contName)
@@ -211,26 +206,10 @@ void MergeInsert< Container >::printContainer(
 	size_t i = 0;
 	size_t j = 0;
 
-	size_t pairIndex = 0;
-	bool a = false;
-	bool b = false;
-
 	for (; i < cont.size(); ++i) {
 		j = 0;
-		std::cout << contName << "[" << std::setw(3) << i << "]	";
-		if (i % 2 && cont[i].size() == curElemSize) {
-			std::cout << "a" << pairIndex << "\t";
-			a = true;
-		} else if (!(i % 2) && cont[i].size() == curElemSize) {
-			std::cout << "b" << pairIndex << "\t";
-			b = true;
-		} else
-			std::cout << "s\t";
-		if (a == true && b == true) {
-			pairIndex++;
-			a = false;
-			b = false;
-		}
+		std::cout << std::setw(30) << std::left << contName << "["
+				  << std::setw(3) << i << "]	";
 		for (; j < cont[i].size(); ++j) {
 			std::cout << std::setw(3) << cont[i][j] << " ";
 			if (cont[i].size() == curElemSize && j == (cont[i].size() / 2) - 1)
@@ -245,8 +224,8 @@ void MergeInsert< Container >::printContainer(
 /*                               PARSING                                      */
 /* ************************************************************************** */
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::addValidValue(const int64_t n,
 											 const char *endptr)
 {
@@ -264,8 +243,8 @@ void MergeInsert< Container >::addValidValue(const int64_t n,
 /*                               UTILS                                        */
 /* ************************************************************************** */
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::sortPairs(
 	Container< Container< int, std::allocator< int > > > &cont)
 {
@@ -278,15 +257,15 @@ void MergeInsert< Container >::sortPairs(
 	}
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::sort()
 {
 	makePairs(container);
 	merge(container);
 }
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 void MergeInsert< Container >::merge(
 	Container< Container< int, std::allocator< int > > > &cont)
 {
@@ -300,21 +279,21 @@ void MergeInsert< Container >::merge(
 /*                               EXCEPTIONS                                   */
 /* ************************************************************************** */
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 const char *MergeInsert< Container >::forbiddenToken::what() const throw()
 {
 	return "Forbidden token in input";
 }
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 const char *MergeInsert< Container >::outOfRange::what() const throw()
 {
 	return "Value is outside expected range (uint32) [0 - 4294967295]";
 }
 
-template <
-	template < typename, typename = std::allocator< int > > class Container >
+template < template < typename, typename = std::allocator< int > >
+		   class Container >
 const char *MergeInsert< Container >::singleValue::what() const throw()
 {
 	return "Single value cannot be sorted";

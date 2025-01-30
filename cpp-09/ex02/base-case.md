@@ -55,65 +55,66 @@ ElemSize = 2;
 > Each element has two numbers
 
 ```
-09 | 20
-00 | 16
-04 | 08
-01 | 05
-12 | 17
-01 | 04
-03 | 10
-11 | 13
+09 20
+00 16
+04 08
+01 05
+12 17
+06 14
+03 10
+11 13
 ```
 sortEachElem:
 > sort each element on the "max" of its element.
 ```
-00 | 16
-09 | 20
-01 | 05
-04 | 08
-01 | 04
-12 | 17
-03 | 10
-11 | 13
+00 16
+09 20
+01 05
+04 08
+06 14
+12 17
+03 10
+11 13
 ```
 `ElemSize *= 2;`
 
 ElemSize = 4;
 > Each element has four numbers
 ```
-00 16 | 09 20
-01 05 | 04 08
-01 04 | 12 17
-03 10 | 11 13
+00 16 09 20
+01 05 04 08
+06 14 12 17
+03 10 11 13
 ```
 sortEachElem:
 > sort each element on the "max" of its element.
 ```
-01 05 | 04 08
-00 16 | 09 20
-03 10 | 11 13
-01 04 | 12 17
+01 05 04 08
+00 16 09 20
+03 10 11 13
+06 14 12 17
 ```
 `ElemSize *= 2;`
 
 ElemSize = 8;
 > Each element has eight numbers
 ```
-03 10 11 13 | 01 04 12 17
-01 05 04 08 | 00 16 09 20
+01 05 04 08 00 16 09 20
+03 10 11 13 06 14 12 17
 ```
 sortEachElem:
 > sort each element on the "max" of its element.
 ```
-03 10 11 13 | 01 04 12 17
-01 05 04 08 | 00 16 09 20
+03 10 11 13 06 14 12 17
+01 05 04 08 00 16 09 20
 ```
 `ElemSize *= 2;`
 
 ElemSize = 16;
 > Each element has sixteen numbers
 ```
-03 10 11 13 01 04 12 17 | 01 05 04 08 00 16 09 20
+03 10 11 13 06 14 12 17
+01 05 04 08 00 16 09 20
 ```
 
 Cannot form any more pairs:
