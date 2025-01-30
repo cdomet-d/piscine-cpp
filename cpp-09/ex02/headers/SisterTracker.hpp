@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 11:36:18 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:49:04 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ class SisterTracker {
 	~SisterTracker(void);
 
 	/*                               METHODS                                  */
-	void updateSister(size_t insertionIndex);
-	void printSister();
+	void update(size_t insertionIndex);
+	void print();
 
 	/*                               GETTERS                                  */
 	size_t getMaxRange(size_t bIndex);
 
 	/*                               SETTER                                   */
-	void addIndex(size_t aIndex);
+	void add(size_t aIndex);
+	void reset();
 
 
   private:

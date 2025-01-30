@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 11:44:31 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:29:57 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 /* ************************************************************************** */
 
 SisterTracker::SisterTracker() {
-
 }
 
 SisterTracker::~SisterTracker(void) {}
@@ -29,8 +28,9 @@ SisterTracker::~SisterTracker(void) {}
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void SisterTracker::updateSister(size_t insertionIndex)
+void SisterTracker::update(size_t insertionIndex)
 {
+	
 	for (std::vector< int >::iterator it =
 			 std::find(sisterIndex.begin(), sisterIndex.end(), insertionIndex);
 		 it != sisterIndex.end(); ++it) {
@@ -38,28 +38,32 @@ void SisterTracker::updateSister(size_t insertionIndex)
 	}
 }
 
-void SisterTracker::printSister()
+void SisterTracker::print()
 {
 	for (size_t i = 0; i < sisterIndex.size(); ++i)
 		std::cout << std::setw(30) << std::left << "SisterIndex" << "["
 				  << std::setw(3) << i << "]	" << sisterIndex[i] << std::endl;
 }
 
-void SisterTracker::addIndex(size_t aIndex) {
-	sisterIndex.push_back(aIndex);
-}
-
-
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
 size_t SisterTracker::getMaxRange(size_t bIndex)
 {
+	print();
 	std::vector< int >::iterator it =
 		std::find(sisterIndex.begin(), sisterIndex.end(), bIndex);
-	return *it;
+	return std::distance(sisterIndex.begin(), it);
 }
 
 /* ************************************************************************** */
 /*                               SETTER                                       */
 /* ************************************************************************** */
+
+void SisterTracker::add(size_t aIndex) {
+	sisterIndex.push_back(aIndex);
+}
+
+void SisterTracker::reset() {
+	sisterIndex.clear();
+}

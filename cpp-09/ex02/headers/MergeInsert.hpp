@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 11:29:28 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:16:53 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,19 @@ class MergeInsert {
 	void addValidValue(const int64_t n, const char *endptr);
 
 	// sorting
-	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
-	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
-	void splitPairs(Container< Container< int, std::allocator< int > > > &cont);
-	void fillMain(Container< Container< int, std::allocator< int > > > &cont);
 	bool makeElemFromStraggler(
 		Container< Container< int, std::allocator< int > > > &cont);
+	Container< int > halfElemInStraggler(Container<int> &straggler);
+	void
+	binarySearch(size_t maxRange,
+				 Container< Container< int, std::allocator< int > > > &main,
+				 Container< int > &toInsert);
+	void fillMain(Container< Container< int, std::allocator< int > > > &cont);
+	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
 	void merge(Container< Container< int, std::allocator< int > > > &cont);
 	void sort();
+	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
+	void splitPairs(Container< Container< int, std::allocator< int > > > &cont);
 
 	// index handling
 
