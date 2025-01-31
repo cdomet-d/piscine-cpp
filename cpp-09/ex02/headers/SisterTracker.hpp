@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 11:49:04 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:45:00 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class SisterTracker {
   private:
 	SisterTracker(const SisterTracker &copy);
 	SisterTracker &operator=(const SisterTracker &copy);
-	std::vector< int > sisterIndex;
+	std::vector< size_t > sisterIndex;
 };
 
 #endif

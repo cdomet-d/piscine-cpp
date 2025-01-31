@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/31 15:13:15 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:14:45 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ class MergeInsert {
 
   private:
 	Cont< Cont< int, std::allocator< int > > > container;
+	Cont< int > straggler;
 	uint32_t iSize;
 	uint32_t curElemSize;
 	bool hasStraggler;
