@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 17:29:57 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:58:32 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ SisterTracker::~SisterTracker(void) {}
 
 void SisterTracker::update(size_t insertionIndex)
 {
-	
 	for (std::vector< int >::iterator it =
 			 std::find(sisterIndex.begin(), sisterIndex.end(), insertionIndex);
 		 it != sisterIndex.end(); ++it) {
@@ -50,7 +49,6 @@ void SisterTracker::print()
 /* ************************************************************************** */
 size_t SisterTracker::getMaxRange(size_t bIndex)
 {
-	print();
 	std::vector< int >::iterator it =
 		std::find(sisterIndex.begin(), sisterIndex.end(), bIndex);
 	return std::distance(sisterIndex.begin(), it);

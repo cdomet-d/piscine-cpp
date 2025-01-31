@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/30 16:16:53 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:13:15 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 #define PAIR 2
 
-template < template < class, class = std::allocator< int > > class Container >
+template < template < class, class = std::allocator< int > > class Cont >
 
 class MergeInsert {
   public:
@@ -50,32 +50,29 @@ class MergeInsert {
 	/*                               METHODS                                  */
 
 	// debug
-	void printContainer(
-		const Container< Container< int, std::allocator< int > > > &cont,
-		std::string contName);
+	void printContainer(const Cont< Cont< int, std::allocator< int > > > &cont,
+						std::string contName);
 
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
 
 	// sorting
-	bool makeElemFromStraggler(
-		Container< Container< int, std::allocator< int > > > &cont);
-	Container< int > halfElemInStraggler(Container<int> &straggler);
-	void
-	binarySearch(size_t maxRange,
-				 Container< Container< int, std::allocator< int > > > &main,
-				 Container< int > &toInsert);
-	void fillMain(Container< Container< int, std::allocator< int > > > &cont);
-	void makePairs(Container< Container< int, std::allocator< int > > > &cont);
-	void merge(Container< Container< int, std::allocator< int > > > &cont);
+
+	Cont< int > halfElemInStraggler(Cont< int > &straggler);
+	void binarySearch(size_t maxRange,
+					  Cont< Cont< int, std::allocator< int > > > &main,
+					  Cont< int > &toInsert);
+	void fillMain(Cont< Cont< int, std::allocator< int > > > &cont);
+	void makePairs(Cont< Cont< int, std::allocator< int > > > &cont);
+	void merge(Cont< Cont< int, std::allocator< int > > > &cont);
 	void sort();
-	void sortPairs(Container< Container< int, std::allocator< int > > > &cont);
-	void splitPairs(Container< Container< int, std::allocator< int > > > &cont);
+	void sortPairs(Cont< Cont< int, std::allocator< int > > > &cont);
+	void splitPairs(Cont< Cont< int, std::allocator< int > > > &cont);
 
 	// index handling
 
   private:
-	Container< Container< int, std::allocator< int > > > container;
+	Cont< Cont< int, std::allocator< int > > > container;
 	uint32_t iSize;
 	uint32_t curElemSize;
 	bool hasStraggler;
