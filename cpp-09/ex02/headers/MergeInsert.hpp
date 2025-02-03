@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/02 11:27:41 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:06:16 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@
 
 #define PAIR 2
 
-template < template < class, class = std::allocator< int > > class Cont >
+template < template < class, class = std::allocator< uint32_t > > class Cont >
 
 class MergeInsert {
   public:
+	typedef Cont< uint32_t, std::allocator< uint32_t > > InnerCont;
+	typedef Cont< InnerCont > OuterCont;
 	/*                               ORTHODOX CLASS                           */
 	MergeInsert(char **seq);
 	MergeInsert(const MergeInsert &copy);
@@ -53,32 +55,39 @@ class MergeInsert {
   private:
 	/*                               METHODS                                  */
 	// display
-	void printContainer(const Cont< Cont< int, std::allocator< int > > > &cont,
-						std::string contName);
-	void printInnerCont(Cont< int > iCont);
+	void printCont(const OuterCont &cont, std::string contName);
+	void printInnerCont(InnerCont iCont);
 
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
 
 	// sorting
-	Cont< int > makeElemFromStraggler(Cont< int > &straggler);
-	void binarySearch(size_t maxRange,
-					  Cont< Cont< int, std::allocator< int > > > &main,
-					  Cont< int > &toInsert);
-	void splitSort(Cont< Cont< int, std::allocator< int > > > &cont);
-	void makePairs(Cont< Cont< int, std::allocator< int > > > &cont);
-	void sortPairs(Cont< Cont< int, std::allocator< int > > > &cont);
-	void splitPairs(Cont< Cont< int, std::allocator< int > > > &cont);
+	InnerCont getStragglerElem();
+	void binarySearch(size_t maxRange, OuterCont &main, InnerCont &toInsert);
+	void splitSort(OuterCont &cont);
+	void makePairs(OuterCont &cont);
+	void undoPairs(OuterCont &cont);
+
+	//helpers
+	void sortElems(OuterCont &cont);
+	void mergeElems(OuterCont &cont, size_t index);
+	void unmergeElems(OuterCont &cont, typename InnerCont::iterator begin,
+					  typename InnerCont::iterator end);
+	bool isPairInCont(const OuterCont &cont, size_t index);
+
+	/*                               GETTERS                                  */
+	size_t getLast(const OuterCont &cont) const;
 
 	/*                               MEMBERS                                  */
-	MergeInsert(void);
-	Cont< Cont< int, std::allocator< int > > > container;
-	Cont< int > straggler;
-	uint32_t iSize;
-	uint32_t curElemSize;
 	bool hasStraggler;
-	Timer clock;
+	InnerCont straggler;
+	OuterCont inputHolder;
 	SisterTracker aIndex;
+	Timer clock;
+	uint32_t elemSize;
+	uint32_t inputSize;
+
+	MergeInsert(void);
 };
 
 #include "MergeInsert.tpp"

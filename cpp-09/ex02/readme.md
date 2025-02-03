@@ -11,7 +11,7 @@
 templated mergeInsert class containing:
 
 ### Variables
-- [X] templated Container< InnerContainer < int > >;
+- [X] templated Container< typename InnerContainer < int > >;
 - [X] timer class;
 
 ### Methods
@@ -32,7 +32,7 @@ templated mergeInsert class containing:
 
 The syntaxe is as follows: 
 ```cpp
-template < typename Container, template < typename > class InnerContainer,
+template < typename Container, template < typename > class typename InnerContainer,
 		   typename Type = int >
 ```
 
