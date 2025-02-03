@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 14:06:12 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/03 15:45:36 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <iomanip>
 #include <iostream>
 
+#define INVALID "\033[38;5;206m"
+#define VALID "\033[0;32m"
+#define RESET "\033[0m"
+
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
@@ -23,7 +27,7 @@
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
-									   InnerCont &toInsert)
+									   const InnerCont &toInsert)
 {
 	if (main.empty() || toInsert.empty())
 		return;
@@ -110,7 +114,7 @@ template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::makePairs(OuterCont &cont)
 {
-	size_t pairLevel = cont.size() / PAIR;
+	const size_t pairLevel = cont.size() / PAIR;
 
 	if (elemSize > 1) {
 		for (size_t curPairI = 0;
@@ -148,7 +152,7 @@ void MergeInsert< Cont >::sortElems(OuterCont &cont)
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::mergeElems(OuterCont &cont, size_t index)
+void MergeInsert< Cont >::mergeElems(OuterCont &cont, const size_t index)
 {
 	cont[index].insert(cont[index].end(), cont[index + 1].begin(),
 					   cont[index + 1].end());
@@ -156,18 +160,32 @@ void MergeInsert< Cont >::mergeElems(OuterCont &cont, size_t index)
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::unmergeElems(OuterCont &cont,
-									   typename InnerCont::iterator begin,
-									   typename InnerCont::iterator end)
+void MergeInsert< Cont >::unmergeElems(
+	OuterCont &cont, const typename InnerCont::iterator &begin,
+	const typename InnerCont::iterator &end)
 {
 	InnerCont newPair(begin, end);
 	cont.push_back(newPair);
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-bool MergeInsert< Cont >::isPairInCont(const OuterCont &cont, size_t index)
+bool MergeInsert< Cont >::isPairInCont(const OuterCont &cont,
+									   const size_t &index) const
 {
 	return (index < cont.size() && (cont[index].size() == elemSize));
+}
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+bool MergeInsert< Cont >::isSorted(typename OuterCont::const_iterator begin,
+								   typename OuterCont::const_iterator end) const
+{
+	typename OuterCont::const_iterator next = begin;
+	++next;
+	for (; next != end; ++begin, ++next) {
+		if ((*begin).back() > (*next).back())
+			return false;
+	}
+	return true;
 }
 
 /* ************************************************************************** */
@@ -178,6 +196,21 @@ template <
 size_t MergeInsert< Cont >::getLast(const OuterCont &cont) const
 {
 	return cont.size() - 1;
+}
+
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+void MergeInsert< Cont >::sort(const std::string &contType)
+{
+	std::cout << std::setw(30) << std::left << INVALID "Before" RESET;
+	display(false, contType);
+	makePairs(inputHolder);
+	while (inputHolder.size() < inputSize) {
+		aIndex.reset();
+		splitSort(inputHolder);
+	}
+	std::cout << std::setw(30) << std::left << INVALID "After" RESET;
+	display(true, contType);
 }
 
 /* ************************************************************************** */
@@ -198,17 +231,6 @@ void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
 	}
 	InnerCont newElem(1, n);
 	inputHolder.push_back(newElem);
-}
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::sort()
-{
-	makePairs(inputHolder);
-	while (inputHolder.size() < inputSize) {
-		aIndex.reset();
-		splitSort(inputHolder);
-	}
 }
 
 /* ************************************************************************** */
@@ -271,26 +293,40 @@ MergeInsert< Cont >::~MergeInsert(void)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::display()
+void MergeInsert< Cont >::display(const bool showTime,
+								  const std::string &type) const
 {
+	std::cout << "using std::" + type + ": ";
 	for (size_t i = 0; i < inputHolder.size(); ++i) {
 		printInnerCont(inputHolder[i]);
 	}
+	if (showTime) {
+		std::cout << std::endl
+				  << "Time to process a range of " << inputSize << std::setw(20)
+				  << std::left << " using std::" + type;
+		clock.displayTimeElasped();
+		std::cout << (isSorted(inputHolder.begin(), inputHolder.end())
+						  ? VALID "Input is successfully sorted" RESET
+						  : INVALID "Input is not sorted" RESET)
+				  << std::endl;
+	}
+	std::cout << std::endl;
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::printInnerCont(InnerCont iCont)
+void MergeInsert< Cont >::printInnerCont(const InnerCont &iCont) const
 {
 	if (iCont.empty())
 		return;
-	for (typename InnerCont::iterator it = iCont.begin(); it != iCont.end();
-		 ++it)
+	for (typename InnerCont::const_iterator it = iCont.begin();
+		 it != iCont.end(); ++it)
 		std::cout << *it << " ";
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::printCont(const OuterCont &cont, std::string contName)
+void MergeInsert< Cont >::printCont(const OuterCont &cont,
+									const std::string &contName) const
 {
 	size_t i = 0;
 	size_t j = 0;
