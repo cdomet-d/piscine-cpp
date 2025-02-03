@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SisterTracker.hpp                                  :+:      :+:    :+:   */
+/*   Jacobsthal.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 11:23:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 19:59:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2025/02/03 16:21:34 by cdomet-d          #+#    #+#             */
+/*   Updated: 2025/02/03 16:21:47 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SISTERTRACKER_HPP
-#define SISTERTRACKER_HPP
+#ifndef JACOBSTHAL_HPP
+# define JACOBSTHAL_HPP
 
-#include <stdint.h>
-#include <vector>
-#include <cstdlib>
-
-class SisterTracker {
-  public:
+class Jacobsthal
+{
+public:
 	/*                               ORTHODOX CLASS                           */
-	SisterTracker(void);
-	~SisterTracker(void);
+	Jacobsthal(void);
+	Jacobsthal(const Jacobsthal &copy);
+	~Jacobsthal(void);
+	Jacobsthal &operator=(const Jacobsthal &copy);
 
 	/*                               METHODS                                  */
-	void update(size_t insertionIndex);
-	void print();
-
+	
 	/*                               GETTERS                                  */
-	size_t getMaxRange(size_t bIndex) const;
-
-	/*                               SETTER                                   */
-	void init(size_t size);
-	void add(size_t aIndex);
-	void reset();
-
-
-  private:
-	SisterTracker(const SisterTracker &copy);
-	SisterTracker &operator=(const SisterTracker &copy);
-	std::vector< size_t > sisterIndex;
+	
+	/*                               SETTERS                                  */
+private:
+	
 };
 
 #endif

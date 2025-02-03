@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 15:26:32 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/03 16:42:59 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ class MergeInsert {
 	void splitSort(OuterCont &cont);
 	void makePairs(OuterCont &cont);
 	void undoPairs(OuterCont &cont);
+
+	// jacobstahl sequence
+	// bool needsJacobstahl(cont OuterCont &pend);
+	// bool getJacobstahlIndex(size_t jakeIndex);
 
 	//helpers
 	void sortElems(OuterCont &cont);

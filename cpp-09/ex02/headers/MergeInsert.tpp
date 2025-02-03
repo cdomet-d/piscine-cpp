@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 15:45:36 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/03 20:01:14 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
 	if (main.empty() || toInsert.empty())
 		return;
 	std::vector< int > maxes;
+	maxes.reserve(maxRange + 1);
 	size_t last = toInsert.size() - 1;
 
 	for (size_t i = 0; (i < (main.size()) && i < maxRange); ++i)
-		maxes.push_back(main[i][last]);
+		maxes.push_back(main.at(i).at(last));
 	std::vector< int >::iterator insIt =
-		std::lower_bound(maxes.begin(), maxes.end(), toInsert[last]);
+		std::lower_bound(maxes.begin(), maxes.end(), toInsert.at(last));
 	size_t insIndex = insIt - maxes.begin();
 	main.insert(main.begin() + insIndex, toInsert);
 	aIndex.update(insIndex);
@@ -51,47 +52,52 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 	OuterCont main;
 	OuterCont pend;
 
+	aIndex.reset();
 	size_t j = 2;
 	for (size_t i = 0; isPairInCont(cont, i); ++i) {
 		if (i % 2 || i == 0) {
-			main.push_back(cont[i]);
+			main.push_back(cont.at(i));
 			if (i > 1)
 				aIndex.add(j++);
 		} else
-			pend.push_back(cont[i]);
+			pend.push_back(cont.at(i));
 	}
+	aIndex.init(main.size());
 	for (size_t i = 0; i < pend.size(); ++i) {
-		binarySearch(aIndex.getMaxRange(i), main, pend[i]);
+		binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
 	}
 	while (!straggler.empty() && straggler.size() >= elemSize) {
 		InnerCont stragglerElem = getStragglerElem();
 		if (stragglerElem.size() == elemSize)
 			binarySearch(main.size(), main, stragglerElem);
 	}
-	inputHolder = main;
+	cont = main;
+	if (cont.size() == inputSize)
+		return;
+	splitSort(cont);
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::undoPairs(OuterCont &cont)
 {
-	hasStraggler = (cont[getLast(cont)].size() != elemSize);
-	if (hasStraggler) {
-		straggler = cont[getLast(cont)];
+	hasStraggler = (cont.at(getLast(cont)).size() != elemSize);
+	if (cont.size() > 1 && hasStraggler) {
+		straggler = cont.at(getLast(cont));
 		cont.pop_back();
 	}
 
 	OuterCont splitPairs;
 	elemSize /= PAIR;
 	size_t contIndex = 0;
-	for (size_t pairIndex = 0; cont[contIndex].size() == (elemSize * 2);
+	for (size_t pairIndex = 0; (contIndex < cont.size() && cont.at(contIndex).size() == (elemSize * 2));
 		 ++pairIndex) {
 		if (pairIndex % 2)
-			unmergeElems(splitPairs, cont[contIndex].begin() + elemSize,
-						 cont[contIndex].end());
+			unmergeElems(splitPairs, cont.at(contIndex).begin() + elemSize,
+						 cont.at(contIndex).end());
 		else
-			unmergeElems(splitPairs, cont[contIndex].begin(),
-						 cont[contIndex].begin() + elemSize);
+			unmergeElems(splitPairs, cont.at(contIndex).begin(),
+						 cont.at(contIndex).begin() + elemSize);
 		contIndex += (pairIndex % 2);
 	}
 	cont = splitPairs;
@@ -123,12 +129,12 @@ void MergeInsert< Cont >::makePairs(OuterCont &cont)
 			mergeElems(cont, curPairI);
 		}
 		size_t last = getLast(cont);
-		if (cont.size() > 1 && cont[last - 1].size() < elemSize) {
+		if (cont.size() > 1 && cont.at(last - 1).size() < elemSize) {
 			mergeElems(cont, last);
 		}
 	}
 	sortElems(cont);
-	if ((cont.size() == 2 && cont[getLast(cont)].size() != elemSize) ||
+	if ((cont.size() == 2 && cont.at(getLast(cont)).size() != elemSize) ||
 		cont.size() == 1)
 		return;
 	elemSize *= PAIR;
@@ -144,9 +150,10 @@ template <
 void MergeInsert< Cont >::sortElems(OuterCont &cont)
 {
 	for (size_t i = 0; i < cont.size() - 1; i += 2) {
-		if (cont[i].size() == elemSize && cont[i + 1].size() == elemSize) {
-			if (cont[i].back() > cont[i + 1].back())
-				std::swap(cont[i], cont[i + 1]);
+		if (cont.at(i).size() == elemSize &&
+			cont.at(i + 1).size() == elemSize) {
+			if (cont.at(i).back() > cont.at(i + 1).back())
+				std::swap(cont.at(i), cont.at(i + 1));
 		}
 	}
 }
@@ -154,9 +161,9 @@ template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::mergeElems(OuterCont &cont, const size_t index)
 {
-	cont[index].insert(cont[index].end(), cont[index + 1].begin(),
-					   cont[index + 1].end());
-	cont.erase(cont.begin() + index + 1);
+	cont.at(index).insert(cont.at(index).end(), cont.at(index+ 1).begin(),
+					   cont.at(index+ 1).end());
+	cont.erase(cont.begin() + (index + 1));
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
@@ -172,7 +179,7 @@ template <
 bool MergeInsert< Cont >::isPairInCont(const OuterCont &cont,
 									   const size_t &index) const
 {
-	return (index < cont.size() && (cont[index].size() == elemSize));
+	return (index < cont.size() && (cont.at(index).size() == elemSize));
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
@@ -205,10 +212,7 @@ void MergeInsert< Cont >::sort(const std::string &contType)
 	std::cout << std::setw(30) << std::left << INVALID "Before" RESET;
 	display(false, contType);
 	makePairs(inputHolder);
-	while (inputHolder.size() < inputSize) {
-		aIndex.reset();
-		splitSort(inputHolder);
-	}
+	splitSort(inputHolder);
 	std::cout << std::setw(30) << std::left << INVALID "After" RESET;
 	display(true, contType);
 }
@@ -298,7 +302,7 @@ void MergeInsert< Cont >::display(const bool showTime,
 {
 	std::cout << "using std::" + type + ": ";
 	for (size_t i = 0; i < inputHolder.size(); ++i) {
-		printInnerCont(inputHolder[i]);
+		printInnerCont(inputHolder.at(i));
 	}
 	if (showTime) {
 		std::cout << std::endl
@@ -335,9 +339,9 @@ void MergeInsert< Cont >::printCont(const OuterCont &cont,
 		j = 0;
 		std::cout << std::setw(30) << std::left << contName << "["
 				  << std::setw(3) << i << "]	";
-		for (; j < cont[i].size(); ++j) {
-			std::cout << std::setw(3) << cont[i][j] << " ";
-			if (cont[i].size() == elemSize && j == (cont[i].size() / 2) - 1)
+		for (; j < cont.at(i).size(); ++j) {
+			std::cout << std::setw(3) << cont.at(i).at(j) << " ";
+			if (cont.at(i).size() == elemSize && j == (cont.at(i).size() / 2) - 1)
 				std::cout << " | ";
 		}
 		std::cout << std::endl;
