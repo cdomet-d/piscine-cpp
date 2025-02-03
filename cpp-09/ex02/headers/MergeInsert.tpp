@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/31 17:38:48 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:33:59 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
-
-static void printInnerCont(std::vector< int > innerCont)
-{
-	if (innerCont.empty())
-		return;
-	for (std::vector< int >::iterator it = innerCont.begin();
-		 it != innerCont.end(); ++it)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-}
 
 /* ************************************************************************** */
 /*                               METHODS                                      */
@@ -37,20 +27,19 @@ void MergeInsert< Cont >::binarySearch(
 {
 	std::vector< int > maxes;
 	size_t last = toInsert.size() - 1;
-	
-	std::cout << maxRange << std::endl;
+
 	for (size_t i = 0; (i < (main.size()) && i < maxRange); ++i)
 		maxes.push_back(main[i][last]);
 	std::vector< int >::iterator insertionIt =
 		std::lower_bound(maxes.begin(), maxes.end(), toInsert[last]);
 	size_t insIndex = std::distance(maxes.begin(), insertionIt);
-	std::cout << "Inserted at: " << insIndex << std::endl;
+	// std::cout << "Inserted at: " << insIndex << std::endl;
 	main.insert(main.begin() + insIndex, toInsert);
 	aIndex.update(insIndex);
 }
 
 template < template < typename, typename = std::allocator< int > > class Cont >
-void MergeInsert< Cont >::fillMain(
+void MergeInsert< Cont >::splitSort(
 	Cont< Cont< int, std::allocator< int > > > &cont)
 {
 	splitPairs(cont);
@@ -58,7 +47,7 @@ void MergeInsert< Cont >::fillMain(
 	Cont< Cont< int, std::allocator< int > > > pend;
 
 	size_t j = 2;
-	
+
 	for (size_t i = 0; (i < cont.size() && (cont[i].size() == curElemSize));
 		 ++i) {
 		if (i % 2 || i == 0) {
@@ -71,15 +60,14 @@ void MergeInsert< Cont >::fillMain(
 			pend.push_back(cont[i]);
 		}
 	}
-	printContainer(cont, "cont");
-	std::cout << std::endl;
-	printInnerCont(straggler);
+	// printContainer(cont, "cont");
+	// printInnerCont(straggler);
 	// printContainer(main, "main");
 	// printContainer(pend, "pend");
 	// aIndex.print();
 	for (size_t i = 0; i < pend.size(); ++i) {
-		std::cout << "sorting pend[" << i << "]:";
-		printInnerCont(pend[i]);
+		// std::cout << "sorting pend[" << i << "]:";
+		// printInnerCont(pend[i]);
 		// std::cout << "should be paired at: " << aIndex.getMaxRange(i)
 		// 		  << " with: ";
 		// printInnerCont(main[aIndex.getMaxRange(i)]);
@@ -87,14 +75,12 @@ void MergeInsert< Cont >::fillMain(
 	}
 	// printContainer(main, "main");
 	while (!straggler.empty() && straggler.size() >= curElemSize) {
-		Cont< int > stragglerElem =
-			halfElemInStraggler(straggler);
+		Cont< int > stragglerElem = makeElemFromStraggler(straggler);
 		if (stragglerElem.size() == curElemSize)
 			binarySearch(main.size(), main, stragglerElem);
-		// straggler.push_back(straggler);
 	}
 	container = main;
-	printContainer(container, "Cont, exiting sort");
+	// printContainer(container, "Cont, exiting sort");
 }
 
 template < template < typename, typename = std::allocator< int > > class Cont >
@@ -123,24 +109,19 @@ void MergeInsert< Cont >::splitPairs(
 		}
 		j += (i % 2);
 	}
-	// if (hasStraggler) {
-	// 	Cont< int > straggler(cont[(cont.size() - 1)].begin(),
-	// 						  cont[(cont.size() - 1)].end());
-	// 	splitPairs.push_back(straggler);
-	// }
 	cont = splitPairs;
 	// printContainer(cont, "this->cont, exiting splitPairs");
 }
 
 template < template < typename, typename = std::allocator< int > > class Cont >
-Cont< int > MergeInsert< Cont >::halfElemInStraggler(Cont< int > &_straggler)
+Cont< int > MergeInsert< Cont >::makeElemFromStraggler(Cont< int > &_straggler)
 {
 	if (_straggler.size() >= curElemSize) {
 		Cont< int > elemFromStraggler(_straggler.begin(),
 									  _straggler.begin() + curElemSize);
 		_straggler.erase(_straggler.begin(), _straggler.begin() + curElemSize);
-		std::cout << "Got element from _straggler: ";
-		printInnerCont(elemFromStraggler);
+		// std::cout << "Got element from _straggler: ";
+		// printInnerCont(elemFromStraggler);
 		return elemFromStraggler;
 	}
 	return _straggler;
@@ -169,8 +150,7 @@ void MergeInsert< Cont >::makePairs(
 			// printContainer(cont, "MakePairs::reattachingStraggler");
 		}
 	}
-	if (pairLevel > 1)
-		sortPairs(cont);
+	sortPairs(cont);
 	if ((cont.size() == 2 && cont[(cont.size() - 1)].size() != curElemSize) ||
 		cont.size() == 1)
 		return;
@@ -183,6 +163,23 @@ void MergeInsert< Cont >::makePairs(
 /*                               DEBUG                                        */
 /* ************************************************************************** */
 
+template < template < typename, typename = std::allocator< int > > class Cont >
+void MergeInsert< Cont >::display()
+{
+	for (size_t i = 0; i < container.size(); ++i) {
+		printInnerCont(container[i]);
+	}
+}
+
+template < template < typename, typename = std::allocator< int > > class Cont >
+void MergeInsert< Cont >::printInnerCont(Cont< int > iCont)
+{
+	if (iCont.empty())
+		return;
+	for (typename Cont< int >::iterator it = iCont.begin(); it != iCont.end();
+		 ++it)
+		std::cout << *it << " ";
+}
 template < template < typename, typename = std::allocator< int > > class Cont >
 void MergeInsert< Cont >::printContainer(
 	const Cont< Cont< int, std::allocator< int > > > &cont,
@@ -213,8 +210,10 @@ template < template < typename, typename = std::allocator< int > > class Cont >
 void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
 {
 	container.resize(container.size() + 1);
-	if (*endptr && *endptr != ' ')
+	if (*endptr && *endptr != ' ') {
+		std::cout << *endptr << std::endl;
 		throw forbiddenToken();
+	}
 	if (n < 0 || n > UINT32_MAX) {
 		std::cerr << n << ": ";
 		throw outOfRange();
@@ -243,15 +242,9 @@ template < template < typename, typename = std::allocator< int > > class Cont >
 void MergeInsert< Cont >::sort()
 {
 	makePairs(container);
-	merge(container);
-}
-template < template < typename, typename = std::allocator< int > > class Cont >
-void MergeInsert< Cont >::merge(
-	Cont< Cont< int, std::allocator< int > > > &cont)
-{
-	while (cont.size() < iSize) {
+	while (container.size() < iSize) {
 		aIndex.reset();
-		fillMain(cont);
+		splitSort(container);
 	}
 }
 
@@ -281,23 +274,22 @@ const char *MergeInsert< Cont >::singleValue::what() const throw()
 /* ************************************************************************** */
 
 template < template < typename, typename = std::allocator< int > > class Cont >
-MergeInsert< Cont >::MergeInsert()
+MergeInsert< Cont >::MergeInsert() : curElemSize(1)
 {
 }
 
 template < template < typename, typename = std::allocator< int > > class Cont >
-MergeInsert< Cont >::MergeInsert(const std::string &seq) : curElemSize(1)
+MergeInsert< Cont >::MergeInsert(char **seq) : curElemSize(1)
 {
 	char *endptr = NULL;
-	int64_t n = std::strtod(seq.c_str(), &endptr);
-	addValidValue(n, endptr);
-	while (*endptr) {
-		n = std::strtod(endptr + 1, &endptr);
-		addValidValue(n, endptr);
+	for (size_t i = 0; seq[i]; ++i) {
+		uint64_t val = std::strtod(seq[i], &endptr);
+		addValidValue(val, endptr);
 	}
 	iSize = container.size();
 	if (iSize <= 1)
 		throw singleValue();
+	// printContainer(container, "after parsing");
 }
 
 template < template < typename, typename = std::allocator< int > > class Cont >

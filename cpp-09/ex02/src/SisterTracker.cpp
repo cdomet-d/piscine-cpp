@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/31 17:13:37 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:19:54 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ SisterTracker::~SisterTracker(void) {}
 
 void SisterTracker::update(size_t insertionIndex)
 {
-	std::cout << "Updating sister" << std::endl;
+	// std::cout << "Updating sister" << std::endl;
 	for (size_t i = 0; i < sisterIndex.size(); ++i) {
 		// std::cout << "i	" << i << " | Insertion index " << insertionIndex << std::endl;
 		if (sisterIndex[i] > insertionIndex)

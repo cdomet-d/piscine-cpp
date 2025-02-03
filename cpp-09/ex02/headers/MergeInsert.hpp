@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/31 17:14:45 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:27:41 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ template < template < class, class = std::allocator< int > > class Cont >
 class MergeInsert {
   public:
 	/*                               ORTHODOX CLASS                           */
-	MergeInsert(void);
-	MergeInsert(const std::string &seq);
+	MergeInsert(char **seq);
 	MergeInsert(const MergeInsert &copy);
 	MergeInsert &operator=(const MergeInsert &copy);
 	~MergeInsert(void);
@@ -48,30 +47,31 @@ class MergeInsert {
 	};
 
 	/*                               METHODS                                  */
+	void sort();
+	void display();
 
-	// debug
+  private:
+	/*                               METHODS                                  */
+	// display
 	void printContainer(const Cont< Cont< int, std::allocator< int > > > &cont,
 						std::string contName);
+	void printInnerCont(Cont< int > iCont);
 
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
 
 	// sorting
-
-	Cont< int > halfElemInStraggler(Cont< int > &straggler);
+	Cont< int > makeElemFromStraggler(Cont< int > &straggler);
 	void binarySearch(size_t maxRange,
 					  Cont< Cont< int, std::allocator< int > > > &main,
 					  Cont< int > &toInsert);
-	void fillMain(Cont< Cont< int, std::allocator< int > > > &cont);
+	void splitSort(Cont< Cont< int, std::allocator< int > > > &cont);
 	void makePairs(Cont< Cont< int, std::allocator< int > > > &cont);
-	void merge(Cont< Cont< int, std::allocator< int > > > &cont);
-	void sort();
 	void sortPairs(Cont< Cont< int, std::allocator< int > > > &cont);
 	void splitPairs(Cont< Cont< int, std::allocator< int > > > &cont);
 
-	// index handling
-
-  private:
+	/*                               MEMBERS                                  */
+	MergeInsert(void);
 	Cont< Cont< int, std::allocator< int > > > container;
 	Cont< int > straggler;
 	uint32_t iSize;
