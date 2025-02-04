@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 16:42:59 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/04 17:32:34 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,12 @@ class MergeInsert {
 	void undoPairs(OuterCont &cont);
 
 	// jacobstahl sequence
-	// bool needsJacobstahl(cont OuterCont &pend);
-	// bool getJacobstahlIndex(size_t jakeIndex);
+	bool needsJacobstahl(const OuterCont &pend);
+	void updateJacobstahlIndex();
+	void resetJacobstahlIndex();
+	size_t getJacobstahlIndex() const;
+	size_t getPreviousJ() const;
+	
 
 	//helpers
 	void sortElems(OuterCont &cont);
@@ -92,6 +96,10 @@ class MergeInsert {
 	OuterCont inputHolder;
 	SisterTracker aIndex;
 	const Timer clock;
+
+	// Jacobstal numbers
+	size_t currentJ;
+	size_t previousJ;
 
 	// trackers
 	bool hasStraggler;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2025/02/03 15:37:18 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2025/02/04 17:37:05 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,8 @@ fclean: clean
 	
 re: fclean all
 
+run: all
+	./$(NAME) $(shell shuf -i 0-200 -n 200 | tr "\n" " ")
 info:
 	@echo $(CXXFLAGS)
 	@echo $(SRC_PATH)
