@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/04 17:46:09 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:07:28 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,28 @@ void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
 	main.insert(main.begin() + insIndex, toInsert);
 	aIndex.update(insIndex);
 }
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
+{
+	size_t elems = 0;
+	jacobsthal.update();
+	int64_t curJ = jacobsthal.getPrevI() - 2;
+	int64_t prevJ = (curJ == 1) ? 0 : jacobsthal.getPrevI() - 2;
+	if (prevJ == 0) {
+		for (; curJ >= 0; --curJ) {
+			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
+			elems++;
+		}
+	} else {
+		for (; curJ > prevJ; --curJ) {
+			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
+			elems++;
+		}
+	}
+	jacobsthal.setInsertedElems(elems);
+	jacobsthal.setTotalInsertedElems();
+}
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
@@ -63,17 +85,12 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 			pend.push_back(cont.at(i));
 	}
 	aIndex.init(main.size());
-	std::cout << "Needs Jake: " << needsJacobstahl(pend) << std::endl;
-	if (needsJacobstahl(pend)) {
-		updateJacobstahlIndex();
-		size_t jake = getJacobstahlIndex() - 2;
-		std::cout << "Jake index:	" << jake << std::endl
-				  << "pend.size()	" << pend.size() << std::endl;
-		for (; jake >= 0 && jake < pend.size(); jake--)
-			binarySearch(aIndex.getMaxRange(jake), main, pend.at(jake));
-	} else {
-		for (size_t i = 0; i < pend.size(); ++i) {
+	for (size_t i = 0; i < pend.size(); i += jacobsthal.getInsertedElems()) {
+		if (jacobsthal.isNeeded(pend.size())) {
+			jacobsthalInsertion(main, pend);
+		} else {
 			binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
+			jacobsthal.setInsertedElems(1);
 		}
 	}
 	while (!straggler.empty() && straggler.size() >= elemSize) {
@@ -82,7 +99,7 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 			binarySearch(main.size(), main, stragglerElem);
 	}
 	cont = main;
-	resetJacobstahlIndex();
+	jacobsthal.reset();
 	if (cont.size() == inputSize)
 		return;
 	splitSort(cont);
@@ -156,44 +173,6 @@ void MergeInsert< Cont >::makePairs(OuterCont &cont)
 /* ************************************************************************** */
 /*                               HELPERS                                      */
 /* ************************************************************************** */
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-bool MergeInsert< Cont >::needsJacobstahl(const OuterCont &pend)
-{
-	return pend.size() >= 3;
-}
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::resetJacobstahlIndex()
-{
-	currentJ = 1;
-	previousJ = 1;
-}
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::updateJacobstahlIndex()
-{
-	//  each term is the sum of the previous, plus twice the one before that.
-	size_t tmp = previousJ;
-	previousJ = currentJ;
-	currentJ = (currentJ + (tmp * 2));
-}
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-size_t MergeInsert< Cont >::getPreviousJ() const
-{
-	return previousJ;
-}
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-size_t MergeInsert< Cont >::getJacobstahlIndex() const
-{
-	return currentJ;
-}
-
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::sortElems(OuterCont &cont)
@@ -322,8 +301,7 @@ MergeInsert< Cont >::MergeInsert() : elemSize(1)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert(char **seq)
-	: currentJ(1), previousJ(1), hasStraggler(false), elemSize(1)
+MergeInsert< Cont >::MergeInsert(char **seq) : hasStraggler(false), elemSize(1)
 {
 	char *endptr = NULL;
 	for (size_t i = 0; seq[i]; ++i) {

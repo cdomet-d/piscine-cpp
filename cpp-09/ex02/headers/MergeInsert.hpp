@@ -6,13 +6,14 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/04 17:32:34 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:57:17 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MERGEINSERT_HPP
 #define MERGEINSERT_HPP
 
+#include "Jacobsthal.hpp"
 #include "SisterTracker.hpp"
 #include "Timer.hpp"
 #include <cstdlib>
@@ -63,19 +64,12 @@ class MergeInsert {
 
 	// sorting
 	InnerCont getStragglerElem();
+	void jacobsthalInsertion(OuterCont &main, OuterCont &pend);
 	void binarySearch(size_t maxRange, OuterCont &main,
 					  const InnerCont &toInsert);
 	void splitSort(OuterCont &cont);
 	void makePairs(OuterCont &cont);
 	void undoPairs(OuterCont &cont);
-
-	// jacobstahl sequence
-	bool needsJacobstahl(const OuterCont &pend);
-	void updateJacobstahlIndex();
-	void resetJacobstahlIndex();
-	size_t getJacobstahlIndex() const;
-	size_t getPreviousJ() const;
-	
 
 	//helpers
 	void sortElems(OuterCont &cont);
@@ -91,17 +85,15 @@ class MergeInsert {
 	size_t getLast(const OuterCont &cont) const;
 
 	/*                               MEMBERS                                  */
-	// containers
 	InnerCont straggler;
 	OuterCont inputHolder;
-	SisterTracker aIndex;
-	const Timer clock;
 
 	// Jacobstal numbers
-	size_t currentJ;
-	size_t previousJ;
+	Jacobsthal jacobsthal;
 
 	// trackers
+	SisterTracker aIndex;
+	const Timer clock;
 	bool hasStraggler;
 	uint32_t elemSize;
 	uint32_t inputSize;
