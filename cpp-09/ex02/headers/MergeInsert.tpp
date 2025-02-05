@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 17:07:28 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:44:55 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 	OuterCont pend;
 
 	aIndex.reset();
-	size_t j = 2;
+	size_t j = 1;
 	for (size_t i = 0; isPairInCont(cont, i); ++i) {
 		if (i % 2 || i == 0) {
 			main.push_back(cont.at(i));
@@ -217,8 +217,11 @@ bool MergeInsert< Cont >::isSorted(typename OuterCont::const_iterator begin,
 	typename OuterCont::const_iterator next = begin;
 	++next;
 	for (; next != end; ++begin, ++next) {
-		if ((*begin).back() > (*next).back())
+		if ((*begin).back() > (*next).back()) {
+			std::cout << (*begin).back() << " is greater than "
+					  << (*next).back() << std::endl;
 			return false;
+		}
 	}
 	return true;
 }
