@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:46:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/29 11:49:37 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 12:36:51 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Weapon{
 		std::string		type;
 	public:
 		Weapon(void);
-		Weapon(std::string type);
+		Weapon(std::string _type);
 		~Weapon(void);
 		const std::string&	getType(void);
 		void				display(void);

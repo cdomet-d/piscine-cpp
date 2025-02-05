@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:16:59 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/21 11:23:32 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 12:38:42 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,13 @@ void Harl::complain(std::string level)
 	{
 		case 0:
 			(this->*call[0])();
+			break;
 		case 1:
 			(this->*call[1])();
+			break;
 		case 2:
 			(this->*call[2])();
+			break;
 		case 3:
 			(this->*call[3])();
 			break;
