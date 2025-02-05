@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:40 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:49:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 12:47:10 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ unsigned int Span::shortestSpan()
 {
 	unsigned int current = 0;
 
-	if (trackElem >= 0 && trackElem <= 1)
+	if (span.empty() || trackElem <= 1)
 		throw std::length_error(
 			"	Cannot compare empty or single digit range");
 	std::sort(span.begin(), span.end());
@@ -101,7 +101,7 @@ unsigned int Span::shortestSpan()
 
 unsigned int Span::longestSpan()
 {
-	if (trackElem >= 0 && trackElem <= 1)
+	if (span.empty() || trackElem <= 1)
 		throw std::length_error(
 			"	Cannot compare empty or single digit range");
 	return *std::max_element(span.begin(), span.end()) -
