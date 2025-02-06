@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/06 10:32:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 14:41:22 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,7 +299,7 @@ void BitcoinExchange::outputBitcoinValue(
 }
 
 bool BitcoinExchange::pError(const std::string &err, const std::string &errLine,
-							 long lineNo)
+							 size_t lineNo)
 {
 	std::cout << BR << "On line: " << R << lineNo << ": " + errLine + ": " + err
 			  << std::endl;
