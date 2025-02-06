@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Timer.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:57:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 14:30:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 17:03:23 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Timer.hpp"
-#include <ctime>
 #include <iomanip>
 #include <iostream>
-#include <unistd.h>
 
 /* ************************************************************************** */
 /*                               ORTHODOX CLASS                               */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Timer.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:56:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 14:30:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 16:32:30 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ class Timer {
 
 	/*                               SETTERS                                  */
   private:
+	std::clock_t start;
+
+	/*                               PRIVATE CONSTRUCTORS                     */
 	Timer(const Timer &copy);
 	Timer &operator=(const Timer &copy);
-	std::clock_t start;
 };
 
 #endif

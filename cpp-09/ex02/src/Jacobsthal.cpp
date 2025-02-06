@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 14:18:50 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:04:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void Jacobsthal::reset()
 void Jacobsthal::update()
 {
 	//  each term is the sum of the previous, plus twice the one before that.
+	// current = prev + (prev - 1 * 2)
 	insertedElems = 0;
 	size_t oldJ = previousJ;
 	previousJ = currentJ;
@@ -83,12 +84,9 @@ void Jacobsthal::setInsertedElems(size_t n)
 
 bool Jacobsthal::isNeeded(size_t contLen, size_t pendIndex)
 {
-	// if ((contLen - pendIndex) > getNextI())
-	// 	std::cout << contLen << " - " << pendIndex << " > " << getNextI() << std::endl;
-	// else if ((contLen - pendIndex) < getNextI())
-	// 	std::cout << contLen << " - " << pendIndex << " < " << getNextI() << std::endl;
 	return (contLen - pendIndex) > (getNextI() - 2);
 }
+
 /* ************************************************************************** */
 /*                               PRIVATE CONSTUCTORS                          */
 /* ************************************************************************** */

@@ -6,17 +6,14 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 13:24:28 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:57:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef JACOBSTHAL_HPP
 #define JACOBSTHAL_HPP
 
-#include <cstdlib>
-#include <stdint.h>
-#include <string>
-// #include <vector>
+#include <cstddef>
 
 class Jacobsthal {
   public:
@@ -34,11 +31,9 @@ class Jacobsthal {
 	size_t getPrevI() const;
 	size_t getNextI() const;
 	size_t getInsertedElems() const;
-	// size_t getTotalInsertedElems() const;
 
 	/*                               SETTERS                                  */
 	void setInsertedElems(size_t  n);
-	// void setTotalInsertedElems();
 
 
   private:
@@ -46,7 +41,6 @@ class Jacobsthal {
 	size_t previousJ;
 	size_t nextJ;
 	size_t insertedElems;
-	// size_t totalInsertedElems;
 
 	// private constructors
 	Jacobsthal(const Jacobsthal &copy);

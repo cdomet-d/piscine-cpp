@@ -6,14 +6,15 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:05:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 14:32:54 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 17:02:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MergeInsert.hpp"
+
 #include <deque>
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 int main(int ac, char *av[])
 {
@@ -23,8 +24,8 @@ int main(int ac, char *av[])
 		return 1;
 	}
 	try {
-		// MergeInsert< std::deque > deq(av + 1);
-		// deq.sort("deque");
+		MergeInsert< std::deque > deq(av + 1);
+		deq.sort("deque");
 		MergeInsert< std::vector > vec(av + 1);
 		vec.sort("vector");
 	} catch (std::exception &e) {
