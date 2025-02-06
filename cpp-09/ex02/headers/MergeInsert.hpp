@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 11:57:17 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:04:39 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ class MergeInsert {
 	// sorting
 	InnerCont getStragglerElem();
 	void jacobsthalInsertion(OuterCont &main, OuterCont &pend);
+	void defaultInsertion(size_t i, OuterCont &main, OuterCont &pend);
 	void binarySearch(size_t maxRange, OuterCont &main,
 					  const InnerCont &toInsert);
 	void splitSort(OuterCont &cont);

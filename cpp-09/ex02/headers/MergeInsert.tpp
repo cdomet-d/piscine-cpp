@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 17:44:55 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:20:14 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,71 @@ void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
 		return;
 	std::vector< int > maxes;
 	maxes.reserve(maxRange + 1);
-	size_t last = toInsert.size() - 1;
 
 	for (size_t i = 0; (i < (main.size()) && i < maxRange); ++i)
-		maxes.push_back(main.at(i).at(last));
+		maxes.push_back(main.at(i).back());
 	std::vector< int >::iterator insIt =
-		std::lower_bound(maxes.begin(), maxes.end(), toInsert.at(last));
+		std::lower_bound(maxes.begin(), maxes.end(), toInsert.back());
 	size_t insIndex = insIt - maxes.begin();
 	main.insert(main.begin() + insIndex, toInsert);
 	aIndex.update(insIndex);
 }
+
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
 {
-	size_t elems = 0;
 	jacobsthal.update();
-	int64_t curJ = jacobsthal.getPrevI() - 2;
+	// std::cout << "Jake Insert" << std::endl;
+	size_t elems = 0;
+	int64_t curJ = jacobsthal.getI() - 2;
 	int64_t prevJ = (curJ == 1) ? 0 : jacobsthal.getPrevI() - 2;
+	// std::cout << "curj: " << curJ << " | prevJ: " << prevJ << std::endl;
 	if (prevJ == 0) {
 		for (; curJ >= 0; --curJ) {
+			// std::cout << "pend.at(curJ)" << std::endl;
+			// printInnerCont(pend.at(curJ));
+			// std::cout << std::endl;
+			// std::cout << "main.at(aIndex.getMaxRange(curJ))" << std::endl;
+			// printInnerCont(main.at(aIndex.getMaxRange(curJ)));
+			// std::cout << std::endl;
 			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
 			elems++;
 		}
 	} else {
 		for (; curJ > prevJ; --curJ) {
+			// std::cout << "pend.at(curJ)" << std::endl;
+			// printInnerCont(pend.at(curJ));
+			// std::cout << std::endl;
+			// std::cout << "main.at(aIndex.getMaxRange(curJ))" << std::endl;
+			// printInnerCont(main.at(aIndex.getMaxRange(curJ)));
+			// std::cout << std::endl;
 			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
 			elems++;
 		}
 	}
 	jacobsthal.setInsertedElems(elems);
-	jacobsthal.setTotalInsertedElems();
+}
+
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+void MergeInsert< Cont >::defaultInsertion(size_t i, OuterCont &main,
+										   OuterCont &pend)
+{
+	size_t elems = 0;
+	// std::cout << "Default Insert" << std::endl;
+
+	for (; i < pend.size(); ++i) {
+		// std::cout << "pend.at(i)" << std::endl;
+		// printInnerCont(pend.at(i));
+		// std::cout << std::endl;
+		// std::cout << "main.at(aIndex.getMaxRange(i))" << std::endl;
+		// printInnerCont(main.at(aIndex.getMaxRange(i)));
+		// std::cout << std::endl;
+		binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
+		elems++;
+	}
+	jacobsthal.setInsertedElems(elems);
 }
 
 template <
@@ -75,7 +109,8 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 	OuterCont pend;
 
 	aIndex.reset();
-	size_t j = 1;
+	aIndex.init(main.size());
+	size_t j = 2;
 	for (size_t i = 0; isPairInCont(cont, i); ++i) {
 		if (i % 2 || i == 0) {
 			main.push_back(cont.at(i));
@@ -84,13 +119,12 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 		} else
 			pend.push_back(cont.at(i));
 	}
-	aIndex.init(main.size());
+	// printCont(cont, "cont");
 	for (size_t i = 0; i < pend.size(); i += jacobsthal.getInsertedElems()) {
-		if (jacobsthal.isNeeded(pend.size())) {
+		if (jacobsthal.isNeeded(pend.size(), i)) {
 			jacobsthalInsertion(main, pend);
 		} else {
-			binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
-			jacobsthal.setInsertedElems(1);
+			defaultInsertion(i, main, pend);
 		}
 	}
 	while (!straggler.empty() && straggler.size() >= elemSize) {
@@ -98,6 +132,11 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 		if (stragglerElem.size() == elemSize)
 			binarySearch(main.size(), main, stragglerElem);
 	}
+	// printCont(main, "main");
+	std::cout << (isSorted(main.begin(), main.end())
+					  ? "Input is successfully sorted"
+					  : "Input is not sorted")
+			  << std::endl;
 	cont = main;
 	jacobsthal.reset();
 	if (cont.size() == inputSize)

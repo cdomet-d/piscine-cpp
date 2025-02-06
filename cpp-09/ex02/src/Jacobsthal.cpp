@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 16:19:49 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:18:50 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* ************************************************************************** */
 
 Jacobsthal::Jacobsthal(void)
-	: currentJ(1), previousJ(1), nextJ(0), insertedElems(0), totalInsertedElems(0)
+	: currentJ(1), previousJ(1), nextJ(3), insertedElems(0)
 {
 }
 
@@ -29,23 +29,21 @@ Jacobsthal::~Jacobsthal(void) {}
 /* ************************************************************************** */
 void Jacobsthal::display()
 {
-	std::cout << "Prev:	" << getPrevI() << std::endl
-			  << "Curr:	" << getI() << std::endl
-			  << "Next:	" << getNextI() << std::endl;
+	std::cout << "Prev:	" << getPrevI() - 2 << std::endl
+			  << "Curr:	" << getI() - 2 << std::endl
+			  << "Next:	" << getNextI() - 2 << std::endl;
 }
 
 void Jacobsthal::reset()
 {
-	totalInsertedElems = 0;
 	currentJ = 1;
 	previousJ = 1;
-	nextJ = 0;
+	nextJ = 3;
 }
 
 void Jacobsthal::update()
 {
 	//  each term is the sum of the previous, plus twice the one before that.
-	totalInsertedElems += insertedElems;
 	insertedElems = 0;
 	size_t oldJ = previousJ;
 	previousJ = currentJ;
@@ -55,11 +53,6 @@ void Jacobsthal::update()
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-size_t Jacobsthal::getTotalInsertedElems() const
-{
-	return totalInsertedElems;
-}
-
 size_t Jacobsthal::getPrevI() const
 {
 	return previousJ;
@@ -83,18 +76,18 @@ size_t Jacobsthal::getInsertedElems() const
 /* ************************************************************************** */
 /*                               SETTERS                                      */
 /* ************************************************************************** */
-void Jacobsthal::setTotalInsertedElems()
-{
-	totalInsertedElems += insertedElems;
-}
 void Jacobsthal::setInsertedElems(size_t n)
 {
 	insertedElems = n;
 }
 
-bool Jacobsthal::isNeeded(size_t contLen)
+bool Jacobsthal::isNeeded(size_t contLen, size_t pendIndex)
 {
-	return (contLen - totalInsertedElems) > getNextI();
+	// if ((contLen - pendIndex) > getNextI())
+	// 	std::cout << contLen << " - " << pendIndex << " > " << getNextI() << std::endl;
+	// else if ((contLen - pendIndex) < getNextI())
+	// 	std::cout << contLen << " - " << pendIndex << " < " << getNextI() << std::endl;
+	return (contLen - pendIndex) > (getNextI() - 2);
 }
 /* ************************************************************************** */
 /*                               PRIVATE CONSTUCTORS                          */
