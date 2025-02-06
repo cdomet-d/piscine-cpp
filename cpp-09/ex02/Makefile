@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2025/02/03 15:37:18 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2025/02/06 14:28:22 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,12 +58,15 @@ fclean: clean
 	
 re: fclean all
 
+run: all
+	@./$(NAME) $(shell shuf -i 0-3000 -n 3000 | tr "\n" " ")
+
 info:
 	@echo $(CXXFLAGS)
 	@echo $(SRC_PATH)
 	@echo $(SRC)
 
-.PHONY: all clean info fclean re
+.PHONY: all clean info fclean re run
 
 # Formatting combinations
 MABOLD= $(BO)$(M)
