@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:16:55 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:23 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 12:47:31 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Array< T > &Array< T >::operator=(const Array< T > &comp)
 template < typename T >
 T &Array< T >::operator[](size_t index) const
 {
-	if (index < 0 || index > len) {
+	if (index > len) {
 		std::cout << "index is out of bounds | ";
 		throw std::exception();
 	}
@@ -65,7 +65,7 @@ T &Array< T >::operator[](size_t index) const
 template < typename T >
 T &Array< T >::operator[](size_t index)
 {
-	if (index < 0 || index > len) {
+	if (index > len) {
 		std::cout << "index is out of bounds: expected [0 - " << len
 				  << "] got: " << index << " | ";
 		throw std::exception();

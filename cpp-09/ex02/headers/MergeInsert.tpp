@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 20:01:14 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 17:19:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MergeInsert.hpp"
-#include "cerrno"
-#include <algorithm>
 #include <iomanip>
 #include <iostream>
 
@@ -31,17 +29,53 @@ void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
 {
 	if (main.empty() || toInsert.empty())
 		return;
-	std::vector< int > maxes;
-	maxes.reserve(maxRange + 1);
-	size_t last = toInsert.size() - 1;
+	std::vector< int > max;
+	max.reserve(maxRange + 1);
 
 	for (size_t i = 0; (i < (main.size()) && i < maxRange); ++i)
-		maxes.push_back(main.at(i).at(last));
+		max.push_back(main.at(i).back());
 	std::vector< int >::iterator insIt =
-		std::lower_bound(maxes.begin(), maxes.end(), toInsert.at(last));
-	size_t insIndex = insIt - maxes.begin();
+		std::lower_bound(max.begin(), max.end(), toInsert.back());
+	size_t insIndex = insIt - max.begin();
 	main.insert(main.begin() + insIndex, toInsert);
 	aIndex.update(insIndex);
+}
+
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
+{
+	jacobsthal.update();
+	size_t elems = 0;
+	int64_t curJ = jacobsthal.getI() - 2;
+	int64_t prevJ = (curJ == 1) ? 0 : jacobsthal.getPrevI() - 2;
+
+	if (prevJ == 0) {
+		for (; curJ >= 0; --curJ) {
+			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
+			elems++;
+		}
+	} else {
+		for (; curJ > prevJ; --curJ) {
+			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
+			elems++;
+		}
+	}
+	jacobsthal.setInsertedElems(elems);
+}
+
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+void MergeInsert< Cont >::defaultInsertion(size_t toInsert, OuterCont &main,
+										   OuterCont &pend)
+{
+	size_t elems = 0;
+
+	for (; toInsert < pend.size(); ++toInsert) {
+		binarySearch(aIndex.getMaxRange(toInsert), main, pend.at(toInsert));
+		elems++;
+	}
+	jacobsthal.setInsertedElems(elems);
 }
 
 template <
@@ -53,18 +87,23 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 	OuterCont pend;
 
 	aIndex.reset();
-	size_t j = 2;
-	for (size_t i = 0; isPairInCont(cont, i); ++i) {
-		if (i % 2 || i == 0) {
-			main.push_back(cont.at(i));
-			if (i > 1)
-				aIndex.add(j++);
-		} else
-			pend.push_back(cont.at(i));
-	}
 	aIndex.init(main.size());
-	for (size_t i = 0; i < pend.size(); ++i) {
-		binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
+	size_t sisterIndex = 2;
+	for (size_t toInsert = 0; isPairInCont(cont, toInsert); ++toInsert) {
+		if (toInsert % 2 || toInsert == 0) {
+			main.push_back(cont.at(toInsert));
+			if (toInsert > 1)
+				aIndex.add(sisterIndex++);
+		} else
+			pend.push_back(cont.at(toInsert));
+	}
+	for (size_t toInsert = 0; toInsert < pend.size();
+		 toInsert += jacobsthal.getInsertedElems()) {
+		if (jacobsthal.isNeeded(pend.size(), toInsert)) {
+			jacobsthalInsertion(main, pend);
+		} else {
+			defaultInsertion(toInsert, main, pend);
+		}
 	}
 	while (!straggler.empty() && straggler.size() >= elemSize) {
 		InnerCont stragglerElem = getStragglerElem();
@@ -72,6 +111,7 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 			binarySearch(main.size(), main, stragglerElem);
 	}
 	cont = main;
+	jacobsthal.reset();
 	if (cont.size() == inputSize)
 		return;
 	splitSort(cont);
@@ -90,8 +130,7 @@ void MergeInsert< Cont >::undoPairs(OuterCont &cont)
 	OuterCont splitPairs;
 	elemSize /= PAIR;
 	size_t contIndex = 0;
-	for (size_t pairIndex = 0; (contIndex < cont.size() && cont.at(contIndex).size() == (elemSize * 2));
-		 ++pairIndex) {
+	for (size_t pairIndex = 0; contIndex < cont.size(); ++pairIndex) {
 		if (pairIndex % 2)
 			unmergeElems(splitPairs, cont.at(contIndex).begin() + elemSize,
 						 cont.at(contIndex).end());
@@ -144,7 +183,6 @@ void MergeInsert< Cont >::makePairs(OuterCont &cont)
 /* ************************************************************************** */
 /*                               HELPERS                                      */
 /* ************************************************************************** */
-
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::sortElems(OuterCont &cont)
@@ -161,8 +199,8 @@ template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::mergeElems(OuterCont &cont, const size_t index)
 {
-	cont.at(index).insert(cont.at(index).end(), cont.at(index+ 1).begin(),
-					   cont.at(index+ 1).end());
+	cont.at(index).insert(cont.at(index).end(), cont.at(index + 1).begin(),
+						  cont.at(index + 1).end());
 	cont.erase(cont.begin() + (index + 1));
 }
 template <
@@ -189,8 +227,11 @@ bool MergeInsert< Cont >::isSorted(typename OuterCont::const_iterator begin,
 	typename OuterCont::const_iterator next = begin;
 	++next;
 	for (; next != end; ++begin, ++next) {
-		if ((*begin).back() > (*next).back())
+		if ((*begin).back() > (*next).back()) {
+			std::cout << (*begin).back() << " is greater than "
+					  << (*next).back() << std::endl;
 			return false;
+		}
 	}
 	return true;
 }
@@ -209,11 +250,11 @@ template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
 void MergeInsert< Cont >::sort(const std::string &contType)
 {
-	std::cout << std::setw(30) << std::left << INVALID "Before" RESET;
+	std::cout << std::setw(22) << std::left << INVALID "Before" RESET;
 	display(false, contType);
 	makePairs(inputHolder);
 	splitSort(inputHolder);
-	std::cout << std::setw(30) << std::left << INVALID "After" RESET;
+	std::cout << std::setw(22) << std::left << INVALID "After" RESET;
 	display(true, contType);
 }
 
@@ -227,38 +268,15 @@ void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
 {
 	if (*endptr && *endptr != ' ') {
 		std::cout << *endptr << std::endl;
-		throw forbiddenToken();
+		throw std::runtime_error("Forbidden token in input");
 	}
 	if (n < 0 || n > UINT32_MAX) {
 		std::cerr << n << ": ";
-		throw outOfRange();
+		throw std::out_of_range(
+			"Value is outside expected range (uint32) [0 - 4294967295]");
 	}
 	InnerCont newElem(1, n);
 	inputHolder.push_back(newElem);
-}
-
-/* ************************************************************************** */
-/*                               EXCEPTIONS                                   */
-/* ************************************************************************** */
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-const char *MergeInsert< Cont >::forbiddenToken::what() const throw()
-{
-	return "Forbidden token in input";
-}
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-const char *MergeInsert< Cont >::outOfRange::what() const throw()
-{
-	return "Value is outside expected range (uint32) [0 - 4294967295]";
-}
-
-template <
-	template < typename, typename = std::allocator< uint32_t > > class Cont >
-const char *MergeInsert< Cont >::singleValue::what() const throw()
-{
-	return "Single value cannot be sorted";
 }
 
 /* ************************************************************************** */
@@ -267,13 +285,11 @@ const char *MergeInsert< Cont >::singleValue::what() const throw()
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert() : elemSize(1)
-{
-}
+MergeInsert< Cont >::MergeInsert() : elemSize(1) { }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert(char **seq) : elemSize(1)
+MergeInsert< Cont >::MergeInsert(char **seq) : hasStraggler(false), elemSize(1)
 {
 	char *endptr = NULL;
 	for (size_t i = 0; seq[i]; ++i) {
@@ -282,14 +298,12 @@ MergeInsert< Cont >::MergeInsert(char **seq) : elemSize(1)
 	}
 	inputSize = inputHolder.size();
 	if (inputSize <= 1)
-		throw singleValue();
+		throw std::runtime_error("Cannot sort single element");
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::~MergeInsert(void)
-{
-}
+MergeInsert< Cont >::~MergeInsert(void) { }
 
 /* ************************************************************************** */
 /*                               DISPLAY                                      */
@@ -341,7 +355,8 @@ void MergeInsert< Cont >::printCont(const OuterCont &cont,
 				  << std::setw(3) << i << "]	";
 		for (; j < cont.at(i).size(); ++j) {
 			std::cout << std::setw(3) << cont.at(i).at(j) << " ";
-			if (cont.at(i).size() == elemSize && j == (cont.at(i).size() / 2) - 1)
+			if (cont.at(i).size() == elemSize &&
+				j == (cont.at(i).size() / 2) - 1)
 				std::cout << " | ";
 		}
 		std::cout << std::endl;

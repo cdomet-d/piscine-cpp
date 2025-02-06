@@ -259,3 +259,16 @@ sisIndex[1] = 3 (a2);		main[3] : 1 25 (a2)
 							main[4] : 12 27 (b3)
 sisIndex[2] = 5 (a3);		main[5] : 11 30 (a3)
 ```
+# Inserting using Jacobstahl numbers:
+
+> Making the best of binary search
+
+> To perform a minimal number of comparisons, we need to take into account the following observation about binary search: the maximal number of comparisons needed to perform a binary search on a sorted sequence is the same when the number of elements is 2n and when it is 2n+1−1. For example, looking for an element in a sorted sequence of 8 or 15 elements requires the same number of comparisons.
+
+> Many insertion-based sorting algorithms perform binary searches to find where to insert elements, but most of them don't take that property of binary search into account.
+
+in that [StackExchange post](https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort).
+
+Basically, we want to take advantage of the fact that the worst case for binary search increases when its lenghts increases from a power of two to another. For instance, the worst case for an array of size 8 will remain the same until the lenght of the array becomes 16.
+
+Inserting numbers using Jacobstahl sequence allows us to

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unitTest.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:53:33 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 12:45:06 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 		testObject;                                                            \
 		std::cout << BR "expected " #expected ", but program didn't throw" R   \
 				  << std::endl;                                                \
-	} catch (expected e) {                                                     \
+	} catch (expected const &e) {                                                     \
 		std::cout << BG << e.what() << R << std::endl;                         \
 	} catch (std::exception & e) {                                             \
 		std::cout << BR "expected " #expected "" << ", got : " << e.what()     \

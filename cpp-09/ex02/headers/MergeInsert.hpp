@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsert.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/03 16:42:59 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 17:16:06 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MERGEINSERT_HPP
 #define MERGEINSERT_HPP
 
+#include "Jacobsthal.hpp"
 #include "SisterTracker.hpp"
 #include "Timer.hpp"
-#include <cstdlib>
-#include <stdint.h>
+
 #include <string>
-#include <vector>
 
 #define PAIR 2
 
@@ -28,25 +27,13 @@ class MergeInsert {
   public:
 	typedef Cont< uint32_t, std::allocator< uint32_t > > InnerCont;
 	typedef Cont< InnerCont > OuterCont;
+
 	/*                               ORTHODOX CLASS                           */
 	MergeInsert(char **seq);
+	//TODO: declare copy constructors
 	MergeInsert(const MergeInsert &copy);
 	MergeInsert &operator=(const MergeInsert &copy);
 	~MergeInsert(void);
-
-	/*                               EXCEPTIONS                               */
-	class outOfRange : public std::exception {
-	  public:
-		const char *what() const throw();
-	};
-	class forbiddenToken : public std::exception {
-	  public:
-		const char *what() const throw();
-	};
-	class singleValue : public std::exception {
-	  public:
-		const char *what() const throw();
-	};
 
 	/*                               METHODS                                  */
 	void sort(const std::string &contType);
@@ -54,9 +41,9 @@ class MergeInsert {
   private:
 	/*                               METHODS                                  */
 	// display
+	void display(const bool showTime, const std::string &type) const;
 	void printCont(const OuterCont &cont, const std::string &contName) const;
 	void printInnerCont(const InnerCont &iCont) const;
-	void display(const bool showTime, const std::string &type) const;
 
 	// parsing
 	void addValidValue(const int64_t n, const char *endptr);
@@ -65,23 +52,21 @@ class MergeInsert {
 	InnerCont getStragglerElem();
 	void binarySearch(size_t maxRange, OuterCont &main,
 					  const InnerCont &toInsert);
-	void splitSort(OuterCont &cont);
+	void defaultInsertion(size_t i, OuterCont &main, OuterCont &pend);
+	void jacobsthalInsertion(OuterCont &main, OuterCont &pend);
 	void makePairs(OuterCont &cont);
+	void splitSort(OuterCont &cont);
 	void undoPairs(OuterCont &cont);
-
-	// jacobstahl sequence
-	// bool needsJacobstahl(cont OuterCont &pend);
-	// bool getJacobstahlIndex(size_t jakeIndex);
+	bool isPairInCont(const OuterCont &cont, const size_t &index) const;
 
 	//helpers
-	void sortElems(OuterCont &cont);
+	bool isSorted(typename OuterCont::const_iterator begin,
+				  typename OuterCont::const_iterator end) const;
 	void mergeElems(OuterCont &cont, size_t index);
+	void sortElems(OuterCont &cont);
 	void unmergeElems(OuterCont &cont,
 					  const typename InnerCont::iterator &begin,
 					  const typename InnerCont::iterator &end);
-	bool isPairInCont(const OuterCont &cont, const size_t &index) const;
-	bool isSorted(typename OuterCont::const_iterator begin,
-				  typename OuterCont::const_iterator end) const;
 
 	/*                               GETTERS                                  */
 	size_t getLast(const OuterCont &cont) const;
@@ -90,14 +75,18 @@ class MergeInsert {
 	// containers
 	InnerCont straggler;
 	OuterCont inputHolder;
-	SisterTracker aIndex;
-	const Timer clock;
+
+	// Jacobstal numbers
+	Jacobsthal jacobsthal;
 
 	// trackers
 	bool hasStraggler;
+	const Timer clock;
+	SisterTracker aIndex;
 	uint32_t elemSize;
 	uint32_t inputSize;
 
+	/*                               PRIVATE CONSTRUCTORS                     */
 	MergeInsert(void);
 };
 
