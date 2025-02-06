@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 14:20:14 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:27:04 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,17 @@ template <
 void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
 {
 	jacobsthal.update();
-	// std::cout << "Jake Insert" << std::endl;
 	size_t elems = 0;
 	int64_t curJ = jacobsthal.getI() - 2;
 	int64_t prevJ = (curJ == 1) ? 0 : jacobsthal.getPrevI() - 2;
 	// std::cout << "curj: " << curJ << " | prevJ: " << prevJ << std::endl;
 	if (prevJ == 0) {
 		for (; curJ >= 0; --curJ) {
-			// std::cout << "pend.at(curJ)" << std::endl;
-			// printInnerCont(pend.at(curJ));
-			// std::cout << std::endl;
-			// std::cout << "main.at(aIndex.getMaxRange(curJ))" << std::endl;
-			// printInnerCont(main.at(aIndex.getMaxRange(curJ)));
-			// std::cout << std::endl;
 			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
 			elems++;
 		}
 	} else {
 		for (; curJ > prevJ; --curJ) {
-			// std::cout << "pend.at(curJ)" << std::endl;
-			// printInnerCont(pend.at(curJ));
-			// std::cout << std::endl;
-			// std::cout << "main.at(aIndex.getMaxRange(curJ))" << std::endl;
-			// printInnerCont(main.at(aIndex.getMaxRange(curJ)));
-			// std::cout << std::endl;
 			binarySearch(aIndex.getMaxRange(curJ), main, pend.at(curJ));
 			elems++;
 		}
@@ -85,15 +72,8 @@ void MergeInsert< Cont >::defaultInsertion(size_t i, OuterCont &main,
 										   OuterCont &pend)
 {
 	size_t elems = 0;
-	// std::cout << "Default Insert" << std::endl;
 
 	for (; i < pend.size(); ++i) {
-		// std::cout << "pend.at(i)" << std::endl;
-		// printInnerCont(pend.at(i));
-		// std::cout << std::endl;
-		// std::cout << "main.at(aIndex.getMaxRange(i))" << std::endl;
-		// printInnerCont(main.at(aIndex.getMaxRange(i)));
-		// std::cout << std::endl;
 		binarySearch(aIndex.getMaxRange(i), main, pend.at(i));
 		elems++;
 	}
@@ -119,7 +99,6 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 		} else
 			pend.push_back(cont.at(i));
 	}
-	// printCont(cont, "cont");
 	for (size_t i = 0; i < pend.size(); i += jacobsthal.getInsertedElems()) {
 		if (jacobsthal.isNeeded(pend.size(), i)) {
 			jacobsthalInsertion(main, pend);
@@ -132,11 +111,6 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 		if (stragglerElem.size() == elemSize)
 			binarySearch(main.size(), main, stragglerElem);
 	}
-	// printCont(main, "main");
-	std::cout << (isSorted(main.begin(), main.end())
-					  ? "Input is successfully sorted"
-					  : "Input is not sorted")
-			  << std::endl;
 	cont = main;
 	jacobsthal.reset();
 	if (cont.size() == inputSize)
