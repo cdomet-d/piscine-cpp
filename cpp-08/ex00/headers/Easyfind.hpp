@@ -3,38 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   Easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:56:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 17:42:24 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 13:15:01 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+#include <algorithm>
 #include <cstddef>
 #include <iostream>
+
+#define COLOR "\033[0;34m\033[1m"
+#define VALID "\033[0;32m\033[1m"
+#define RESET "\033[0m"
 
 template < typename T >
 void printArr(const T &arr, int seek)
 {
-	std::cout << "seeking " << seek << " in: ";
+	std::cout << COLOR << "seeking " << seek << " in: " << RESET;
 	typename T::const_iterator it = arr.begin();
-	for (; it != arr.end(); ++it)
-		std::cout << *it << " ";
+	for (; it != arr.end(); ++it) {
+		if (*it == seek)
+			std::cout << VALID << *it << RESET << " ";
+		else
+			std::cout << *it << " ";
+	}
 	std::cout << std::endl;
 }
 
 template < typename T >
 typename T::const_iterator easyFind(const T &container, int n)
 {
-//TODO: dont do that, use find
-	typename T::const_iterator it = container.begin();
-	for (; it != container.end(); ++it) {
-		if (*it == n)
-			return it;
-	}
+	typename T::const_iterator it = find(container.begin(), container.end(), n);
 	return it;
 }
 
