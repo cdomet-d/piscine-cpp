@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/12 17:48:07 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2025/02/07 10:22:25 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= exe
+NAME:= templates
 BDIR:=.bdir/
 SRC_DIR:= src/
 H:= headers/

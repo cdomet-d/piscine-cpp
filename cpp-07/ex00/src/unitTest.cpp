@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unitTest.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:50:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:51:42 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 10:25:35 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ void testMin()
 				  << min(a, b) << R << std::endl
 				  << std::endl;
 	}
+	{
+		float a = 15.5f;
+		float b = 15.5f;
+
+		std::cout << "Testing min(T a, T b) with equal float values" << std::endl
+				  << "The smallest of " << a << " and " << b << " is	" << BG
+				  << min(a, b) << R << std::endl
+				  << std::endl;
+	}
 
 	{
 		char a = 'w';
@@ -105,6 +114,16 @@ void testMax()
 		int b = 5;
 
 		std::cout << "Testing max(T a, T b) with int values" << std::endl
+				  << "The greater of " << a << " and " << b << " is	" << BG
+				  << max(a, b) << R << std::endl
+				  << std::endl;
+	}
+
+		{
+		int a = 5;
+		int b = 5;
+
+		std::cout << "Testing max(T a, T b) with equal int values" << std::endl
 				  << "The greater of " << a << " and " << b << " is	" << BG
 				  << max(a, b) << R << std::endl
 				  << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   templates.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:58:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:51:37 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 10:23:22 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 
 #include <iostream>
 
-template < typename T >
-void swap(T &a, T &b)
+template < typename type >
+void swap(type &a, type &b)
 {
-	T tmp;
+	type tmp;
 
 	tmp = a;
 	a = b;
 	b = tmp;
 }
 
-template < typename T >
-T min(T a, T b)
+template < typename type >
+type min(type a, type b)
 {
 	if (a == b)
 		return b;
 	return (a < b) ? a : b;
 }
 
-template < typename T >
-T max(T a, T b)
+template < typename type >
+type max(type a, type b)
 {
 	if (a == b)
 		return b;
