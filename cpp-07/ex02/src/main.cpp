@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:06:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 11:01:14 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:11:58 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main()
 	{
 		Array< std::string > arr(5);
 		arr.fill("Super fun |");
-		std::cout << "Array of 10 std::string filled with a message"
+		std::cout << "Array of 5 std::string filled with a message"
 				  << std::endl;
 
 		printArr("arr", arr);
