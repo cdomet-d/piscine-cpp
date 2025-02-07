@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:06:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:48 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 11:01:14 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include "iomanip"
 
-template < typename T >
-static void printArr(const char *s, const T &arr)
+template < typename Arr >
+static void printArr(const char *s, const Arr &arr)
 {
 	std::cout << s << ": ";
 	for (unsigned long i = 0; i < arr.size(); i++)
@@ -79,7 +79,7 @@ int main()
 		Array< int > cpy(5);
 
 		std::cout << "Testing operator=() constructor with arr[10] = {45} && "
-					 "cpy[5] = {18} filled with 'c'"
+					 "cpy[5] = {18}"
 				  << std::endl;
 		arr.fill(45);
 		cpy.fill(18);
@@ -91,7 +91,7 @@ int main()
 		printArr("arr", arr);
 		printArr("cpy", cpy);
 
-		std::cout << "Filling arr with '99'" << std::endl;
+		std::cout << "Filling arr with '99' to verify deep copy" << std::endl;
 
 		arr.fill(99);
 		printArr("arr", arr);

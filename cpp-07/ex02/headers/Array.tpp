@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:16:55 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 12:47:31 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:00:15 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,77 +17,71 @@
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-template < typename T >
-Array< T >::Array(void) : len(0), arr(new T[0])
+template < typename Arr >
+Array< Arr >::Array(void) : len(0), arr(new Arr[0])
 {
 }
 
-template < typename T >
-Array< T >::Array(unsigned int n) : len(n), arr(new T[n])
+template < typename Arr >
+Array< Arr >::Array(unsigned int n) : len(n), arr(new Arr[n])
 {
 	for (size_t i = 0; i < n; i++)
-		arr[i] = T();
+		arr[i] = Arr();
 	return;
 }
 
-template < typename T >
-Array< T >::Array(const Array &copy) : arr(NULL)
+template < typename Arr >
+Array< Arr >::Array(const Array &copy) : arr(NULL)
 {
 	*this = copy;
 }
 
-template < typename T >
-Array< T >::~Array(void)
+template < typename Arr >
+Array< Arr >::~Array(void)
 {
 	delete[] this->arr;
 }
 
-template < typename T >
-Array< T > &Array< T >::operator=(const Array< T > &comp)
+template < typename Arr >
+Array< Arr > &Array< Arr >::operator=(const Array< Arr > &comp)
 {
 	delete[] this->arr;
-	this->arr = new T[comp.len];
+	this->arr = new Arr[comp.len];
 	this->len = comp.len;
-	for (size_t i = 0; i < this->len; i++)
-		this->arr[i] = comp.arr[i];
+	this->fill(comp[0]);
 	return *this;
 }
 
-template < typename T >
-T &Array< T >::operator[](size_t index) const
+template < typename Arr >
+const Arr &Array< Arr >::operator[](size_t index) const
 {
-	if (index > len) {
-		std::cout << "index is out of bounds | ";
-		throw std::exception();
-	}
+	if (index > len)
+		throw std::out_of_range("invalid index is OOB");
 	return arr[index];
 }
-template < typename T >
-T &Array< T >::operator[](size_t index)
+template < typename Arr >
+Arr &Array< Arr >::operator[](size_t index)
 {
-	if (index > len) {
-		std::cout << "index is out of bounds: expected [0 - " << len
-				  << "] got: " << index << " | ";
-		throw std::exception();
-	}
+	if (index > len)
+		throw std::out_of_range("invalid index is OOB");
 	return arr[index];
 }
 
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-template < typename T >
-void Array< T >::fill(T fill)
+template < typename Arr >
+void Array< Arr >::fill(const Arr rhs)
 {
 	for (size_t i = 0; i < len; i++)
-		arr[i] = fill;
+		arr[i] = rhs;
 }
 
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-template < typename T >
-size_t Array< T >::size() const
+template < typename Arr >
+size_t Array< Arr >::size() const
 {
 	return len;
 }
