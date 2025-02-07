@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:36:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:52:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 10:31:08 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void print(T c)
 	std::cout << c << " ";
 }
 template < typename T, typename Func >
-void inter(T *arr, size_t len, Func function)
+void iter(T *arr, size_t len, Func function)
 {
 	for (size_t i = 0; i < len; i++)
 		function(arr[i]);

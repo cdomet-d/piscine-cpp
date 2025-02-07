@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/12/12 17:48:08 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2025/02/07 10:33:27 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,9 @@ info:
 
 # Formatting combinations
 PIBOLD= $(BO)$(M)
+BLBOLD= $(BO)$(B)
+CYBOLD= $(BO)$(C)
+PIBOLD= $(BO)$(P)
 
 # Text
 # reset
