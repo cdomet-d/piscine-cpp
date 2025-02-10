@@ -15,8 +15,8 @@ templated mergeInsert class containing:
 - [X] timer class;
 
 ### Methods
-- [ ] parsing methods;
-- [ ] sorting methods;
+- [X] parsing methods;
+- [X] sorting methods;
 
 ### Exceptions
 - [X] exceptions for error handling
@@ -24,7 +24,7 @@ templated mergeInsert class containing:
 	- [X] badFormat
 	- [X] forbiddenToken
 
-- [ ] overloaded << operator displaying output of timer class + sorted container.
+- [X] overloaded << operator displaying output of timer class + sorted container.
 
 # Concepts
 ## Template template parameters
