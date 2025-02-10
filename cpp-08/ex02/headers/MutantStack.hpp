@@ -24,7 +24,6 @@ class MutantStack : public std::stack<T, C> {
 	typedef typename C::const_iterator const_iterator;
 	typedef typename C::reverse_iterator reverse_iterator;
 	
-	// TODO: add reverse iterators
 	iterator begin() {
 		return this->c.begin();
 	}
