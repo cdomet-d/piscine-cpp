@@ -26,7 +26,7 @@ The syntax is as follows:
 	}
 ```
 
-`max(x, y)` can now be used for any datatype that will support the operation made by the function, provided that you cast it when using:
+`max(x, y)` can now be used for any datatype that will support the operation made by the function, provided that you specify a type when using:
 
 ```cpp
 	int res = max<int>(10, 8);

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:06:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 11:11:58 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/10 09:46:47 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ static void printArr(const char *s, const Arr &arr)
 }
 int main()
 {
+	{
+		std::cout << "Empty array of 10 int" << std::endl;
+		Array< int > arr;
+
+		printArr("arr", arr);
+		std::cout << std::endl;
+	}
 	{
 		std::cout << "Empty array of 10 int" << std::endl;
 		Array< int > arr(10);
