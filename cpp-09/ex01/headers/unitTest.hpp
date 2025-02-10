@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unitTest.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:21:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:27:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/10 16:46:18 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void testValid();
 
 #define VALID_EXPR(rpn, expr, expected)                                        \
 	try {                                                                      \
-		std::cout << std::setw(35) << std::left << "Evaluating: " + expr       \
-				  << " | ";                                                    \
+		std::cout << std::setw(35) << std::setfill('.') << std::left           \
+				  << "Evaluating: " + expr << " | ";                           \
 		rpn.compute(expr);                                                     \
 		if (rpn.getResult() == expected) {                                     \
-			std::cout << BG "expected " << std::setw(10) << expected           \
-					  << " got " << std::setw(10) << rpn.getResult() << R      \
-					  << std::endl;                                            \
+			std::cout << BG "expected " << std::setw(4) << std::right          \
+					  << expected << " got " << std::setw(4)                   \
+					  << rpn.getResult() << R << std::endl;                    \
 		} else                                                                 \
-			std::cout << BR "expected " << std::setw(10) << expected           \
-					  << " got " << std::setw(10) << rpn.getResult() << R      \
-					  << std::endl;                                            \
+			std::cout << BR "expected " << std::setw(4) << std::right          \
+					  << expected << " got " << std::setw(4) << std::right     \
+					  << rpn.getResult() << R << std::endl;                    \
 	} catch (std::exception & e) {                                             \
 		std::cout << BR "expected " << expected << " got : " << e.what() << R  \
 				  << std::endl;                                                \

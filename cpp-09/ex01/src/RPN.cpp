@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:24:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/10 16:49:03 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 #include <iostream>
+#include <cstdlib>
 
 // pop : removes top element
 // push : insert element at the top
@@ -51,7 +52,7 @@ bool RPN::opIsAllowed()
 		return true;
 	return false;
 }
-bool RPN::isOperator(char c)
+bool RPN::isOperator(const char c)
 {
 	char op[5] = "+-*/";
 
@@ -61,17 +62,15 @@ bool RPN::isOperator(char c)
 	}
 	return false;
 }
-bool RPN::isDigit(char c)
-{
-	char digit[11] = "0123456789";
-	for (uint8_t i = 0; digit[i]; ++i) {
-		if (c == digit[i])
-			return true;
+char RPN::addVal(char operand) {
+	if (operand >= 0 && operand <= 9) {
+		return operand;
 	}
-	return false;
+	throw UnexpectedToken();
 }
 int RPN::doOp(char op)
 {
+	
 	if (!opIsAllowed())
 		throw MissingOperands();
 
@@ -96,18 +95,24 @@ int RPN::doOp(char op)
 	}
 }
 
-void RPN::compute(std::string expr)
+void RPN::compute(const std::string &expr)
 {
-	for (std::string::iterator it = expr.begin(); it != expr.end(); ++it) {
-		if (*it == ' ')
-			continue;
-		else if (isOperator(*it)) {
-			rpn.push(doOp(*it));
-		} else if (isDigit(*it)) {
-			rpn.push(*it - '0');
-		} else {
-			throw UnexpectedToken();
+	char *endptr = NULL;
+	char operand = std::strtod(expr.c_str(), &endptr);
+	rpn.push(addVal(operand));
+	while (*endptr) {
+		if (isdigit(*endptr)) {
+			operand = std::strtod(endptr, &endptr);
+			rpn.push(addVal(operand));
 		}
+		else if (isOperator(*endptr)) {
+			rpn.push(doOp(*endptr));
+			endptr++;
+		}
+		else if (isspace(*endptr))
+			endptr++;
+		else
+			throw UnexpectedToken();
 	}
 	if (rpn.size() != 1)
 		throw MissingOperators();

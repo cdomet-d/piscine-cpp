@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unitTest.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:21:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:24:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/10 16:38:01 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,6 @@ void testInvalid()
 	}
 	{
 		RPN rpn;
-		INVALID_EXPR("", rpn.compute(""), RPN::MissingOperators);
-	}
-	{
-		RPN rpn;
-		INVALID_EXPR("8 9 + 5 5 *", rpn.compute(""), RPN::MissingOperators);
+		INVALID_EXPR("8 9 + 5 5 *", rpn.compute("8 9 + 5 5 *"), RPN::MissingOperators);
 	}
 }

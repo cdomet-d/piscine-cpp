@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/13 15:24:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/10 16:24:56 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#include <stack>
 #include <stdint.h>
+#include <stack>
 #include <string>
 
 class RPN {
@@ -26,7 +26,7 @@ class RPN {
 	RPN &operator=(const RPN &copy);
 
 	/*                               METHODS                                  */
-	void compute(std::string expr);
+	void compute(const std::string &expr);
 
 	/*                               GETTERS                                  */
 	int getResult();
@@ -35,15 +35,7 @@ class RPN {
 	  public:
 		const char *what() const throw();
 	};
-	class UnspecifiedError : public std::exception {
-	  public:
-		const char *what() const throw();
-	};
 	class MissingOperands : public std::exception {
-	  public:
-		const char *what() const throw();
-	};
-	class InputIsMalformed : public std::exception {
 	  public:
 		const char *what() const throw();
 	};
@@ -56,15 +48,15 @@ class RPN {
 		const char *what() const throw();
 	};
 
-	private : std::stack< int >
-				  rpn;
+  private:
+	std::stack< int > rpn;
 
 	/*                               METHODS                                  */
 	int result;
-	bool isOperator(char c);
-	bool isDigit(char c);
+	bool isOperator(const char c);
+	char addVal(char operand);
 	bool opIsAllowed();
-	int doOp(char op);
+	int doOp(const char op);
 };
 
 #endif
