@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:40 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 12:47:10 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:49:48 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ const char *Span::ElemCountTooHigh::what() const throw()
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Span::Span(void) : trackElem(0), spanSize(0)
+Span::Span(void) : longestMax(0), longestMin(0), shortestMax(0), shortestMin(0), trackElem(0), spanSize(0)
 {
 	span.reserve(0);
 }
 
-Span::Span(unsigned int n) : trackElem(0), spanSize(n)
+Span::Span(unsigned int n) : longestMax(0), longestMin(0), shortestMax(0), shortestMin(0), trackElem(0), spanSize(n)
 {
 	span.reserve(n);
 }
 
 Span::Span(const Span &copy)
-	: trackElem(copy.trackElem), spanSize(copy.spanSize)
 {
 	*this = copy;
 }
@@ -49,7 +48,13 @@ Span::~Span(void) {}
 
 Span &Span::operator=(const Span &comp)
 {
-	this->span = comp.span;
+	span = comp.span;
+	longestMax = comp.longestMax;
+	longestMin = comp.longestMin;
+	shortestMax = comp.shortestMax;
+	shortestMin = comp.shortestMin;
+	trackElem = comp.trackElem;
+	spanSize = comp.spanSize;
 	return *this;
 }
 
@@ -93,9 +98,14 @@ unsigned int Span::shortestSpan()
 		 it != span.end(); ++it) {
 		if (it + 1 != span.end())
 			current = *(it + 1) - *it;
-		if (current < shortest && current != 0)
+		if (current < shortest && current != 0) {
+			shortestMin = *it;
+			shortestMax = *(it + 1);
 			shortest = current;
+		}
 	}
+	std::cout << "between " << shortestMin << " and "
+			  << shortestMax << " | ";
 	return shortest;
 }
 
@@ -104,8 +114,11 @@ unsigned int Span::longestSpan()
 	if (span.empty() || trackElem <= 1)
 		throw std::length_error(
 			"	Cannot compare empty or single digit range");
-	return *std::max_element(span.begin(), span.end()) -
-		   *std::min_element(span.begin(), span.end());
+	longestMax = *std::max_element(span.begin(), span.end());
+	longestMin = *std::min_element(span.begin(), span.end());
+	std::cout << "between " << longestMin << " and "
+			  << longestMax << " | ";
+	return longestMax - longestMin;
 }
 
 /* ************************************************************************** */

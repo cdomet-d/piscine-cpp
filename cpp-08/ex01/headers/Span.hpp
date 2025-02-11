@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/15 10:53:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 15:31:38 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ class Span {
 
   private:
 	std::vector< unsigned int > span;
+	unsigned int longestMax;
+	unsigned int longestMin;
+	unsigned int shortestMax;
+	unsigned int shortestMin;
 	unsigned int trackElem;
 	unsigned int spanSize;
 };
