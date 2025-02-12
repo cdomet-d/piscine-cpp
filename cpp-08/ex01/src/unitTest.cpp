@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 12:20:15 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:54:34 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,21 @@ static void displayF(Span &span, const std::string &which)
 }
 void errorHandling(Span &span, const std::vector< unsigned int > &src)
 {
-	std::cout << std::endl << "TESTING INVALID ITERATORS" << std::endl;
-	invalidIterators(span, src);
-	std::cout << std::endl << "TESTING INVALID INTERVALS" << std::endl;
-	invalidIntervals(span);
-	std::cout << std::endl << "TESTING ELEM LIMITS" << std::endl;
-	elemLimits(span, src);
-	std::cout << std::endl << "TESTING DEEP COPY" << std::endl;
+	std::cout << std::endl;
+	{
+		std::cout << "TESTING INVALID ITERATORS" << std::endl;
+		invalidIterators(span, src);
+	}
+	std::cout << std::endl;
+	{
+		std::cout << "TESTING INVALID INTERVALS" << std::endl;
+		invalidIntervals(span);
+	}
+	std::cout << std::endl;
+	{
+		std::cout << "TESTING ELEM LIMITS" << std::endl;
+		elemLimits(span, src);
+	}
 }
 
 static void invalidIterators(Span &span, std::vector< unsigned int > src)
@@ -71,7 +79,7 @@ static void invalidIntervals(Span &span)
 static void elemLimits(Span &span, std::vector< unsigned int > src)
 {
 	try {
-		span.fillSpan(span.getSpanBegin(), src.begin(), src.end());
+		span.fillSpan(span.getSpanBegin(), src.begin(), (src.end()) - 1);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 		return;
@@ -139,4 +147,3 @@ void largeArr(const char *str)
 		std::cout << e.what() << std::endl;
 	}
 }
-
