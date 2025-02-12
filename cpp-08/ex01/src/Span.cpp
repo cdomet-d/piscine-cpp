@@ -23,7 +23,7 @@ std::ostream &operator<<(std::ostream &os, const Span &print)
 
 const char *Span::ElemCountTooHigh::what() const throw()
 {
-	return "	Too many elements in span";
+	return "Too many elements in span";
 }
 
 /* ************************************************************************** */
