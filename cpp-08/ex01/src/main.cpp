@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:41:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/11 16:00:20 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:08:35 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,17 @@ int main(int ac, char *av[])
 	}
 	std::string arg = av[1];
 	if (arg.compare("1") == 0) {
+		unsigned int val[] = {5, 979, 506, 397, 52, 266, 899};
+		std::vector< unsigned int > src(val, val + sizeof(val) /
+													   sizeof(unsigned int));
 		{
-			unsigned int val[] = {5, 979, 506, 397, 52, 266, 899};
-			std::vector< unsigned int > src(val,
-											val + sizeof(val) / sizeof(int));
 			Span span(src.size());
 			errorHandling(span, src);
 		}
-
 		{
-			std::vector< unsigned int > src(val,
-											val + sizeof(val) / sizeof(int));
 			Span span(src.size());
 			span.fillSpan(span.getSpanBegin(), src.begin(), src.end());
-			Span cpy(span);
-			std::cout << "Original	| " << span << std::endl;
-			span.print();
-			std::cout << "Copy		| " << cpy << std::endl;
-			cpy.print();
+			deepCopy(span);
 		}
 		return 0;
 	} else if (arg.compare("2") == 0)

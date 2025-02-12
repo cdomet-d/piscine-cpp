@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 15:07:40 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/11 15:49:48 by cdomet-d         ###   ########.fr       */
+/*   Created: 2024/12/06 5:07:40 by cdomet-d          #+#    #+#             */
+/*   Updated: 2025/02/12 11:5:55 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
+#include <iomanip>
 
 std::ostream &operator<<(std::ostream &os, const Span &print)
 {
@@ -29,12 +30,16 @@ const char *Span::ElemCountTooHigh::what() const throw()
 /*                               ORTHODOX CLASS                               */
 /* ************************************************************************** */
 
-Span::Span(void) : longestMax(0), longestMin(0), shortestMax(0), shortestMin(0), trackElem(0), spanSize(0)
+Span::Span(void)
+	: longestMax(0), longestMin(0), shortestMax(0), shortestMin(0),
+	  trackElem(0), spanSize(0)
 {
 	span.reserve(0);
 }
 
-Span::Span(unsigned int n) : longestMax(0), longestMin(0), shortestMax(0), shortestMin(0), trackElem(0), spanSize(n)
+Span::Span(unsigned int n)
+	: longestMax(0), longestMin(0), shortestMax(0), shortestMin(0),
+	  trackElem(0), spanSize(n)
 {
 	span.reserve(n);
 }
@@ -75,10 +80,10 @@ void Span::fillSpan(const std::vector< unsigned int >::iterator pos,
 					std::vector< unsigned int >::iterator end)
 {
 	if (pos < span.begin() || pos > span.end())
-		throw std::out_of_range("	pos is out of bounds (pos < span.begin() "
+		throw std::out_of_range("pos is out of bounds (pos < span.begin() "
 								"|| pos >= span.end())");
 	if (begin >= end)
-		throw std::out_of_range("	range is invalid (begin > end)");
+		throw std::out_of_range("range is invalid (begin > end)");
 	if (trackElem + std::distance(begin, end) > spanSize)
 		throw Span::ElemCountTooHigh();
 	span.insert(pos, begin, end);
@@ -91,9 +96,11 @@ unsigned int Span::shortestSpan()
 
 	if (span.empty() || trackElem <= 1)
 		throw std::length_error(
-			"	Cannot compare empty or single digit range");
+			"Cannot compare empty or single digit range");
 	std::sort(span.begin(), span.end());
 	unsigned int shortest = *(span.begin() + 1) - *span.begin();
+	shortestMin = *span.begin();
+	shortestMax = *(span.begin() + 1);
 	for (std::vector< unsigned int >::iterator it = span.begin();
 		 it != span.end(); ++it) {
 		if (it + 1 != span.end())
@@ -104,7 +111,8 @@ unsigned int Span::shortestSpan()
 			shortest = current;
 		}
 	}
-	std::cout << "between " << shortestMin << " and "
+	std::cout << std::setw(5) << std::left << "between "
+			  << std::setw(12) << shortestMin << " and " << std::setw(12)
 			  << shortestMax << " | ";
 	return shortest;
 }
@@ -113,10 +121,11 @@ unsigned int Span::longestSpan()
 {
 	if (span.empty() || trackElem <= 1)
 		throw std::length_error(
-			"	Cannot compare empty or single digit range");
+			"Cannot compare empty or single digit range");
 	longestMax = *std::max_element(span.begin(), span.end());
 	longestMin = *std::min_element(span.begin(), span.end());
-	std::cout << "between " << longestMin << " and "
+	std::cout << std::setw(5) << std::left << "between "
+			  << std::setw(12) << longestMin << " and " << std::setw(12)
 			  << longestMax << " | ";
 	return longestMax - longestMin;
 }
