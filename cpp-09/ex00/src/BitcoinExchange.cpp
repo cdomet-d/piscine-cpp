@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 14:41:22 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:28:11 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ BitcoinExchange::BitcoinExchange(const std::string &database_file,
 	buildMap('|', input_file);
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 BitcoinExchange::~BitcoinExchange(void) {}
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &comp)
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
-	database = comp.database;
-	input = comp.input;
+	database = rhs.database;
+	input = rhs.input;
 	return *this;
 }
 
@@ -292,10 +292,10 @@ void BitcoinExchange::outputBitcoinValue(
 	std::map< std::string, double >::iterator dBaseIt)
 {
 	std::cout << "On " + inputIt->first + ", the value of ";
-	std::cout << std::setw(5) << inputIt->second
-			  << "	bitcoin(s) was " << std::right << std::setw(DISPLAY_MARGIN)
-			  << std::fixed << std::setprecision(2)
-			  << inputIt->second * dBaseIt->second << "$" << std::endl;
+	std::cout << std::setw(5) << inputIt->second << "	bitcoin(s) was "
+			  << std::right << std::setw(DISPLAY_MARGIN) << std::fixed
+			  << std::setprecision(2) << inputIt->second * dBaseIt->second
+			  << "$" << std::endl;
 }
 
 bool BitcoinExchange::pError(const std::string &err, const std::string &errLine,
@@ -305,11 +305,3 @@ bool BitcoinExchange::pError(const std::string &err, const std::string &errLine,
 			  << std::endl;
 	return false;
 }
-
-/* ************************************************************************** */
-/*                               GETTERS                                      */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                               SETTERS                                      */
-/* ************************************************************************** */

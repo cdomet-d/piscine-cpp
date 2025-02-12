@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:05:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:02:52 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:34:14 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int main(int ac, char *av[])
 		std::cerr << e.what() << std::endl;
 		return 1;
 	}
-	return 0;
+	// return 0;
 }

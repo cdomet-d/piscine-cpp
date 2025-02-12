@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/03 17:19:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:27:43 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class BitcoinExchange {
 	BitcoinExchange(void);
 	BitcoinExchange(const std::string &database_file,
 					const std::string &input_file);
-	BitcoinExchange(const BitcoinExchange &copy);
+	BitcoinExchange(const BitcoinExchange &rhs);
 	~BitcoinExchange(void);
-	BitcoinExchange &operator=(const BitcoinExchange &copy);
+	BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
 	/*                               METHODS                                  */
 	void print();
@@ -69,7 +69,7 @@ class BitcoinExchange {
 	Output: On line: 30: 2013-06-31: No such day in that month
  */
 	bool pError(const std::string &err, const std::string &errLine,
-				long lineNo);
+				size_t lineNo);
 	void outputBitcoinValue(std::map< std::string, double >::iterator inputIt,
 							std::map< std::string, double >::iterator dBaseIt);
 };

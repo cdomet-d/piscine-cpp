@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:36 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:02:24 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:29:22 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 /* ************************************************************************** */
 
 SisterTracker::SisterTracker() {}
+
+SisterTracker &SisterTracker::operator=(const SisterTracker &rhs) {
+	sisterIndex = rhs.sisterIndex;
+	return *this;
+}
 
 SisterTracker::~SisterTracker(void) {}
 

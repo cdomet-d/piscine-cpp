@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:26 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/10 16:24:56 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class RPN {
   public:
 	/*                               ORTHODOX CLASS                           */
 	RPN(void);
-	RPN(const RPN &copy);
+	RPN(const RPN &rhs);
 	~RPN(void);
-	RPN &operator=(const RPN &copy);
+	RPN &operator=(const RPN &rhs);
 
 	/*                               METHODS                                  */
 	void compute(const std::string &expr);

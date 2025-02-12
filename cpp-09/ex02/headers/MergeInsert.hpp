@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:40:58 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:16:06 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:34:29 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ class MergeInsert {
 
 	/*                               ORTHODOX CLASS                           */
 	MergeInsert(char **seq);
-	//TODO: declare copy constructors
-	MergeInsert(const MergeInsert &copy);
-	MergeInsert &operator=(const MergeInsert &copy);
+	MergeInsert(const MergeInsert &rhs);
+	MergeInsert &operator=(const MergeInsert &rhs);
 	~MergeInsert(void);
 
 	/*                               METHODS                                  */

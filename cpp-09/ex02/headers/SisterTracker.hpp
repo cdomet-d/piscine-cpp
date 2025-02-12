@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:23:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:01:20 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class SisterTracker {
 	/*                               ORTHODOX CLASS                           */
 	SisterTracker(void);
 	~SisterTracker(void);
+	SisterTracker &operator=(const SisterTracker &rhs);
 
 	/*                               METHODS                                  */
 	void update(size_t insertionIndex);
@@ -40,8 +41,7 @@ class SisterTracker {
 	std::vector< size_t > sisterIndex;
 	
 	/*                               PRIVATE CONSTRUCTORS                     */
-	SisterTracker(const SisterTracker &copy);
-	SisterTracker &operator=(const SisterTracker &copy);
+	SisterTracker(const SisterTracker &rhs);
 };
 
 #endif

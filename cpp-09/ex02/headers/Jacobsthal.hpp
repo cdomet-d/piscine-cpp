@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 16:57:52 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:17:33 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Jacobsthal {
 	/*                               ORTHODOX CLASS                           */
 	Jacobsthal(void);
 	~Jacobsthal(void);
+	Jacobsthal &operator=(const Jacobsthal &rhs);
 
 	/*                               METHODS                                  */
 	bool isNeeded(size_t contLen, size_t pendIndex);
@@ -43,8 +44,7 @@ class Jacobsthal {
 	size_t insertedElems;
 
 	// private constructors
-	Jacobsthal(const Jacobsthal &copy);
-	Jacobsthal &operator=(const Jacobsthal &copy);
+	Jacobsthal(const Jacobsthal &rhs);
 };
 
 #endif

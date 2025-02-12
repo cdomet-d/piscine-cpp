@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:31:31 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/10 16:49:03 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@
 
 RPN::RPN(void) {}
 
-RPN::RPN(const RPN &copy)
+RPN::RPN(const RPN &rhs)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 RPN::~RPN(void) {}
 
-RPN &RPN::operator=(const RPN &comp)
+RPN &RPN::operator=(const RPN &rhs)
 {
-	// copy instructions
-	(void)comp;
+	// rhs instructions
+	(void)rhs;
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:04:52 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:19:23 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 Jacobsthal::Jacobsthal(void)
 	: currentJ(1), previousJ(1), nextJ(3), insertedElems(0)
 {
+}
+
+Jacobsthal &Jacobsthal::operator=(const Jacobsthal &rhs)
+{
+	currentJ = rhs.currentJ;
+	previousJ = rhs.previousJ;
+	nextJ = rhs.nextJ;
+	insertedElems = rhs.insertedElems;
+	return *this;
 }
 
 Jacobsthal::~Jacobsthal(void) {}

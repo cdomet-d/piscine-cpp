@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:41:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/06 17:19:05 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:33:00 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,7 +285,10 @@ void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert() : elemSize(1) { }
+MergeInsert< Cont >::MergeInsert()
+	: hasStraggler(false), elemSize(1), inputSize(0)
+{
+}
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
@@ -303,7 +306,33 @@ MergeInsert< Cont >::MergeInsert(char **seq) : hasStraggler(false), elemSize(1)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::~MergeInsert(void) { }
+MergeInsert< Cont >::~MergeInsert(void)
+{
+}
+
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+MergeInsert< Cont >::MergeInsert(const MergeInsert &rhs)
+{
+	*this = rhs;
+}
+template <
+	template < typename, typename = std::allocator< uint32_t > > class Cont >
+MergeInsert< Cont > &MergeInsert< Cont >::operator=(const MergeInsert &rhs)
+{
+	straggler = rhs.straggler;
+	inputHolder = rhs.inputHolder;
+
+	// Jacobstal numbers
+	jacobsthal = rhs.jacobsthal;
+
+	// trackers
+	hasStraggler = rhs.hasStraggler;
+	aIndex = rhs.aIndex;
+	elemSize = rhs.elemSize;
+	inputSize = rhs.inputSize;
+	return *this;
+}
 
 /* ************************************************************************** */
 /*                               DISPLAY                                      */
