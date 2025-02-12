@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/03 14:20:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	ShrubberyCreationForm(void);
 	ShrubberyCreationForm(const std::string _target);
-	ShrubberyCreationForm(const ShrubberyCreationForm &copy);
+	ShrubberyCreationForm(const ShrubberyCreationForm &rhs);
 	~ShrubberyCreationForm(void);
-	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);
+	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 
 	/*                               METHODS                                  */
 	void execute(Bureaucrat const &executor);

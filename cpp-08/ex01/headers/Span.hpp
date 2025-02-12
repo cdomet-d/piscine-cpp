@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:07:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/11 15:31:38 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class Span {
 	/*                               ORTHODOX CLASS                           */
 	Span(void);
 	Span(unsigned int n);
-	Span(const Span &copy);
+	Span(const Span &rhs);
 	~Span(void);
-	Span &operator=(const Span &copy);
+	Span &operator=(const Span &rhs);
 
 	/*                               METHODS                                  */
 	void addNumber(unsigned int n);

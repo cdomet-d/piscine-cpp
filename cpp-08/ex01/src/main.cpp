@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:41:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 13:46:40 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main(int ac, char *av[])
 			return 0;
 		} else {
 			std::cout << "Please provide a parameter:" << std::endl
-					  << "Enter [1]	to check error handling & deep copy"
+					  << "Enter [1]	to check error handling & deep rhs"
 					  << std::endl
 					  << "Enter [2]	to check a Span of 1000" << std::endl
 					  << "Enter [3]	to check a Span of 10000" << std::endl

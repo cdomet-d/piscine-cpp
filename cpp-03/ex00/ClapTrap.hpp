@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:11:51 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/05 15:48:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	ClapTrap(void);
 	ClapTrap(std::string _name);
-	ClapTrap(const ClapTrap &copy);
+	ClapTrap(const ClapTrap &rhs);
 	~ClapTrap(void);
-	ClapTrap &operator=(const ClapTrap &comp);
+	ClapTrap &operator=(const ClapTrap &rhs);
 
 	/*                               METHODS                                  */
 	void attack(const std::string &target);

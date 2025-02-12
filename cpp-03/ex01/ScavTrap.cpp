@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 14:24:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ ScavTrap::~ScavTrap(void)
 	std::cout << B << std::setw(15) << std::left << "ScavTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+ScavTrap::ScavTrap(const ScavTrap &rhs) : ClapTrap(rhs)
 { }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &comp)
+ScavTrap &ScavTrap::operator=(const ScavTrap &rhs)
 {
-	this->attackDamage = comp.attackDamage;
-	this->energyPoints = comp.energyPoints;
-	this->hitPoints = comp.hitPoints;
-	this->name = comp.name;
+	this->attackDamage = rhs.attackDamage;
+	this->energyPoints = rhs.energyPoints;
+	this->hitPoints = rhs.hitPoints;
+	this->name = rhs.name;
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 15:52:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ public:
 	// =
 	Fixed &operator=(const Fixed &original);
 	// >, <, >=, <=, == et !=
-	bool operator<(const Fixed &comp) const;
-	bool operator>(const Fixed &comp) const;
-	bool operator>=(const Fixed &comp) const;
-	bool operator<=(const Fixed &comp) const;
-	bool operator==(const Fixed &comp) const;
-	bool operator!=(const Fixed &comp) const;
+	bool operator<(const Fixed &rhs) const;
+	bool operator>(const Fixed &rhs) const;
+	bool operator>=(const Fixed &rhs) const;
+	bool operator<=(const Fixed &rhs) const;
+	bool operator==(const Fixed &rhs) const;
+	bool operator!=(const Fixed &rhs) const;
 	// +, -, *, et /
 	Fixed operator-(const Fixed &n) const;
 	Fixed operator+(const Fixed &n) const;

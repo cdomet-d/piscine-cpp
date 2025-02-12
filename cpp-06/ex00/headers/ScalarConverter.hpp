@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/13 14:27:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ class ScalarConverter {
   private:
 	/*                               ORTHODOX CLASS                           */
 	ScalarConverter(void);
-	ScalarConverter(const ScalarConverter &copy);
+	ScalarConverter(const ScalarConverter &rhs);
 	~ScalarConverter(void);
-	ScalarConverter &operator=(const ScalarConverter &copy);
+	ScalarConverter &operator=(const ScalarConverter &rhs);
 
 	/*                               METHODS                                  */
 	static bool isChar(const std::string &str);

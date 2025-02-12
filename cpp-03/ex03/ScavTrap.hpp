@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 17:49:37 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	ScavTrap(void);
 	ScavTrap(std::string _name);
-	ScavTrap(const ScavTrap &copy);
+	ScavTrap(const ScavTrap &rhs);
 	~ScavTrap(void);
-	ScavTrap &operator=(const ScavTrap &copy);
+	ScavTrap &operator=(const ScavTrap &rhs);
 
 	/*                               METHODS                                  */
 	void guardGate(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:02:45 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/03 15:47:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:23:32 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,44 +116,44 @@ Fixed &Fixed::operator=(const Fixed &original)
 /*                                COMPARISON                                  */
 /* ************************************************************************** */
 
-bool Fixed::operator<(const Fixed &comp) const
+bool Fixed::operator<(const Fixed &rhs) const
 {
-	if (this->raw < comp.getRawBits())
+	if (this->raw < rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator>(const Fixed &comp) const
+bool Fixed::operator>(const Fixed &rhs) const
 {
-	if (this->raw > comp.getRawBits())
+	if (this->raw > rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator>=(const Fixed &comp) const
+bool Fixed::operator>=(const Fixed &rhs) const
 {
-	if (this->raw >= comp.getRawBits())
+	if (this->raw >= rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator<=(const Fixed &comp) const
+bool Fixed::operator<=(const Fixed &rhs) const
 {
-	if (this->raw <= comp.getRawBits())
+	if (this->raw <= rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator==(const Fixed &comp) const
+bool Fixed::operator==(const Fixed &rhs) const
 {
-	if (this->raw == comp.getRawBits())
+	if (this->raw == rhs.getRawBits())
 		return true;
 	return false;
 }
 
-bool Fixed::operator!=(const Fixed &comp) const
+bool Fixed::operator!=(const Fixed &rhs) const
 {
-	if (this->raw != comp.getRawBits())
+	if (this->raw != rhs.getRawBits())
 		return true;
 	return false;
 }

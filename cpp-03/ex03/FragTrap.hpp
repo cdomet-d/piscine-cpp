@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 17:49:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	FragTrap(void);
 	FragTrap(std::string _name);
-	FragTrap(const FragTrap &copy);
+	FragTrap(const FragTrap &rhs);
 	~FragTrap(void);
-	FragTrap &operator=(const FragTrap &copy);
+	FragTrap &operator=(const FragTrap &rhs);
 
 	/*                               METHODS                                  */
 	void highFivesGuys(void);

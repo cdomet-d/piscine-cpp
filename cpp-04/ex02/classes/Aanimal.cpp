@@ -24,10 +24,10 @@ Aanimal::Aanimal(void) : type("Aanimal")
 
 Aanimal::Aanimal(std::string _type) : type(_type) {}
 
-Aanimal::Aanimal(const Aanimal &copy)
+Aanimal::Aanimal(const Aanimal &rhs)
 {
-	std::cout << "Aanimal copy constructor called " << std::endl;
-	*this = copy;
+	std::cout << "Aanimal rhs constructor called " << std::endl;
+	*this = rhs;
 }
 
 Aanimal::~Aanimal(void)
@@ -35,9 +35,9 @@ Aanimal::~Aanimal(void)
 	std::cout << "Aanimal deconstructor called " << std::endl;
 }
 
-Aanimal &Aanimal::operator=(const Aanimal &comp)
+Aanimal &Aanimal::operator=(const Aanimal &rhs)
 {
-	type = comp.type;
+	type = rhs.type;
 	return *this;
 }
 

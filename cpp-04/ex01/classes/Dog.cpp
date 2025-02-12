@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:23:19 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 16:52:49 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ Dog::Dog(void) : Animal("Dog"), brain(new Brain)
 	std::cout << "Dog constructor called " << std::endl;
 }
 
-Dog::Dog(const Dog &copy) : Animal(copy)
+Dog::Dog(const Dog &rhs) : Animal(rhs)
 {
 	this->brain = new Brain();
-	*this = copy;
-	std::cout << "Dog copy constructor called " << std::endl;
+	*this = rhs;
+	std::cout << "Dog rhs constructor called " << std::endl;
 }
 
 Dog::~Dog(void)
@@ -35,9 +35,9 @@ Dog::~Dog(void)
 	std::cout << "Dog deconstructor called " << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &comp)
+Dog &Dog::operator=(const Dog &rhs)
 {
-	*this->brain = *comp.brain;
+	*this->brain = *rhs.brain;
 	return *this;
 }
 

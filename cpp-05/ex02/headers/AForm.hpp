@@ -53,9 +53,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	AForm(void);
 	AForm(const std::string _name, const std::string _target, const short int _signGrade, const short _execGrade);
-	AForm(const AForm &copy);
+	AForm(const AForm &rhs);
 	~AForm(void);
-	AForm &operator=(const AForm &copy);
+	AForm &operator=(const AForm &rhs);
 
 	/*                               METHODS                                  */
 	void beSigned(const Bureaucrat signer);

@@ -20,9 +20,9 @@ class Cure : public AMateria
 public:
 	/*                               ORTHODOX CLASS                           */
 	Cure(void);
-	Cure(const Cure &copy);
+	Cure(const Cure &rhs);
 	~Cure(void);
-	Cure &operator=(const Cure &copy);
+	Cure &operator=(const Cure &rhs);
 
 	/*                               METHODS                                  */
 	virtual Cure *clone() const;

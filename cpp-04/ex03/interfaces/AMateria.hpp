@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:13:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 17:01:09 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ protected:
 public:
 	/*                               ORTHODOX CLASS                           */
 	AMateria(void);
-	AMateria(const AMateria &copy);
+	AMateria(const AMateria &rhs);
 	AMateria(std::string const &_type);
 	virtual ~AMateria(void);
-	AMateria &operator=(const AMateria &copy);
+	AMateria &operator=(const AMateria &rhs);
 
 	/*                               METHODS                                  */
 	virtual AMateria *clone() const = 0;

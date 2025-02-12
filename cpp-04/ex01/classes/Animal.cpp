@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/27 11:28:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ Animal::Animal(std::string _type) : type(_type)
 	std::cout << "Animal constructor called " << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+Animal::Animal(const Animal &rhs)
 {
-	*this = copy;
-	std::cout << "Animal copy constructor called " << std::endl;
+	*this = rhs;
+	std::cout << "Animal rhs constructor called " << std::endl;
 }
 
 Animal::~Animal(void)
@@ -38,9 +38,9 @@ Animal::~Animal(void)
 	std::cout << "Animal deconstructor called " << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &comp)
+Animal &Animal::operator=(const Animal &rhs)
 {
-	type = comp.type;
+	type = rhs.type;
 	return *this;
 }
 

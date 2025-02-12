@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:47:26 by jauseff           #+#    #+#             */
-/*   Updated: 2024/09/06 18:21:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ ClapTrap::ClapTrap(std::string _name)
 			  << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &rhs)
 {
-	*this = copy;
-	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << copy.name << " has been copied!"
+	*this = rhs;
+	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << rhs.name << " has been copied!"
 			  << std::endl;
 }
 
@@ -48,12 +48,12 @@ ClapTrap::~ClapTrap(void)
 	std::cout << G << std::setw(15) << std::left << "ClapTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &comp)
+ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
 {
-	this->name = comp.name;
-	this->hitPoints = comp.hitPoints;
-	this->energyPoints = comp.energyPoints;
-	this->attackDamage = comp.attackDamage;
+	this->name = rhs.name;
+	this->hitPoints = rhs.hitPoints;
+	this->energyPoints = rhs.energyPoints;
+	this->attackDamage = rhs.attackDamage;
 	return *this;
 }
 

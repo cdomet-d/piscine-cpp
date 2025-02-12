@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1024/09/03 11:34:24 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 15:50:10 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ FragTrap::~FragTrap(void)
 	std::cout << P << std::setw(15) << std::left << "FragTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
+FragTrap::FragTrap(const FragTrap &rhs) : ClapTrap(rhs)
 {
-	std::cout << "copy constructor called " << std::endl;
+	std::cout << "rhs constructor called " << std::endl;
 }
 
-FragTrap &FragTrap::operator=(const FragTrap &comp)
+FragTrap &FragTrap::operator=(const FragTrap &rhs)
 {
-	this->attackDamage = comp.attackDamage;
-	this->energyPoints = comp.energyPoints;
-	this->hitPoints = comp.hitPoints;
-	this->name = comp.name;
+	this->attackDamage = rhs.attackDamage;
+	this->energyPoints = rhs.energyPoints;
+	this->hitPoints = rhs.hitPoints;
+	this->name = rhs.name;
 	return *this;
 }
 

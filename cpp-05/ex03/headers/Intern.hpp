@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:28 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 12:36:41 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ public:
 
 	/*                               ORTHODOX CLASS                           */
 	Intern(void);
-	Intern(const Intern &copy);
+	Intern(const Intern &rhs);
 	~Intern(void);
-	Intern &operator=(const Intern &copy);
+	Intern &operator=(const Intern &rhs);
 
 	/*                               METHODS                                  */
 	AForm *makeForm(std::string formName, std::string target);

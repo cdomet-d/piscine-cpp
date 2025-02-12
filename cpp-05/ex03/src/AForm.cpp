@@ -55,17 +55,17 @@ AForm::AForm(const std::string _name, const std::string _target, const short int
 	}
 }
 
-AForm::AForm(const AForm &copy) : name(copy.name), signGrade(copy.signGrade),
-								  execGrade(copy.execGrade)
+AForm::AForm(const AForm &rhs) : name(rhs.name), signGrade(rhs.signGrade),
+								  execGrade(rhs.execGrade)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 AForm::~AForm(void) {}
 
-AForm &AForm::operator=(const AForm &comp)
+AForm &AForm::operator=(const AForm &rhs)
 {
-	isSigned = comp.isSigned;
+	isSigned = rhs.isSigned;
 	return *this;
 }
 

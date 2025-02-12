@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:59:08 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/05 13:45:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	DiamondTrap(void);
 	DiamondTrap(std::string _name);
-	DiamondTrap(const DiamondTrap &copy);
+	DiamondTrap(const DiamondTrap &rhs);
 	~DiamondTrap(void);
-	DiamondTrap &operator=(const DiamondTrap &copy);
+	DiamondTrap &operator=(const DiamondTrap &rhs);
 
 	/*                               METHODS                                  */
 	void whoAmI();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/01/03 14:20:24 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	RobotomyRequestForm(void);
 	RobotomyRequestForm(const std::string _target);
-	RobotomyRequestForm(const RobotomyRequestForm &copy);
+	RobotomyRequestForm(const RobotomyRequestForm &rhs);
 	~RobotomyRequestForm(void);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
+	RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 
 	/*                               METHODS                                  */
 	void execute(Bureaucrat const &executor);

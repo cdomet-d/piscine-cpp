@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:04:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/29 14:45:09 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 Serializer::Serializer(void) {}
 
-Serializer::Serializer(const Serializer &copy)
+Serializer::Serializer(const Serializer &rhs)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 Serializer::~Serializer(void) {}
 
-Serializer &Serializer::operator=(const Serializer &comp)
+Serializer &Serializer::operator=(const Serializer &rhs)
 {
-	// copy instructions
-	static_cast<void>(comp);
+	// rhs instructions
+	static_cast<void>(rhs);
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:15:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 15:10:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ MateriaSource::MateriaSource(void) : IMateriaSource()
 		this->learned[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource &copy) : IMateriaSource(copy) 
+MateriaSource::MateriaSource(const MateriaSource &rhs) : IMateriaSource(rhs) 
 {
-	std::cout << "MateriaSource copy constructor called " << std::endl;
-	*this = copy;
+	std::cout << "MateriaSource rhs constructor called " << std::endl;
+	*this = rhs;
 }
 
 MateriaSource::~MateriaSource(void)
@@ -37,14 +37,14 @@ MateriaSource::~MateriaSource(void)
 		delete this->learned[i];
 }
 
-MateriaSource &MateriaSource::operator=(const MateriaSource &comp)
+MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 {
 	for (int i = 0; i < 4; i++)
 		delete this->learned[i];
 	for (int i = 0; i < 4; i++)
 	{
-		if (comp.learned[i])
-			this->learned[i] = comp.learned[i]->clone();
+		if (rhs.learned[i])
+			this->learned[i] = rhs.learned[i]->clone();
 		else
 			this->learned[i] = NULL;
 	}

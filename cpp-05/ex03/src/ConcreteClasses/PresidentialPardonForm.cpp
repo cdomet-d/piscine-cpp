@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:04 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:32:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ PresidentialPardonForm::PresidentialPardonForm(void) : AForm() {}
 PresidentialPardonForm::PresidentialPardonForm(const std::string _name, const std::string _target)
 	: AForm(_name, _target, 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &rhs) : AForm(rhs) {}
 
 PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &comp)
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
 {
-	AForm::operator=(comp);
+	AForm::operator=(rhs);
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:33:02 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm() {}
 RobotomyRequestForm::RobotomyRequestForm(const std::string _name, const std::string _target)
 	: AForm(_name, _target, 72, 45) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : AForm(copy) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs) : AForm(rhs) {}
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &comp)
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {
-	AForm::operator=(comp);
+	AForm::operator=(rhs);
 	return *this;
 }
 /* ************************************************************************** */

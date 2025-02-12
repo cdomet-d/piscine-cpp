@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:10:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/27 11:20:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ AMateria::AMateria(std::string const &_type) : type(_type)
 	std::cout << "AMateria string constructor called " << std::endl;
 }
 
-AMateria::AMateria(const AMateria &copy)
+AMateria::AMateria(const AMateria &rhs)
 {
-	*this = copy;
-	std::cout << "AMateria copy constructor called " << std::endl;
+	*this = rhs;
+	std::cout << "AMateria rhs constructor called " << std::endl;
 }
 
 AMateria::~AMateria(void)
@@ -38,9 +38,9 @@ AMateria::~AMateria(void)
 	std::cout << "AMateria deconstructor called " << std::endl;
 }
 
-AMateria &AMateria::operator=(const AMateria &comp)
+AMateria &AMateria::operator=(const AMateria &rhs)
 {
-	type = comp.type;
+	type = rhs.type;
 	return *this;
 }
 

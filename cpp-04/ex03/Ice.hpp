@@ -21,9 +21,9 @@ private:
 public:
 	/*                               ORTHODOX CLASS                           */
 	Ice(void);
-	Ice(const Ice &copy);
+	Ice(const Ice &rhs);
 	~Ice(void);
-	Ice &operator=(const Ice &copy);
+	Ice &operator=(const Ice &rhs);
 
 	/*                               METHODS                                  */
 	virtual Ice *clone() const;

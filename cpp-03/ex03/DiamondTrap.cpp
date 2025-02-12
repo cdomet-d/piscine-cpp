@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:59:12 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/06 18:31:01 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap_name")
 	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << DiamondTrap::name << " has been created!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
+DiamondTrap::DiamondTrap(const DiamondTrap &rhs) : ClapTrap(rhs), FragTrap(rhs), ScavTrap(rhs)
 {
-	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << copy.name << " has been copied!" << std::endl;
-	DiamondTrap::name = copy.DiamondTrap::name;
+	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << rhs.name << " has been copied!" << std::endl;
+	DiamondTrap::name = rhs.DiamondTrap::name;
 }
 
 DiamondTrap::~DiamondTrap(void)
@@ -47,14 +47,14 @@ DiamondTrap::~DiamondTrap(void)
 	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R << this->name << " has been destroyed!" << std::endl;
 }
 
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap &comp)
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &rhs)
 {
 	std::cout << C << std::setw(15) << std::left << "DiamondTrap " << R " operator=() has been called." << std::endl;
-	this->attackDamage = comp.attackDamage;
-	this->energyPoints = comp.energyPoints;
-	this->hitPoints = comp.hitPoints;
-	this->ClapTrap::name = comp.ClapTrap::name;
-	this->DiamondTrap::name = comp.DiamondTrap::name;
+	this->attackDamage = rhs.attackDamage;
+	this->energyPoints = rhs.energyPoints;
+	this->hitPoints = rhs.hitPoints;
+	this->ClapTrap::name = rhs.ClapTrap::name;
+	this->DiamondTrap::name = rhs.DiamondTrap::name;
 	return *this;
 }
 

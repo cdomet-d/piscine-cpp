@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:08:34 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/27 11:26:32 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int main(void)
 	// 	delete src;
 	// }
 	{
-		std::cout << COLOR << "\ntesting copy constructor" << R << std::endl;
+		std::cout << COLOR << "\ntesting rhs constructor" << R << std::endl;
 		Ice	ice;
 		std::cout << "ice: " << ice.getType() << std::endl;
 		Ice ice2(ice);

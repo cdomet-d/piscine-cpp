@@ -44,22 +44,22 @@ Span::Span(unsigned int n)
 	span.reserve(n);
 }
 
-Span::Span(const Span &copy)
+Span::Span(const Span &rhs)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 Span::~Span(void) {}
 
-Span &Span::operator=(const Span &comp)
+Span &Span::operator=(const Span &rhs)
 {
-	span = comp.span;
-	longestMax = comp.longestMax;
-	longestMin = comp.longestMin;
-	shortestMax = comp.shortestMax;
-	shortestMin = comp.shortestMin;
-	trackElem = comp.trackElem;
-	spanSize = comp.spanSize;
+	span = rhs.span;
+	longestMax = rhs.longestMax;
+	longestMin = rhs.longestMin;
+	shortestMax = rhs.shortestMax;
+	shortestMin = rhs.shortestMin;
+	trackElem = rhs.trackElem;
+	spanSize = rhs.spanSize;
 	return *this;
 }
 

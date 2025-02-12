@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:22 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 10:16:49 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ Form::Form(const std::string _name, const short int _signGrade, const short _exe
 	}
 }
 
-Form::Form(const Form &copy) : name(copy.name), signGrade(copy.signGrade),
-							   execGrade(copy.execGrade)
+Form::Form(const Form &rhs) : name(rhs.name), signGrade(rhs.signGrade),
+							   execGrade(rhs.execGrade)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 Form::~Form(void) {}
 
-Form &Form::operator=(const Form &comp)
+Form &Form::operator=(const Form &rhs)
 {
-	isSigned = comp.isSigned;
+	isSigned = rhs.isSigned;
 	return *this;
 }
 

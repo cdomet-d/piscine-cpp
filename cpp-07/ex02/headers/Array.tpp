@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:16:55 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 11:13:53 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ Array< ArrType >::Array(unsigned int n) : len(n), arr(new ArrType[n])
 }
 
 template < typename ArrType >
-Array< ArrType >::Array(const Array &copy) : arr(NULL)
+Array< ArrType >::Array(const Array &rhs) : arr(NULL)
 {
-	*this = copy;
+	*this = rhs;
 }
 
 template < typename ArrType >
@@ -42,12 +42,12 @@ Array< ArrType >::~Array(void)
 }
 
 template < typename ArrType >
-Array< ArrType > &Array< ArrType >::operator=(const Array< ArrType > &comp)
+Array< ArrType > &Array< ArrType >::operator=(const Array< ArrType > &rhs)
 {
 	delete[] this->arr;
-	this->arr = new ArrType[comp.len];
-	this->len = comp.len;
-	this->fill(comp[0]);
+	this->arr = new ArrType[rhs.len];
+	this->len = rhs.len;
+	this->fill(rhs[0]);
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:14:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/27 11:29:19 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ int main(void)
 		Cat *gregor = new Cat();
 
 		gregor->fillPetArr("I am a sociopath");
-		std::cout << COLOR << "created a " << gregor->getType() << " named Gregor with copy constructor\n"
+		std::cout << COLOR << "created a " << gregor->getType() << " named Gregor with rhs constructor\n"
 				  << R << std::endl;
 		Cat *sandor = new Cat(*gregor);
 
-		std::cout << COLOR << "created a " << sandor->getType() << " named Sandor with copy constructor\n"
+		std::cout << COLOR << "created a " << sandor->getType() << " named Sandor with rhs constructor\n"
 				  << R << std::endl;
 		
 		std::cout << COLOR << "Demonstrating Gregor && Sandor thoughts are the same\n"
@@ -98,7 +98,7 @@ int main(void)
 		std::cout << COLOR << "Populating Sandor's thoughts with his own\n"
 				  << R << std::endl;
 		sandor->fillPetArr("I will kill my mad brother");
-		std::cout << COLOR << "Demonstrating deep copy : Sandor and Gregor now have different thoughts\n"
+		std::cout << COLOR << "Demonstrating deep rhs : Sandor and Gregor now have different thoughts\n"
 				  << R << std::endl;
 		gregor->displayThoughts();
 		sandor->displayThoughts();

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:06:47 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/10 09:46:47 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int main()
 		printArr("arr", arr);
 		printArr("cpy", cpy);
 
-		std::cout << "Filling arr with '99' to verify deep copy" << std::endl;
+		std::cout << "Filling arr with '99' to verify deep rhs" << std::endl;
 
 		arr.fill(99);
 		printArr("arr", arr);

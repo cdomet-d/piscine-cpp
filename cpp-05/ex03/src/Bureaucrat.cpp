@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 10:24:21 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:23:53 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name),
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()),
-												 grade(copy.getGrade()) {}
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : name(rhs.getName()),
+												 grade(rhs.getGrade()) {}
 
 Bureaucrat::~Bureaucrat(void) {}
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &comp)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	grade = comp.grade;
+	grade = rhs.grade;
 	return *this;
 }
 

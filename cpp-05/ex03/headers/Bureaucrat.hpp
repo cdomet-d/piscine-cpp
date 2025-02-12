@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:14:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 17:03:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	Bureaucrat(void);
 	Bureaucrat(const std::string _name, short int _grade);
-	Bureaucrat(const Bureaucrat &copy);
+	Bureaucrat(const Bureaucrat &rhs);
 	~Bureaucrat(void);
-	Bureaucrat &operator=(const Bureaucrat &copy);
+	Bureaucrat &operator=(const Bureaucrat &rhs);
 
 	/*                               METHODS                                  */
 	void upgrade(void);

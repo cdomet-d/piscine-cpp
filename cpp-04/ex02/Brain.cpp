@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:28:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/12 17:11:54 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ Brain::Brain(void)
 	std::cout << "Brain constructor called " << std::endl;
 }
 
-Brain::Brain(const Brain &copy)
+Brain::Brain(const Brain &rhs)
 {
 
-	*this = copy;
-	std::cout << "Brain copy constructor called " << std::endl;
+	*this = rhs;
+	std::cout << "Brain rhs constructor called " << std::endl;
 }
 
 Brain::~Brain(void)
@@ -35,10 +35,10 @@ Brain::~Brain(void)
 	std::cout << "Brain deconstructor called " << std::endl;
 }
 
-Brain &Brain::operator=(const Brain &comp)
+Brain &Brain::operator=(const Brain &rhs)
 {
 	for (size_t i = 0; i < 100; i++)
-		this->ideas[i] = comp.ideas[i];
+		this->ideas[i] = rhs.ideas[i];
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 10:33:47 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm() {}
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string _name, const std::string _target)
 	: AForm(_name, _target, 145, 137) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs) : AForm(rhs) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &comp)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
-	AForm::operator=(comp);
+	AForm::operator=(rhs);
 	return *this;
 }
 /* ************************************************************************** */

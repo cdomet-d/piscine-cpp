@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:24:20 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:52:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:23:32 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ Point &Point::operator=(const Point &original)
 	return *this;
 }
 
-bool Point::operator==(const Point &comp) const
+bool Point::operator==(const Point &rhs) const
 {
-	if (this->x == comp.getX() && this->y == comp.getY())
+	if (this->x == rhs.getX() && this->y == rhs.getY())
 		return true;
 	return false;
 }

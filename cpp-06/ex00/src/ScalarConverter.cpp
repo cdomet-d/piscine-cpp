@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:54:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/12/13 14:41:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:22:48 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 
 ScalarConverter::ScalarConverter(void) {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &copy)
+ScalarConverter::ScalarConverter(const ScalarConverter &rhs)
 {
-	(void)copy;
+	(void)rhs;
 }
 
 ScalarConverter::~ScalarConverter(void) {}
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &comp)
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return (*this);
 }
 

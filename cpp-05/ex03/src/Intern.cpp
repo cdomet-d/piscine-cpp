@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/26 13:04:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:22:48 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ Intern::Intern(void)
 {
 }
 
-Intern::Intern(const Intern &copy)
+Intern::Intern(const Intern &rhs)
 {
-	(void)copy;
+	(void)rhs;
 }
 
 Intern::~Intern(void)
 {
 }
 
-Intern &Intern::operator=(const Intern &comp)
+Intern &Intern::operator=(const Intern &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:24:17 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/29 14:52:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	Point(const float a, const float b);
 	Point(const Point &original);
 	Point &operator=(const Point &original);
-	bool operator==(const Point &comp) const;
+	bool operator==(const Point &rhs) const;
 	const Fixed getX(void) const;
 	const Fixed getY(void) const;
 	~Point(void);

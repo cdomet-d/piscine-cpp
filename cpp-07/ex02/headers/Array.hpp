@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:15:03 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 10:52:48 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:21:21 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class Array {
 	/*                               ORTHODOX CLASS                           */
 	Array(void);
 	Array(unsigned int n);
-	Array(const Array &copy);
+	Array(const Array &rhs);
 	~Array(void);
-	Array &operator=(const Array &comp);
+	Array &operator=(const Array &rhs);
 	Arr &operator[](size_t index);
 	const Arr &operator[](size_t index) const;
 

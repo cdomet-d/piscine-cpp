@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:52:54 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 12:41:55 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ WrongAnimal::WrongAnimal(std::string _type) : type(_type)
 	std::cout << "WrongAnimal constructor called " << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &rhs)
 {
-	*this = copy;
-	std::cout << "WrongAnimal copy constructor called " << std::endl;
+	*this = rhs;
+	std::cout << "WrongAnimal rhs constructor called " << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void)
@@ -38,9 +38,9 @@ WrongAnimal::~WrongAnimal(void)
 	std::cout << "WrongAnimal deconstructor called " << std::endl;
 }
 
-WrongAnimal &WrongAnimal::operator=(const WrongAnimal &comp)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return *this;
 }
 

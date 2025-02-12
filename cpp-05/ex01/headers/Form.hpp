@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:38:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 15:58:20 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	Form(void);
 	Form(const std::string _name, const short int _signGrade, const short _execGrade);
-	Form(const Form &copy);
+	Form(const Form &rhs);
 	~Form(void);
-	Form &operator=(const Form &copy);
+	Form &operator=(const Form &rhs);
 
 	/*                               METHODS                                  */
 	void beSigned(const Bureaucrat signer);

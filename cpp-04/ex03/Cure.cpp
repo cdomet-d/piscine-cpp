@@ -22,9 +22,9 @@ Cure::Cure(void) : AMateria("cure")
 	std::cout << "Cure constructor called " << std::endl;
 }
 
-Cure::Cure(const Cure &copy) : AMateria(copy)
+Cure::Cure(const Cure &rhs) : AMateria(rhs)
 {
-	std::cout << "Cure copy constructor called " << std::endl;
+	std::cout << "Cure rhs constructor called " << std::endl;
 }
 
 Cure::~Cure(void)
@@ -32,9 +32,9 @@ Cure::~Cure(void)
 	std::cout << "Cure deconstructor called " << std::endl;
 }
 
-Cure &Cure::operator=(const Cure &comp)
+Cure &Cure::operator=(const Cure &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return *this;
 }
 

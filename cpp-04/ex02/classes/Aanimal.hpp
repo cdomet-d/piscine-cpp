@@ -24,9 +24,9 @@ public:
 	/*                               ORTHODOX CLASS                           */
 	Aanimal(void);
 	Aanimal(std::string _type);
-	Aanimal(const Aanimal &copy);
+	Aanimal(const Aanimal &rhs);
 	virtual ~Aanimal(void);
-	Aanimal &operator=(const Aanimal &copy);
+	Aanimal &operator=(const Aanimal &rhs);
 
 	/*                               METHODS                                  */
 	virtual void makeSound(void) const = 0;

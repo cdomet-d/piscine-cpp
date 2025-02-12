@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:54:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/26 17:18:27 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 	std::cout << "WrongCat constructor called " << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
+WrongCat::WrongCat(const WrongCat &rhs) : WrongAnimal(rhs)
 {
-	std::cout << "WrongCat copy constructor called " << std::endl;
+	std::cout << "WrongCat rhs constructor called " << std::endl;
 }
 
 WrongCat::~WrongCat(void)
@@ -32,9 +32,9 @@ WrongCat::~WrongCat(void)
 	std::cout << "WrongCat deconstructor called " << std::endl;
 }
 
-WrongCat &WrongCat::operator=(const WrongCat &comp)
+WrongCat &WrongCat::operator=(const WrongCat &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return *this;
 }
 

@@ -23,9 +23,9 @@ Ice::Ice(void) : AMateria("Ice")
 	this->type = "ice";
 }
 
-Ice::Ice(const Ice &copy) : AMateria(copy)
+Ice::Ice(const Ice &rhs) : AMateria(rhs)
 {
-	std::cout << "Ice copy constructor called " << std::endl;
+	std::cout << "Ice rhs constructor called " << std::endl;
 }
 
 Ice::~Ice(void)
@@ -33,9 +33,9 @@ Ice::~Ice(void)
 	std::cout << "Ice deconstructor called " << std::endl;
 }
 
-Ice &Ice::operator=(const Ice &comp)
+Ice &Ice::operator=(const Ice &rhs)
 {
-	(void)comp;
+	(void)rhs;
 	return *this;
 }
 

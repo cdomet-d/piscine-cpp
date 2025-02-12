@@ -22,8 +22,8 @@ int main( void ) {
 }
 
 // With operator overload : 
-bool	Fixed::operator==(const Fixed& comp) const {
-	if  (this->raw == comp.getRawBits())
+bool	Fixed::operator==(const Fixed& rhs) const {
+	if  (this->raw == rhs.getRawBits())
 		return (true);
 	return (false);
 }
