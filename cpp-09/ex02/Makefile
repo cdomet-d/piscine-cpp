@@ -6,11 +6,11 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2025/02/06 17:22:31 by cdomet-d         ###   ########.fr        #
+#    Updated: 2025/02/14 11:11:43 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= mergeInsert
+NAME:= PmergeMe
 BDIR:=.bdir/
 SRC_DIR:= src/
 H:= headers/
@@ -66,6 +66,10 @@ info:
 	@echo $(SRC_PATH)
 	@echo $(SRC)
 
+help:
+	@echo "all: compiles"
+	@echo "clean: removes the objects & dependancies files"
+	@echo "fclean: removes the objects & dependancies files as well as the excecutable"
 .PHONY: all clean info fclean re run
 
 # Formatting combinations

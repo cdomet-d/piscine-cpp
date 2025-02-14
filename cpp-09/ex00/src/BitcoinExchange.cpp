@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:28:11 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:00:46 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,9 +156,9 @@ void BitcoinExchange::getValidBitValue(char sep, const std::string &val,
 		return static_cast< void >(
 			pError("Bitcoin value can't be negative", val, lineNo));
 	if (sep == ',')
-		database[date] = convertedVal;
+		database.insert(std::pair<std::string, double>(date, convertedVal));
 	else if (sep == '|')
-		input[date] = convertedVal;
+		input.insert(std::pair<std::string, double>(date, convertedVal));
 }
 
 bool BitcoinExchange::dateIsValid(long lineNo, const std::string &date)

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MergeInsert.tpp                                    :+:      :+:    :+:   */
+/*   PmergeMe.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MergeInsert.hpp"
+#include "PmergeMe.hpp"
 #include <iomanip>
 #include <iostream>
 
@@ -24,8 +24,8 @@
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
-									   const InnerCont &toInsert)
+void PmergeMe< Cont >::binarySearch(size_t maxRange, OuterCont &main,
+									const InnerCont &toInsert)
 {
 	if (main.empty() || toInsert.empty())
 		return;
@@ -43,7 +43,7 @@ void MergeInsert< Cont >::binarySearch(size_t maxRange, OuterCont &main,
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
+void PmergeMe< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
 {
 	jacobsthal.update();
 	size_t elems = 0;
@@ -66,8 +66,8 @@ void MergeInsert< Cont >::jacobsthalInsertion(OuterCont &main, OuterCont &pend)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::defaultInsertion(size_t toInsert, OuterCont &main,
-										   OuterCont &pend)
+void PmergeMe< Cont >::defaultInsertion(size_t toInsert, OuterCont &main,
+										OuterCont &pend)
 {
 	size_t elems = 0;
 
@@ -80,7 +80,7 @@ void MergeInsert< Cont >::defaultInsertion(size_t toInsert, OuterCont &main,
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::splitSort(OuterCont &cont)
+void PmergeMe< Cont >::splitSort(OuterCont &cont)
 {
 	undoPairs(cont);
 	OuterCont main;
@@ -119,7 +119,7 @@ void MergeInsert< Cont >::splitSort(OuterCont &cont)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::undoPairs(OuterCont &cont)
+void PmergeMe< Cont >::undoPairs(OuterCont &cont)
 {
 	hasStraggler = (cont.at(getLast(cont)).size() != elemSize);
 	if (cont.size() > 1 && hasStraggler) {
@@ -144,7 +144,7 @@ void MergeInsert< Cont >::undoPairs(OuterCont &cont)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-typename MergeInsert< Cont >::InnerCont MergeInsert< Cont >::getStragglerElem()
+typename PmergeMe< Cont >::InnerCont PmergeMe< Cont >::getStragglerElem()
 {
 	if (straggler.size() >= elemSize) {
 		InnerCont elemFromStraggler(straggler.begin(),
@@ -157,7 +157,7 @@ typename MergeInsert< Cont >::InnerCont MergeInsert< Cont >::getStragglerElem()
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::makePairs(OuterCont &cont)
+void PmergeMe< Cont >::makePairs(OuterCont &cont)
 {
 	const size_t pairLevel = cont.size() / PAIR;
 
@@ -185,7 +185,7 @@ void MergeInsert< Cont >::makePairs(OuterCont &cont)
 /* ************************************************************************** */
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::sortElems(OuterCont &cont)
+void PmergeMe< Cont >::sortElems(OuterCont &cont)
 {
 	for (size_t i = 0; i < cont.size() - 1; i += 2) {
 		if (cont.at(i).size() == elemSize &&
@@ -197,7 +197,7 @@ void MergeInsert< Cont >::sortElems(OuterCont &cont)
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::mergeElems(OuterCont &cont, const size_t index)
+void PmergeMe< Cont >::mergeElems(OuterCont &cont, const size_t index)
 {
 	cont.at(index).insert(cont.at(index).end(), cont.at(index + 1).begin(),
 						  cont.at(index + 1).end());
@@ -205,24 +205,24 @@ void MergeInsert< Cont >::mergeElems(OuterCont &cont, const size_t index)
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::unmergeElems(
-	OuterCont &cont, const typename InnerCont::iterator &begin,
-	const typename InnerCont::iterator &end)
+void PmergeMe< Cont >::unmergeElems(OuterCont &cont,
+									const typename InnerCont::iterator &begin,
+									const typename InnerCont::iterator &end)
 {
 	InnerCont newPair(begin, end);
 	cont.push_back(newPair);
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-bool MergeInsert< Cont >::isPairInCont(const OuterCont &cont,
-									   const size_t &index) const
+bool PmergeMe< Cont >::isPairInCont(const OuterCont &cont,
+									const size_t &index) const
 {
 	return (index < cont.size() && (cont.at(index).size() == elemSize));
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-bool MergeInsert< Cont >::isSorted(typename OuterCont::const_iterator begin,
-								   typename OuterCont::const_iterator end) const
+bool PmergeMe< Cont >::isSorted(typename OuterCont::const_iterator begin,
+								typename OuterCont::const_iterator end) const
 {
 	typename OuterCont::const_iterator next = begin;
 	++next;
@@ -241,14 +241,14 @@ bool MergeInsert< Cont >::isSorted(typename OuterCont::const_iterator begin,
 /* ************************************************************************** */
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-size_t MergeInsert< Cont >::getLast(const OuterCont &cont) const
+size_t PmergeMe< Cont >::getLast(const OuterCont &cont) const
 {
 	return cont.size() - 1;
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::sort(const std::string &contType)
+void PmergeMe< Cont >::sort(const std::string &contType)
 {
 	std::cout << std::setw(22) << std::left << INVALID "Before" RESET;
 	display(false, contType);
@@ -264,7 +264,7 @@ void MergeInsert< Cont >::sort(const std::string &contType)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
+void PmergeMe< Cont >::addValidValue(const int64_t n, const char *endptr)
 {
 	if (*endptr && *endptr != ' ') {
 		std::cout << *endptr << std::endl;
@@ -285,14 +285,13 @@ void MergeInsert< Cont >::addValidValue(const int64_t n, const char *endptr)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert()
-	: hasStraggler(false), elemSize(1), inputSize(0)
+PmergeMe< Cont >::PmergeMe() : hasStraggler(false), elemSize(1), inputSize(0)
 {
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert(char **seq) : hasStraggler(false), elemSize(1)
+PmergeMe< Cont >::PmergeMe(char **seq) : hasStraggler(false), elemSize(1)
 {
 	char *endptr = NULL;
 	for (size_t i = 0; seq[i]; ++i) {
@@ -306,19 +305,19 @@ MergeInsert< Cont >::MergeInsert(char **seq) : hasStraggler(false), elemSize(1)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::~MergeInsert(void)
+PmergeMe< Cont >::~PmergeMe(void)
 {
 }
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont >::MergeInsert(const MergeInsert &rhs)
+PmergeMe< Cont >::PmergeMe(const PmergeMe &rhs)
 {
 	*this = rhs;
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-MergeInsert< Cont > &MergeInsert< Cont >::operator=(const MergeInsert &rhs)
+PmergeMe< Cont > &PmergeMe< Cont >::operator=(const PmergeMe &rhs)
 {
 	straggler = rhs.straggler;
 	inputHolder = rhs.inputHolder;
@@ -340,8 +339,8 @@ MergeInsert< Cont > &MergeInsert< Cont >::operator=(const MergeInsert &rhs)
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::display(const bool showTime,
-								  const std::string &type) const
+void PmergeMe< Cont >::display(const bool showTime,
+							   const std::string &type) const
 {
 	std::cout << "using std::" + type + ": ";
 	for (size_t i = 0; i < inputHolder.size(); ++i) {
@@ -362,7 +361,7 @@ void MergeInsert< Cont >::display(const bool showTime,
 
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::printInnerCont(const InnerCont &iCont) const
+void PmergeMe< Cont >::printInnerCont(const InnerCont &iCont) const
 {
 	if (iCont.empty())
 		return;
@@ -372,8 +371,8 @@ void MergeInsert< Cont >::printInnerCont(const InnerCont &iCont) const
 }
 template <
 	template < typename, typename = std::allocator< uint32_t > > class Cont >
-void MergeInsert< Cont >::printCont(const OuterCont &cont,
-									const std::string &contName) const
+void PmergeMe< Cont >::printCont(const OuterCont &cont,
+								 const std::string &contName) const
 {
 	size_t i = 0;
 	size_t j = 0;

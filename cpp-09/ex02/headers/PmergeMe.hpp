@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MergeInsert.hpp                                    :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -23,16 +23,16 @@
 
 template < template < class, class = std::allocator< uint32_t > > class Cont >
 
-class MergeInsert {
+class PmergeMe {
   public:
 	typedef Cont< uint32_t, std::allocator< uint32_t > > InnerCont;
 	typedef Cont< InnerCont > OuterCont;
 
 	/*                               ORTHODOX CLASS                           */
-	MergeInsert(char **seq);
-	MergeInsert(const MergeInsert &rhs);
-	MergeInsert &operator=(const MergeInsert &rhs);
-	~MergeInsert(void);
+	PmergeMe(char **seq);
+	PmergeMe(const PmergeMe &rhs);
+	PmergeMe &operator=(const PmergeMe &rhs);
+	~PmergeMe(void);
 
 	/*                               METHODS                                  */
 	void sort(const std::string &contType);
@@ -86,9 +86,9 @@ class MergeInsert {
 	uint32_t inputSize;
 
 	/*                               PRIVATE CONSTRUCTORS                     */
-	MergeInsert(void);
+	PmergeMe(void);
 };
 
-#include "MergeInsert.tpp"
+#include "PmergeMe.tpp"
 
 #endif
