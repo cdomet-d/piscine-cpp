@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:57:46 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/10 16:43:07 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:10:58 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "unitTest.hpp"
 int main(int ac, char *av[])
 {
-	if (ac < 2 || (ac > 3) || (ac == 2 && !av[1])) {
+	if (ac < 2 || (ac > 2) || (ac == 2 && !av[1])) {
 		std::cerr << "Expected quoted string" << std::endl
 				  << "Usage: ./RPN < \"expression-to-evaluate\" >" << std::endl
 				  << "Usage: ./RPN < -t > to run automated tests" << std::endl;
