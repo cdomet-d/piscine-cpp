@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2025/02/14 11:11:43 by cdomet-d         ###   ########.fr        #
+#    Updated: 2025/02/17 13:14:53 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	@./$(NAME) $(shell shuf -i 0-3000 -n 3000 | tr "\n" " ")
+	@./$(NAME) $(shell shuf -i 0-1000 -n 1000 | tr "\n" " ")
 info:
 	@echo $(CXXFLAGS)
 	@echo $(SRC_PATH)

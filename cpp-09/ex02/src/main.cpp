@@ -6,15 +6,15 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:05:23 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/14 11:09:24 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/17 13:14:11 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 #include <deque>
-#include <vector>
 #include <iostream>
+#include <vector>
 
 int main(int ac, char *av[])
 {
@@ -23,14 +23,16 @@ int main(int ac, char *av[])
 				  << std::endl;
 		return 1;
 	}
-	try {
-		PmergeMe< std::deque > deq(av + 1);
-		deq.sort("deque");
-		PmergeMe< std::vector > vec(av + 1);
-		vec.sort("vector");
-	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
-		return 1;
+	{
+		try {
+			PmergeMe< std::deque > deq(av + 1);
+			deq.sort("deque");
+			PmergeMe< std::vector > vec(av + 1);
+			vec.sort("vector");
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+			return 1;
+		}
 	}
 	return 0;
 }
