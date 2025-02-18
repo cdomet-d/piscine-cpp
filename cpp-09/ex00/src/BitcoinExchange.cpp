@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:59:10 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/14 11:00:46 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:15:33 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 #define MAX_DAYS 31
 #define MAX_DAYS_SHORT_MONTH 30
 #define MAX_BITCOIN 1000
-#define DISPLAY_MARGIN 15
+#define DISPLAY_MARGIN 10
 #define BR "\033[1m\033[31m"
 #define R "\033[0m"
 #define BG "\033[1m\033[33m"
@@ -77,19 +77,23 @@ void BitcoinExchange::getChangeRate()
 		throw std::runtime_error("Database is empty");
 	for (; inputIt != input.end(); ++inputIt) {
 		dBaseIt = database.lower_bound(inputIt->first);
-		if (inputIt->first != dBaseIt->first || dBaseIt == database.end()) {
-			--dBaseIt;
-			std::cout << BR << std::left << std::setw(DISPLAY_MARGIN)
-					  << "No match ";
-			std::cout << "for " << inputIt->first
-					  << ", computing with previous known date: "
-					  << dBaseIt->first << R << std::endl;
-			std::cout << std::setw(DISPLAY_MARGIN) << " ";
-			outputBitcoinValue(inputIt, dBaseIt);
+		if (dBaseIt == database.end() || inputIt->first != dBaseIt->first) {
+			if (dBaseIt == database.begin()) {
+				std::cout << BR << std::left << std::setw(DISPLAY_MARGIN)
+						  << "No match " << R << "for " << inputIt->first
+						  << " | previous value unavailable. Continuing..."
+						  << std::endl;
+			} else {
+				--dBaseIt;
+				std::cout << BR << std::left << std::setw(DISPLAY_MARGIN)
+						  << "No match " << R;
+				std::cout << "for " << inputIt->first << " | ";
+				outputBitcoinValue(inputIt, dBaseIt, false);
+			}
 		} else {
 			std::cout << BG << std::left << std::setw(DISPLAY_MARGIN)
 					  << "Match " << R;
-			outputBitcoinValue(inputIt, dBaseIt);
+			outputBitcoinValue(inputIt, dBaseIt, true);
 		}
 	}
 }
@@ -156,9 +160,9 @@ void BitcoinExchange::getValidBitValue(char sep, const std::string &val,
 		return static_cast< void >(
 			pError("Bitcoin value can't be negative", val, lineNo));
 	if (sep == ',')
-		database.insert(std::pair<std::string, double>(date, convertedVal));
+		database.insert(std::pair< std::string, double >(date, convertedVal));
 	else if (sep == '|')
-		input.insert(std::pair<std::string, double>(date, convertedVal));
+		input.insert(std::pair< std::string, double >(date, convertedVal));
 }
 
 bool BitcoinExchange::dateIsValid(long lineNo, const std::string &date)
@@ -289,9 +293,10 @@ void BitcoinExchange::print()
 
 void BitcoinExchange::outputBitcoinValue(
 	std::map< std::string, double >::iterator inputIt,
-	std::map< std::string, double >::iterator dBaseIt)
+	std::map< std::string, double >::iterator dBaseIt, bool match)
 {
-	std::cout << "On " + inputIt->first + ", the value of ";
+	std::cout << "On " + (match ? inputIt->first : dBaseIt->first) +
+					 ", the value of ";
 	std::cout << std::setw(5) << inputIt->second << "	bitcoin(s) was "
 			  << std::right << std::setw(DISPLAY_MARGIN) << std::fixed
 			  << std::setprecision(2) << inputIt->second * dBaseIt->second

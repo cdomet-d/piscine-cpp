@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:58:51 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:27:43 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:17:24 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ class BitcoinExchange {
 	/*                               METHODS                                  */
 	void print();
 	void getChangeRate();
-
-	/*                               GETTERS                                  */
 
 	/*                               SETTERS                                  */
   private:
@@ -71,7 +69,8 @@ class BitcoinExchange {
 	bool pError(const std::string &err, const std::string &errLine,
 				size_t lineNo);
 	void outputBitcoinValue(std::map< std::string, double >::iterator inputIt,
-							std::map< std::string, double >::iterator dBaseIt);
+							std::map< std::string, double >::iterator dBaseIt,
+							bool match);
 };
 
 #endif
