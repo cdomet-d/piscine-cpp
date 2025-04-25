@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 12:46:01 by cdomet-d          #+#    #+#              #
-#    Updated: 2025/02/17 13:14:53 by cdomet-d         ###   ########.fr        #
+#    Updated: 2025/04/25 11:41:46 by cdomet-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ clean:
 
 	
 fclean: clean
-	$(RM) $(NAME) 
+	$(RM) $(NAME)
+	$(RM) *.log
 	@echo
 	
 re: fclean all
