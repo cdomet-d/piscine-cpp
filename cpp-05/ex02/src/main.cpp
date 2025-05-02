@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 15:00:17 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:49:22 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void testPresidentialForms(void);
 void testRobotomyRequestForm(void);
 void testShrubberyForm(void);
 
-int main(int ac, char *av[])
-{
+int main(int ac, char *av[]) {
 	std::string input;
 
-	if (ac != 2)
-	{
+	if (ac != 2) {
 		std::cout << "To test Presidential Forms: type 1" << std::endl
 				  << "To test Robotomy Forms: type 2" << std::endl
 				  << "To test Shrubbery Forms: type 3" << std::endl;

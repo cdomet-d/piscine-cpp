@@ -14,15 +14,13 @@
 #include <algorithm>
 #include <iomanip>
 
-std::ostream &operator<<(std::ostream &os, const Span &print)
-{
+std::ostream &operator<<(std::ostream &os, const Span &print) {
 	os << "Span size: [" << print.getSpanSize() << "] || Elem in span: ["
 	   << print.getTrackElem() << "]";
 	return os;
 }
 
-const char *Span::ElemCountTooHigh::what() const throw()
-{
+const char *Span::ElemCountTooHigh::what() const throw() {
 	return "Too many elements in span";
 }
 
@@ -32,27 +30,23 @@ const char *Span::ElemCountTooHigh::what() const throw()
 
 Span::Span(void)
 	: longestMax(0), longestMin(0), shortestMax(0), shortestMin(0),
-	  trackElem(0), spanSize(0)
-{
+	  trackElem(0), spanSize(0) {
 	span.reserve(0);
 }
 
 Span::Span(unsigned int n)
 	: longestMax(0), longestMin(0), shortestMax(0), shortestMin(0),
-	  trackElem(0), spanSize(n)
-{
+	  trackElem(0), spanSize(n) {
 	span.reserve(n);
 }
 
-Span::Span(const Span &rhs)
-{
+Span::Span(const Span &rhs) {
 	*this = rhs;
 }
 
 Span::~Span(void) {}
 
-Span &Span::operator=(const Span &rhs)
-{
+Span &Span::operator=(const Span &rhs) {
 	span = rhs.span;
 	longestMax = rhs.longestMax;
 	longestMin = rhs.longestMin;
@@ -67,8 +61,7 @@ Span &Span::operator=(const Span &rhs)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void Span::addNumber(unsigned int n)
-{
+void Span::addNumber(unsigned int n) {
 	if (trackElem >= spanSize)
 		throw Span::ElemCountTooHigh();
 	span.push_back(n);
@@ -77,8 +70,7 @@ void Span::addNumber(unsigned int n)
 
 void Span::fillSpan(const std::vector< unsigned int >::iterator pos,
 					std::vector< unsigned int >::iterator begin,
-					std::vector< unsigned int >::iterator end)
-{
+					std::vector< unsigned int >::iterator end) {
 	if (pos < span.begin() || pos > span.end())
 		throw std::out_of_range("pos is out of bounds (pos < span.begin() "
 								"|| pos >= span.end())");
@@ -90,13 +82,11 @@ void Span::fillSpan(const std::vector< unsigned int >::iterator pos,
 	trackElem += std::distance(begin, end);
 }
 
-unsigned int Span::shortestSpan()
-{
+unsigned int Span::shortestSpan() {
 	unsigned int current = 0;
 
 	if (span.empty() || trackElem <= 1)
-		throw std::length_error(
-			"Cannot compare empty or single digit range");
+		throw std::length_error("Cannot compare empty or single digit range");
 	std::sort(span.begin(), span.end());
 	unsigned int shortest = *(span.begin() + 1) - *span.begin();
 	shortestMin = *span.begin();
@@ -111,49 +101,41 @@ unsigned int Span::shortestSpan()
 			shortest = current;
 		}
 	}
-	std::cout << std::setw(5) << std::left << "between "
-			  << std::setw(12) << shortestMin << " and " << std::setw(12)
-			  << shortestMax << " | ";
+	std::cout << std::setw(5) << std::left << "between " << std::setw(12)
+			  << shortestMin << " and " << std::setw(12) << shortestMax
+			  << " | ";
 	return shortest;
 }
 
-unsigned int Span::longestSpan()
-{
+unsigned int Span::longestSpan() {
 	if (span.empty() || trackElem <= 1)
-		throw std::length_error(
-			"Cannot compare empty or single digit range");
+		throw std::length_error("Cannot compare empty or single digit range");
 	longestMax = *std::max_element(span.begin(), span.end());
 	longestMin = *std::min_element(span.begin(), span.end());
-	std::cout << std::setw(5) << std::left << "between "
-			  << std::setw(12) << longestMin << " and " << std::setw(12)
-			  << longestMax << " | ";
+	std::cout << std::setw(5) << std::left << "between " << std::setw(12)
+			  << longestMin << " and " << std::setw(12) << longestMax << " | ";
 	return longestMax - longestMin;
 }
 
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-unsigned int Span::getTrackElem() const
-{
+unsigned int Span::getTrackElem() const {
 	return trackElem;
 }
 
-unsigned int Span::getSpanSize() const
-{
+unsigned int Span::getSpanSize() const {
 	return spanSize;
 }
 
-std::vector< unsigned int >::iterator Span::getSpanBegin()
-{
+std::vector< unsigned int >::iterator Span::getSpanBegin() {
 	return span.begin();
 }
-std::vector< unsigned int >::iterator Span::getSpanEnd()
-{
+std::vector< unsigned int >::iterator Span::getSpanEnd() {
 	return span.end();
 }
 
-void Span::print()
-{
+void Span::print() {
 	for (std::vector< unsigned int >::iterator it = span.begin();
 		 it != span.end(); ++it)
 		std::cout << *it << " ";

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:41 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 13:44:27 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:56:04 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 				  << std::endl;                                                \
 	} catch (expected const &e) {                                              \
 		std::cout << BG << e.what() << R << std::endl;                         \
-	} catch (std::exception &e) {                                             \
+	} catch (std::exception & e) {                                             \
 		std::cout << BR "expected " #expected "" << ", got : " << e.what()     \
 				  << R << std::endl;                                           \
 	}

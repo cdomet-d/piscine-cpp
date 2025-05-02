@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:56:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 13:15:01 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:55:48 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 #define RESET "\033[0m"
 
 template < typename T >
-void printArr(const T &arr, int seek)
-{
+void printArr(const T &arr, int seek) {
 	std::cout << COLOR << "seeking " << seek << " in: " << RESET;
 	typename T::const_iterator it = arr.begin();
 	for (; it != arr.end(); ++it) {
@@ -36,8 +35,7 @@ void printArr(const T &arr, int seek)
 }
 
 template < typename T >
-typename T::const_iterator easyFind(const T &container, int n)
-{
+typename T::const_iterator easyFind(const T &container, int n) {
 	typename T::const_iterator it = find(container.begin(), container.end(), n);
 	return it;
 }

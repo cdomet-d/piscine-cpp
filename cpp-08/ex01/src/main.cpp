@@ -6,15 +6,14 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:41:07 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:24:52 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:56:15 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include "unitTest.hpp"
 
-int main(int ac, char *av[])
-{
+int main(int ac, char *av[]) {
 	if (ac != 2) {
 		std::cout << "Please provide a parameter:" << std::endl
 				  << "Enter [1]	to check error handling" << std::endl

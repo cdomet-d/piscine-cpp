@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:32:28 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:50:03 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 
 #include "AForm.hpp"
 
-class Intern
-{
-private:
-	struct Entry
-	{
+class Intern {
+  private:
+	struct Entry {
 		const char *fName;
 		AForm *(*F)(std::string, std::string);
 	};
 
-public:
+  public:
 	/*                               EXCEPTIONS                               */
-	class FormNotFoundException : public std::exception
-	{
-	public:
+	class FormNotFoundException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
 

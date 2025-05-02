@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:43:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/25 12:53:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:50:30 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "Intern.hpp"
 #include <iostream>
 
-int main(int ac, char *av[])
-{
-	if (ac != 3)
-	{
-		std::cout << "Expected two arguments:\n argument 1 should be requested form: <robotomy request>, \
-<presidential request> or <shrubbery request>\n argument 2 should be the target of that form" << std::endl;
+int main(int ac, char *av[]) {
+	if (ac != 3) {
+		std::cout
+			<< "Expected two arguments:\n argument 1 should be requested form: <robotomy request>, \
+<presidential request> or <shrubbery request>\n argument 2 should be the target of that form"
+			<< std::endl;
 		return 1;
 	}
-	try
-	{
+	try {
 		Intern intern;
 		Bureaucrat drone("Corpodrone", 1);
 		AForm *form;

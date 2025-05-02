@@ -14,16 +14,16 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
-#include <stack>
 #include <deque>
+#include <stack>
 
-template <typename T, typename C = std::deque<T> >
-class MutantStack : public std::stack<T, C> {
+template < typename T, typename C = std::deque< T > >
+class MutantStack : public std::stack< T, C > {
   public:
 	typedef typename C::iterator iterator;
 	typedef typename C::const_iterator const_iterator;
 	typedef typename C::reverse_iterator reverse_iterator;
-	
+
 	iterator begin() {
 		return this->c.begin();
 	}
@@ -43,6 +43,7 @@ class MutantStack : public std::stack<T, C> {
 	reverse_iterator rend() {
 		return this->c.rend();
 	}
+
   private:
 };
 

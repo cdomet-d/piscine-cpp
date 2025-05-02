@@ -6,36 +6,33 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:14:32 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:48:35 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <string>
-#include <exception>
 #include "AForm.hpp"
+#include <exception>
+#include <string>
 
 class AForm;
 
-class Bureaucrat
-{
-private:
+class Bureaucrat {
+  private:
 	const std::string name;
 	short int grade;
 
-public:
+  public:
 	/*                               EXCEPTIONS                               */
-	class GradeTooHighException : public std::exception
-	{
-	public:
+	class GradeTooHighException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
 
-	class GradeTooLowException : public std::exception
-	{
-	public:
+	class GradeTooLowException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
 	/*                               ORTHODOX CLASS                           */

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:48:54 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,47 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm() {}
 RobotomyRequestForm::RobotomyRequestForm(const std::string _target)
 	: AForm("Robotomy Request Form", _target, 72, 45) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs) : AForm(rhs) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs)
+	: AForm(rhs) {}
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
-{
+RobotomyRequestForm &
+RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs) {
 	AForm::operator=(rhs);
 	return *this;
 }
 /* ************************************************************************** */
 /*                               METHODS                                      */
 /* ************************************************************************** */
-bool RobotomyRequestForm::halfChance(void)
-{
+bool RobotomyRequestForm::halfChance(void) {
 	time_t seed = time(NULL);
 	return seed % 2;
 }
 
-void RobotomyRequestForm::checkAuth(const short int expect, const short int got)
-{
+void RobotomyRequestForm::checkAuth(const short int expect,
+									const short int got) {
 	if (!this->getSignedStatus())
 		return throw RobotomyRequestForm::FormNotSignedException();
-	if (got > expect)
-	{
-		std::cout << "Couldn't execute RobotomyForm: expected grade "
-				  << expect << " or higher, got: " << got << std::endl;
+	if (got > expect) {
+		std::cout << "Couldn't execute RobotomyForm: expected grade " << expect
+				  << " or higher, got: " << got << std::endl;
 		return throw RobotomyRequestForm::GradeTooLowException();
 	}
 }
 
 // Makes some drilling noises. Then, informs that <target> has been robotomized
 // successfully 50% of the time. Otherwise, informs that the robotomy failed
-void RobotomyRequestForm::execute(Bureaucrat const &executor)
-{
+void RobotomyRequestForm::execute(Bureaucrat const &executor) {
 	this->checkAuth(ROBOTOMY_EXEC_GRADE, executor.getGrade());
-	if (this->halfChance())
-	{
+	if (this->halfChance()) {
 		std::cout << "** UNBEARABLY LOUD DRILLING NOISES **" << std::endl
 				  << "** CONTINUED METAL ON METAL SCREECHING **" << std::endl
 				  << this->getTarget() << " has been robotomized!" << std::endl;
 		return;
 	}
-	std::cout << "Robotomy on " << this->getTarget() << " unfortunately failed; better luck next time! "
-			  << std::endl;
+	std::cout << "Robotomy on " << this->getTarget()
+			  << " unfortunately failed; better luck next time! " << std::endl;
 }
 /* ************************************************************************** */
 /*                               GETTERS                                      */

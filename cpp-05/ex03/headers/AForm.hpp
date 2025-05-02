@@ -13,9 +13,9 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include <string>
-#include <exception>
 #include "Bureaucrat.hpp"
+#include <exception>
+#include <string>
 
 class Bureaucrat;
 
@@ -23,36 +23,33 @@ class Bureaucrat;
 #define ROBOTOMY_EXEC_GRADE 45
 #define SHRUBBERY_EXEC_GRADE 137
 
-class AForm
-{
-private:
+class AForm {
+  private:
 	const std::string name;
 	const std::string target;
 	const short int signGrade;
 	const short int execGrade;
 	bool isSigned;
 
-public:
+  public:
 	/*                               EXCEPTIONS                               */
-	class GradeTooHighException : public std::exception
-	{
-	public:
+	class GradeTooHighException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
-	class GradeTooLowException : public std::exception
-	{
-	public:
+	class GradeTooLowException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
-	class FormNotSignedException : public std::exception
-	{
-	public:
+	class FormNotSignedException : public std::exception {
+	  public:
 		const char *what() const throw();
 	};
 
 	/*                               ORTHODOX CLASS                           */
 	AForm(void);
-	AForm(const std::string _name, const std::string _target, const short int _signGrade, const short _execGrade);
+	AForm(const std::string _name, const std::string _target,
+		  const short int _signGrade, const short _execGrade);
 	AForm(const AForm &rhs);
 	virtual ~AForm(void);
 	AForm &operator=(const AForm &rhs);

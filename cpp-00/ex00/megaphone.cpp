@@ -3,30 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:44:58 by jauseff           #+#    #+#             */
-/*   Updated: 2024/07/08 14:52:00 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:46:20 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cctype>
+#include <iostream>
 
-int	main(int ac, char *av[])
-{
+int main(int ac, char *av[]) {
 
 	if (ac <= 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
-		size_t	i = 1;
-		size_t	j = 0;
-		while (av[i])
-		{
+	else {
+		size_t i = 1;
+		size_t j = 0;
+		while (av[i]) {
 			j = 0;
 			while (av[i][j])
-				std::cout << static_cast<char>(std::toupper(av[i][j++]));
+				std::cout << static_cast< char >(std::toupper(av[i][j++]));
 			i++;
 		}
 	}

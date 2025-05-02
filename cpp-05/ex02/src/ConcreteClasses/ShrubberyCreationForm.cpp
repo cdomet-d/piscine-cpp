@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:19:33 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:25:02 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:48:57 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,15 @@
 ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string _target)
-	: AForm("Shrubbery Creation Form", _target, 145, 137)
-{
-}
+	: AForm("Shrubbery Creation Form", _target, 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs)
-	: AForm(rhs)
-{
-}
+	: AForm(rhs) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 ShrubberyCreationForm &
-ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
-{
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
 	AForm::operator=(rhs);
 	return *this;
 }
@@ -42,8 +37,7 @@ ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 void ShrubberyCreationForm::checkAuth(const short int expect,
-									  const short int got)
-{
+									  const short int got) {
 	if (!this->getSignedStatus())
 		return throw ShrubberyCreationForm::FormNotSignedException();
 	if (got > expect) {
@@ -54,8 +48,7 @@ void ShrubberyCreationForm::checkAuth(const short int expect,
 }
 
 // Required grades: sign 145, exec 137
-void ShrubberyCreationForm::execute(Bureaucrat const &executor)
-{
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) {
 	this->checkAuth(SHRUBBERY_EXEC_GRADE, executor.getGrade());
 	std::ofstream destFile(this->getTarget().c_str());
 	if (!destFile.is_open())

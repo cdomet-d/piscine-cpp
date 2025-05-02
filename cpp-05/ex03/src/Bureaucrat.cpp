@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:15:18 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:23:53 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:50:25 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 /*                                  EXCEPTIONS                                */
 /* ************************************************************************** */
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
 	return "	/!\\ Bureaucrat: Invalid grade: too high (< 1)";
 }
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "	/!\\ Bureaucrat: Invalid grade: too low (> 150)";
 }
 
@@ -32,28 +30,23 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 
 Bureaucrat::Bureaucrat(void) : name("Unset"), grade(150) {}
 
-Bureaucrat::Bureaucrat(const std::string _name, short int _grade) : name(_name),
-																	grade(_grade)
-{
-	if (_grade > 150)
-	{
+Bureaucrat::Bureaucrat(const std::string _name, short int _grade)
+	: name(_name), grade(_grade) {
+	if (_grade > 150) {
 		std::cout << "	expected [1 - 150], got " << _grade << std::endl;
 		throw Bureaucrat::GradeTooLowException();
-	}
-	else if (_grade < 1)
-	{
+	} else if (_grade < 1) {
 		std::cout << "	expected [1 - 150], got " << _grade << std::endl;
 		throw Bureaucrat::GradeTooHighException();
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : name(rhs.getName()),
-												 grade(rhs.getGrade()) {}
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs)
+	: name(rhs.getName()), grade(rhs.getGrade()) {}
 
 Bureaucrat::~Bureaucrat(void) {}
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
-{
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 	grade = rhs.grade;
 	return *this;
 }
@@ -62,58 +55,47 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 /*                               METHODS                                      */
 /* ************************************************************************** */
 
-void Bureaucrat::downgrade(void)
-{
-	if (grade >= 150)
-	{
+void Bureaucrat::downgrade(void) {
+	if (grade >= 150) {
 		std::cout << "	Bureaucrat is already at lowest grade" << std::endl;
 		throw Bureaucrat::GradeTooLowException();
 	}
 	grade++;
 }
 
-void Bureaucrat::upgrade(void)
-{
-	if (grade <= 1)
-	{
+void Bureaucrat::upgrade(void) {
+	if (grade <= 1) {
 		std::cout << "	Bureaucrat is already at highest grade" << std::endl;
 		throw Bureaucrat::GradeTooHighException();
 	}
 	grade--;
 }
 
-void Bureaucrat::signForm(AForm &toBeSigned)
-{
-	try
-	{
+void Bureaucrat::signForm(AForm &toBeSigned) {
+	try {
 		toBeSigned.beSigned(*this);
-	}
-	catch (std::exception &e)
-	{
+	} catch (std::exception &e) {
 		std::cout << *this << " couldn't sign [ " << toBeSigned.getName()
 				  << " ] because: " << std::endl
 				  << e.what() << std::endl;
 		return;
 	}
-	std::cout << *this << " signed form [ " << toBeSigned.getName()
-			  << " ] " << std::endl;
+	std::cout << *this << " signed form [ " << toBeSigned.getName() << " ] "
+			  << std::endl;
 }
 
 /* ************************************************************************** */
 /*                               GETTERS                                      */
 /* ************************************************************************** */
-const std::string Bureaucrat::getName(void) const
-{
+const std::string Bureaucrat::getName(void) const {
 	return name;
 }
 
-short int Bureaucrat::getGrade(void) const
-{
+short int Bureaucrat::getGrade(void) const {
 	return grade;
 }
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &print)
-{
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &print) {
 	os << print.getName() << ", bureaucrat grade [" << print.getGrade() << "]";
 	return os;
 }

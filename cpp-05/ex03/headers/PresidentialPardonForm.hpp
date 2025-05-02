@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:18:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:50:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 #include "AForm.hpp"
 
-class PresidentialPardonForm : public AForm
-{
-private:
+class PresidentialPardonForm : public AForm {
+  private:
 	void checkAuth(const short int expect, const short int got);
 
-public:
+  public:
 	/*                               ORTHODOX CLASS                           */
 	PresidentialPardonForm(void);
 	PresidentialPardonForm(const std::string _name, const std::string _target);

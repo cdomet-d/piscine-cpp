@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:49:44 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/09/02 17:03:31 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:46:33 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
-
-Phonebook::Phonebook(){
+Phonebook::Phonebook() {
 	nb_contact = -1;
 }
 
-void Phonebook::addNew()
-{
+void Phonebook::addNew() {
 	std::string newContact[5];
-	size_t	i = 0;
-	
-	std::cout << COLOR << "Creating new contact..." << END
-		<< std::endl;
-	while (i < 5)
-	{
+	size_t i = 0;
+
+	std::cout << COLOR << "Creating new contact..." << END << std::endl;
+	while (i < 5) {
 		if (i == 0)
 			std::cout << "	First Name: ";
 		else if (i == 1)
@@ -40,7 +36,7 @@ void Phonebook::addNew()
 			std::cout << "	Darkest Secret: ";
 		getline(std::cin, newContact[i], '\n');
 		if (std::cin.eof() == true)
-			return ;
+			return;
 		if (newContact[i].empty() == false)
 			i++;
 	}
@@ -48,65 +44,57 @@ void Phonebook::addNew()
 		nb_contact = 0;
 	contact[nb_contact] = Contact(newContact, nb_contact);
 	nb_contact = (nb_contact + 1) % 8;
-	std::cout << std::endl << COLOR << "New contact added !" << END
-		<< std::endl << std::endl;
-}
-
-static void	displayHeader(void)
-{
 	std::cout << std::endl
-		<< std::setfill('.') << std::setw(10) << "Index" << " | "
-		<< std::setw(10) << "First name" << " | "
-		<< std::setw(10) << "Last name" << " | "
-		<< std::setw(10) << "Nickname" << " | "
-		<< std::endl;
+			  << COLOR << "New contact added !" << END << std::endl
+			  << std::endl;
 }
 
-void Phonebook::displayIndex()
-{
-	std::string		index;
-	size_t			input;
-	bool			isValid = false;
+static void displayHeader(void) {
+	std::cout << std::endl
+			  << std::setfill('.') << std::setw(10) << "Index" << " | "
+			  << std::setw(10) << "First name" << " | " << std::setw(10)
+			  << "Last name" << " | " << std::setw(10) << "Nickname" << " | "
+			  << std::endl;
+}
 
-	if (nb_contact == -1)
-	{
-		std::cout << COLOR << "You do not have any contacts... try " << END 
-			<< PINK << "ADD" << END << std::endl;
+void Phonebook::displayIndex() {
+	std::string index;
+	size_t input;
+	bool isValid = false;
+
+	if (nb_contact == -1) {
+		std::cout << COLOR << "You do not have any contacts... try " << END
+				  << PINK << "ADD" << END << std::endl;
 		return;
 	}
-	while (!isValid)
-	{
-		std::cout << COLOR << "Enter the index of the contact your wish to see [1 - 8]" 
-			<< END << std::endl
-			<< "$ ";
+	while (!isValid) {
+		std::cout << COLOR
+				  << "Enter the index of the contact your wish to see [1 - 8]"
+				  << END << std::endl
+				  << "$ ";
 		getline(std::cin, index, '\n');
 		if (std::cin.eof() == true)
-			return ;
+			return;
 		if (index.length() > 1)
-				std::cout << PINK << "Invalid input" << END << std::endl;
-		else
-		{
+			std::cout << PINK << "Invalid input" << END << std::endl;
+		else {
 			input = index[0] - '0';
-			if ((input >= 1 && input <= 8))
-			{
+			if ((input >= 1 && input <= 8)) {
 				displaySingle(input - 1);
 				isValid = true;
-			}
-			else
+			} else
 				std::cout << PINK << "Invalid input" << END << std::endl;
 		}
 	}
 }
 
-void Phonebook::displaySingle(size_t i)
-{
+void Phonebook::displaySingle(size_t i) {
 	contact[i].displayContact();
 }
 
-void Phonebook::displaySearch()
-{
+void Phonebook::displaySearch() {
 	size_t i = 0;
-	
+
 	displayHeader();
 	while (i < 8)
 		contact[i++].displayPhonebook();

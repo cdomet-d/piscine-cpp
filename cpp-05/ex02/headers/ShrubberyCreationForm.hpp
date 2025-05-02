@@ -6,21 +6,20 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:34:27 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 14:21:05 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:48:42 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm
-{
-private:
+class ShrubberyCreationForm : public AForm {
+  private:
 	void checkAuth(const short int expect, const short int got);
-	
-public:
+
+  public:
 	/*                               ORTHODOX CLASS                           */
 	ShrubberyCreationForm(void);
 	ShrubberyCreationForm(const std::string _target);

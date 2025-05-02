@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:40:43 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/05 12:36:13 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:44:58 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 // <name>: BraiiiiiiinnnzzzZ...
 
 #ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <string>
+#define ZOMBIE_HPP
+#include <string>
 
-class Zombie
-{
-private:
-	std::string	name;
-public:
+class Zombie {
+  private:
+	std::string name;
+
+  public:
 	Zombie(std::string _name);
 	~Zombie(void);
-	void	announce(void);
+	void announce(void);
 };
 
-Zombie*	newZombie( std::string _name );
-void	randomChump( std::string _name );
+Zombie *newZombie(std::string _name);
+void randomChump(std::string _name);
 
 #endif

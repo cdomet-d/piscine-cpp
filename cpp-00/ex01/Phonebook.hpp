@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:50:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/18 13:45:47 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:46:36 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #define PHONEBOOK_HPP
 #include "Contact.hpp"
 
-# define COLOR "\x1B[1;32m"
-# define PINK "\x1B[1;31m"
-# define END "\033[0m"
+#define COLOR "\x1B[1;32m"
+#define PINK "\x1B[1;31m"
+#define END "\033[0m"
 
 class Phonebook {
-	private:
-		Contact contact[8];
-		int	nb_contact;
+  private:
+	Contact contact[8];
+	int nb_contact;
 
-	public:
-		Phonebook();
-		void	addNew();
-		void	displaySingle(size_t i);
-		void	displaySearch();
-		void 	displayIndex();
+  public:
+	Phonebook();
+	void addNew();
+	void displaySingle(size_t i);
+	void displaySearch();
+	void displayIndex();
 };
 
 #endif

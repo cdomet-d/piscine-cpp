@@ -14,43 +14,27 @@
 #include "Weapon.hpp"
 #include <iostream>
 
-HumanB::HumanB(void) {
-}
+HumanB::HumanB(void) {}
 
 HumanB::HumanB(std::string _name) {
 	this->name = _name;
 	this->weapon = NULL;
 }
 
-void HumanB::attack(void) 
-{
-	if (this->weapon)
-	{
-		std::cout	<< this->name
-					<< " attacks with their "
-					<< weapon->getType()
-					<< " !"
-					<< std::endl;
-	}
-	else
-	{
-		std::cout	<< this->name
-					<< " cowers in fear, for they are disarmed !"
-					<< std::endl;
+void HumanB::attack(void) {
+	if (this->weapon) {
+		std::cout << this->name << " attacks with their " << weapon->getType()
+				  << " !" << std::endl;
+	} else {
+		std::cout << this->name << " cowers in fear, for they are disarmed !"
+				  << std::endl;
 	}
 }
 
-void HumanB::setWeapon(Weapon& _weapon) 
-{
-		this->weapon = &_weapon;
-		std::cout	<< this->name
-				<< " has found a "
-				<< weapon->getType()
-				<< " !"
-				<< std::endl;
+void HumanB::setWeapon(Weapon &_weapon) {
+	this->weapon = &_weapon;
+	std::cout << this->name << " has found a " << weapon->getType() << " !"
+			  << std::endl;
 }
 
-HumanB::~HumanB(void) 
-{
-
-}
+HumanB::~HumanB(void) {}

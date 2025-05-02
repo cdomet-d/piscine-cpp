@@ -3,29 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 14:40:50 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/11/19 15:10:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:45:18 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
-// #include <ostream>
 
-Zombie* zombieHorde( int N, std::string name )
-{
-	Zombie* zArray;
-	
-	try
-	{
+Zombie *zombieHorde(int N, std::string name) {
+	Zombie *zArray;
+
+	try {
 		zArray = new Zombie[N];
-	}
-	catch(const std::exception& ba)
-	{
-		std::cout << ba.what() << std::endl;
-	}
+	} catch (const std::exception &ba) { std::cout << ba.what() << std::endl; }
 	for (int i = 0; i < N; i++)
 		zArray[i].nameZombie(i, name);
 	return (zArray);

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:39:42 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 13:18:29 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:55:51 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 #define INVALID "\033[38;5;206m\033[1m"
 #define RESET "\033[0m"
 
-int main()
-{
+int main() {
 	int values[] = {5,	 979, 506, 397, 52,	 266, 899, 355, 687, 188, 898, 376,
 					815, 487, 788, 477, 623, 743, 950, 488, 94,	 62,  384, 907,
 					901, 688, 965, 841, 956, 584, 489, 607, 193, 767, 852, 365,
@@ -35,10 +34,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 
@@ -50,10 +51,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 
@@ -65,10 +68,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 	}
@@ -83,10 +88,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 
@@ -98,10 +105,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 
@@ -113,10 +122,12 @@ int main()
 
 			printArr(arr, seek);
 			if (found == arr.end())
-				std::cout << INVALID << seek << " not found in arr" << RESET << std::endl;
+				std::cout << INVALID << seek << " not found in arr" << RESET
+						  << std::endl;
 			else
 				std::cout << VALID << seek << " found at pos "
-						  << std::distance(arr.begin(), found) << RESET << std::endl;
+						  << std::distance(arr.begin(), found) << RESET
+						  << std::endl;
 			std::cout << std::endl;
 		}
 	}

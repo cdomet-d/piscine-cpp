@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:46:29 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/12 13:54:34 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:56:12 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,13 @@ static void invalidIntervals(Span &span);
 static void elemLimits(Span &span, std::vector< unsigned int > src);
 static void displayF(Span &span, const std::string &which);
 
-static void displayF(Span &span, const std::string &which)
-{
+static void displayF(Span &span, const std::string &which) {
 	std::cout << std::setw(35) << std::left << std::setfill('.') << which
 			  << span << std::endl;
 	std::cout << std::setw(35) << std::left << std::setfill('.') << ".";
 	span.print();
 }
-void errorHandling(Span &span, const std::vector< unsigned int > &src)
-{
+void errorHandling(Span &span, const std::vector< unsigned int > &src) {
 	std::cout << std::endl;
 	{
 		std::cout << "TESTING INVALID ITERATORS" << std::endl;
@@ -47,8 +45,7 @@ void errorHandling(Span &span, const std::vector< unsigned int > &src)
 	}
 }
 
-static void invalidIterators(Span &span, std::vector< unsigned int > src)
-{
+static void invalidIterators(Span &span, std::vector< unsigned int > src) {
 	std::cout << "filling Span: begin == end" << std::endl;
 	TEST_THROW(span.fillSpan(span.getSpanBegin(), src.begin(), src.begin()),
 			   std::out_of_range);
@@ -62,8 +59,7 @@ static void invalidIterators(Span &span, std::vector< unsigned int > src)
 	TEST_THROW(span.fillSpan(span.getSpanBegin(), src.begin(), src.end() + 10),
 			   Span::ElemCountTooHigh);
 }
-static void invalidIntervals(Span &span)
-{
+static void invalidIntervals(Span &span) {
 	std::cout << "testing longestSpan on span: " << span << std::endl;
 	TEST_THROW(span.longestSpan(), std::length_error);
 	std::cout << "testing shortestSpan on span: " << span << std::endl;
@@ -76,8 +72,7 @@ static void invalidIntervals(Span &span)
 	TEST_THROW(span.shortestSpan(), std::length_error);
 }
 
-static void elemLimits(Span &span, std::vector< unsigned int > src)
-{
+static void elemLimits(Span &span, std::vector< unsigned int > src) {
 	try {
 		span.fillSpan(span.getSpanBegin(), src.begin(), (src.end()) - 1);
 	} catch (std::exception &e) {
@@ -93,8 +88,7 @@ static void elemLimits(Span &span, std::vector< unsigned int > src)
 			   Span::ElemCountTooHigh);
 }
 
-void deepCopy(Span &span)
-{
+void deepCopy(Span &span) {
 	unsigned int smallVal[] = {29, 22, 32, 21, 15};
 	std::vector< unsigned int > smallSrc(
 		smallVal, smallVal + sizeof(smallVal) / sizeof(unsigned int));
@@ -123,8 +117,7 @@ void deepCopy(Span &span)
 	}
 }
 
-void largeArr(const char *str)
-{
+void largeArr(const char *str) {
 	std::ifstream vecInput(str);
 	std::vector< unsigned int > src;
 
@@ -143,7 +136,5 @@ void largeArr(const char *str)
 				  << span.longestSpan() << std::endl
 				  << std::setw(10) << std::left << "shortest"
 				  << span.shortestSpan() << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	} catch (std::exception &e) { std::cout << e.what() << std::endl; }
 }

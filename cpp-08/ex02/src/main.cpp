@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:51:48 by cdomet-d          #+#    #+#             */
-/*   Updated: 2025/02/07 17:34:29 by cdomet-d         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:57:22 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@
 	std::stack< Type, SubContainer< Type > > s(Instance);
 
 template < typename iterator >
-static void printCont(iterator beg, const iterator end)
-{
+static void printCont(iterator beg, const iterator end) {
 
 	while (beg != end) {
 		std::cout << *beg << " ";
@@ -52,17 +51,10 @@ static void printCont(iterator beg, const iterator end)
 	}
 	std::cout << std::endl;
 }
-int main(void)
-{
-	{
-		TEST_MUTANT(MutantStack, int, std::deque, mstack, push);
-	}
-	{
-		TEST_MUTANT(MutantStack, int, std::list, mstack, push);
-	}
-	{
-		TEST_MUTANT(MutantStack, int, std::vector, mstack, push);
-	}
+int main(void) {
+	{ TEST_MUTANT(MutantStack, int, std::deque, mstack, push); }
+	{ TEST_MUTANT(MutantStack, int, std::list, mstack, push); }
+	{ TEST_MUTANT(MutantStack, int, std::vector, mstack, push); }
 
 	{
 		std::cout << "Testing copying" << std::endl;

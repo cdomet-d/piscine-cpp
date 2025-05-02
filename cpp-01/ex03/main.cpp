@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:46:21 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/07/29 11:49:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:44:05 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 // • While HumanA takes the Weapon in its constructor, HumanB doesn’t.
 // • HumanB may not always have a Weapon, whereas HumanA will always be armed
 
-#include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+#include "Weapon.hpp"
 
 // int main(void)
 // {
@@ -36,8 +36,7 @@
 // 	return (0);
 // }
 
-int main()
-{
+int main() {
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
@@ -53,5 +52,5 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
-return 0;
+	return 0;
 }

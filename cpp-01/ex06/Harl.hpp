@@ -3,38 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cdomet-d <cdomet-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:17:13 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/08/21 10:29:03 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2025/05/02 15:46:09 by cdomet-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HARL_HPP
 #define HARL_HPP
 
-# define COLOR "\x1B[1;32m"
-# define PINK "\x1B[1;31m"
-# define END "\033[0m"
+#define COLOR "\x1B[1;32m"
+#define PINK "\x1B[1;31m"
+#define END "\033[0m"
 
-# include <string>
+#include <string>
 
-enum Complain {
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR
-};
+enum Complain { DEBUG, INFO, WARNING, ERROR };
 
 class Harl {
-	private:
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
+  private:
+	void debug(void);
+	void info(void);
+	void warning(void);
+	void error(void);
 
-	public:
-		void complain( std::string level );
+  public:
+	void complain(std::string level);
 };
 
 #endif
