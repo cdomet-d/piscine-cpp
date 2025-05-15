@@ -4,11 +4,15 @@
 - [Binary Space Partition: scary math but it's ok](#binary-space-partition-scary-math-but-its-ok)
 	- [Time for some geometry](#time-for-some-geometry)
 	- [Definitions](#definitions)
-		- [1. Euclidean Vector](#1-euclidean-vector)
-		- [2. Vertices](#2-vertices)
-		- [3. Barycentric Coordinates](#3-barycentric-coordinates)
-	- [Goal of the operation](#goal-of-the-operation)
-	- [Ingredients for the Barycentric coordinates recipe](#ingredients-for-the-barycentric-coordinates-recipe)
+		- [Euclidean Vector](#euclidean-vector)
+		- [Vertices](#vertices)
+		- [Barycentric Coordinates](#barycentric-coordinates)
+			- [An important note: why the fuck are we talking about weight and mass ?](#an-important-note-why-the-fuck-are-we-talking-about-weight-and-mass-)
+			- [A few properties of barycentric coordinates](#a-few-properties-of-barycentric-coordinates)
+	- [The Math](#the-math)
+		- [Ingredients for the barycentric coordinates formula](#ingredients-for-the-barycentric-coordinates-formula)
+		- [Getting the vectors components](#getting-the-vectors-components)
+		- [The formula](#the-formula)
 
 ## Time for some geometry
 
@@ -17,7 +21,7 @@ For this, we are going to need a few concepts, which you skip if you're already 
 
 ## Definitions
 
-### 1. Euclidean Vector
+### Euclidean Vector
 
 - [Euclidean vectors](https://en.wikipedia.org/wiki/Euclidean_vector)
 
@@ -25,15 +29,15 @@ Vectors, in geometry, are objects that have a given *length* and a *direction*. 
 
 We are using vectors because operations using the components of vectors result in *scalar values*, which are practical in this case since we are calculation *proportions*.
 
-### 2. Vertices
+### Vertices
 
 - [Vertices of a triangle](https://mathmonks.com/triangle/vertices-of-a-triangle)
 
-> singular is *vertex*, so a vertex, several vertices
+singular is *vertex*, so a vertex, several vertices
 
 In geometry, a vertex is a point where two straight lines intersect. A triangle being composed of three lines, it possesses three vertices.
 
-### 3. Barycentric Coordinates
+### Barycentric Coordinates
 
 Given a triangle (or simplex), the barycentric coordinate of a point P is the combinations of three "weights" (w1, w2 and w3). These "weights" are proportionate to the area of subtriangles created by the presence of P.
 
@@ -43,7 +47,7 @@ So the barycentric coordinates of P can be noted as follows
     bP = (w1, w2, w3)
 ```
 
-> a simplex is a triangle or tetrahedron(= a 3D triangle) in any dimension you want (2D, 3D).
+a simplex is a triangle or tetrahedron(= a 3D triangle) in any dimension you want (2D, 3D).
 
 Basically, imagine a triangle ABC in which you have a point P. The parameters are as follows : A(2, 2),
 B(3, 11), C (11, 4), and P(6,6).
@@ -71,16 +75,17 @@ And the new barycentric coordinates for P are :
 
 We see that moving P near one of the vertex has a big impact on how the barycentric coordinate are spread. The closer P is to one of the vertices, the "heavier" that vertex will be in the barycentric coordinates.
 
-> **Why the fuck are we talking about weight and mass ?**
+#### An important note: why the fuck are we talking about weight and mass ?
+
 In the context of barycentric coordinates, weight or mass has nothing to do with physical mass. They just serve to describe a point's position relative to the vertices of a shape. It's called that because barycentric comes from the Greek barus, meaning weight. There's nothing more to it.
 
-> **A few properties of barycentric coordinates**
+#### A few properties of barycentric coordinates
 
 1. For a point to be inside the triangle, w1, w2 and w3 must be >= 0. If one of them is < 0, it means the point is outside the triangle.
 2. For a point to be inside the triangle, w1 + w2 + w3 must be == 1.
 3. If one of the coordinates is == 1 and the others are == 0, it means P is on one of the sides of the triangle.
 
-Now, to the main course. This is where the math come in. In order to get the barycentric coordinates of P, we need to apply a formula that wedid not invent but that we will explain. It comes from the previous video. Bear with me, it's not as bad as it's going to look.
+Now, to the main course. This is where the math come in. In order to get the barycentric coordinates of P, we need to apply a formula that we did not invent but that we will explain. Bear with me, it's not as bad as it's going to look.
 
 We will be using the vector based formula to get the results we need.
 
@@ -88,23 +93,23 @@ The formula we are using comes from this video : [Detect if a given point is ins
 
 The advantage of that formula is that we are calculating the weight of P in relation to the edges of our triangle, not the vertices, which allows us for more flexibility ; a vertex based approach means that we must be careful about how we orient our vertices, which is annoying and less precise.
 
-## Goal of the operation
+## The Math
 
 We want to obtain w1 and w2, which will be sufficient to determine whether our P is inside the triangle or not.
 
 w1 is the weight of P in relation to the edge of the triangle opposite of A.
 w2 is the weight of P in relation to the edge of the triangle opposite of B.
 
-## Ingredients for the Barycentric coordinates recipe
+### Ingredients for the barycentric coordinates formula
 
 - the coordinates of the three vertices of your triangle ; ours are called a, b and c.
 - the coordinates of your point `point`.
 
-1. Step 1. Getting the components of the vectors.
+### Getting the vectors components
 
 You will need the X and Y components of vectors AC and AB, but also the Y component of AP. Those vectors can be materialized as such :
 
-```
+```cpp
     // Vector AC
     // vABY and vABX are the components of my vector AC.
     Fixed vACY = c.getY() - a.getY(); // represents the vertical distance between A and C
@@ -119,9 +124,9 @@ You will need the X and Y components of vectors AC and AB, but also the Y compon
     Fixed vAPY = point.getY() - a.getY();
 ```
 
-> Fixed is a fixed point number. Here, we are using a custom class, but Fixed could totally be a float.
+Fixed is a fixed point number. Here, we are using a custom class, but Fixed could totally be a float.
 
-2. Step 2. The math stuff
+### The formula
 
 The formula we are using to determine the values of w1 is the following :
 
@@ -149,7 +154,7 @@ This allows me to determine the relationship between AP and AC. Once that's done
     w1 = result \div (vABY \times vACX - vABX \times vACY);
 ```
 
-> **normalizing** means that we are transforming a result to a standard form, in order to make it comparable and consistent. In computer science, it also allows us to deal with much greater values (ie, if we are normalizing everything by a billion, we can more easily manipulate very large number, and in order to get the "normal" result, we just have to multiply by a million at the end of my operations).
+**normalizing** means that we are transforming a result to a standard form, in order to make it comparable and consistent. In computer science, it also allows us to deal with much greater values (ie, if we are normalizing everything by a billion, we can more easily manipulate very large number, and in order to get the "normal" result, we just have to multiply by a million at the end of my operations).
 
 We now have w1 ! And since the less unknown, we have, the easier it is to solve something, the formula for w2 is much easier, as we are using w1 :
 

@@ -78,11 +78,11 @@ The syntax to overload common operators is as follows :
     MyClass& operator--(int); // Postfix decrement
 ```
 
-# Fixed Point Arithmetic
+## Fixed Point Arithmetic
 
 - [Arithmetic on fixed point numbers](https://spin.atomicobject.com/simple-fixed-point-math/)
 
-# Templates & Overloaded functions
+## Templates & Overloaded functions
 
 - [Overloaded functions](https://cplusplus.com/doc/tutorial/functions2/)
 
@@ -109,7 +109,7 @@ SomeType sum (SomeType a, SomeType b)
 
 > **Explicit vs implicit instanciation of a template** Templates can be instantiated implicitly or explicitely. Explicit instantiation is more optimized, providing a precompilation which saves time at compile time, while implicit instantiation occurs automatically. The compiler autogenerates code based on the value provided at time of use.
 
-# Static Data Members
+## Static Data Members
 
 - [Static member variables](https://www.learncpp.com/cpp-tutorial/static-member-variables/)
 - [Static member functions](https://www.learncpp.com/cpp-tutorial/static-member-functions/)
@@ -122,8 +122,8 @@ A static data member in CPP is declared using the `static` keyword. It can be a 
 - Their lifetime encapsulate the entire duration of the program, meaning it starts with the program and the memory is destroyed when it ends ;
 - They follow the same access rules as non-static data members (`private, protected or public`).
 
-> **When to use static data members:**
->
->- Multiple objects need to share a ressource,
-> - We need global-like variable (static data is both safer and better structured),
-> - For expensive initialization data : it allows the variable to be initialized once, avoid the cost of repetition.
+**When to use static data members:**
+
+- Multiple objects need to share a ressource,
+- We need global-like variable (static data is both safer and better structured),
+- For expensive initialization data : it allows the variable to be initialized once, avoid the cost of repetition.

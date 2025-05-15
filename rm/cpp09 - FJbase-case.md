@@ -1,7 +1,7 @@
 # Content
 
 1. [Grouping elements](#grouping-elements)
-2. [Inserting elements](#2-inserting-elements)
+2. [Inserting elements](#inserting-elements)
 
 - 2.a. [Determining the range in which we perform binary search](#determining-the-range-in-which-we-perform-binary-search)
 - 2.b. [Example](#example)
@@ -85,15 +85,13 @@ Each element within a pair `i` is either a `a` or a `b`.
 [7]  [11   13]
 ```
 
-Since we sorted the elements within the pair to ensure that the largest element is on the *right hand side*, this allows us to draw the following [general rule](assets/secret-tool.webp):
+Since we sorted the elements within the pair to ensure that the largest element is on the *right hand side*, this allows us to draw the following [general rule](assets/secret-tool.jpg):
 
 ```math
 b_i < a_i
 ```
 
-
-
-```
+```text
 00 16
 09 20
 01 05
@@ -109,7 +107,7 @@ b_i < a_i
 ElemSize = 4;
 > Each element has four numbers
 
-```
+```text
 00 16 09 20
 01 05 04 08
 06 14 12 17
@@ -119,7 +117,7 @@ ElemSize = 4;
 sortEachElem:
 > sort each element on the "max" of its element.
 
-```
+```text
 01 05 04 08
 00 16 09 20
 03 10 11 13
@@ -131,7 +129,7 @@ sortEachElem:
 ElemSize = 8;
 > Each element has eight numbers
 
-```
+```text
 01 05 04 08 00 16 09 20
 03 10 11 13 06 14 12 17
 ```
@@ -139,7 +137,7 @@ ElemSize = 8;
 sortEachElem:
 > sort each element on the "max" of its element.
 
-```
+```text
 03 10 11 13 06 14 12 17
 01 05 04 08 00 16 09 20
 ```
@@ -149,7 +147,7 @@ sortEachElem:
 ElemSize = 16;
 > Each element has sixteen numbers
 
-```
+```text
 03 10 11 13 06 14 12 17
 01 05 04 08 00 16 09 20
 ```
@@ -157,14 +155,14 @@ ElemSize = 16;
 Cannot form any more pairs:
 > exit recursion and start the opposite process
 
-# 2. Inserting elements
+## Inserting elements
 
 `ElemSize /= 2;`
 
 ElemSize = 8;
 > Each element has eight numbers
 
-```
+```text
 b0 | 03 10 11 13 01 04 12 17
 a0 | 01 05 04 08 00 16 09 20
 ```
@@ -176,7 +174,7 @@ a0 | 01 05 04 08 00 16 09 20
 ElemSize = 4;
 > Each element has four numbers
 
-```
+```text
 0 | b0 | 03 10 11 13 
 1 | a0 | 01 04 12 17
 2 | b1 | 01 05 04 08 
@@ -184,10 +182,10 @@ ElemSize = 4;
 ```
 
 > We have more than two elements: they need to be sorted.
-
+>
 > In another data structure, we put `b0` and every `a`.
 
-```
+```text
 Structure main;
 vector<int> sisterIndex;
 
@@ -251,7 +249,7 @@ sisIndex[2] = 4 (a3); // etc...
 
 This side by side comparison confirms that using the index in pend of the `b` we want to insert allows use to find the index of its sister pair, hence determining the maximum range of our binary search.
 
-```
+```cpp
 sisIndex[0] = 2 (a1); // a1 is at index 2 of main   pend[0] : 02 10 (b1)
 sisIndex[1] = 3 (a2); // a2 is a index 3 of main   pend[1] : 04 09 (b2)
 sisIndex[2] = 4 (a3); // etc...        pend[2] : 12 27 (b3)
@@ -307,24 +305,25 @@ for (auto it = sisIndex.find(4); it != sisIndex.end(); ++it)
 
 After updating sisIndex & comparing it with main, we see that the `a`s indexes are correct once more:
 
-```
-       main[0] : 3 6 (b0)
-       main[1] : 8 7 (a0)
-sisIndex[0] = 2 (a1);  main[2] : 5 20 (a1)
-sisIndex[1] = 3 (a2);  main[3] : 1 25 (a2)
-       main[4] : 12 27 (b3)
-sisIndex[2] = 5 (a3);  main[5] : 11 30 (a3)
+```cpp
+    main[0] : 3 6 (b0)
+    main[1] : 8 7 (a0)
+	sisIndex[0] = 2 (a1);  main[2] : 5 20 (a1)
+	sisIndex[1] = 3 (a2);  main[3] : 1 25 (a2)
+    main[4] : 12 27 (b3)
+	sisIndex[2] = 5 (a3);  main[5] : 11 30 (a3)
 ```
 
 # Inserting using Jacobstahl numbers
 
-> Making the best of binary search
+in that [StackExchange post](https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort), we learn that:
 
+> Making the best of binary search
+>
 > To perform a minimal number of comparisons, we need to take into account the following observation about binary search: the maximal number of comparisons needed to perform a binary search on a sorted sequence is the same when the number of elements is 2n and when it is 2n+1−1. For example, looking for an element in a sorted sequence of 8 or 15 elements requires the same number of comparisons.
 
 > Many insertion-based sorting algorithms perform binary searches to find where to insert elements, but most of them don't take that property of binary search into account.
 
-in that [StackExchange post](https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort).
 
 Basically, we want to take advantage of the fact that the worst case for binary search increases when its lenghts increases from a power of two to another. For instance, the worst case for an array of size 8 will remain the same until the lenght of the array becomes 16.
 

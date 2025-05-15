@@ -38,7 +38,7 @@ Floating point representation varies from machine to machine, but a standard is 
 According to StackOverflow user [Gabe](https://stackoverflow.com/users/310574/gabe) in [this post](https://stackoverflow.com/questions/7524838/fixed-point-vs-floating-point-number):
 
 > A fixed point number has a specific number of bits (or digits) reserved for the integer part (the part to the left of the > decimal point) and a specific number of bits reserved for the fractional part (the part to the right of the decimal point). No matter how large or small your number is, it will always use the same number of bits for each portion. For example, if your fixed point format was in decimal IIIII.FFFFF then the largest number you could represent would be 99999.99999 and the smallest non-zero number would be 00000.00001. Every bit of code that processes such numbers has to have built-in knowledge of where the decimal point is.
-
+>
 > A floating point number does not reserve a specific number of bits for the integer part or the fractional part. Instead it reserves a certain number of bits for the number (called the mantissa or significand) and a certain number of bits to say where within that number the decimal place sits (called the exponent). So a floating point number that took up 10 digits with 2 digits reserved for the exponent might represent a largest value of 9.9999999e+50 and a smallest non-zero value of 0.0000001e-49.
 
 Fixed points numbers are used when one needs to use decimal numbers, but also need performance over precision.
