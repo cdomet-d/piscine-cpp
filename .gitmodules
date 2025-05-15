@@ -1,0 +1,3 @@
+[submodule "cpp-readmes"]
+	path = cpp-readmes
+	url = git@github.com:cdomet-d/cpp-readmes.git
